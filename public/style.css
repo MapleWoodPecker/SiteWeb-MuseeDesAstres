@@ -1,7 +1,14 @@
 .navlogo{
-    width: 250px;
+    width: 300px;
 }
 .navsection{
-    font-size: 50px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    vertical-align: text-bottom;
+    margin-left: 25px;
+    color: whitesmoke;
+}   
+.navsoussection{
+    font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
