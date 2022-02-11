@@ -143,7 +143,7 @@ app.get('/boutique',function (req,res) {
 /*
 methode post a la bd : modifier un evenement
 */
-aaa
+
 app.post('/event/edit/:id',function (req,res) {
 
 	/* get the record base on ID
