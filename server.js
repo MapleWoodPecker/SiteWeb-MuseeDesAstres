@@ -77,7 +77,7 @@ app.get('/',function (req,res) {
 /* fin de app.get(....)*/
 
 /*
-pour generer la page add event 
+* pour generer la page add event 
 */
 
 app.get('/event/add',function (req,res) {
@@ -92,7 +92,7 @@ app.get('/event/add',function (req,res) {
 
 
 /*
-post method to data : pour ajouter un evenement à la BD
+* post method to data : pour ajouter un evenement à la BD
 */
 
 app.post('/event/add',function (req,res) {
@@ -113,7 +113,7 @@ app.post('/event/add',function (req,res) {
 });	
 
 /*
-pour editer un event 
+* pour editer un event 
 */
 
 app.get('/event/edit/:id',function (req,res) {
@@ -130,18 +130,8 @@ app.get('/event/edit/:id',function (req,res) {
 	});
 });
 
-app.get('/boutique',function (req,res) {
-
-    res.render('pages/boutique',{
-    	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
-    	items : "result"
-    	
-	});
-});
-
 /*
-methode post a la bd : modifier un evenement
+* methode post a la bd : modifier un evenement
 */
 
 app.post('/event/edit/:id',function (req,res) {
@@ -164,13 +154,111 @@ app.post('/event/edit/:id',function (req,res) {
 
 
 /*
-pour supprimer un event 
+* pour supprimer un event 
 */
 
 app.get('/event/delete/:id',function (req,res) {
     con.query("DELETE FROM e_events WHERE e_id = '" + req.params.id + "'", function (err, result){
         if (err) throw err;
         res.redirect(baseURL);
+	});
+});
+
+
+/**
+ * ExpoTemp
+*/
+
+app.get('/expo',function (req,res) {
+
+    res.render('pages/expotemp',{
+    	siteTitle : siteTitle,
+    	pageTitle : "Editing Event : ",
+    	items : "result"
+    	
+	});
+});
+
+/**
+ * Experiences
+*/
+
+app.get('/experiences',function (req,res) {
+
+    res.render('pages/experience',{
+    	siteTitle : siteTitle,
+    	pageTitle : "Editing Event : ",
+    	items : "result"
+    	
+	});
+});
+
+/**
+ * Rdv_etoiles
+*/
+
+app.get('/rdv_etoiles',function (req,res) {
+
+    res.render('pages/rdvetoiles',{
+    	siteTitle : siteTitle,
+    	pageTitle : "Editing Event : ",
+    	items : "result"
+    	
+	});
+});
+
+/**
+ * Plan
+*/
+
+app.get('/plan',function (req,res) {
+
+    res.render('pages/plan',{
+    	siteTitle : siteTitle,
+    	pageTitle : "Editing Event : ",
+    	items : "result"
+    	
+	});
+});
+
+/**
+ * Info
+*/
+
+app.get('/info',function (req,res) {
+
+    res.render('pages/info',{
+    	siteTitle : siteTitle,
+    	pageTitle : "Editing Event : ",
+    	items : "result"
+    	
+	});
+});
+
+/**
+ * Reservation
+*/
+
+app.get('/reservation',function (req,res) {
+
+    res.render('pages/reservation',{
+    	siteTitle : siteTitle,
+    	pageTitle : "Editing Event : ",
+    	items : "result"
+    	
+	});
+});
+
+/**
+ * Boutique
+*/
+
+app.get('/boutique',function (req,res) {
+
+    res.render('pages/boutique',{
+    	siteTitle : siteTitle,
+    	pageTitle : "Editing Event : ",
+    	items : "result"
 	});
 });
 

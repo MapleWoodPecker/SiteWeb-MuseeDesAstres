@@ -1,37 +1,48 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
 	<div class="container-fluid">
-	  <a class="navbar-brand" href="#">Offcanvas navbar</a>
+	  <a class="navbar-brand" href="/">Logo Des Astres</a>
 	  <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	  </button>
   
-	  <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+	  <div class="navbar-collapse offcanvas-collapse" id="navbar">
 		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 		  <li class="nav-item">
-			<a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+			<a class="nav-link active" aria-current="page" href="/">Acceuil</a>
 		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">Notifications</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">Profile</a>
-		  </li>
-		  <li class="nav-item">
-			<a class="nav-link" href="#">Switch account</a>
-		  </li>
+
 		  <li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown" aria-expanded="false">Settings</a>
-			<ul class="dropdown-menu" aria-labelledby="dropdown01">
-			  <li><a class="dropdown-item" href="#">Action</a></li>
-			  <li><a class="dropdown-item" href="#">Another action</a></li>
-			  <li><a class="dropdown-item" href="#">Something else here</a></li>
-			</ul>
+			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Activités</a>
+			<div class="dropdown-menu">
+			  <a class="dropdown-item" href="/expo">Expositions temporaires</a>
+			  <div class="dropdown-divider"></div>
+			  <a class="dropdown-item" href="/experiences">Experiences à vivre</a>
+			</div>
 		  </li>
+
+		  <li class="nav-item">
+			<a class="nav-link" href="/rdv_etoiles">Rendez-vous sous les étoiles</a>
+		  </li>
+
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Nos informations</a>
+			<div class="dropdown-menu">
+			  <a class="dropdown-item" href="/plan">Plan interactif</a>
+			  <div class="dropdown-divider"></div>
+			  <a class="dropdown-item" href="/info">Où nous trouver</a>
+			</div>
+		  </li>
+
+		  <li class="nav-item">
+			<a class="nav-link" href="/reservation">Planifier votre visite</a>
+		  </li>
+
+		  <li class="nav-item">
+			<a class="nav-link" href="/boutique">Boutique</a>
+		  </li>
+		  
 		</ul>
-		<form class="d-flex">
-		  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-		  <button class="btn btn-outline-success" type="submit">Search</button>
-		</form>
+		
 	  </div>
 	</div>
   </nav>
