@@ -33,6 +33,8 @@ app.set('view engine','ejs');
 * import all related Javascript and css files to inject in our app
 */
 
+app.use( express.static(__dirname + '/public')); 
+app.use('/favicon.ico', express.static(__dirname + '/public/images/favicon.ico')); 
 app.use('/js',express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js',express.static(__dirname + '/node_modules/tether/dist/js'));
 app.use('/js',express.static(__dirname + '/node_modules/jquery/dist'));
