@@ -56,10 +56,10 @@ var con = mysql.createConnection({
 const siteTitle = "Musée des Astres";
 const baseURL = "http://localhost:4000/"
 
-	/*
-	* Envoyer le contenu au client
-	* get the event list
-    */
+/*
+* Envoyer le contenu au client
+* get the event list
+*/
 
 app.get('/',function (req,res) {    
 	/*
