@@ -145,7 +145,7 @@ methode post a la bd : modifier un evenement
 */
 
 app.post('/event/edit/:id',function (req,res) {
-	
+
 	/* get the record base on ID
 	*/
 	var query = "UPDATE  `e_events` SET";
