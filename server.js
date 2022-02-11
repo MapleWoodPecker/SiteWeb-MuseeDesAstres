@@ -66,7 +66,7 @@ var con = mysql.createConnection({
 * Global site title and base url
 */
 
-const siteTitle = "Simple application";
+const siteTitle = "Musée des Astres";
 const baseURL = "http://localhost:4000/"
 
 	/*
