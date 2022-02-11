@@ -8,31 +8,18 @@ var mysql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
 
-/*
-app.use((req, res, next) => {
-	console.log('Requête reçue !');
-	next(); // passer au prochain middleware
-  });
-  
-  app.use((req, res, next) => {
-	res.json({ message: 'Votre requête a bien été reçue !' });
-	next();
-  });
-  app.use((req, res, next) => {
-	console.log('Réponse envoyée avec succès !');
-	next();
-  });
-  */
  
 /*
 * parse all form data
 */
-   app.use(bodyParser.urlencoded({ extended: true}));
 
-   module.exports = app;
+app.use(bodyParser.urlencoded({ extended: true}));
+module.exports = app;
+
 /*
 *used for formatting dates
 */
+
 var dateFormat = require('dateformat');
 var now = new Date();
 
@@ -73,34 +60,11 @@ const baseURL = "http://localhost:4000/"
 	* Envoyer le contenu au client
 	* get the event list
     */
+
 app.get('/',function (req,res) {    
-	
- /*
-get the event list with select from table 
-*/
-/*	
-** verifier la connexion à la BD : Afficher les events dans la table items sur la console
-con.connect(function(err) {
-    if (err) throw err;
-con.query("SELECT * FROM e_events ", function (err, result){
-    if (err) throw err;
-    console.log('lol');
-    console.log(result);
-});
-
-});
-*/
-/*
-res.render('pages/index',{
-    siteTitle : siteTitle,
-    pageTitle : "Event list",
-    items : ''
-});
-
-/*
-get the event list with select from table 
-*/
-	
+	/*
+	get the event list with select from table 
+	*/
 	con.query("SELECT * FROM e_events ORDER BY e_start_date DESC", function (err, result){
 		res.render('pages/index',{
 			siteTitle : siteTitle,
@@ -108,8 +72,9 @@ get the event list with select from table
 			items : result
 		});
 	});
+}); 
 
-}); /* fin de app.get(....)*/
+/* fin de app.get(....)*/
 
 /*
 pour generer la page add event 
@@ -117,13 +82,12 @@ pour generer la page add event
 
 app.get('/event/add',function (req,res) {
     con.query("SELECT * FROM e_events ORDER BY e_start_date DESC", function (err, result){
-    res.render('pages/add-event.ejs',{
-        siteTitle : siteTitle,
-        pageTitle : "Add new Event",
-        items : result
-    });
-});
-
+    	res.render('pages/add-event.ejs',{
+        	siteTitle : siteTitle,
+        	pageTitle : "Add new Event",
+        	items : result
+    	});
+	});
 });
 
 
@@ -142,11 +106,11 @@ app.post('/event/add',function (req,res) {
 		query += " '"+req.body.e_desc+"',";
 		query += " '"+req.body.e_location+"')";
 		
-		con.query(query, function (err, result){
-			if (err) throw err;
-			res.redirect(baseURL);
+	con.query(query, function (err, result){
+		if (err) throw err;
+		res.redirect(baseURL);
 	});
-	});	
+});	
 
 /*
 pour editer un event 
@@ -159,12 +123,21 @@ app.get('/event/edit/:id',function (req,res) {
     result[0].e_start_end = dateFormat(result[0].e_end_date,"yyyy-mm-dd");
     
         res.render('pages/edit-event.ejs',{
-        siteTitle : siteTitle,
-        pageTitle : "Editing Event : "+ result[0].e_name,
-        items : result
-    });
+        	siteTitle : siteTitle,
+        	pageTitle : "Editing Event : "+ result[0].e_name,
+        	items : result
+    	});
+	});
 });
 
+app.get('/boutique',function (req,res) {
+
+    res.render('pages/boutique',{
+    	siteTitle : siteTitle,
+    	pageTitle : "Editing Event : ",
+    	items : "result"
+    	
+	});
 });
 
 /*
@@ -183,11 +156,11 @@ app.post('/event/edit/:id',function (req,res) {
         query += " `e_location` = '"+req.body.e_location+"'";
 		query += " WHERE `e_events`.`e_id` = "+req.body.e_id+"";
 		
-		con.query(query, function (err, result){
-            if (err) throw err;
-			res.redirect(baseURL);
+	con.query(query, function (err, result){
+        if (err) throw err;
+		res.redirect(baseURL);
 	});
-	});	
+});	
 
 
 /*
@@ -198,9 +171,9 @@ app.get('/event/delete/:id',function (req,res) {
     con.query("DELETE FROM e_events WHERE e_id = '" + req.params.id + "'", function (err, result){
         if (err) throw err;
         res.redirect(baseURL);
+	});
 });
 
-});
 /**
 * connect to server
 */
