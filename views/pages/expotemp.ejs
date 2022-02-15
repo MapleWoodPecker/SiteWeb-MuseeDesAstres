@@ -1,22 +1,23 @@
 <%- include ('../partials/header') %>
 
 
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
-    </style>
-
+    }
+  </style>
+    <h1>Exposition temporaire</h1> <br>
+  <h2>En ce moment</h2>
   <!-- Marketing messaging and featurettes
   ================================================== -->
   <!-- Wrap the rest of the page in another container to center all the content. -->
@@ -24,30 +25,39 @@
   <div class="container marketing">
 
     <!-- START THE FEATURETTES -->
-    <% 
-    if (items != undefined && items.length>0) {%>
-    <hr class="featurette-divider">
-    <br> <br> <br> <br> <br> <br>
+    <% if (items !=undefined && items.length>0) {%>
+      <hr class="featurette-divider">
+      <br> <br> <br> <br> <br> <br>
 
-    <% items.forEach(function(item,index){ %>
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading"><%= item.Titre %> <!-- <span class="text-muted">It’ll blow your mind.</span>--></h2>
-        <p class="lead"><%= item.Description %></p>
-      </div>
-      <div class="col-md-5">
-        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
+      <% items.forEach(function(item,index){ %>
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">
+              <%= item.Titre %>
+                <!-- <span class="text-muted">It’ll blow your mind.</span>-->
+            </h2>
+            <p class="lead">
+              <%= item.Description %>
+            </p>
+          </div>
+          <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+              height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
+              preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
+            </svg>
 
-      </div>
-    </div>
+          </div>
+        </div>
 
-    <hr class="featurette-divider">
-    <%}); %>
+        <hr class="featurette-divider">
+        <%}); %>
 
-    <!-- /END THE FEATURETTES -->
-    <% }else {%>
-      <h1>NOT FOUND</h1>
-    <% } %>
+          <!-- /END THE FEATURETTES -->
+          <% }else {%>
+            <h1>NOT FOUND</h1>
+            <% } %>
   </div><!-- /.container -->
 
 
@@ -56,13 +66,16 @@
     <p class="float-end"><a href="#">Back to top</a></p>
     <p>&copy; 2017–2021 Company, In. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
   </footer>
-</main>
+  </main>
 
 
-    <script src="/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 
-      
+
   </body>
-</html>
 
-<%- include ('../partials/footer') %>
+  </html>
+
+  <%- include ('../partials/footer') %>

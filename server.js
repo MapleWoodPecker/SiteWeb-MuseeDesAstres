@@ -246,11 +246,12 @@ app.get('/info',function (req,res) {
 
 app.get('/reservation',function (req,res) {
 
-    res.render('pages/reservation',{
-    	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
-    	items : "result"
-    	
+    con.query("SELECT * FROM tarifs", function (err, result){
+		res.render('pages/reservation',{
+			siteTitle : siteTitle,
+			pageTitle : "Event list",
+			items : result
+		});
 	});
 });
 
