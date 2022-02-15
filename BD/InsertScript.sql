@@ -59,7 +59,7 @@ VALUES(
     'Exposition artistique sur le theme des etoiles. ',
     'Au milieu des etoiles',
     'Salle expo A',
-    'https://d1fmx1rbmqrxrr.cloudfront.net/cnet/i/edit/2021/07/voie-lactee-1200.jpg'
+    'https://media.lactualite.com/2020/11/etoiles-filantes-black-mountains-1536x864.jpg'
 ),(
     '2022-02-13 8:00',
     '2022-02-20 18:00',
