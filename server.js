@@ -49,7 +49,7 @@ var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
 	password: "",
-	database: "mybd"
+	database: "mydb"
 });
 
 /**
@@ -174,11 +174,12 @@ app.get('/event/delete/:id',function (req,res) {
 
 app.get('/expo',function (req,res) {
 
-    res.render('pages/expotemp',{
-    	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
-    	items : "result"
-    	
+	con.query("SELECT * FROM expositions ORDER BY DateDebut DESC", function (err, result){
+		res.render('pages/expotemp',{
+			siteTitle : siteTitle,
+			pageTitle : "Event list",
+			items : result
+		});
 	});
 });
 
@@ -188,11 +189,12 @@ app.get('/expo',function (req,res) {
 
 app.get('/experiences',function (req,res) {
 
-    res.render('pages/experience',{
-    	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
-    	items : "result"
-    	
+    con.query("SELECT * FROM activites ORDER BY DateActiv DESC", function (err, result){
+		res.render('pages/experience',{
+			siteTitle : siteTitle,
+			pageTitle : "Event list",
+			items : result
+		});
 	});
 });
 
