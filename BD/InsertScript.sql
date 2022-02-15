@@ -50,20 +50,23 @@ INSERT INTO `expositions`(
     `DateFin`,
     `Description`,
     `Titre`,
-    `LocalisationMusee`
+    `LocalisationMusee`,
+    `Image`
 )
 VALUES(
     '2022-02-01 8:00',
     '2022-02-20 18:00',
     'Exposition artistique sur le theme des etoiles. ',
     'Au milieu des etoiles',
-    'Salle expo A'
+    'Salle expo A',
+    'https://media.lactualite.com/2020/11/etoiles-filantes-black-mountains-1536x864.jpg'
 ),(
     '2022-02-13 8:00',
     '2022-02-20 18:00',
     'Une immersion vertigineuse à travers l’histoire de la conquete spatiale.',
     'Tourbillon d’étoiles',
-    'Salle expo B'
+    'Salle expo B',
+    'https://www.google.com/url?sa=i&url=https%3A%2F%2Ffr.depositphotos.com%2Fstock-photos%2F%25C3%25A9toiles.html&psig=AOvVaw0AFSlS-mI1AGWlcTctTqiw&ust=1645026469127000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCPD50aSHgvYCFQAAAAAdAAAAABAJ'
 );
 
 -- insert dans la table rdvtoile

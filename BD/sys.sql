@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `expositions` (
   `DateFin` datetime DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL,
   `Titre` varchar(255) DEFAULT NULL,
-  `LocalisationMusee` varchar(255) DEFAULT NULL
+  `LocalisationMusee` varchar(255) DEFAULT NULL,
+  `Image` varchar(512) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
