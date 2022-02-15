@@ -7,6 +7,7 @@ var http = require('http');
 var mysql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
+var dateFormat = require('dateformat');
 
  
 /*
@@ -20,7 +21,7 @@ module.exports = app;
 *used for formatting dates
 */
 
-var dateFormat = require('dateformat');
+
 var now = new Date();
 
 /*
