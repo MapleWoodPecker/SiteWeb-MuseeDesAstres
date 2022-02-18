@@ -204,7 +204,7 @@ app.get('/experiences',function (req,res) {
 
 app.get('/rdv_etoiles',function (req,res) {
 
-    res.render('pages/rdvetoiles',{
+    res.render('pages/construction',{
     	siteTitle : siteTitle,
     	pageTitle : "Editing Event : ",
     	items : "result"
@@ -247,7 +247,7 @@ app.get('/info',function (req,res) {
 app.get('/reservation',function (req,res) {
 
     con.query("SELECT * FROM tarifs", function (err, result){
-		res.render('pages/reservation',{
+		res.render('pages/construction',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",
 			items : result
@@ -261,7 +261,7 @@ app.get('/reservation',function (req,res) {
 
 app.get('/boutique',function (req,res) {
 
-    res.render('pages/boutique',{
+    res.render('pages/construction',{
     	siteTitle : siteTitle,
     	pageTitle : "Editing Event : ",
     	items : "result"
