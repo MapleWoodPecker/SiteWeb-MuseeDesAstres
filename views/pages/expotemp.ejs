@@ -16,10 +16,8 @@
       }
     }
   </style>
+
   <h1>Exposition temporaire</h1> <br>
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
 
   <div class="container marketing">
 
@@ -31,6 +29,9 @@
       <br> <br> <br> <br> <br> <br>
 
       <% items.forEach(function(item,index){ %>
+
+      <% if (item.DateDebut < new Date() && item.DateFin > new Date()) {%>
+
         <div class="row featurette">
           <div class="col-md-7">
             <h2 class="featurette-heading">
@@ -46,7 +47,7 @@
               height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
               preserveAspectRatio="xMidYMid slice" focusable="false">
                 
-                <image style="object-fit:cover; max-width:500px; height:400px; border: solid 1px #ccc" 
+                <image style="max-width:500px; height:400px; border: solid 1px #ccc" 
                 xlink:href="<%= item.Image %>" x="0" y="0" />
             </svg>
 
@@ -54,6 +55,9 @@
         </div>
 
         <hr class="featurette-divider">
+        <% }else {%>
+        <% } %>
+
         <%}); %>
 
           <!-- /END THE FEATURETTES -->
