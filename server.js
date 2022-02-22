@@ -39,6 +39,7 @@ app.use('/favicon.ico', express.static(__dirname + '/public/images/favicon.ico')
 app.use('/js',express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js',express.static(__dirname + '/node_modules/tether/dist/js'));
 app.use('/js',express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/js',express.static(__dirname + '/node_modules/bootstrap/js/dist'));
 app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
 /**
