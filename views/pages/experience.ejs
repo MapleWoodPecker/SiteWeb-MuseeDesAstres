@@ -2,79 +2,87 @@
 
 
 <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
     }
+  }
+</style>
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
 
-  <!-- Marketing messaging and featurettes
-  ================================================== -->
-  <!-- Wrap the rest of the page in another container to center all the content. -->
+</head>
+<body>
 
-  <div class="container marketing">
 
-    <!-- START THE FEATURETTES -->
-    <% if (items !=undefined && items.length>0) {%>
-      <hr class="featurette-divider">
-      <br> <br> <br> <br> <br> <br>
 
-      <% items.forEach(function(item,index){ %>
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">
-              <%= item.Titre %>
-                <!-- <span class="text-muted">It’ll blow your mind.</span>-->
-            </h2>
-            <p class="lead">
-              <%= item.Description %>
-            </p>
-          </div>
-          <div class="col-md-5">
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-              height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-              preserveAspectRatio="xMidYMid slice" focusable="false">
-              <title>Placeholder</title>
-              <rect width="100%" height="100%" fill="#eee" /><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text>
-            </svg>
+<main>
 
+<section class="py-5 text-center container">
+<div class="row py-lg-5">
+  <div class="col-lg-6 col-md-8 mx-auto">
+    <h1 class="fw-light">Activitées du moment</h1>
+    <p class="lead text-muted">Ici, vous pourrez découvrir nos lorem ipsum dolor sit amet, 
+      consectetur adipiscing elit. Etiam in facilisis justo. Mauris pretium egestas nisi, 
+      non elementum justo blandit quis. Pellentesque id neque pellentesque, mollis lectus et, sollicitudin felis.</p>
+    <p>
+      <a href="/expo" class="btn btn-primary my-2">Voir les expositions</a>
+      <a href="/reservation" class="btn btn-secondary my-2">Reserver en ligne</a>
+    </p>
+  </div>
+</div>
+</section>
+
+<% if (items !=undefined && items.length>0) {%>
+
+<div class="album py-5 bg-light">
+<div class="container">
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+    <% items.forEach(function(item,index){ %>
+
+    <div class="col">
+      <div class="card shadow-sm">
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" 
+        role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <title>Placeholder</title>
+          <rect width="100%" height="100%" fill="#55595c"/>
+          <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+          <image xlink:href="<%= item.Image %>" 
+          x="0" y="0" style="min-width: 768px; height: 100%; width: 100%;" />
+        </svg>
+
+        <div class="card-body">
+          <h5><%= item.Titre %></h5>
+          <p class="card-text"><%= item.Description %></p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <button type="button" class="btn btn-sm btn-outline-secondary">Détails</button>
+            </div>
+            <small class="text-muted"><%= item.Duree %></small>
           </div>
         </div>
+      </div>
+    </div>
 
-        <hr class="featurette-divider">
-        <%}); %>
+    <%}); %>
+    
+  </div>
+</div>
+</div>
 
-          <!-- /END THE FEATURETTES -->
-          <% }else {%>
-            <h1>NOT FOUND</h1>
-            <% } %>
-  </div><!-- /.container -->
+<% }else {%>
+  <h1>NOT FOUND</h1>
+<% } %>
 
-
-  <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, In. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
-  </main>
-
-
-  <script src="/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-
-
-  </body>
-
-  </html>
+</main>
 
 <%- include ('../partials/footer') %>
