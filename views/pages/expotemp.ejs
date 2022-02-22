@@ -1,87 +1,186 @@
 <%- include ('../partials/header') %>
 
 
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      user-select: none;
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
     }
+  } 
+</style>
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
+<% if (items !=undefined && items.length>0) {%>
 
-  <h1>Exposition temporaire</h1> <br>
+<% isEnCours = new Boolean %>
+<% isEnCours = false %>
 
-  <div class="container marketing">
+<% isFutur = new Boolean %>
+<% isFutur = false %>
 
-    <!-- START THE FEATURETTES -->
-    <% if (items !=undefined && items.length>0) {%>
+<% items.forEach(function(item,index){ %>
+  <% if (item.DateDebut > new Date()) {%>
+    <% isFutur = true %>
+  <% }else {%>
+    <% if (item.DateFin > new Date()) {%>
+      <% isEnCours = true %>
+    <% } %>
+  <% } %>
+<%}); %>
 
-      <h2>En ce moment</h2>
-      <hr class="featurette-divider">
-      <br> <br> <br> <br> <br> <br>
+<main>
 
-      <% items.forEach(function(item,index){ %>
+  <% if (isEnCours) {%>
 
-      <% if (item.DateDebut < new Date() && item.DateFin > new Date()) {%>
+  <section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-light">Expositions à l'affiche</h1>
+      </p>
+    </div>
+  </div>
+  </section>
 
-        <div class="row featurette">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">
-              <%= item.Titre %>
-            </h2>
-            <p class="lead">
-              <%= item.Description %>
-            </p> 
-          </div>
-          <div class="col-md-5">
-            
-            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-              height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500"
-              preserveAspectRatio="xMidYMid slice" focusable="false">
-                
-                <image style="max-width:500px; height:400px; border: solid 1px #ccc" 
-                xlink:href="<%= item.Image %>" x="0" y="0" />
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    
+        <% items.forEach(function(item,index){ %>
+
+        <% if (item.DateDebut <= new Date() && item.DateFin > new Date()){ %>
+
+        <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" 
+            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <title>Placeholder</title>
+              <rect width="100%" height="100%" fill="#55595c"/>
+              <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+              <image xlink:href="<%= item.Image %>" 
+              x="0" y="0" style="max-width:500px; height:230px;"/>
             </svg>
-
+    
+            <div class="card-body">
+              <h5><%= item.Titre %></h5>
+              <p class="card-text"><%= item.Description %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Détails</button>
+                </div>
+                <small class="text-muted"><%= item.Duree %></small>
+              </div>
+            </div>
           </div>
         </div>
-
-        <hr class="featurette-divider">
-        <% }else {%>
+    
         <% } %>
 
         <%}); %>
 
-          <!-- /END THE FEATURETTES -->
-          <% }else {%>
-            <h1>NOT FOUND</h1>
+      </div>
+    </div>
+  </div>
+
+  <% }else {%>
+
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">Aucune expositions en ce moment</h1>
+            <a href="/experiences" class="btn btn-primary my-2">Voir les activitées</a>
+            <a href="/rdv_etoiles" class="btn btn-secondary my-2">Rendez vous sous les étoiles</a>
+          </p>
+        </div>
+      </div>
+      </section>
+
+  <% } %>
+  
+  
+  <% if (isFutur) {%>
+
+    <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Expositions à venir</h1>
+      </div>
+    </div>
+    </section>
+  
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      
+          <% items.forEach(function(item,index){ %>
+  
+          <% if (item.DateDebut > new Date() && item.DateFin > new Date()){ %>
+  
+          <div class="col">
+            <div class="card shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" 
+              role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title>
+                <rect width="100%" height="100%" fill="#55595c"/>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                <image xlink:href="<%= item.Image %>" 
+                x="0" y="0" style="max-width:500px; height:230px;"/>
+              </svg>
+      
+              <div class="card-body">
+                <h5><%= item.Titre %></h5>
+                <p class="card-text"><%= item.Description %></p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Détails</button>
+                  </div>
+                  <small class="text-muted"><%= item.Duree %></small>
+                </div>
+              </div>
+            </div>
+          </div>
+      
           <% } %>
-  </div><!-- /.container -->
+  
+          <%}); %>
+  
+        </div>
+      </div>
+    </div>
+  
+    <% }else {%>
+  
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Aucune expositions future</h1>
+              <a href="/experiences" class="btn btn-primary my-2">Voir les activitées</a>
+              <a href="/rdv_etoiles" class="btn btn-secondary my-2">Rendez vous sous les étoiles</a>
+            </p>
+          </div>
+        </div>
+        </section>
+  
+    <% } %>
+  
+</main>
 
+<% }else {%>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Aucune données trouvée.</h1>
+          <a href="/" class="btn btn-primary my-2">Retour à l'accueil</a>
+        </p>
+      </div>
+    </div>
+    </section>
+<% } %>
 
-  <!-- FOOTER -->
-  <footer class="container">
-    <p class="float-end"><a href="#">Back to top</a></p>
-    <p>&copy; 2017–2021 Company, In. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-  </footer>
-  </main>
-
-
-  <script src="/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-
-
-  </body>
-
-  </html>
-
-  <%- include ('../partials/footer') %>
+<%- include ('../partials/footer') %>
