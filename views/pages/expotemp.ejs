@@ -71,13 +71,28 @@
               <p class="card-text"><%= item.Description %></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Détails</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" id="Click_<%= item.idExpositions%>">Détails</button>
                 </div>
                 <small class="text-muted"><%= item.Duree %></small>
               </div>
+              <p class="card-text" id="details_<%= item.idExpositions%>" style="display: none;">
+              Commence le <%= item.DateDebut.getDate()%>/<%= item.DateDebut.getUTCMonth()+1%>/<%= item.DateDebut.getFullYear()%>; <br>
+              Termine le <%= item.DateFin.getDate()%>/<%= item.DateFin.getUTCMonth()+1%>/<%= item.DateFin.getFullYear()%>; <br>
+              Situé en <%= item.Locasation%>.
+              </p>
             </div>
           </div>
         </div>
+
+        <script type="text/javascript">
+          document.getElementById("Click_<%= item.idExpositions%>").onclick = function() {
+            if (document.getElementById("details_<%= item.idExpositions%>").style.display == "none"){
+              document.getElementById("details_<%= item.idExpositions%>").style.display = "block";
+            } else {
+              document.getElementById("details_<%= item.idExpositions%>").style.display = "none";
+            }
+          }
+        </script>
     
         <% } %>
 
@@ -121,29 +136,44 @@
   
           <% if (item.DateDebut > new Date() && item.DateFin > new Date()){ %>
   
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" 
-              role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <rect width="100%" height="100%" fill="#55595c"/>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                <image xlink:href="<%= item.Image %>" 
-                x="0" y="0" style="max-width:500px; height:230px;"/>
-              </svg>
-      
-              <div class="card-body">
-                <h5><%= item.Titre %></h5>
-                <p class="card-text"><%= item.Description %></p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Détails</button>
+            <div class="col">
+              <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" 
+                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c"/>
+                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                  <image xlink:href="<%= item.Image %>" 
+                  x="0" y="0" style="max-width:500px; height:230px;"/>
+                </svg>
+        
+                <div class="card-body">
+                  <h5><%= item.Titre %></h5>
+                  <p class="card-text"><%= item.Description %></p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary" id="Click_<%= item.idExpositions%>">Détails</button>
+                    </div>
+                    <small class="text-muted"><%= item.Duree %></small>
                   </div>
-                  <small class="text-muted"><%= item.Duree %></small>
+                  <p class="card-text" id="details_<%= item.idExpositions%>" style="display: none;">
+                  Commence le <%= item.DateDebut.getDate()%>/<%= item.DateDebut.getUTCMonth()+1%>/<%= item.DateDebut.getFullYear()%>; <br>
+                  Termine le <%= item.DateFin.getDate()%>/<%= item.DateFin.getUTCMonth()+1%>/<%= item.DateFin.getFullYear()%>; <br>
+                  Situé en <%= item.Locasation%>.
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
+    
+            <script type="text/javascript">
+              document.getElementById("Click_<%= item.idExpositions%>").onclick = function() {
+                if (document.getElementById("details_<%= item.idExpositions%>").style.display == "none"){
+                  document.getElementById("details_<%= item.idExpositions%>").style.display = "block";
+                } else {
+                  document.getElementById("details_<%= item.idExpositions%>").style.display = "none";
+                }
+              }
+            </script>
       
           <% } %>
   
