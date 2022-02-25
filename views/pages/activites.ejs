@@ -59,13 +59,28 @@
           <p class="card-text"><%= item.Description %></p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">Détails</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="Click_<%= item.idActivites%>">Détails</button>
             </div>
             <small class="text-muted">Durée : <%= item.Duree %></small>
           </div>
+          <p class="card-text" id="details_<%= item.idActivites%>" style="display: none;">
+            Venir le <%= item.Date.getDate()%>/<%= item.Date.getUTCMonth()+1%>/<%= item.Date.getFullYear()%> 
+            à <%= item.Date.getHours()%>H<%= item.Date.getMinutes()%>;<br>
+             <%= item.Localisation%>.
+          </p>
         </div>
       </div>
     </div>
+
+    <script type="text/javascript">
+      document.getElementById("Click_<%= item.idActivites%>").onclick = function() {
+        if (document.getElementById("details_<%= item.idActivites%>").style.display == "none"){
+          document.getElementById("details_<%= item.idActivites%>").style.display = "block";
+        } else {
+          document.getElementById("details_<%= item.idActivites%>").style.display = "none";
+        }
+      }
+    </script>
 
     <%}); %>
     
