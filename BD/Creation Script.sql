@@ -37,8 +37,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Expositions` (
   `idExpositions` INT NOT NULL,
   `Titre` VARCHAR(255) NOT NULL,
-  `Date de debut` DATE NOT NULL,
-  `Date de fin` DATE NOT NULL,
+  `DateDebut` DATE NOT NULL,
+  `DateFin` DATE NOT NULL,
   `Description` VARCHAR(255) NOT NULL,
   `Locasation` VARCHAR(45) NOT NULL,
   `Image` VARCHAR(512) NOT NULL,

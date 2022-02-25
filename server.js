@@ -190,7 +190,7 @@ app.get('/expo',function (req,res) {
 
 app.get('/experiences',function (req,res) {
 
-    con.query("SELECT * FROM activites ORDER BY DateActiv DESC", function (err, result){
+    con.query("SELECT * FROM activites ORDER BY Date DESC", function (err, result){
 		res.render('pages/experience',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",

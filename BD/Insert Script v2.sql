@@ -20,7 +20,7 @@ VALUES(
     '10',
     'Musée',
     '01:15:00',
-    'https://www.visit.alsace/wp-content/uploads/lei/pictures/223013439-le-planetarium-1.jpg'
+    'https://www.vmcdn.ca/f/files/via/import/2019/02/06205100_planetarium-view.jpg'
 ),(
     '1',
     'Les étoiles et les constélations ',
@@ -39,8 +39,8 @@ VALUES(
 INSERT INTO `expositions`(
     `idExpositions`,
     `Titre`,
-    `Date de debut`,
-    `Date de fin`,
+    `DateDebut`,
+    `DateFin`,
     `Description`,
     `Locasation`,
     `Image`,
@@ -62,7 +62,7 @@ VALUES(
     '2022-03-13',
     'La station d\'exposition de vol spatial humain illustre l\'une des grandes réalisations de l\'âge moderne en tant que nations ont développé la technologie pour le vol spatial humain. ',
     'Salle Expo 2',
-    'https://www.nasa.gov/images/content/146084main_yurig_516.jpg',
+    'https://www.stelvision.com/astro/wp-content/uploads/2019/05/youri_gagarine_credit_Roscosmos.jpg',
     NULL
 ),(
     '2',
