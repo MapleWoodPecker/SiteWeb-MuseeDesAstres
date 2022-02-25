@@ -83,7 +83,7 @@ VALUES(
     '2022-02-21',
     '2022-03-06',
     'La course spatiale décris la rivalité entre les États-Unis et l’Union Soviétique et ses conséquences.',
-    'Salle Expo 1',
+    'Salle Expo 2',
     'http://kipthinking.com/wp-content/uploads/2021/03/espace_final.png',
     NULL
 ),(
@@ -99,9 +99,26 @@ VALUES(
     '2',
     'Explorons les planètes ',
     '2022-01-24',
-    '2022-02-07',
+    '2022-02-25',
     'Cette exposition vous emmène dans une tournée du système solaire du point de vu du vaisseau qui les a exploré, le satellite Voyager.',
     'Salle Expo 1',
     'https://voyager.jpl.nasa.gov/assets/images/posters/voyager_disco_poster.jpg',
     NULL
+),(
+    '3',
+    'Les météorites',
+    '2022-03-10',
+    '2022-04-15',
+    'Cette exposition vous montrera tout sur les météorites , à partir de leur composition jusqu\'à les cratères sur la surface de la Terre.',
+    'Salle Expo 1',
+    'https://images.newscientist.com/wp-content/uploads/2020/03/03131405/gettyimages-488635649.jpg',
+    NULL
+), (
+    '4',
+    'Destiantion Lune',
+    'Explorez l\'opération Apollon 11 et tout les prétparatifs pour le premier atterissage humain sur la Lune.',
+    '2022-02-20',
+    '2022-03-15',
+    'Sale Expo 2',
+    'https://cdn.mos.cms.futurecdn.net/zn5uCEzZ3ebvAK5NFm5ps8.jpg'
 );
