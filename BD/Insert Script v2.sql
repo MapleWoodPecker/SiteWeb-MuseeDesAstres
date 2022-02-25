@@ -116,9 +116,10 @@ VALUES(
 ), (
     '4',
     'Destiantion Lune',
-    'Explorez l\'opération Apollon 11 et tout les prétparatifs pour le premier atterissage humain sur la Lune.',
     '2022-02-20',
     '2022-03-15',
+    'Explorez l\'opération Apollon 11 et tout les prétparatifs pour le premier atterissage humain sur la Lune.',
     'Sale Expo 2',
-    'https://cdn.mos.cms.futurecdn.net/zn5uCEzZ3ebvAK5NFm5ps8.jpg'
+    'https://cdn.mos.cms.futurecdn.net/zn5uCEzZ3ebvAK5NFm5ps8.jpg',
+    NULL
 );
