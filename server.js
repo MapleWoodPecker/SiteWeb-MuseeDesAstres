@@ -69,7 +69,7 @@ app.get('/',function (req,res) {
 	/*
 	get the event list with select from table 
 	*/
-	con.query("SELECT * FROM e_events ORDER BY e_start_date DESC", function (err, result){
+	con.query("SELECT `activites`.*, `expositions`.* FROM `activites`, `expositions`ORDER BY DateDebut DESC;", function (err, result){
 		res.render('pages/index',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",
@@ -173,10 +173,10 @@ app.get('/event/delete/:id',function (req,res) {
  * ExpoTemp
 */
 
-app.get('/expo',function (req,res) {
+app.get('/expositions',function (req,res) {
 
 	con.query("SELECT * FROM expositions ORDER BY DateDebut DESC", function (err, result){
-		res.render('pages/expotemp',{
+		res.render('pages/expositions',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",
 			items : result
@@ -191,7 +191,7 @@ app.get('/expo',function (req,res) {
 app.get('/experiences',function (req,res) {
 
     con.query("SELECT * FROM activites ORDER BY Date DESC", function (err, result){
-		res.render('pages/experience',{
+		res.render('pages/activites',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",
 			items : result
@@ -233,7 +233,7 @@ app.get('/plan',function (req,res) {
 
 app.get('/info',function (req,res) {
 
-    res.render('pages/info',{
+    res.render('pages/coord',{
     	siteTitle : siteTitle,
     	pageTitle : "Editing Event : ",
     	items : "result"
@@ -245,7 +245,7 @@ app.get('/info',function (req,res) {
  * Reservation
 */
 
-app.get('/reservation',function (req,res) {
+app.get('/billeterie',function (req,res) {
 
     con.query("SELECT * FROM tarifs", function (err, result){
 		res.render('pages/construction',{
