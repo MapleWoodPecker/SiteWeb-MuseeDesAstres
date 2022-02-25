@@ -69,7 +69,7 @@ app.get('/',function (req,res) {
 	/*
 	get the event list with select from table 
 	*/
-	con.query("SELECT * FROM e_events ORDER BY e_start_date DESC", function (err, result){
+	con.query("SELECT `activites`.*, `expositions`.* FROM `activites`, `expositions`ORDER BY DateDebut DESC;", function (err, result){
 		res.render('pages/index',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",
