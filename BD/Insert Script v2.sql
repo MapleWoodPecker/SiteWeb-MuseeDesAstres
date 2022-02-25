@@ -31,6 +31,37 @@ VALUES(
     'Salle aux étoiles',
     '00:45:00',
     'https://astrobackyard.com/wp-content/uploads/2021/01/constellations.jpg'
+), (
+    '2',
+    'Yoga sous les étoiles',
+    'Yoga extérieur sous les étoiles.',
+    '15.50',
+    '2022-03-20',
+    '15',
+    'Cours extérieure du musée',
+    '01:00:00',
+    'https://www.waukeepubliclibrary.org/sites/default/files/Event%20Images/Adult%20Events/yogaunderthestars.jpg'
+), (
+    '3',
+    'Découvrez la ISS',
+    'Activité en réalité virtuelle pour visiter la ISS',
+    '10.50',
+    '2022-02-25',
+    '5',
+    'Salle ISS',
+    '00:30:00',
+    'https://i.ytimg.com/vi/1LpRZwAzfvA/maxresdefault.jpg'
+), (
+    '4',
+    'Expérience symphonique',
+    'Expérience symphonique pour les bébés',
+    '9.75',
+    '2022-04-06',
+    '10',
+    'Théatre du musée',
+    '00:35:00',
+    'https://journalmetro.com/wp-content/uploads/2022/02/Bebe-symphonique-e1644954958636.jpg?fit=1200%2C675'
+
 );
 
 
