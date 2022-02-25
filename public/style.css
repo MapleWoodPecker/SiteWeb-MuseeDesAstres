@@ -21,7 +21,7 @@
 }
 
 /*Menu text*/
-.container-custom{
+.container-header{
     margin-left: auto;
     margin-right: auto;
 }
@@ -82,6 +82,13 @@
     margin-right: auto;
     width:fit-content; 
     color:#333333;
+}
+
+.container-footer{
+    padding-top: 21!important;
+    padding-bottom: 15!important;
+    
+    height:80px;
 }
 
 html{
