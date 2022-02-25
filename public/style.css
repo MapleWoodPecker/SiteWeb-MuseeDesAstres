@@ -83,3 +83,18 @@
     width:fit-content; 
     color:#333333;
 }
+
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    margin: 0 0 100px;
+}
+
+footer{
+    position:absolute;
+    bottom:0px;
+    width:100%;
+}
