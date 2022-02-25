@@ -91,6 +91,40 @@
     height:80px;
 }
 
+.actu {
+    position: relative;
+    width: 100%;  
+}
+  
+.actuImage {
+    opacity: 1;
+    display: block;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+  
+.actuMiddle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    transform: translate(-100%, -100%);
+    -ms-transform: translate(-100%, -100%);
+    text-align: center;
+}
+  
+.actu:hover .actuImage {
+    opacity: 0.5;
+}
+  
+.actu:hover .actuMiddle {
+    opacity: 1;
+}
+
+  
+
 html{
     position: relative;
     min-height: 100%;
