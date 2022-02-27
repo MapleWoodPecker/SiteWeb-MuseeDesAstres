@@ -14,7 +14,7 @@ INSERT INTO `activites`(
 VALUES(
     '0',
     'Visite guidée',
-    'Visite guidée du musée',
+    'Visite guidée de tout le musée.',
     '9.95',
     '2022-02-23 12:11:10',
     '10',
@@ -23,8 +23,8 @@ VALUES(
     'https://www.vmcdn.ca/f/files/via/import/2019/02/06205100_planetarium-view.jpg'
 ),(
     '1',
-    'Les étoiles et les constélations ',
-    'Découverte des différentes étoles et constélations.',
+    'Les étoiles et les constélations',
+    'Découverte des différentes étoiles et constélations.',
     '7.5',
     '2022-02-23 07:08:09',
     '8',
@@ -34,7 +34,7 @@ VALUES(
 ), (
     '2',
     'Yoga sous les étoiles',
-    'Yoga extérieur sous les étoiles.',
+    'Yoga en extérieur, de nuit, sous les étoiles.',
     '15.50',
     '2022-03-20',
     '15',
@@ -43,18 +43,18 @@ VALUES(
     'https://www.waukeepubliclibrary.org/sites/default/files/Event%20Images/Adult%20Events/yogaunderthestars.jpg'
 ), (
     '3',
-    'Découvrez la ISS',
-    'Activité en réalité virtuelle pour visiter la ISS',
+    'Découvrez de l\'ISS',
+    'Activité en réalité virtuelle pour visiter l\'ISS',
     '10.50',
     '2022-02-25',
     '5',
-    'Salle ISS',
+    'Salle VR',
     '00:30:00',
     'https://i.ytimg.com/vi/1LpRZwAzfvA/maxresdefault.jpg'
 ), (
     '4',
     'Expérience symphonique',
-    'Expérience symphonique pour les bébés',
+    'Expérience symphonique pour les bébés et pour les grands.',
     '9.75',
     '2022-04-06',
     '10',
@@ -82,25 +82,25 @@ VALUES(
     'La course spatiale',
     '2022-02-21',
     '2022-03-06',
-    'La course spatiale décris la rivalité entre les États-Unis et l’Union Soviétique et ses conséquences.',
+    'La course spatiale décrit la rivalité entre les États-Unis et l’Union Soviétique, ainsi que ses conséquences sur la conquête spatiale.',
     'Salle Expo 2',
     'http://kipthinking.com/wp-content/uploads/2021/03/espace_final.png',
     NULL
 ),(
     '1',
-    'Le premier homme en espace ',
+    'Le premier homme dans l\'espace ',
     '2022-02-28',
     '2022-03-13',
-    'La station d\'exposition de vol spatial humain illustre l\'une des grandes réalisations de l\'âge moderne en tant que nations ont développé la technologie pour le vol spatial humain. ',
+    'La station d\'exposition de vol spatial humain illustre l\'une des plus grandes réalisations de l\'âge moderne, ce que les nations ont développé comme technologie de pointe pour le vol spatial humain.',
     'Salle Expo 2',
     'https://www.stelvision.com/astro/wp-content/uploads/2019/05/youri_gagarine_credit_Roscosmos.jpg',
     NULL
 ),(
     '2',
-    'Explorons les planètes ',
+    'Explorons les planètes',
     '2022-01-24',
     '2022-02-25',
-    'Cette exposition vous emmène dans une tournée du système solaire du point de vu du vaisseau qui les a exploré, le satellite Voyager.',
+    'Cette exposition vous emmène dans une tournée du système solaire, du point de vue du vaisseau qui les à exploré en premier : le satellite Voyager.',
     'Salle Expo 1',
     'https://voyager.jpl.nasa.gov/assets/images/posters/voyager_disco_poster.jpg',
     NULL
@@ -109,16 +109,16 @@ VALUES(
     'Les météorites',
     '2022-03-10',
     '2022-04-15',
-    'Cette exposition vous montrera tout sur les météorites , à partir de leur composition jusqu\'à les cratères sur la surface de la Terre.',
+    'Cette exposition vous montrera tout sur les météorites, de leur composition jusqu\'au cratères qu\'elles formeront en frappant la surface de la Terre.',
     'Salle Expo 1',
     'https://images.newscientist.com/wp-content/uploads/2020/03/03131405/gettyimages-488635649.jpg',
     NULL
 ), (
     '4',
-    'Destiantion Lune',
+    'Destination Lune',
     '2022-02-20',
     '2022-03-15',
-    'Explorez l\'opération Apollon 11 et tout les prétparatifs pour le premier atterissage humain sur la Lune.',
+    'Explorez l\'opération Apollon 11 et tout les préparatifs nécéssaires pour le premier atterissage humain sur la Lune.',
     'Sale Expo 2',
     'https://cdn.mos.cms.futurecdn.net/zn5uCEzZ3ebvAK5NFm5ps8.jpg',
     NULL
