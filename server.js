@@ -46,12 +46,19 @@ app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 * connection à la BD
 */
 
-var con = mysql.createConnection({
+var conMulti = mysql.createConnection({
 	host: "localhost",
 	user: "root",
 	password: "",
 	database: "mydb",
 	multipleStatements: true
+});
+
+var con = mysql.createConnection({
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "mydb",
 });
 
 /**
@@ -67,9 +74,8 @@ const baseURL = "http://localhost:4000/"
 */
 app.get('/',function (req,res) {    
 	console.log("index");
-	con.connect();
 	var sql = 'SELECT * FROM `activites`; SELECT * FROM `expositions`';  
-	con.query(sql, function (err, results, fields){
+	conMulti.query(sql, function (err, results, fields){
 	  if(!err){
 		console.log('query worked');
 		console.log(results[0]);
@@ -86,7 +92,6 @@ app.get('/',function (req,res) {
 	  }
 	  });
 	  
-	  con.end();
   }); 
 /*app.get('/',function (req,res) {    
 	/*
