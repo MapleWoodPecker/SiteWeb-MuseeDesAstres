@@ -73,19 +73,24 @@ const baseURL = "http://localhost:4000/"
 * get the event list
 */
 app.get('/',function (req,res) {    
-	console.log("index");
 	var sql = 'SELECT * FROM `activites`; SELECT * FROM `expositions`';  
 	conMulti.query(sql, function (err, results, fields){
 	  if(!err){
+		sortable = [];
 
-		console.log('query worked');
-		console.log(results[0]);
-		console.log(results[1]);
+		results[0].forEach(element1 => {
+			sortable.push(element1);
+		});
+		results[1].forEach(element2 => {
+			sortable.push(element2);
+		});
+
+		sortable.sort(compare);
 
 		res.render('pages/index',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",
-			items : results
+			items : sortable
 		});
 	  }
 
@@ -98,6 +103,17 @@ app.get('/',function (req,res) {
   }); 
 
 /* fin de app.get(....)*/
+
+/* pour le .sort de l'index */
+function compare( a, b ) {
+	if ( a.DateDebut < b.DateDebut ){
+	  return 1;
+	}
+	if ( a.DateDebut > b.DateDebut ){
+	  return -1;
+	}
+	return 0;
+}
 
 /*
 * pour generer la page add event 
@@ -209,7 +225,7 @@ app.get('/expositions',function (req,res) {
 
 app.get('/experiences',function (req,res) {
 
-    con.query("SELECT * FROM activites ORDER BY Date DESC", function (err, result){
+    con.query("SELECT * FROM activites ORDER BY DateDebut DESC", function (err, result){
 		res.render('pages/activites',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",

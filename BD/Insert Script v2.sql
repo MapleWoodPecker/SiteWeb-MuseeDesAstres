@@ -5,7 +5,7 @@ INSERT INTO `activites`(
     `Titre`,
     `Description`,
     `Prix`,
-    `Date`,
+    `DateDebut`,
     `NbParticipantsMax`,
     `Localisation`,
     `Duree`,

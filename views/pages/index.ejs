@@ -1,7 +1,6 @@
 <%- include ('../partials/header') %>
 
 
-
 <div class="">
 		<div class="col s12">
 			<% if (items !=undefined && items.length>0) {%>
@@ -50,27 +49,34 @@
 					<p><strong> Non disponible </strong></p>
 					<% } %>
 </div>
-
-<% nombreActu = 0 %>
   
 <div class="album py-5">
 	<div class="container">
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
+			<% nombreActu = 0 %>
+
 			<% items.forEach(function(item,index){ %>
 				<% nombreActu++ %>
-				<% if (nombreActu < 4 || nombreActu > 10) {%>
-					
+				<% if (nombreActu > 3 && nombreActu < 10) {%>
+				<% var type %>
+
+				<% if (item.idActivites >= 0 ) {%>
+					<% type = "/experiences" %>
+				<% }else {%>
+					<% type = "/expositions" %>
+				<%}%>
+
 			<div class="col">
 				<div class="card shadow-sm ">
-					<a href="/expositions">
+					<a href="<%= type%>">
 				        <svg class="bd-placeholder-img card-img-top actu" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" 
 				    	role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
 						<title>Placeholder</title>
 						<rect width="100%" height="100%" fill="#55595c"/>
 						<image xlink:href="<%= item.Image %>" class="actuImage"
 						x="0" y="0" style="max-width:500px; height:230px;"/>
-						<text x="5%" y="90%" fill="#eceeef" dy=".3em" style="font-size: 20; font-weight:bolder;
+						<text x="5%" y="90%" fill="#eceeef" dy=".3em" style="font-size: 20; font-weight:bolder; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 						stroke: black; stroke-width: 1px;">
 							<%= item.Titre %>
 						</text>
@@ -79,7 +85,7 @@
 				    <div class="actuMiddle"></div>				  
 				</div>
 	 		</div>
-			    <%}; %>
+				<%}; %>
 			<%}); %>
 
 		</div>

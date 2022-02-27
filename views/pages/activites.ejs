@@ -64,8 +64,8 @@
             <small class="text-muted">Durée : <%= item.Duree %></small>
           </div>
           <p class="card-text" id="details_<%= item.idActivites%>" style="display: none;">
-            Venir le <%= item.Date.getDate()%>/<%= item.Date.getUTCMonth()+1%>/<%= item.Date.getFullYear()%> 
-            à <%= item.Date.getHours()%>H<%= item.Date.getMinutes()%>;<br>
+            Venir le <%= item.DateDebut.getDate()%>/<%= item.DateDebut.getUTCMonth()+1%>/<%= item.DateDebut.getFullYear()%> 
+            à <%= item.DateDebut.getHours()%>H<%= item.DateDebut.getMinutes()%>;<br>
              <%= item.Localisation%>.
           </p>
         </div>

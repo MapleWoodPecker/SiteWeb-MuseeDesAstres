@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Activites` (
   `Titre` VARCHAR(255) NOT NULL,
   `Description` VARCHAR(255) NOT NULL,
   `Prix` DOUBLE NOT NULL,
-  `Date` DATETIME NOT NULL,
+  `DateDebut` DATETIME NOT NULL,
   `NbParticipantsMax` INT NOT NULL,
   `Localisation` VARCHAR(255) NOT NULL,
   `Duree` TIME NOT NULL,
