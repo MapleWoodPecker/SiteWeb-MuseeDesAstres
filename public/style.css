@@ -17,7 +17,7 @@
     width: 100%;
     height:fit-content;
     background-color: #182030!important;
-    
+    padding-bottom: 20px;
 }
 
 /*Menu text*/
@@ -146,20 +146,47 @@ footer{
 
 .coord-container{
     margin-top: 30px;
-    margin-left: 10px;
+    margin-left: auto;
     margin-right: auto;
     width:fit-content;
-    height:50%;
+    height:auto;
 }
 
 .coord-text{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 80px;
     text-align:left;
     color: #333333;
-    margin-top:0px;
-    line-height: 50%;
-    padding-left: 50px;
+    line-height: 120%;
+    padding-left: 30px;
     padding-top: 60px;
     
+}
+
+.vertical-line{
+    background-color:#182030;
+    width: 3px;
+}
+
+.maps-cell{
+    padding-top:15px;
+    padding-bottom:15px;
+    padding-right:30px;
+}
+
+.s-flex-container{
+    display:flex;
+}
+
+
+.h-hours{
+}
+.h-text{
+}
+.h-center{
+    background-color: #333333;
+}
+
+
+.schedule{
+    width:400px;
 }
