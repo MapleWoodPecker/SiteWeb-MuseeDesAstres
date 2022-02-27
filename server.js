@@ -225,7 +225,7 @@ app.get('/expositions',function (req,res) {
 
 app.get('/experiences',function (req,res) {
 
-    con.query("SELECT * FROM activites ORDER BY Date DESC", function (err, result){
+    con.query("SELECT * FROM activites ORDER BY DateDebut DESC", function (err, result){
 		res.render('pages/activites',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",
