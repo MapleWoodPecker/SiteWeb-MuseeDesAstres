@@ -158,7 +158,6 @@ footer{
     color: #333333;
     line-height: 120%;
     padding-left: 30px;
-    padding-top: 60px;
     
 }
 
@@ -178,15 +177,15 @@ footer{
 }
 
 
-.h-hours{
+.detail{
+    font-size: small;
 }
-.h-text{
-}
-.h-center{
-    background-color: #333333;
-}
-
 
 .schedule{
     width:400px;
 }
+
+th {
+    text-align: left; 
+    padding-right: 50px;
+  }
