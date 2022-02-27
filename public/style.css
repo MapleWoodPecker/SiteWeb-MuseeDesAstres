@@ -189,3 +189,7 @@ th {
     text-align: left; 
     padding-right: 50px;
   }
+
+h5{
+    line-height: 70%;
+}
