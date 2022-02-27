@@ -77,34 +77,25 @@ app.get('/',function (req,res) {
 	var sql = 'SELECT * FROM `activites`; SELECT * FROM `expositions`';  
 	conMulti.query(sql, function (err, results, fields){
 	  if(!err){
+
 		console.log('query worked');
 		console.log(results[0]);
 		console.log(results[1]);
+
 		res.render('pages/index',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",
 			items : results
 		});
 	  }
+
 	  else{
 		console.log('error on query. yes that one.');
 		console.log(err);
 	  }
-	  });
+	});
 	  
   }); 
-/*app.get('/',function (req,res) {    
-	/*
-	get the event list with select from table 
-	
-	con.query("SELECT `activites`.*, `expositions`.* FROM `activites`, `expositions`ORDER BY DateDebut DESC;", function (err, result){
-		res.render('pages/index',{
-			siteTitle : siteTitle,
-			pageTitle : "Event list",
-			items : result
-		});
-	});
-}); */
 
 /* fin de app.get(....)*/
 
