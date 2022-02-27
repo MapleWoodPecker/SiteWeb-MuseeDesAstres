@@ -104,6 +104,7 @@ app.get('/',function (req,res) {
 
 /* fin de app.get(....)*/
 
+/* pour le .sort de l'index */
 function compare( a, b ) {
 	if ( a.DateDebut < b.DateDebut ){
 	  return 1;
