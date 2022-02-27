@@ -1,7 +1,6 @@
 <%- include ('../partials/header') %>
 
 
-
 <div class="">
 		<div class="col s12">
 			<% if (items !=undefined && items.length>0) {%>
@@ -50,16 +49,16 @@
 					<p><strong> Non disponible </strong></p>
 					<% } %>
 </div>
-
-<% nombreActu = 0 %>
   
 <div class="album py-5">
 	<div class="container">
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
+			<% nombreActu = 0 %>
+
 			<% items.forEach(function(item,index){ %>
 				<% nombreActu++ %>
-				<% if (nombreActu < 4 || nombreActu > 10) {%>
+				<% if (nombreActu > 3 && nombreActu < 10) {%>
 					
 			<div class="col">
 				<div class="card shadow-sm ">
@@ -79,7 +78,7 @@
 				    <div class="actuMiddle"></div>				  
 				</div>
 	 		</div>
-			    <%}; %>
+				<%}; %>
 			<%}); %>
 
 		</div>
