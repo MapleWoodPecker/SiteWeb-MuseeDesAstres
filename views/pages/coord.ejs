@@ -1,20 +1,49 @@
 <%- include ('../partials/header') %>
 
-    <div class="coord-container">
-        <div style="float:left;">
+    <table class="coord-container">
+        <tr>
+            <td>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22356.89139999833!2d-73.69347616044921!3d45.538024500000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9188f20b115b7%3A0x9ff096f63fa10692!2sCollege%20of%20Bois-de-Boulogne!5e0!3m2!1sen!2sca!4v1645822860104!5m2!1sen!2sca"
+                    width="600" height="600" style="border:0;" class="maps-cell" allowfullscreen=""
+                    loading="lazy"></iframe>
+            </td>
+            <td class="vertical-line"></td>
+            <td class="coord-text">
+                <h1><b>Musée des Astres</b></h1><br>
+                <h2>10555 Ave de Bois-de-Boulogne<br>Montreal (Quebec)<br>Canada - H4N 1L4</h2>
+                <br>
+                <h3><i>(555) 555-5555<br><a href="mailto:museedesastres@gmail.com">museedesastres@gmail.com</a></i></h3>
+                <br>
+                <h3>Heures d'ouverture:</h3>
+                <table class="schedule">
+                    <tr>
+                        <td class="s-flex-container">
+                            <div class="h-text">Mardi au Vendredi</div>
+                            <div class="h-center"></div>
+                            <div class="h-hours">10 am - 5 pm</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="s-flex-container">
+                            <div class="h-text">Samedi et Dimanche</div>
+                            <div class="h-center"></div>
+                            <div class="h-hours">11 am - 5 pm</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="s-flex-container">
+                            <div class="h-text">Lundi</div>
+                            <div class="h-center"></div>
+                            <div class="h-hours">Fermé</div>
+                        </td>
+                    </tr>
 
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22356.89139999833!2d-73.69347616044921!3d45.538024500000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc9188f20b115b7%3A0x9ff096f63fa10692!2sCollege%20of%20Bois-de-Boulogne!5e0!3m2!1sen!2sca!4v1645822860104!5m2!1sen!2sca"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </table>
+            </th>
+        </tr>
+    </table>
 
-        </div>
-        <div style="float:right;">
-            <h1>Musée des Astres</h1>
-            <h2>10555 Ave de Bois-de-Boulogne<br>Montreal, Quebec, H4N 1L4</h2>
-        </div>
-    </div>
-
-    <br><br><br>
-
+    <br><br><br><br>
 
     <%- include ('../partials/footer') %>

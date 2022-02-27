@@ -1,97 +1,126 @@
 <%- include ('../partials/header') %>
 
 
-<div class="">
+	<div class="">
 		<div class="col s12">
 			<% if (items !=undefined && items.length>0) {%>
-				
+
 				<% }else {%>
 					<p><strong> Non disponible </strong></p>
 					<% } %>
-		</div> 
-		
-			<div>
-				<% if (items !=undefined && items.length>0) {%>
-				
-				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-					<ol class="carousel-indicators">
-						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-					</ol>
-					
-					<div class="carousel-inner">
-						<% items.forEach(function(item,index){ %>
-						<div class="carousel-item active">
-							<img class="d-block w-100" src="<%= item.Image %>" alt="First slide" width="auto" height="40%">
-							<div class="carousel-caption d-none d-md-block">
-								<h5><%= item.Titre %></h5>
-								<p><%= item.Description %></p>
-							</div>
-						</div>
-						<%}); %>
-					</div>
-					
-					
-					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="sr-only">Previous</span>
-					</a>
-					<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="sr-only">Next</span>
-					</a>
-					
-					<% items.forEach(function(item,index){ %>
-					
-				<%}); %>
-				<% }else {%>
-					<p><strong> Non disponible </strong></p>
-					<% } %>
-</div>
-  
-<div class="album py-5">
-	<div class="container">
-		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-			<% nombreActu = 0 %>
-
-			<% items.forEach(function(item,index){ %>
-				<% nombreActu++ %>
-				<% if (nombreActu > 3 && nombreActu < 10) {%>
-				<% var type %>
-
-				<% if (item.idActivites >= 0 ) {%>
-					<% type = "/experiences" %>
-				<% }else {%>
-					<% type = "/expositions" %>
-				<%}%>
-
-			<div class="col">
-				<div class="card shadow-sm ">
-					<a href="<%= type%>">
-				        <svg class="bd-placeholder-img card-img-top actu" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" 
-				    	role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-						<title>Placeholder</title>
-						<rect width="100%" height="100%" fill="#55595c"/>
-						<image xlink:href="<%= item.Image %>" class="actuImage"
-						x="0" y="0" style="max-width:500px; height:230px;"/>
-						<text x="5%" y="90%" fill="#eceeef" dy=".3em" style="font-size: 20; font-weight:bolder; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-						stroke: black; stroke-width: 1px;">
-							<%= item.Titre %>
-						</text>
-				        </svg>
-				    </a>
-				    <div class="actuMiddle"></div>				  
-				</div>
-	 		</div>
-				<%}; %>
-			<%}); %>
-
 		</div>
-	</div>
-</div>
-		
+
+		<div>
+			<% if (items !=undefined && items.length>0) {%>
+			
+			 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:  1200px!important; height: 500px!important; padding: 50px; margin-left: auto;
+			 margin-right: auto; display: block;">
+				<ol class="carousel-indicators">
+					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+					<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+				</ol>
 				
 
-<%- include ('../partials/footer') %>
+				<div class="carousel-inner" style="width:  1200px!important; height: 500px!important; " >
+					<div class="carousel-item active">
+						<img class="d-block w-100" src="<%= items[0].Image %>" alt="..." >
+						<div class="carousel-caption d-none d-md-block">
+							<h5><%= items[0].Titre %></h5>
+							<p><%= items[0].Description %></p>
+						</div>
+					</div>
+
+					<div class="carousel-item">
+						<img class="d-block w-100" src="<%= items[1].Image %>" alt="..." >
+						<div class="carousel-caption d-none d-md-block">
+							<h5><%= items[1].Titre %></h5>
+							<p><%= items[1].Description %></p>
+						</div>
+					</div>
+
+					<div class="carousel-item">
+						<img class="d-block w-100" src="<%= items[2].Image %>" alt="..." >
+						<div class="carousel-caption d-none d-md-block">
+							<h5><%= items[2].Titre %></h5>
+							<p><%= items[2].Description %></p>
+						</div>
+					</div>
+				</div> 
+				
+				
+				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+
+				
+				<% items.forEach(function(item,index){ %>
+				
+
+			<%}); %>
+			<% }else {%>
+				<p><strong> Non disponible </strong></p>
+				<% } %>
+		</div>
+
+				<div class="album py-5">
+					<div class="container">
+						<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+							<% nombreActu=0 %>
+
+								<% items.forEach(function(item,index){ %>
+									<% nombreActu++ %>
+										<% if (nombreActu> 3 && nombreActu < 10) {%>
+												<% var type %>
+
+													<% if (item.idActivites>= 0 ) {%>
+														<% type="/experiences" %>
+															<% }else {%>
+																<% type="/expositions" %>
+																	<%}%>
+
+																		<div class="col">
+																			<div class="card shadow-sm ">
+																				<a href="<%= type%>">
+																					<svg class="bd-placeholder-img card-img-top actu"
+																						width="100%" height="225"
+																						xmlns="http://www.w3.org/2000/svg"
+																						role="img"
+																						aria-label="Placeholder: Thumbnail"
+																						preserveAspectRatio="xMidYMid slice"
+																						focusable="false">
+																						<title>Placeholder</title>
+																						<rect width="100%" height="100%"
+																							fill="#55595c" />
+																						<image
+																							xlink:href="<%= item.Image %>"
+																							class="actuImage" x="0"
+																							y="0"
+																							style="max-width:500px; height:230px;" />
+																						<text x="5%" y="90%"
+																							fill="#eceeef" dy=".3em"
+																							style="font-size: 20; font-weight:bolder; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+						stroke: black; stroke-width: 1px;">
+																							<%= item.Titre %>
+																						</text>
+																					</svg>
+																				</a>
+																				<div class="actuMiddle"></div>
+																			</div>
+																		</div>
+																		<%}; %>
+																			<%}); %>
+
+						</div>
+					</div>
+				</div>
+
+
+
+				<%- include ('../partials/footer') %>
