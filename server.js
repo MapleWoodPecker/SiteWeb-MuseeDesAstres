@@ -46,11 +46,19 @@ app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 * connection à la BD
 */
 
+var conMulti = mysql.createConnection({
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "mydb",
+	multipleStatements: true
+});
+
 var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
 	password: "",
-	database: "mydb"
+	database: "mydb",
 });
 
 /**
@@ -64,19 +72,30 @@ const baseURL = "http://localhost:4000/"
 * Envoyer le contenu au client
 * get the event list
 */
-
 app.get('/',function (req,res) {    
-	/*
-	get the event list with select from table 
-	*/
-	con.query("SELECT `activites`.*, `expositions`.* FROM `activites`, `expositions`ORDER BY DateDebut DESC;", function (err, result){
+	console.log("index");
+	var sql = 'SELECT * FROM `activites`; SELECT * FROM `expositions`';  
+	conMulti.query(sql, function (err, results, fields){
+	  if(!err){
+
+		console.log('query worked');
+		console.log(results[0]);
+		console.log(results[1]);
+
 		res.render('pages/index',{
 			siteTitle : siteTitle,
 			pageTitle : "Event list",
-			items : result
+			items : results
 		});
+	  }
+
+	  else{
+		console.log('error on query. yes that one.');
+		console.log(err);
+	  }
 	});
-}); 
+	  
+  }); 
 
 /* fin de app.get(....)*/
 
