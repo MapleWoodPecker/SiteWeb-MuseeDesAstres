@@ -14,7 +14,7 @@ INSERT INTO `activites`(
 VALUES(
     '0',
     'Visite guidée',
-    'Visite guidée et organisée de l'entièreté du musée.',
+    'Visite guidée et organisée de l\'entièreté du musée.',
     '9.95',
     '2022-02-23 12:11:10',
     '10',
@@ -24,7 +24,7 @@ VALUES(
 ),(
     '1',
     'Les étoiles et les constellations',
-    'Découverte des astres qui nous entourent et les forment qu'ils produisent.',
+    'Découverte des astres qui nous entourent et les forment qu\'ils produisent.',
     '7.5',
     '2022-02-23 07:08:09',
     '8',
