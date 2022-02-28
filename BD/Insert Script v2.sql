@@ -14,23 +14,23 @@ INSERT INTO `activites`(
 VALUES(
     '0',
     'Visite guidée',
-    'Visite guidée de tout le musée.',
+    'Visite guidée et organisée de l'entièreté du musée.',
     '9.95',
     '2022-02-23 12:11:10',
     '10',
     'Musée',
     '01:15:00',
-    'https://www.vmcdn.ca/f/files/via/import/2019/02/06205100_planetarium-view.jpg'
+    'https://i.imgur.com/oNBXLe5.jpg'
 ),(
     '1',
-    'Les étoiles et les constélations',
-    'Découverte des différentes étoiles et constélations.',
+    'Les étoiles et les constellations',
+    'Découverte des astres qui nous entourent et les forment qu'ils produisent.',
     '7.5',
     '2022-02-23 07:08:09',
     '8',
     'Salle aux étoiles',
     '00:45:00',
-    'https://astrobackyard.com/wp-content/uploads/2021/01/constellations.jpg'
+    'https://i.imgur.com/2HrpB0g.jpg'
 ), (
     '2',
     'Yoga sous les étoiles',
@@ -38,12 +38,12 @@ VALUES(
     '15.50',
     '2022-03-20',
     '15',
-    'Cours extérieure du musée',
+    'Jardin extérieur du musée',
     '01:00:00',
-    'https://www.waukeepubliclibrary.org/sites/default/files/Event%20Images/Adult%20Events/yogaunderthestars.jpg'
+    'https://i.imgur.com/H4EzR19.jpg'
 ), (
     '3',
-    'Découvrez de l\'ISS',
+    'Découverte de la station spatiale',
     'Activité en réalité virtuelle pour visiter l\'ISS',
     '10.50',
     '2022-02-25',
