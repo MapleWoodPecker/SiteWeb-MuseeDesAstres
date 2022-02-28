@@ -181,14 +181,16 @@ footer{
     font-size: small;
 }
 
-.schedule{
-    width:400px;
-}
-
-th {
+th{
     text-align: left; 
     padding-right: 50px;
-  }
+}
+
+td{
+    text-align: right;
+}
+
+
 
 h5{
     line-height: 70%;
