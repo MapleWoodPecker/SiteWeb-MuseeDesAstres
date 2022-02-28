@@ -181,12 +181,12 @@ footer{
     font-size: small;
 }
 
-th{
+#schedule{
     text-align: left; 
     padding-right: 50px;
 }
 
-td{
+#hour{
     text-align: right;
 }
 
