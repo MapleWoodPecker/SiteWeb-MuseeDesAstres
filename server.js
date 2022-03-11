@@ -10,7 +10,9 @@ var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 const mongoose = require('mongoose');
 
-//db.js
+/**
+ * mongoDB
+**/
 
 const url = `mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/MuseeDesAstres?retryWrites=true&w=majority`;
 
