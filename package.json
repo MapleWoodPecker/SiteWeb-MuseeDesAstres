@@ -18,6 +18,8 @@
     "express-partials": "^0.3.0",
     "http": "^0.0.1-security",
     "jquery": "^3.5.1",
+    "mangodb": "^1.0.0",
+    "mongoose": "^6.2.5",
     "mysql": "^2.18.1",
     "tether": "^1.4.7"
   },

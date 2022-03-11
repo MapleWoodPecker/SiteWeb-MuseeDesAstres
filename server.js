@@ -8,7 +8,22 @@ var mysql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
+const mongoose = require('mongoose');
 
+//db.js
+
+const url = `mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/MuseeDesAstres?retryWrites=true&w=majority`;
+
+const connectionParams={
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}
+
+mongoose.connect(url,connectionParams).then( () => {
+    console.log('Connected to database ');
+}).catch( (err) => {
+    console.error(`Error connecting to the database. \n${err}`);
+})
  
 /*
 * parse all form data
