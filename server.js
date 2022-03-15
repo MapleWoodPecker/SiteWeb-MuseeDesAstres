@@ -9,7 +9,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 const mongoose = require('mongoose');
-//const fetch = require('node-fetch');
+const fetch = require('node-fetch');
 const session = require('express-session');
 const routeur = express.Router();
 
