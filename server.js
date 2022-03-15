@@ -97,9 +97,9 @@ const baseURL = "http://localhost:4000/"
 app.get('/',function (req,res) {    
 	var sql = 'SELECT * FROM `activites`; SELECT * FROM `expositions`';  
 	conMulti.query(sql, function (err, results, fields){
-	  if(!err){
-		sortable = [];
 
+		sortable = [];
+		if (results != undefined && results.length > 0){
 		results[0].forEach(element1 => {
 			sortable.push(element1);
 		});
@@ -108,24 +108,16 @@ app.get('/',function (req,res) {
 		});
 
 		sortable.sort(compare);
+	}
 
 		res.render('pages/index',{
 			siteTitle : siteTitle,
 			pageTitle : "Index",
 			items : sortable
 		});
-	  }
+	  
 
-	  else{
-		console.log('error on query. yes that one.');
-		console.log(err);
-
-		res.render('pages/index',{
-			siteTitle : siteTitle,
-			pageTitle : "kwa",
-			items : null
-		});
-	  }
+	  
 	});
 	  
   }); 
