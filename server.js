@@ -240,7 +240,7 @@ app.get('/expositions',function (req,res) {
 	con.query("SELECT * FROM expositions ORDER BY DateDebut DESC", function (err, result){
 		res.render('pages/expositions',{
 			siteTitle : siteTitle,
-			pageTitle : "Event list",
+			pageTitle : "Expo",
 			items : result
 		});
 	});
@@ -255,7 +255,7 @@ app.get('/experiences',function (req,res) {
     con.query("SELECT * FROM activites ORDER BY DateDebut DESC", function (err, result){
 		res.render('pages/activites',{
 			siteTitle : siteTitle,
-			pageTitle : "Event list",
+			pageTitle : "Expe",
 			items : result
 		});
 	});
@@ -269,7 +269,7 @@ app.get('/rdv_etoiles',function (req,res) {
 
     res.render('pages/construction',{
     	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
+    	pageTitle : "rdv",
     	items : "result"
     	
 	});
@@ -283,7 +283,7 @@ app.get('/plan',function (req,res) {
 
     res.render('pages/plan',{
     	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
+    	pageTitle : "plan",
     	items : "result"
     	
 	});
@@ -297,7 +297,7 @@ app.get('/info',function (req,res) {
 
     res.render('pages/coord',{
     	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
+    	pageTitle : "coord",
     	items : "result"
     	
 	});
@@ -312,7 +312,7 @@ app.get('/billeterie',function (req,res) {
     con.query("SELECT * FROM tarifs", function (err, result){
 		res.render('pages/construction',{
 			siteTitle : siteTitle,
-			pageTitle : "Event list",
+			pageTitle : "billet",
 			items : result
 		});
 	});
@@ -326,7 +326,7 @@ app.get('/boutique',function (req,res) {
 
     res.render('pages/construction',{
     	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
+    	pageTitle : "bout",
     	items : "result"
 	});
 });
