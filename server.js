@@ -8,10 +8,12 @@ var mysql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
-const { MongoClient } = require("mongodb");
+//const { MongoClient } = require("mongodb");
 const fetch = import('node-fetch');
 const session = require('express-session');
 const routeur = express.Router();
+const MongoClient = require("mongodb").MongoClient;
+const assert = require("assert");
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -74,27 +76,22 @@ var con = mysql.createConnection({
 const uri = "mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 // Create a new MongoClient
-const client = new MongoClient(uri);
 
-async function run() {
-  try {
-    // Connect the client to the server
-    await client.connect();
-    // Establish and verify connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Connected successfully to server");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-
-run().catch(console.dir);
+MongoClient.connect(
+	uri,
+	{ useNewUrlParser: true, useUnifiedTopology: true },
+	async function (connectErr, client) {
+	  assert.equal(null, connectErr);
+	  const coll = client.db("sample_mflix").collection("movies");
+	  let cursor = await coll.aggregate(agg);
+	  await cursor.forEach((doc) => console.log(doc));
+	  client.close();
+	}
+);
 
 // Connection to clusters
 
-const admin = new MongoClient(uri);
-
+/** 
 const mongodb = app.admin.mongoClient("mongodb-atlas");
 
 const activites = mongodb.db("desastres").collection("Activités");
@@ -103,6 +100,7 @@ const itemsboutique = mongodb.db("desastres").collection("Items");
 const rdvetoiles = mongodb.db("desastres").collection("RDV_sous_etoiles");
 const reservations = mongodb.db("desastres").collection("Reservations");
 const expo = mongodb.db("desastres").collection("expositions");
+*/
 
 /**
 * Global site title and base url
