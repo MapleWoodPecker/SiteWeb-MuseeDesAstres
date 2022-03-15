@@ -9,7 +9,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 const { MongoClient } = require("mongodb");
-//const fetch = require('node-fetch');
+const fetch = import('node-fetch');
 const session = require('express-session');
 const routeur = express.Router();
 
@@ -48,7 +48,7 @@ var now = new Date();
 app.set('view engine','ejs');
 /**
 * connection à la BD
-* OBSOLETE
+* !!!!!OBSOLETE!!!!!
 */
 
 var conMulti = mysql.createConnection({
@@ -66,7 +66,6 @@ var con = mysql.createConnection({
 	database: "mydb",
 });
 
-
 /**
  * mongoDB
 **/
@@ -76,6 +75,7 @@ const uri = "mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/myFir
 
 // Create a new MongoClient
 const client = new MongoClient(uri);
+
 async function run() {
   try {
     // Connect the client to the server
@@ -93,7 +93,10 @@ run().catch(console.dir);
 
 // Connection to clusters
 
-const mongodb = app.currentUser.mongoClient("mongodb-atlas");
+const admin = new MongoClient(uri);
+
+const mongodb = app.admin.mongoClient("mongodb-atlas");
+
 const activites = mongodb.db("desastres").collection("Activités");
 const comptes = mongodb.db("desastres").collection("Compte");
 const itemsboutique = mongodb.db("desastres").collection("Items");
