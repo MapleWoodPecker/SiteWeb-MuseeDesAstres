@@ -99,6 +99,7 @@ app.get('/',function (req,res) {
 	conMulti.query(sql, function (err, results, fields){
 
 		sortable = [];
+
 		if (results != undefined && results.length > 0){
 		results[0].forEach(element1 => {
 			sortable.push(element1);
@@ -108,7 +109,7 @@ app.get('/',function (req,res) {
 		});
 
 		sortable.sort(compare);
-	}
+		}
 
 		res.render('pages/index',{
 			siteTitle : siteTitle,
