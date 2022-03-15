@@ -11,6 +11,7 @@ var dateFormat = require('dateformat');
 const mongoose = require('mongoose');
 const fetch = require('node-fetch');
 const session = require('express_session');
+const routeur = express.Router();
 
 /**
  * mongoDB
@@ -53,6 +54,9 @@ app.set('view engine','ejs');
 * import all related Javascript and css files to inject in our app
 */
 
+app.use ( session ( { secret : '1111111' ,saveUninitialized : false , resave : false } ) ) ;
+app.use ( bodyParser.json ( ) ) ;      
+app.use ( bodyParser.urlencoded ( { extended : true } ) ) ;
 app.use( express.static(__dirname + '/public')); 
 app.use('/favicon.ico', express.static(__dirname + '/public/images/favicon.ico')); 
 app.use('/js',express.static(__dirname + '/node_modules/bootstrap/dist/js'));
