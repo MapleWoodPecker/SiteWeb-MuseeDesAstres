@@ -9,46 +9,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 const mongoose = require('mongoose');
-const fetch = require('node-fetch');
-const session = require('express_session');
+//const fetch = require('node-fetch');
+const session = require('express-session');
 const routeur = express.Router();
-
-/**
- * mongoDB
-**/
-
-const url = `mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/MuseeDesAstres?retryWrites=true&w=majority`;
-
-const connectionParams={
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}
-
-mongoose.connect(url,connectionParams).then( () => {
-    console.log('Connected to database');
-}).catch( (err) => {
-    console.error(`Error connecting to the database. \n${err}`);
-})
- 
-/*
-* parse all form data
-*/
-
-app.use(bodyParser.urlencoded({ extended: true}));
-module.exports = app;
-
-/*
-*used for formatting dates
-*/
- 
-
-var now = new Date();
-
-/*
-* view engine template parsing (ejs types)
-*/
-
-app.set('view engine','ejs');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -65,6 +28,24 @@ app.use('/js',express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js',express.static(__dirname + '/node_modules/bootstrap/js/dist'));
 app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
+/*
+* parse all form data
+*/
+
+app.use(bodyParser.urlencoded({ extended: true}));
+module.exports = app;
+
+/*
+*used for formatting dates
+*/
+ 
+var now = new Date();
+
+/*
+* view engine template parsing (ejs types)
+*/
+
+app.set('view engine','ejs');
 /**
 * connection à la BD
 */
@@ -83,6 +64,24 @@ var con = mysql.createConnection({
 	password: "",
 	database: "mydb",
 });
+
+
+/**
+ * mongoDB
+**/
+
+const url = `mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/MuseeDesAstres?retryWrites=true&w=majority`;
+
+const connectionParams={
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}
+
+mongoose.connect(url,connectionParams).then( () => {
+    console.log('Connected to database');
+}).catch( (err) => {
+    console.error(`Error connecting to the database. \n${err}`);
+})
 
 /**
 * Global site title and base url
@@ -112,7 +111,7 @@ app.get('/',function (req,res) {
 
 		res.render('pages/index',{
 			siteTitle : siteTitle,
-			pageTitle : "Event list",
+			pageTitle : "Index",
 			items : sortable
 		});
 	  }
@@ -120,6 +119,11 @@ app.get('/',function (req,res) {
 	  else{
 		console.log('error on query. yes that one.');
 		console.log(err);
+
+		res.render('pages/index',{
+			siteTitle : siteTitle,
+			pageTitle : "kwa"
+		});
 	  }
 	});
 	  
@@ -236,7 +240,7 @@ app.get('/expositions',function (req,res) {
 	con.query("SELECT * FROM expositions ORDER BY DateDebut DESC", function (err, result){
 		res.render('pages/expositions',{
 			siteTitle : siteTitle,
-			pageTitle : "Event list",
+			pageTitle : "Expo",
 			items : result
 		});
 	});
@@ -251,7 +255,7 @@ app.get('/experiences',function (req,res) {
     con.query("SELECT * FROM activites ORDER BY DateDebut DESC", function (err, result){
 		res.render('pages/activites',{
 			siteTitle : siteTitle,
-			pageTitle : "Event list",
+			pageTitle : "Expe",
 			items : result
 		});
 	});
@@ -265,7 +269,7 @@ app.get('/rdv_etoiles',function (req,res) {
 
     res.render('pages/construction',{
     	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
+    	pageTitle : "rdv",
     	items : "result"
     	
 	});
@@ -279,7 +283,7 @@ app.get('/plan',function (req,res) {
 
     res.render('pages/plan',{
     	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
+    	pageTitle : "plan",
     	items : "result"
     	
 	});
@@ -293,7 +297,7 @@ app.get('/info',function (req,res) {
 
     res.render('pages/coord',{
     	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
+    	pageTitle : "coord",
     	items : "result"
     	
 	});
@@ -308,7 +312,7 @@ app.get('/billeterie',function (req,res) {
     con.query("SELECT * FROM tarifs", function (err, result){
 		res.render('pages/construction',{
 			siteTitle : siteTitle,
-			pageTitle : "Event list",
+			pageTitle : "billet",
 			items : result
 		});
 	});
@@ -322,7 +326,7 @@ app.get('/boutique',function (req,res) {
 
     res.render('pages/construction',{
     	siteTitle : siteTitle,
-    	pageTitle : "Editing Event : ",
+    	pageTitle : "bout",
     	items : "result"
 	});
 });
