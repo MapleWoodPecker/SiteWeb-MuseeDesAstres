@@ -8,7 +8,7 @@ var mysql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
-const mongoose = require('mongoose');
+const { MongoClient } = require("mongodb");
 //const fetch = require('node-fetch');
 const session = require('express-session');
 const routeur = express.Router();
@@ -48,6 +48,7 @@ var now = new Date();
 app.set('view engine','ejs');
 /**
 * connection à la BD
+* OBSOLETE
 */
 
 var conMulti = mysql.createConnection({
@@ -70,18 +71,35 @@ var con = mysql.createConnection({
  * mongoDB
 **/
 
-const url = `mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/MuseeDesAstres?retryWrites=true&w=majority`;
+// Connection URI
+const uri = "mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-const connectionParams={
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+// Create a new MongoClient
+const client = new MongoClient(uri);
+async function run() {
+  try {
+    // Connect the client to the server
+    await client.connect();
+    // Establish and verify connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Connected successfully to server");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
 }
 
-mongoose.connect(url,connectionParams).then( () => {
-    console.log('Connected to database');
-}).catch( (err) => {
-    console.error(`Error connecting to the database. \n${err}`);
-})
+run().catch(console.dir);
+
+// Connection to clusters
+
+const mongodb = app.currentUser.mongoClient("mongodb-atlas");
+const activites = mongodb.db("desastres").collection("Activités");
+const comptes = mongodb.db("desastres").collection("Compte");
+const itemsboutique = mongodb.db("desastres").collection("Items");
+const rdvetoiles = mongodb.db("desastres").collection("RDV_sous_etoiles");
+const reservations = mongodb.db("desastres").collection("Reservations");
+const expo = mongodb.db("desastres").collection("expositions");
 
 /**
 * Global site title and base url
@@ -91,12 +109,11 @@ const siteTitle = "Musée des Astres";
 const baseURL = "http://localhost:4000/"
 
 /*
-* Envoyer le contenu au client
-* get the event list
+* Accueil
 */
 app.get('/',function (req,res) {    
-	var sql = 'SELECT * FROM `activites`; SELECT * FROM `expositions`';  
-	conMulti.query(sql, function (err, results, fields){
+	var query = 'SELECT * FROM `activites`; SELECT * FROM `expositions`';  
+	conMulti.query(query, function (err, results, fields){
 
 		sortable = [];
 
@@ -121,7 +138,6 @@ app.get('/',function (req,res) {
 	  
   }); 
 
-/* fin de app.get(....)*/
 
 /* pour le .sort de l'index */
 function compare( a, b ) {
@@ -258,6 +274,8 @@ app.get('/experiences',function (req,res) {
 */
 
 app.get('/rdv_etoiles',function (req,res) {
+
+
 
     res.render('pages/construction',{
     	siteTitle : siteTitle,
