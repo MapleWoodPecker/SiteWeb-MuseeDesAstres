@@ -1,14 +1,8 @@
 <%- include ('../partials/header') %>
 
+<% if (items !=undefined && items.length>0) {%>
 
 <div class="">
-	<div class="col s12">
-		<% if (items !=undefined) {%>
-
-		<% }else {%>
-			<p><strong> Non disponible </strong></p>
-		<% } %>
-	</div>
 
 	<div>
 		<% if (items !=undefined && items.length>0) {%>
@@ -139,5 +133,17 @@
 		</div>
 	</div>
 </div>
+
+<% }else {%>
+	<section class="py-5 text-center container">
+	  <div class="row py-lg-5">
+		<div class="col-lg-6 col-md-8 mx-auto">
+		  <h1 class="fw-light">Aucune donnée trouvée.</h1>
+			<a href="https://www.google.com" class="btn btn-primary my-2" style="background-color: #182030;" id="Close">Partir</a>
+		  </p>
+		</div>
+	  </div>
+	</section>
+<% } %>
 
 <%- include ('../partials/footer') %>

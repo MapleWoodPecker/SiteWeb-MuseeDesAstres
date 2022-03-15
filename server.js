@@ -117,8 +117,6 @@ app.get('/',function (req,res) {
 			items : sortable
 		});
 	  
-
-	  
 	});
 	  
   }); 
