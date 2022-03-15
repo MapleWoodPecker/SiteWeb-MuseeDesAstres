@@ -9,7 +9,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 const mongoose = require('mongoose');
-const fetch = require('node-fetch');
+//const fetch = require('node-fetch');
 const session = require('express-session');
 const routeur = express.Router();
 
@@ -111,7 +111,7 @@ app.get('/',function (req,res) {
 
 		res.render('pages/index',{
 			siteTitle : siteTitle,
-			pageTitle : "Event list",
+			pageTitle : "Index",
 			items : sortable
 		});
 	  }
@@ -119,6 +119,11 @@ app.get('/',function (req,res) {
 	  else{
 		console.log('error on query. yes that one.');
 		console.log(err);
+
+		res.render('pages/index',{
+			siteTitle : siteTitle,
+			pageTitle : "kwa"
+		});
 	  }
 	});
 	  
