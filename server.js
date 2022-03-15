@@ -9,46 +9,9 @@ var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 const mongoose = require('mongoose');
-const fetch = require('node-fetch');
-const session = require('express_session');
+//const fetch = require('node-fetch');
+const session = require('express-session');
 const routeur = express.Router();
-
-/**
- * mongoDB
-**/
-
-const url = `mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/MuseeDesAstres?retryWrites=true&w=majority`;
-
-const connectionParams={
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}
-
-mongoose.connect(url,connectionParams).then( () => {
-    console.log('Connected to database');
-}).catch( (err) => {
-    console.error(`Error connecting to the database. \n${err}`);
-})
- 
-/*
-* parse all form data
-*/
-
-app.use(bodyParser.urlencoded({ extended: true}));
-module.exports = app;
-
-/*
-*used for formatting dates
-*/
- 
-
-var now = new Date();
-
-/*
-* view engine template parsing (ejs types)
-*/
-
-app.set('view engine','ejs');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -65,6 +28,24 @@ app.use('/js',express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js',express.static(__dirname + '/node_modules/bootstrap/js/dist'));
 app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
+/*
+* parse all form data
+*/
+
+app.use(bodyParser.urlencoded({ extended: true}));
+module.exports = app;
+
+/*
+*used for formatting dates
+*/
+ 
+var now = new Date();
+
+/*
+* view engine template parsing (ejs types)
+*/
+
+app.set('view engine','ejs');
 /**
 * connection à la BD
 */
@@ -83,6 +64,24 @@ var con = mysql.createConnection({
 	password: "",
 	database: "mydb",
 });
+
+
+/**
+ * mongoDB
+**/
+
+const url = `mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/MuseeDesAstres?retryWrites=true&w=majority`;
+
+const connectionParams={
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}
+
+mongoose.connect(url,connectionParams).then( () => {
+    console.log('Connected to database');
+}).catch( (err) => {
+    console.error(`Error connecting to the database. \n${err}`);
+})
 
 /**
 * Global site title and base url

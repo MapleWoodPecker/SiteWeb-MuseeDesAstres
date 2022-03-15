@@ -16,11 +16,13 @@
     "ejs": "^3.1.5",
     "express": "^4.17.2",
     "express-partials": "^0.3.0",
+    "express-session": "^1.17.2",
     "http": "^0.0.1-security",
     "jquery": "^3.5.1",
     "mangodb": "^1.0.0",
     "mongoose": "^6.2.6",
     "mysql": "^2.18.1",
+    "node-fetch": "^3.2.3",
     "tether": "^1.4.7"
   },
   "devDependencies": {
