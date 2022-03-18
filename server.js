@@ -85,12 +85,12 @@ async function run() {
 	  	const database = client.db('desastres');
 
 		// Connection to clusters
-		var activites = database.collection("Activités");
-		var comptes = database.collection("Compte");
-		var itemsboutique = database.collection("Items");
-		var rdvetoiles = database.collection("RDV_sous_etoiles");
-		var reservations = database.collection("Reservations");
-		var expo = database.collection('expositions');
+		activites = database.collection("Activités");
+		comptes = database.collection("Compte");
+		itemsboutique = database.collection("Items");
+		rdvetoiles = database.collection("RDV_sous_etoiles");
+		reservations = database.collection("Reservations");
+		expo = database.collection('expositions');
 
 	  	const query = { Titre: 'La course spatiale' };
 	  	const test = await expo.findOne(query);
