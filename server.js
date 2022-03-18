@@ -181,18 +181,21 @@ app.get('/expositions',function (req,res) {
 
 	const cursor = expo.find(query).sort(sort);
 
-	const expositions = test(cursor);
+	var expositions = [{Titre : "pouet"}];
 
+	cursor.forEach(function(exp){ 
+		var temp = {
+			Titre : exp.Titre
+		};
+		expositions.push(temp);
+		console.log(expositions);
+	});
 	
-	
-	console.log(expositions);
+	console.log(expositions + "??");
+
+	// cursor.forEach(console.dir);
 
 });
-
-async function test(cursor) {
-	const prout = await cursor.toArray();
-	return prout;
-}
 
 /**
  * Experiences
