@@ -101,6 +101,8 @@ async function run() {
 	}
 }
 
+// Declaration des collections et execution de la connexion
+
 var activites;
 var comptes;
 var itemsboutique;
