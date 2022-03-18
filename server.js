@@ -98,7 +98,7 @@ async function run() {
 	  	// console.log(test);
 		console.log("Connexion réussie :)");
 	} finally {
-	  	// Ensures that the client will close when you finish/error
+	  	// Ensures that the client will close when you finish/error (obligé ??)
 	  	//await client.close();
 	}
 }
@@ -163,7 +163,7 @@ app.get('/',function (req,res) {
 }); 
 
 /**
- * ExpoTemp
+ * Expo
 */
 
 app.get('/expositions',function (req,res) {
@@ -181,9 +181,18 @@ app.get('/expositions',function (req,res) {
 
 	const cursor = expo.find(query).sort(sort);
 
-	cursor.forEach(console.dir);
+	const expositions = test(cursor);
+
+	
+	
+	console.log(expositions);
 
 });
+
+async function test(cursor) {
+	const prout = await cursor.toArray();
+	return prout;
+}
 
 /**
  * Experiences
