@@ -144,32 +144,29 @@ app.get('/',async function (req,res) {
 	const cur1 = expo.find();
 
 	const cur2 = activites.find();
-
-	
- 	console.log("Connexion réussie :)");
 	
 	sortable = [];
 
-		await cur1.forEach(element1 => {
-			sortable.push(element1);
-			console.log("ajout de cur 1");
-		});
-		await cur2.forEach(element2 => {
-			sortable.push(element2);
-			console.log("ajout de cur 2");
-		});
+	await cur1.forEach(element1 => {
+		sortable.push(element1);
+		console.log("ajout de cur 1");
+	});
+	await cur2.forEach(element2 => {
+		sortable.push(element2);
+		console.log("ajout de cur 2");
+	});
 
 	sortable.sort(compare);
 
-		console.log(sortable);
+	console.log(sortable);
 
-		res.render('pages/index',{
-			siteTitle : siteTitle,
-			pageTitle : "Index",
-			items : sortable
-		});
-	  
+	res.render('pages/index',{
+		siteTitle : siteTitle,
+		pageTitle : "Index",
+		items : sortable
 	});
+	  
+});
 
 
 /**
@@ -182,14 +179,14 @@ app.get('/expositions',async function (req,res) {
 
 	const cursor = expo.find({}).sort(sort);
 
-	var expositions = [{Titre : "pouet"}];
+	var expositions = [];
 
 	await cursor.forEach(exp => {
 		var temp = {
 			idExpositions : exp._id.toString(),
 			Titre : exp.Titre,
-			DateDebut : Date.now(),
-			DateFin : Date.now(),
+			DateDebut : Date.now()-10000,
+			DateFin : Date.now()+100000,
 			Description : exp.Description,
 			Locasation : exp.Locasation,
 			Image : exp.Image
