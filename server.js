@@ -132,33 +132,46 @@ function compare( a, b ) {
 	return 0;
 }
 
+
+
+
 /*
 * Accueil
 */
-app.get('/',function (req,res) {    
-	var query = 'SELECT * FROM `activites`; SELECT * FROM `expositions`';  
-	conMulti.query(query, function (err, results, fields){
+app.get('/',async function (req,res) {    
+		
+	// recuperer les info des tables expo et activites
+	const cur1 = expo.find();
 
-		sortable = [];
+	const cur2 = activites.find();
 
-		if (results != undefined && results.length > 0){
-		results[0].forEach(element1 => {
+	
+ 	console.log("Connexion réussie :)");
+	
+	sortable = [];
+
+		await cur1.forEach(element1 => {
 			sortable.push(element1);
+			console.log("ajout de cur 1");
 		});
-		results[1].forEach(element2 => {
+		await cur2.forEach(element2 => {
 			sortable.push(element2);
+			console.log("ajout de cur 2");
 		});
 
-		sortable.sort(compare);
-		}
+	sortable.sort(compare);
+
+		console.log(sortable);
 
 		res.render('pages/index',{
 			siteTitle : siteTitle,
 			pageTitle : "Index",
 			items : sortable
 		});
-	  
-	});
+
+		
+	
+	//});
 	  
 }); 
 
