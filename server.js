@@ -92,9 +92,11 @@ async function run() {
 		reservations = database.collection("Reservations");
 		expo = database.collection('expositions');
 
+		// Text sur la table expo
 	  	const query = { Titre: 'La course spatiale' };
 	  	const test = await expo.findOne(query);
-	  	console.log(test);
+	  	// console.log(test);
+		console.log("Connexion réussie :)");
 	} finally {
 	  	// Ensures that the client will close when you finish/error
 	  	await client.close();
@@ -118,6 +120,17 @@ run().catch(console.dir);
 
 const siteTitle = "Musée des Astres";
 const baseURL = "http://localhost:4000/"
+
+/* pour le .sort des sortables */
+function compare( a, b ) {
+	if ( a.DateDebut < b.DateDebut ){
+	  return 1;
+	}
+	if ( a.DateDebut > b.DateDebut ){
+	  return -1;
+	}
+	return 0;
+}
 
 /*
 * Accueil
@@ -147,19 +160,8 @@ app.get('/',function (req,res) {
 	  
 	});
 	  
-  }); 
+}); 
 
-
-/* pour le .sort de l'index */
-function compare( a, b ) {
-	if ( a.DateDebut < b.DateDebut ){
-	  return 1;
-	}
-	if ( a.DateDebut > b.DateDebut ){
-	  return -1;
-	}
-	return 0;
-}
 
 /*
 * pour generer la page add event 
