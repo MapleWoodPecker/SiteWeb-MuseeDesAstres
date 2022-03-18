@@ -92,7 +92,7 @@ async function run() {
 		reservations = database.collection("Reservations");
 		expo = database.collection('expositions');
 
-		// Text sur la table expo
+		// Test sur la table expo
 	  	const query = { Titre: 'La course spatiale' };
 	  	const test = await expo.findOne(query);
 	  	// console.log(test);
@@ -176,21 +176,20 @@ app.get('/expositions',async function (req,res) {
 
 	await cursor.forEach(exp => {
 		var temp = {
-			idExpositions : exp._id,
+			idExpositions : exp._id.toString(),
 			Titre : exp.Titre,
-			DateDebut : exp.DateDebut,
-			DateFin : exp.DateFin,
+			DateDebut : Date.now(),
+			DateFin : Date.now(),
 			Description : exp.Description,
 			Locasation : exp.Locasation,
 			Image : exp.Image
 		};
 		expositions.push(temp);
-		console.log(expositions);
 	});
-	
-	console.log(expositions + "??");
 
-	res.render('pages/activites',{
+	console.log(expositions);
+
+	res.render('pages/expositions',{
 		siteTitle : siteTitle,
 		pageTitle : "Experience",
 		items : expositions
