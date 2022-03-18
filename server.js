@@ -166,26 +166,23 @@ app.get('/',function (req,res) {
  * Expo
 */
 
-app.get('/expositions',function (req,res) {
+app.get('/expositions',async function (req,res) {
 
-	con.query("SELECT * FROM expositions ORDER BY DateDebut DESC", function (err, result){
-		res.render('pages/expositions',{
-			siteTitle : siteTitle,
-			pageTitle : "Expo",
-			items : result
-		});
-	});
-
-	const query = {};
 	const sort = { DateDebut: -1 };
 
-	const cursor = expo.find(query).sort(sort);
+	const cursor = expo.find({}).sort(sort);
 
 	var expositions = [{Titre : "pouet"}];
 
-	cursor.forEach(function(exp){ 
+	await cursor.forEach(exp => {
 		var temp = {
-			Titre : exp.Titre
+			idExpositions : exp._id,
+			Titre : exp.Titre,
+			DateDebut : exp.DateDebut,
+			DateFin : exp.DateFin,
+			Description : exp.Description,
+			Locasation : exp.Locasation,
+			Image : exp.Image
 		};
 		expositions.push(temp);
 		console.log(expositions);
@@ -193,7 +190,11 @@ app.get('/expositions',function (req,res) {
 	
 	console.log(expositions + "??");
 
-	// cursor.forEach(console.dir);
+	res.render('pages/activites',{
+		siteTitle : siteTitle,
+		pageTitle : "Experience",
+		items : expositions
+	});
 
 });
 
