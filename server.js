@@ -92,13 +92,13 @@ async function run() {
 		reservations = database.collection("Reservations");
 		expo = database.collection('expositions');
 
-		// Text sur la table expo
+		// Test sur la table expo
 	  	const query = { Titre: 'La course spatiale' };
 	  	const test = await expo.findOne(query);
 	  	// console.log(test);
 		console.log("Connexion réussie :)");
 	} finally {
-	  	// Ensures that the client will close when you finish/error
+	  	// Ensures that the client will close when you finish/error (obligé ??)
 	  	//await client.close();
 	}
 }
@@ -168,33 +168,42 @@ app.get('/',async function (req,res) {
 			pageTitle : "Index",
 			items : sortable
 		});
-
-		
-	
-	//});
 	  
-}); 
-
-/**
- * ExpoTemp
-*/
-
-app.get('/expositions',function (req,res) {
-
-	con.query("SELECT * FROM expositions ORDER BY DateDebut DESC", function (err, result){
-		res.render('pages/expositions',{
-			siteTitle : siteTitle,
-			pageTitle : "Expo",
-			items : result
-		});
 	});
 
-	const query = {};
+
+/**
+ * Expo
+*/
+
+app.get('/expositions',async function (req,res) {
+
 	const sort = { DateDebut: -1 };
 
-	const cursor = expo.find(query).sort(sort);
+	const cursor = expo.find({}).sort(sort);
 
-	cursor.forEach(console.dir);
+	var expositions = [{Titre : "pouet"}];
+
+	await cursor.forEach(exp => {
+		var temp = {
+			idExpositions : exp._id.toString(),
+			Titre : exp.Titre,
+			DateDebut : Date.now(),
+			DateFin : Date.now(),
+			Description : exp.Description,
+			Locasation : exp.Locasation,
+			Image : exp.Image
+		};
+		expositions.push(temp);
+	});
+
+	console.log(expositions);
+
+	res.render('pages/expositions',{
+		siteTitle : siteTitle,
+		pageTitle : "Experience",
+		items : expositions
+	});
 
 });
 
