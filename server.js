@@ -75,19 +75,25 @@ var con = mysql.createConnection({
 // Connection URI
 const uri = "mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-// Create a new MongoClient
+// Connect
 
-MongoClient.connect(
-	uri,
-	{ useNewUrlParser: true, useUnifiedTopology: true },
-	async function (connectErr, client) {
-	  assert.equal(null, connectErr);
-	  const coll = client.db("sample_mflix").collection("movies");
-	  let cursor = await coll.aggregate(agg);
-	  await cursor.forEach((doc) => console.log(doc));
-	  client.close();
+const client = new MongoClient(uri);
+
+async function run() {
+	try {
+	  await client.connect();
+	  const database = client.db('sample_mflix');
+	  const movies = database.collection('movies');
+	  // Query for a movie that has the title 'Back to the Future'
+	  const query = { title: 'Back to the Future' };
+	  const movie = await movies.findOne(query);
+	  console.log(movie);
+	} finally {
+	  // Ensures that the client will close when you finish/error
+	  await client.close();
 	}
-);
+}
+run().catch(console.dir);
 
 // Connection to clusters
 
