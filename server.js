@@ -99,7 +99,7 @@ async function run() {
 		console.log("Connexion réussie :)");
 	} finally {
 	  	// Ensures that the client will close when you finish/error
-	  	await client.close();
+	  	//await client.close();
 	}
 }
 
@@ -175,6 +175,14 @@ app.get('/expositions',function (req,res) {
 			items : result
 		});
 	});
+
+	const query = {};
+	const sort = { DateDebut: -1 };
+
+	const cursor = expo.find(query).sort(sort);
+
+	cursor.forEach(console.dir);
+
 });
 
 /**
