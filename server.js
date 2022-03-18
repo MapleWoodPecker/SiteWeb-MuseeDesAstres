@@ -81,31 +81,34 @@ const client = new MongoClient(uri);
 
 async function run() {
 	try {
-	  await client.connect();
-	  const database = client.db('desastres');
-	  const tests = database.collection('expositions');
-	  // Query for a movie that has the title 'Back to the Future'
-	  const query = { Titre: 'La course spatiale' };
-	  const test = await tests.findOne(query);
-	  console.log(test);
+	  	await client.connect();
+	  	const database = client.db('desastres');
+
+		// Connection to clusters
+		var activites = database.collection("Activités");
+		var comptes = database.collection("Compte");
+		var itemsboutique = database.collection("Items");
+		var rdvetoiles = database.collection("RDV_sous_etoiles");
+		var reservations = database.collection("Reservations");
+		var expo = database.collection('expositions');
+
+	  	const query = { Titre: 'La course spatiale' };
+	  	const test = await expo.findOne(query);
+	  	console.log(test);
 	} finally {
-	  // Ensures that the client will close when you finish/error
-	  await client.close();
+	  	// Ensures that the client will close when you finish/error
+	  	await client.close();
 	}
 }
 
+var activites;
+var comptes;
+var itemsboutique;
+var rdvetoiles;
+var reservations;
+var expo;
+
 run().catch(console.dir);
-
-// Connection to clusters
-
-/**
-const activites = mongodb.db("desastres").collection("Activités");
-const comptes = mongodb.db("desastres").collection("Compte");
-const itemsboutique = mongodb.db("desastres").collection("Items");
-const rdvetoiles = mongodb.db("desastres").collection("RDV_sous_etoiles");
-const reservations = mongodb.db("desastres").collection("Reservations");
-const expo = mongodb.db("desastres").collection("expositions");
- */
 
 /**
 * Global site title and base url
