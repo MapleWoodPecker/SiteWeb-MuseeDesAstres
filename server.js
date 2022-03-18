@@ -82,31 +82,30 @@ const client = new MongoClient(uri);
 async function run() {
 	try {
 	  await client.connect();
-	  const database = client.db('sample_mflix');
-	  const movies = database.collection('movies');
+	  const database = client.db('desastres');
+	  const tests = database.collection('expositions');
 	  // Query for a movie that has the title 'Back to the Future'
-	  const query = { title: 'Back to the Future' };
-	  const movie = await movies.findOne(query);
-	  console.log(movie);
+	  const query = { Titre: 'La course spatiale' };
+	  const test = await tests.findOne(query);
+	  console.log(test);
 	} finally {
 	  // Ensures that the client will close when you finish/error
 	  await client.close();
 	}
 }
+
 run().catch(console.dir);
 
 // Connection to clusters
 
-/** 
-const mongodb = app.admin.mongoClient("mongodb-atlas");
-
+/**
 const activites = mongodb.db("desastres").collection("Activités");
 const comptes = mongodb.db("desastres").collection("Compte");
 const itemsboutique = mongodb.db("desastres").collection("Items");
 const rdvetoiles = mongodb.db("desastres").collection("RDV_sous_etoiles");
 const reservations = mongodb.db("desastres").collection("Reservations");
 const expo = mongodb.db("desastres").collection("expositions");
-*/
+ */
 
 /**
 * Global site title and base url
