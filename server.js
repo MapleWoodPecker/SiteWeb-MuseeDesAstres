@@ -193,7 +193,7 @@ app.get('/experiences',async function (req,res) {
 
 app.get('/rdv_etoiles',async function (req,res) {
 
-
+	var result = [];
 
     res.render('pages/divers/construction',{
     	siteTitle : siteTitle,
@@ -209,6 +209,8 @@ app.get('/rdv_etoiles',async function (req,res) {
 
 app.get('/plan',async function (req,res) {
 
+	var result = [];
+
     res.render('pages/informations/plan',{
     	siteTitle : siteTitle,
     	pageTitle : "plan",
@@ -223,10 +225,12 @@ app.get('/plan',async function (req,res) {
 
 app.get('/info',async function (req,res) {
 
+	var result = [];
+
     res.render('pages/informations/coord',{
     	siteTitle : siteTitle,
     	pageTitle : "coord",
-    	items : "result"
+    	items : result
 	});
 });
 
@@ -235,6 +239,8 @@ app.get('/info',async function (req,res) {
 */
 
 app.get('/billeterie',async function (req,res) {
+
+	var result = [];
 
 	res.render('pages/divers/construction',{
 		siteTitle : siteTitle,
@@ -249,10 +255,12 @@ app.get('/billeterie',async function (req,res) {
 
 app.get('/boutique',async function (req,res) {
 
+	var result = [];
+
     res.render('pages/divers/construction',{
     	siteTitle : siteTitle,
     	pageTitle : "bout",
-    	items : "result"
+    	items : result
 	});
 });
 
