@@ -1,0 +1,71 @@
+[{
+  "_id": 1,
+  "titre": "La course spatiale",
+  "date_debut": {
+    "$date": "2022-01-12T00:00:00Z"
+  },
+  "date_fin": {
+    "$date": "2022-05-23T00:00:00Z"
+  },
+  "duree": 110,
+  "salle": "A",
+  "image": "images/expos/space_race.png",
+  "particip_max": 25,
+  "desc": "La course à l'innovation et l'exploration spatiale entre les États-Unis et l'URSS, et les enjeux inquiétants"
+},{
+  "_id": 2,
+  "titre": "Destination Lune",
+  "date_debut": {
+    "$date": "2022-01-15T00:00:00Z"
+  },
+  "date_fin": {
+    "$date": "2022-06-08T00:00:00Z"
+  },
+  "duree": 55,
+  "salle": "B",
+  "image": "images/expos/apollo.png",
+  "particip_max": 25,
+  "desc": "Le programme Apollo, du désastre du 1er, au succès du 11, et les découvertes de notre astre lunaire"
+},{
+  "_id": 3,
+  "titre": "Mission sur Mars",
+  "date_debut": {
+    "$date": "2023-01-07T00:00:00Z"
+  },
+  "date_fin": {
+    "$date": "2023-05-30T00:00:00Z"
+  },
+  "duree": 55,
+  "salle": "C",
+  "image": "images/expos/mars.png",
+  "particip_max": 25,
+  "desc": "La planète rouge, pleine de mystère, d'opportunités - peut-être le futur berceau de l'humanité?"
+},{
+  "_id": 4,
+  "titre": "Les astéroides",
+  "date_debut": {
+    "$date": "2023-01-05T00:00:00Z"
+  },
+  "date_fin": {
+    "$date": "2023-06-14T00:00:00Z"
+  },
+  "duree": 45,
+  "salle": "D",
+  "image": "images/expos/asteroid.png",
+  "particip_max": 25,
+  "desc": "Objets géants flottants dans l'espace, pouvant pulvériser la terre - sommes-nous en danger?"
+},{
+  "_id": 5,
+  "titre": "Film: La dimension du temps",
+  "date_debut": {
+    "$date": "2022-01-22T00:00:00Z"
+  },
+  "date_fin": {
+    "$date": "2022-05-31T00:00:00Z"
+  },
+  "duree": 90,
+  "salle": "CINE",
+  "image": "images/expos/film_temps.png",
+  "particip_max": 60,
+  "desc": "Un long-métrage sur la 4ème dimension - le temps est-il une illusion?"
+}]
