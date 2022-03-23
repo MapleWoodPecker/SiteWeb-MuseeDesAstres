@@ -1,0 +1,139 @@
+[{
+  "_id": 10,
+  "titre": "Enfant (4-12)",
+  "prix": 6.95,
+  "desc": "preuve nécessaire"
+},{
+  "_id": 20,
+  "titre": "Adolescent (13-17)",
+  "prix": 9.95,
+  "desc": "preuve nécessaire"
+},{
+  "_id": 30,
+  "titre": "Jeunes Adultes (18-29)",
+  "prix": 14.95
+},{
+  "_id": 40,
+  "titre": "Adultes (30-64)",
+  "prix": 19.95
+},{
+  "_id": 50,
+  "titre": "Ainés (65+)",
+  "prix": 8.95,
+  "desc": "preuve nécessaire"
+},{
+  "_id": 60,
+  "titre": "Famille",
+  "prix": 39.95,
+  "desc": "2 adultes + 2 enfants (17 ans et moins) OU 1 adulte + 3 enfants (17 ans et moins) "
+},{
+  "_id": 70,
+  "titre": "Étudiant",
+  "prix": 9.95,
+  "desc": "preuve nécessaire"
+},{
+  "_id": 80,
+  "titre": "Membre",
+  "prix": 0,
+  "desc": "Carte de membre du musée nécessaire"
+},{
+  "_id": {
+    "$oid": "623a599961108c13e7b4148d"
+  },
+  "nom": "Auclair",
+  "prenom": "Sylvie",
+  "adresse": "4919 Côte Joyeuse",
+  "telephone": "438-593-1597",
+  "datetime": {
+    "$date": "2022-03-17T11:30:00Z"
+  },
+  "rdv_etoile": true,
+  "film": true,
+  "billets_id": [
+    30,
+    30
+  ]
+},{
+  "_id": {
+    "$oid": "623a599961108c13e7b4148e"
+  },
+  "nom": "Desjardins",
+  "prenom": "Jean",
+  "adresse": "4764 St Jean Baptiste St",
+  "telephone": "514-617-5815",
+  "datetime": {
+    "$date": "2022-03-24T13:00:00Z"
+  },
+  "rdv_etoile": false,
+  "film": true,
+  "billets_id": [
+    60
+  ]
+},{
+  "_id": {
+    "$oid": "623a599961108c13e7b4148f"
+  },
+  "nom": "El-Kharraz",
+  "prenom": "Amal",
+  "adresse": "2079 rue Levy",
+  "telephone": "514-777-6026",
+  "datetime": {
+    "$date": "2022-04-17T14:00:00Z"
+  },
+  "rdv_etoile": false,
+  "film": false,
+  "billets_id": [
+    80,
+    50
+  ]
+},{
+  "_id": {
+    "$oid": "623a599961108c13e7b41490"
+  },
+  "nom": "Gravel",
+  "prenom": "Roxanne",
+  "adresse": "1647 Boulevard Cremazie",
+  "telephone": "438-572-0313",
+  "datetime": {
+    "$date": "2022-04-03T12:15:00Z"
+  },
+  "rdv_etoile": true,
+  "film": true,
+  "billets_id": [
+    70
+  ]
+},{
+  "_id": {
+    "$oid": "623a599961108c13e7b41491"
+  },
+  "nom": "Pilote",
+  "prenom": "Germaine",
+  "adresse": "4144 Ste. Catherine Ouest",
+  "telephone": "514-396-5853",
+  "datetime": {
+    "$date": "2022-04-12T15:45:00Z"
+  },
+  "rdv_etoile": false,
+  "film": false,
+  "billets_id": [
+    60,
+    40
+  ]
+},{
+  "_id": {
+    "$oid": "623a599961108c13e7b41492"
+  },
+  "nom": "Kraft",
+  "prenom": "Linda",
+  "adresse": "1629 Sherbrooke Ouest",
+  "telephone": "438-261-4202",
+  "datetime": {
+    "$date": "2022-04-26T12:15:00Z"
+  },
+  "rdv_etoile": false,
+  "film": true,
+  "billets_id": [
+    10,
+    40
+  ]
+}]

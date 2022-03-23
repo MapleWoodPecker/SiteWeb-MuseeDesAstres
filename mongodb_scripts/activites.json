@@ -1,0 +1,56 @@
+[{
+  "_id": 6,
+  "titre": "Les constellations",
+  "date_debut": {
+    "$date": "2022-01-02T00:00:00Z"
+  },
+  "duree": 40,
+  "salle": "1",
+  "image": "images/acti/const.png",
+  "particip_max": 40,
+  "desc": "Les constellations, de la grèce antique à nos jours"
+},{
+  "_id": 7,
+  "titre": "Le fonctionnement des étoiles",
+  "date_debut": {
+    "$date": "2022-01-01T00:00:00Z"
+  },
+  "duree": 40,
+  "salle": "2",
+  "image": "images/acti/stars.png",
+  "particip_max": 40,
+  "desc": "La naissance, la vie, et la mort de nos étoiles"
+},{
+  "_id": 8,
+  "titre": "Yoga sous les étoiles",
+  "date_debut": {
+    "$date": "2022-01-05T00:00:00Z"
+  },
+  "duree": 40,
+  "salle": "3",
+  "image": "images/acti/yoga.png",
+  "particip_max": 15,
+  "desc": "Séance de yoga nocturne, sous les astres"
+},{
+  "_id": 9,
+  "titre": "La station spatiale internationale",
+  "date_debut": {
+    "$date": "2022-01-08T00:00:00Z"
+  },
+  "duree": 50,
+  "salle": "4",
+  "image": "images/acti/iss.png",
+  "particip_max": 30,
+  "desc": "Visite de l'ISS virtuelle et quelques salles reproduites"
+},{
+  "_id": 10,
+  "titre": "Expérience symphonique",
+  "date_debut": {
+    "$date": "2022-01-11T00:00:00Z"
+  },
+  "duree": 30,
+  "salle": "5",
+  "image": "images/acti/sound.png",
+  "particip_max": 20,
+  "desc": "Découvrez les sons de l'espace avec votre nourisson"
+}]
