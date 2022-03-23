@@ -1,101 +1,115 @@
 <%- include ('../../partials/header') %>
 
-<style>
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
     }
-  }
-</style>
 
-<% if (items !=undefined && items.length>0) {%>
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
 
-<main>
+  <% if (items !=undefined && items.length>0) {%>
 
-<section class="py-5 text-center container">
-<div class="row py-lg-5">
-  <div class="col-lg-6 col-md-8 mx-auto">
-    <h1 class="fw-light">Activitées du Musée</h1>
-    <p class="lead text-muted">Ici, vous pourrez découvrir nos activités, 
-      experiences et autres joyeusetées en lien avec l'espace, 
-      l'univers ou encore la magie des astres.</p>
-    <p>
-      <a href="/expositions" class="btn btn-primary my-2" style="background-color: #182030;">Voir les expositions</a>
-      <a href="/billeterie" class="btn btn-secondary my-2">Reserver en ligne</a>
-    </p>
-  </div>
-</div>
-</section>
+    <main>
 
-<div class="album py-5 bg-light">
-<div class="container">
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Activités et Évènements</h1>
+            <p class="lead text-muted">Les activités, expériences et autres évènements en
+              lien avec l'espace et les astres, offertes par le Musée.<br>Elle ne reviennent souvent pas, donc
+              profitez-en et prenez-vous un billet dès maintenant</p>
+            <p>
+              <a href="/billeterie" class="btn btn-secondary my-2">Reserver en ligne</a>
+            <p class="lead text-muted">Pour voir nos expositions</p>
 
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <a href="/expositions" class="btn btn-primary my-2" style="background-color: #182030;">Voir les
+              expositions</a>
 
-    <% items.forEach(function(item,index){ %>
-
-    <div class="col">
-      <div class="card shadow-sm">
-
-        <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">
-
-        <div class="card-body">
-          <h5><%= item.titre %></h5>
-          <p class="card-text"><%= item.desc %></p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary" id="Click_<%= item._id%>">Détails</button>
-            </div>
-            <small class="text-muted"><%= item.duree %> minutes</small>
           </div>
-          <p class="card-text" id="details_<%= item._id%>" style="display: none;">
-            <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
-            <% var min = item.date_debut.getUTCMinutes() %>
-            <% if (min < 10) {min = "0" + min} %>
-            Venir le <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%><br>
-            Salle #<%= item.salle%>
-          </p>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <% items.forEach(function(item,index){ %>
+
+              <div class="col">
+                <div class="card shadow-sm">
+
+                  <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">
+
+                  <div class="card-body">
+                    <h5>
+                      <%= item.titre %>
+                    </h5>
+                    <p class="card-text">
+                      <%= item.desc %>
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                          id="Click_<%= item._id%>">Détails</button>
+                      </div>
+                      <small class="text-muted">
+                        <%= item.duree %> minutes
+                      </small>
+                    </div>
+                    <p class="card-text" id="details_<%= item._id%>" style="display: none;">
+                      <% var
+                        months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+                        %>
+                        <% var min=item.date_debut.getUTCMinutes() %>
+                          <% if (min < 10) {min="0" + min} %>
+                            Venir le <%= item.date_debut.getDate()%>
+                              <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%>
+                                    <br>
+                                    Salle #<%= item.salle%>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <script type="text/javascript">
+                document.getElementById("Click_<%= item._id%>").onclick = function () {
+                  if (document.getElementById("details_<%= item._id%>").style.display == "none") {
+                    document.getElementById("details_<%= item._id%>").style.display = "block";
+                  } else {
+                    document.getElementById("details_<%= item._id%>").style.display = "none";
+                  }
+                }
+              </script>
+
+              <%}); %>
+
+          </div>
         </div>
       </div>
-    </div>
 
-    <script type="text/javascript">
-      document.getElementById("Click_<%= item._id%>").onclick = function() {
-        if (document.getElementById("details_<%= item._id%>").style.display == "none"){
-          document.getElementById("details_<%= item._id%>").style.display = "block";
-        } else {
-          document.getElementById("details_<%= item._id%>").style.display = "none";
-        }
-      }
-    </script>
+      <% }else {%>
+        <section class="py-5 text-center container">
+          <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+              <h1 class="fw-light">Aucune donnée trouvée.</h1>
+              <a href="/" class="btn btn-primary my-2" style="background-color: #182030;">Retour à l'accueil</a>
+              </p>
+            </div>
+          </div>
+        </section>
+        <% } %>
 
-    <%}); %>
-    
-  </div>
-</div>
-</div>
+    </main>
+    <br><br><br><br>
 
-<% }else {%>
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Aucune donnée trouvée.</h1>
-          <a href="/" class="btn btn-primary my-2" style="background-color: #182030;">Retour à l'accueil</a>
-        </p>
-      </div>
-    </div>
-    </section>
-<% } %>
-
-</main>
-<br><br><br><br>
-
-<%- include ('../../partials/footer') %>
+    <%- include ('../../partials/footer') %>
