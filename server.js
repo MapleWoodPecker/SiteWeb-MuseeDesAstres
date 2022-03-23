@@ -181,7 +181,7 @@ app.get('/expositions',async function (req,res) {
 		result.push(element2);
 	});
 
-	res.render('pages/expositions',{
+	res.render('pages/activites/expositions',{
 		siteTitle : siteTitle,
 		pageTitle : "Experience",
 		items : result
@@ -205,7 +205,7 @@ app.get('/experiences',async function (req,res) {
 		result.push(element2);
 	});
 
-	res.render('pages/activites',{
+	res.render('pages/activites/activites',{
 		siteTitle : siteTitle,
 		pageTitle : "Exp",
 		items : result
@@ -221,7 +221,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 
 
 
-    res.render('pages/construction',{
+    res.render('pages/divers/construction',{
     	siteTitle : siteTitle,
     	pageTitle : "rdv",
     	items : "result"
@@ -235,7 +235,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 
 app.get('/plan',async function (req,res) {
 
-    res.render('pages/plan',{
+    res.render('pages/informations/plan',{
     	siteTitle : siteTitle,
     	pageTitle : "plan",
     	items : "result"
@@ -249,7 +249,7 @@ app.get('/plan',async function (req,res) {
 
 app.get('/info',async function (req,res) {
 
-    res.render('pages/coord',{
+    res.render('pages/informations/coord',{
     	siteTitle : siteTitle,
     	pageTitle : "coord",
     	items : "result"
@@ -263,7 +263,7 @@ app.get('/info',async function (req,res) {
 app.get('/billeterie',async function (req,res) {
 
     con.query("SELECT * FROM tarifs", function (err, result){
-		res.render('pages/construction',{
+		res.render('pages/divers/construction',{
 			siteTitle : siteTitle,
 			pageTitle : "billet",
 			items : result
@@ -277,7 +277,7 @@ app.get('/billeterie',async function (req,res) {
 
 app.get('/boutique',async function (req,res) {
 
-    res.render('pages/construction',{
+    res.render('pages/divers/construction',{
     	siteTitle : siteTitle,
     	pageTitle : "bout",
     	items : "result"
