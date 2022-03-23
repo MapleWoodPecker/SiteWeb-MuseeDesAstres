@@ -12,12 +12,12 @@
   "_id": {
     "$oid": "623a25e361108c13e7b4141b"
   },
-  "titre": "Poster Fus�es",
+  "titre": "Poster Fusées",
   "prix": 9.99,
   "quantite": 300,
   "magasin": true,
   "image": "images/shop/ariane.png",
-  "description": "Poster de toutes les fus�es lanc�es par la NASA, l'ESA et l'URSS"
+  "description": "Poster de toutes les fusées lancées par la NASA, l'ESA et l'URSS"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141c"
@@ -27,7 +27,7 @@
   "quantite": 100,
   "magasin": true,
   "image": "images/shop/hoodie.png",
-  "description": "Hoodie officiel du Mus�e des Astres"
+  "description": "Hoodie officiel du Musée des Astres"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141d"
@@ -37,7 +37,7 @@
   "quantite": 200,
   "magasin": true,
   "image": "images/shop/tshirt.png",
-  "description": "T-Shirt officiel du Mus�e des Astres"
+  "description": "T-Shirt officiel du Musée des Astres"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141e"
@@ -47,7 +47,7 @@
   "quantite": 300,
   "magasin": true,
   "image": "images/shop/mask.png",
-  "description": "Masque Covid officiel du Mus�e des Astres"
+  "description": "Masque Covid officiel du Musée des Astres"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141f"
@@ -62,12 +62,12 @@
   "_id": {
     "$oid": "623a25e361108c13e7b41420"
   },
-  "titre": "Porte Cl� Des Astres",
+  "titre": "Porte Clé Des Astres",
   "prix": 6.99,
   "quantite": 350,
   "magasin": true,
   "image": "images/shop/porte_cle.png",
-  "description": "Porte Cl� officiel du Mus�e des Astres"
+  "description": "Porte Clé officiel du Musée des Astres"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41421"
@@ -77,7 +77,7 @@
   "quantite": 160,
   "magasin": false,
   "image": "images/shop/shuttle.png",
-  "description": "Maquette r�aliste de la Navette Spatiale (� monter soi-m�me) 1/32"
+  "description": "Maquette réaliste de la Navette Spatiale (à monter soi-même) 1/32"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41422"
@@ -97,7 +97,7 @@
   "quantite": 200,
   "magasin": true,
   "image": "images/shop/mug.png",
-  "description": "Porte Cl� officiel du Mus�e des Astres"
+  "description": "Porte Clé officiel du Musée des Astres"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41424"
@@ -107,7 +107,7 @@
   "quantite": 550,
   "magasin": true,
   "image": "images/shop/stylo.png",
-  "description": "Stylo officiel du Mus�e des Astres"
+  "description": "Stylo officiel du Musée des Astres"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41425"

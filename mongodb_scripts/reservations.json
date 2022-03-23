@@ -45,7 +45,7 @@
   "adresse": "4919 Côte Joyeuse",
   "telephone": "438-593-1597",
   "datetime": {
-    "$date": "2022-03-17T11:30:00Z"
+    "$date": "2022-03-17T15:30:00Z"
   },
   "rdv_etoile": true,
   "film": true,
@@ -62,7 +62,7 @@
   "adresse": "4764 St Jean Baptiste St",
   "telephone": "514-617-5815",
   "datetime": {
-    "$date": "2022-03-24T13:00:00Z"
+    "$date": "2022-03-24T17:00:00Z"
   },
   "rdv_etoile": false,
   "film": true,
@@ -78,7 +78,7 @@
   "adresse": "2079 rue Levy",
   "telephone": "514-777-6026",
   "datetime": {
-    "$date": "2022-04-17T14:00:00Z"
+    "$date": "2022-04-17T18:00:00Z"
   },
   "rdv_etoile": false,
   "film": false,
@@ -95,7 +95,7 @@
   "adresse": "1647 Boulevard Cremazie",
   "telephone": "438-572-0313",
   "datetime": {
-    "$date": "2022-04-03T12:15:00Z"
+    "$date": "2022-04-03T16:15:00Z"
   },
   "rdv_etoile": true,
   "film": true,
@@ -111,7 +111,7 @@
   "adresse": "4144 Ste. Catherine Ouest",
   "telephone": "514-396-5853",
   "datetime": {
-    "$date": "2022-04-12T15:45:00Z"
+    "$date": "2022-04-12T19:45:00Z"
   },
   "rdv_etoile": false,
   "film": false,
@@ -128,7 +128,7 @@
   "adresse": "1629 Sherbrooke Ouest",
   "telephone": "438-261-4202",
   "datetime": {
-    "$date": "2022-04-26T12:15:00Z"
+    "$date": "2022-04-26T16:15:00Z"
   },
   "rdv_etoile": false,
   "film": true,

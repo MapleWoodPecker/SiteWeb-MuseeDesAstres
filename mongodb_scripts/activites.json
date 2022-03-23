@@ -2,18 +2,18 @@
   "_id": 11,
   "titre": "Yoga sous les étoiles",
   "date_debut": {
-    "$date": "2022-01-05T14:45:00Z"
+    "$date": "2022-01-05T15:45:00Z"
   },
   "duree": 40,
   "salle": "1",
   "image": "images/acti/yoga.png",
   "particip_max": 45,
-  "desc": "Séance de yoga nocturne, sous les astres"
+  "desc": "Séance de yoga sous les astres"
 },{
   "_id": 22,
   "titre": "Expérience symphonique",
   "date_debut": {
-    "$date": "2022-04-13T20:00:00Z"
+    "$date": "2022-04-13T16:00:00Z"
   },
   "duree": 30,
   "salle": "1",
@@ -24,7 +24,7 @@
   "_id": 33,
   "titre": "Conférence avec Julie Payette",
   "date_debut": {
-    "$date": "2022-02-17T13:30:00Z"
+    "$date": "2022-02-17T17:30:00Z"
   },
   "duree": 50,
   "salle": "2",

@@ -67,7 +67,7 @@
   "salle": "CINE",
   "image": "images/expos/film_temps.png",
   "particip_max": 60,
-  "desc": "Un long-métrage sur la 4ème dimension - le temps est-il une illusion?"
+  "desc": "Un long-métrage sur la 4ème dimension - le temps est-il une illusion?<br><i>Forfait film nécessaire</i>"
 },{
   "_id": 6,
   "titre": "Les constellations",
