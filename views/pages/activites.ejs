@@ -49,34 +49,34 @@
           <title>Placeholder</title>
           <rect width="100%" height="100%" fill="#55595c"/>
           <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-          <image xlink:href="<%= item.Image %>" 
-          x="0" y="0" style="max-width:500px; height:270px;"/>
+          <image xlink:href="<%= item.image %>" 
+          x="0" y="0" style="max-width:700px; height:250px;"/>
         </svg>
 
         <div class="card-body">
           <h5><%= item.Titre %></h5>
-          <p class="card-text"><%= item.Description %></p>
+          <p class="card-text"><%= item.desc %></p>
           <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary" id="Click_<%= item.idActivites%>">Détails</button>
+              <button type="button" class="btn btn-sm btn-outline-secondary" id="Click_<%= item._id%>">Détails</button>
             </div>
-            <small class="text-muted">Durée : <%= item.Duree %></small>
+            <small class="text-muted"><%= item.duree %> minutes</small>
           </div>
-          <p class="card-text" id="details_<%= item.idActivites%>" style="display: none;">
-            Venir le <%= item.DateDebut.getDate()%>/<%= item.DateDebut.getUTCMonth()+1%>/<%= item.DateDebut.getFullYear()%> 
-            à <%= item.DateDebut.getHours()%>H<%= item.DateDebut.getMinutes()%>;<br>
-             <%= item.Localisation%>.
+          <p class="card-text" id="details_<%= item._id%>" style="display: none;">
+            Venir le <%= item.date_debut.getDate()%>/<%= item.date_debut.getUTCMonth()+1%>/<%= item.date_debut.getFullYear()%> 
+            à <%= item.date_debut.getHours()%>H<%= item.date_debut.getMinutes()%>;<br>
+            Salle <%= item.salle%>.
           </p>
         </div>
       </div>
     </div>
 
     <script type="text/javascript">
-      document.getElementById("Click_<%= item.idActivites%>").onclick = function() {
-        if (document.getElementById("details_<%= item.idActivites%>").style.display == "none"){
-          document.getElementById("details_<%= item.idActivites%>").style.display = "block";
+      document.getElementById("Click_<%= item._id%>").onclick = function() {
+        if (document.getElementById("details_<%= item._id%>").style.display == "none"){
+          document.getElementById("details_<%= item._id%>").style.display = "block";
         } else {
-          document.getElementById("details_<%= item.idActivites%>").style.display = "none";
+          document.getElementById("details_<%= item._id%>").style.display = "none";
         }
       }
     </script>

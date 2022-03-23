@@ -82,14 +82,14 @@ const client = new MongoClient(uri);
 async function run() {
 	try {
 	  	await client.connect();
-	  	const database = client.db('desastres');
+	  	const database = client.db('musee_desastres_db');
 
 		// Connection to clusters
-		activites = database.collection("Activités");
-		comptes = database.collection("Compte");
-		itemsboutique = database.collection("Items");
-		rdvetoiles = database.collection("RDV_sous_etoiles");
-		reservations = database.collection("Reservations");
+		activites = database.collection("activites");
+		comptes = database.collection("comptes");
+		itemsboutique = database.collection("shop");
+		rdvetoiles = database.collection("rdv_etoiles");
+		reservations = database.collection("reservations");
 		expo = database.collection('expositions');
 
 		// Test sur la table expo
@@ -149,16 +149,12 @@ app.get('/',async function (req,res) {
 
 	await cur1.forEach(element1 => {
 		sortable.push(element1);
-		console.log("ajout de cur 1");
 	});
 	await cur2.forEach(element2 => {
 		sortable.push(element2);
-		console.log("ajout de cur 2");
 	});
 
 	sortable.sort(compare);
-
-	console.log(sortable);
 
 	res.render('pages/index',{
 		siteTitle : siteTitle,
@@ -175,31 +171,20 @@ app.get('/',async function (req,res) {
 
 app.get('/expositions',async function (req,res) {
 
-	const sort = { DateDebut: -1 };
+	const sort = { date_debut: -1 };
 
 	const cursor = expo.find({}).sort(sort);
 
-	var expositions = [];
+	var result = [];
 
-	await cursor.forEach(exp => {
-		var temp = {
-			idExpositions : exp._id.toString(),
-			Titre : exp.Titre,
-			DateDebut : Date.now()-10000,
-			DateFin : Date.now()+100000,
-			Description : exp.Description,
-			Locasation : exp.Locasation,
-			Image : exp.Image
-		};
-		expositions.push(temp);
+	await cursor.forEach(element2 => {
+		result.push(element2);
 	});
-
-	console.log(expositions);
 
 	res.render('pages/expositions',{
 		siteTitle : siteTitle,
 		pageTitle : "Experience",
-		items : expositions
+		items : result
 	});
 
 });
@@ -208,22 +193,31 @@ app.get('/expositions',async function (req,res) {
  * Experiences
 */
 
-app.get('/experiences',function (req,res) {
+app.get('/experiences',async function (req,res) {
 
-    con.query("SELECT * FROM activites ORDER BY DateDebut DESC", function (err, result){
-		res.render('pages/activites',{
-			siteTitle : siteTitle,
-			pageTitle : "Expe",
-			items : result
-		});
+	const sort = { date_debut: -1 };
+
+	const cursor = activites.find({}).sort(sort);
+
+	var result = [];
+
+	await cursor.forEach(element2 => {
+		result.push(element2);
 	});
+
+	res.render('pages/activites',{
+		siteTitle : siteTitle,
+		pageTitle : "Exp",
+		items : result
+	});
+	
 });
 
 /**
  * Rdv_etoiles
 */
 
-app.get('/rdv_etoiles',function (req,res) {
+app.get('/rdv_etoiles',async function (req,res) {
 
 
 
@@ -239,7 +233,7 @@ app.get('/rdv_etoiles',function (req,res) {
  * Plan
 */
 
-app.get('/plan',function (req,res) {
+app.get('/plan',async function (req,res) {
 
     res.render('pages/plan',{
     	siteTitle : siteTitle,
@@ -253,13 +247,12 @@ app.get('/plan',function (req,res) {
  * Info
 */
 
-app.get('/info',function (req,res) {
+app.get('/info',async function (req,res) {
 
     res.render('pages/coord',{
     	siteTitle : siteTitle,
     	pageTitle : "coord",
     	items : "result"
-    	
 	});
 });
 
@@ -267,7 +260,7 @@ app.get('/info',function (req,res) {
  * Reservation
 */
 
-app.get('/billeterie',function (req,res) {
+app.get('/billeterie',async function (req,res) {
 
     con.query("SELECT * FROM tarifs", function (err, result){
 		res.render('pages/construction',{
@@ -282,7 +275,7 @@ app.get('/billeterie',function (req,res) {
  * Boutique
 */
 
-app.get('/boutique',function (req,res) {
+app.get('/boutique',async function (req,res) {
 
     res.render('pages/construction',{
     	siteTitle : siteTitle,

@@ -22,13 +22,13 @@
 					<title>Placeholder</title>
 					<rect width="100%" height="100%" fill="#666"></rect>
 					<text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text>
-					<image xlink:href="<%= items[0].Image %>" 
+					<image xlink:href="<%= items[0].image %>" 
 						x="0" y="0" style="max-width: auto; height: auto;"/>
 				</svg>
 
 				<div class="carousel-caption d-none d-md-block">
-					<h5><%= items[0].Titre %></h5>
-					<p><%= items[0].Description %></p>
+					<h5><%= items[0].titre %></h5>
+					<p><%= items[0].desc %></p>
 				</div>
 			</div>
 
@@ -39,13 +39,13 @@
 					<title>Placeholder</title>
 					<rect width="100%" height="100%" fill="#666"></rect>
 					<text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text>
-					<image xlink:href="<%= items[1].Image %>" 
+					<image xlink:href="<%= items[1].image %>" 
 						x="0" y="0" style="max-width:auto ; height: auto;"/>
 				</svg>
 		  
 				<div class="carousel-caption d-none d-md-block">
-					<h5><%= items[1].Titre %></h5>
-					<p><%= items[1].Description %></p>
+					<h5><%= items[1].titre %></h5>
+					<p><%= items[1].desc %></p>
 				</div>
 			</div>
 
@@ -56,13 +56,13 @@
 					<title>Placeholder</title>
 					<rect width="100%" height="100%" fill="#666"></rect>
 					<text x="50%" y="50%" fill="#444" dy=".3em">Second slide</text>
-					<image xlink:href="<%= items[2].Image %>" 
+					<image xlink:href="<%= items[2].image %>" 
 						x="0" y="0" style="max-width: auto; height: auto;"/>
 				</svg>
 		  
 				<div class="carousel-caption d-none d-md-block">
-					<h5><%= items[2].Titre %></h5>
-					<p><%= items[2].Description %></p>
+					<h5><%= items[2].titre %></h5>
+					<p><%= items[2].desc %></p>
 				</div>
 			</div>
 			
@@ -96,10 +96,10 @@
 				<% if (nombreActu> 3 && nombreActu < 10) {%>
 				<% var type %>
 
-				<% if (item.idActivites>= 0 ) {%>
-				<% type="/experiences" %>
-				<% }else {%>
+				<% if (item.date_fin >= 0 ) {%>
 				<% type="/expositions" %>
+				<% }else {%>
+				<% type="/experiences" %>
 				<%}%>
 
 				<div class="col">
@@ -112,12 +112,12 @@
 								<rect width="100%" height="100%"
 									fill="#55595c" />
 								<image
-									xlink:href="<%= item.Image %>" class="actuImage" x="0" y="0"
-									style="max-width:500px; height:230px;" />
+									xlink:href="<%= item.image %>" class="actuimage" x="0" y="0"
+									style="max-width:700px; height:250px;" />
 								<text x="5%" y="90%" fill="#eceeef" dy=".3em"
 									style="font-size: 20; font-weight:bolder; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 									stroke: black; stroke-width: 1px;">
-									<%= item.Titre %>
+									<%= item.titre %>
 								</text>
 							</svg>
 						</a>
