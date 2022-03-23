@@ -2,7 +2,7 @@
   "_id": 11,
   "titre": "Yoga sous les étoiles",
   "date_debut": {
-    "$date": "2022-01-05T15:45:00Z"
+    "$date": "2022-01-05T16:45:00Z"
   },
   "duree": 40,
   "salle": "1",
@@ -13,7 +13,7 @@
   "_id": 22,
   "titre": "Expérience symphonique",
   "date_debut": {
-    "$date": "2022-04-13T16:00:00Z"
+    "$date": "2022-04-13T17:00:00Z"
   },
   "duree": 30,
   "salle": "1",
@@ -24,7 +24,7 @@
   "_id": 33,
   "titre": "Conférence avec Julie Payette",
   "date_debut": {
-    "$date": "2022-02-17T17:30:00Z"
+    "$date": "2022-02-17T18:30:00Z"
   },
   "duree": 50,
   "salle": "2",
