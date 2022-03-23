@@ -97,10 +97,10 @@ const baseURL = "http://localhost:4000/"
 
 /* pour le .sort des sortables */
 function compare( a, b ) {
-	if ( a.DateDebut < b.DateDebut ){
+	if ( a.date_debut > b.date_debut ){
 	  return 1;
 	}
-	if ( a.DateDebut > b.DateDebut ){
+	if ( a.date_debut < b.date_debut ){
 	  return -1;
 	}
 	return 0;
