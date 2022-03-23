@@ -23,7 +23,7 @@
 <section class="py-5 text-center container">
 <div class="row py-lg-5">
   <div class="col-lg-6 col-md-8 mx-auto">
-    <h1 class="fw-light">Activités du Musée</h1>
+    <h1 class="fw-light">Activitées du Musée</h1>
     <p class="lead text-muted">Ici, vous pourrez découvrir nos activités, 
       experiences et autres joyeusetées en lien avec l'espace, 
       l'univers ou encore la magie des astres.</p>
@@ -57,9 +57,11 @@
             <small class="text-muted"><%= item.duree %> minutes</small>
           </div>
           <p class="card-text" id="details_<%= item._id%>" style="display: none;">
-            Venir le <%= item.date_debut.getDate()%>/<%= item.date_debut.getUTCMonth()+1%>/<%= item.date_debut.getFullYear()%> 
-            à <%= item.date_debut.getHours()%>H<%= item.date_debut.getMinutes()%>;<br>
-            Salle <%= item.salle%>.
+            <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
+            <% var min = item.date_debut.getUTCMinutes() %>
+            <% if (min < 10) {min = "0" + min} %>
+            Venir le <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%><br>
+            Salle #<%= item.salle%>
           </p>
         </div>
       </div>

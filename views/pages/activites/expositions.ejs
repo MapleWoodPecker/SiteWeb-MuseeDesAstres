@@ -70,9 +70,10 @@
                 <small class="text-muted"><%= item.duree %> minutes</small>
               </div>
               <p class="card-text" id="details_<%= item._id%>" style="display: none;">
-              Commence le <%= item.date_debut.getDate()%>/<%= item.date_debut.getUTCMonth()+1%>/<%= item.date_debut.getFullYear()%>; <br>
-              Termine le <%= item.date_fin.getDate()%>/<%= item.date_fin.getUTCMonth()+1%>/<%= item.date_fin.getFullYear()%>; <br>
-              Salle <%= item.salle%>.
+              <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
+              Du <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> <%= item.date_debut.getFullYear()%> <br>
+              Au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%> <%= item.date_fin.getFullYear()%> <br>
+              Salle <%= item.salle%>
               </p>
             </div>
           </div>
