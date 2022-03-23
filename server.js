@@ -8,7 +8,6 @@ var mysql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
-//const { MongoClient } = require("mongodb");
 const fetch = import('node-fetch');
 const session = require('express-session');
 const routeur = express.Router();
@@ -48,25 +47,6 @@ var now = new Date();
 */
 
 app.set('view engine','ejs');
-/**
-* connection à la BD
-* !!!!!OBSOLETE!!!!!
-*/
-
-var conMulti = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "",
-	database: "mydb",
-	multipleStatements: true
-});
-
-var con = mysql.createConnection({
-	host: "localhost",
-	user: "root",
-	password: "",
-	database: "mydb",
-});
 
 /**
  * mongoDB
@@ -92,14 +72,8 @@ async function run() {
 		reservations = database.collection("reservations");
 		expo = database.collection('expositions');
 
-		// Test sur la table expo
-	  	const query = { Titre: 'La course spatiale' };
-	  	const test = await expo.findOne(query);
-	  	// console.log(test);
 		console.log("Connexion réussie :)");
 	} finally {
-	  	// Ensures that the client will close when you finish/error (obligé ??)
-	  	//await client.close();
 	}
 }
 
@@ -262,12 +236,10 @@ app.get('/info',async function (req,res) {
 
 app.get('/billeterie',async function (req,res) {
 
-    con.query("SELECT * FROM tarifs", function (err, result){
-		res.render('pages/divers/construction',{
-			siteTitle : siteTitle,
-			pageTitle : "billet",
-			items : result
-		});
+	res.render('pages/divers/construction',{
+		siteTitle : siteTitle,
+		pageTitle : "billet",
+		items : result
 	});
 });
 
