@@ -68,4 +68,46 @@
   "image": "images/expos/film_temps.png",
   "particip_max": 60,
   "desc": "Un long-métrage sur la 4ème dimension - le temps est-il une illusion?"
+},{
+  "_id": 6,
+  "titre": "Les constellations",
+  "date_debut": {
+    "$date": "2022-01-02T15:30:00Z"
+  },
+  "date_fin": {
+    "$date": "2022-05-31T00:00:00Z"
+  },
+  "duree": 40,
+  "salle": "E",
+  "image": "images/expos/const.png",
+  "particip_max": 40,
+  "desc": "Les constellations, de la grèce antique à nos jours"
+},{
+  "_id": 7,
+  "titre": "Le fonctionnement des étoiles",
+  "date_debut": {
+    "$date": "2023-01-01T13:00:00Z"
+  },
+  "date_fin": {
+    "$date": "2023-05-15T00:00:00Z"
+  },
+  "duree": 40,
+  "salle": "C",
+  "image": "images/expos/stars.png",
+  "particip_max": 40,
+  "desc": "La naissance, la vie, et la mort de nos étoiles"
+},{
+  "_id": 8,
+  "titre": "La station spatiale internationale",
+  "date_debut": {
+    "$date": "2022-01-08T12:30:00Z"
+  },
+  "date_fin": {
+    "$date": "2022-05-29T00:00:00Z"
+  },
+  "duree": 110,
+  "salle": "F",
+  "image": "images/expos/iss.png",
+  "particip_max": 30,
+  "desc": "Visite de l'ISS virtuelle et quelques salles reproduites"
 }]
