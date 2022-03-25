@@ -13,6 +13,7 @@ const session = require('express-session');
 const routeur = express.Router();
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
+var cookieParser = require('cookie-parser');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -28,6 +29,7 @@ app.use('/js',express.static(__dirname + '/node_modules/tether/dist/js'));
 app.use('/js',express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js',express.static(__dirname + '/node_modules/bootstrap/js/dist'));
 app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use(cookieParser());
 
 /*
 * parse all form data
@@ -71,6 +73,7 @@ async function run() {
 		rdvetoiles = database.collection("rdv_etoiles");
 		reservations = database.collection("reservations");
 		expo = database.collection('expositions');
+		con = database.collection('compte_admin');
 
 		console.log("Connexion réussie :)");
 	} finally {
@@ -85,6 +88,7 @@ var itemsboutique;
 var rdvetoiles;
 var reservations;
 var expo;
+var con;
 
 run().catch(console.dir);
 
@@ -105,9 +109,6 @@ function compare( a, b ) {
 	}
 	return 0;
 }
-
-
-
 
 /*
 * Accueil
@@ -262,6 +263,97 @@ app.get('/boutique',async function (req,res) {
     	pageTitle : "bout",
     	items : result
 	});
+});
+
+/**
+ * Connexion
+*/
+
+app.get('/connexion',async function (req,res) {
+
+	var result = [];
+
+    res.render('pages/divers/connexion',{
+    	siteTitle : siteTitle,
+    	pageTitle : "bout",
+    	item : true
+	});
+});
+
+app.post('/connexion', async function (req,res){
+
+	// Capture the input fields
+	let user = req.body.username;
+	let pass = req.body.password;
+
+	// Ensure the input fields exists and are not empty
+	if (user && pass) {
+
+		const cursor = await con.findOne({username: user});
+		
+		if (cursor != null) {
+
+			// If the account exists
+			if (cursor.password == pass) {
+				// Authenticate
+				req.session.loggedin = true;
+				req.session.username = user;
+				res.cookie(`Cookie token name`,`encrypted cookie string Value`,{
+					maxAge: 5000,
+					// expires works the same as the maxAge
+					expires: new Date()+600,
+					secure: true,
+					httpOnly: true,
+					sameSite: 'lax'
+				});
+				// Redirect 
+				res.redirect('/admin');
+			} else {
+				res.render('pages/divers/connexion',{
+					siteTitle : siteTitle,
+					pageTitle : "non",
+					item : false
+				});
+			}			
+			res.end();
+
+		} else {
+			res.render('pages/divers/connexion',{
+				siteTitle : siteTitle,
+				pageTitle : "non",
+				item : false
+			});
+		}
+
+	} else {
+		res.send('Erreur login');
+		res.end();
+	}
+
+});
+
+/**
+ * Connexion
+*/
+
+app.get('/admin',async function (req,res) {
+
+	// If the user is loggedin
+	if (req.session.loggedin) {
+		
+		var result = [];
+
+		res.render('pages/divers/admin',{
+			siteTitle : siteTitle,
+			pageTitle : "bout",
+			items : result
+		});
+
+	} else {
+		res.redirect('/connexion');
+	}
+	res.end();
+
 });
 
 /**
