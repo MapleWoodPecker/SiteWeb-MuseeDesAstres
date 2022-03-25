@@ -61,7 +61,7 @@
                         %>
                         <% var min=item.date_debut.getUTCMinutes() %>
                         <% if (min < 10) {min="0" + min} %>
-                        Venir le <%= item.date_debut.getDate()%>
+                        Le <%= item.date_debut.getDate()%>
                         <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%>
                         <br>
                         Salle #<%= item.salle%>

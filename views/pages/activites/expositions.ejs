@@ -66,8 +66,8 @@
     
             <div class="card-body">
               <h5><%= item.titre %></h5>
-              <p class="card-text">              <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
-                Du <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%> <br>
+              <p class="card-text"><% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
+                <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%> <br>
                 Salle : <%= item.salle%></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -147,16 +147,17 @@
         
                 <div class="card-body">
                   <h5><%= item.titre %></h5>
-                  <p class="card-text"><%= item.desc %></p>
+                  <p class="card-text"> <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
+                    Commencera le <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> <%= item.date_debut.getFullYear() %> 
+                  </p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary" id="Click_<%= item._id%>">Détails</button>
                     </div>
                   </div>
                   <p class="card-text" id="details_<%= item._id%>" style="display: none;">
-                    <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
-                    Commencera le <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> <%= item.date_debut.getFullYear() %> 
-                  </p>
+                    <%= item.desc %>
+                   </p>
                 </div>
               </div>
             </div>
