@@ -4,14 +4,19 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        var email,pass;
+        var titre,date_debut,duree,salle,image,particip_max,desc;
         $("#submit").click(function(){
-            email=$("#email").val();
-            pass=$("#password").val();
+            titre=$("#titre").val();
+            date_debut=$("#date_debut").val();
+            duree=$("#duree").val();
+            salle=$("#salle").val();
+            image=$("#image").val();
+            particip_max=$("#particip_max").val();
+            desc=$("#desc").val();
             /*
             * Perform some validation here.
             */
-            $.post("/login",{email:email,pass:pass},function(data){
+            $.post("/admin",{titre:titre,date_debut:date_debut,duree:duree,salle:salle,image:image,particip_max:particip_max,desc:desc},function(data){
                 if(data==='done') {
                     window.location.href="/admin";
                 }
@@ -21,8 +26,13 @@
 </script>
 
 <body>
-    <input type="text" size="40" placeholder="Type your email" id="email"><br />
-    <input type="password" size="40" placeholder="Type your password" id="password"><br />
+    <input type="text" size="40" placeholder="Type your titre" id="titre"><br/>
+    <input type="datetime-local" size="40" placeholder="Type your date_debut" id="date_debut"><br/>
+    <input type="number" size="40" placeholder="Type your duree" id="duree"><br/>
+    <input type="text" size="40" placeholder="Type your salle" id="salle"><br/>
+    <input type="text" size="40" placeholder="Type your image" id="image"><br/>
+    <input type="number" size="40" placeholder="Type your particip_max" id="particip_max"><br/>
+    <input type="text" size="40" placeholder="Type your desc" id="desc"><br/>
     <input type="button" value="Submit" id="submit">
 </body>
 

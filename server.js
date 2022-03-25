@@ -353,8 +353,17 @@ app.get('/admin',async function (req,res) {
 });
 
 app.post('/admin',async function (req,res) {
-	sess = req.session ;
-    sess.email = req.body.email ;
+	activites.insertOne(
+		{
+			titre:req.body.titre,
+			date_debut:new Date(req.body.date_debut),
+			duree:parseInt(req.body.duree),
+			salle:req.body.salle,
+			image:req.body.image,
+			particip_max:parseInt(req.body.particip_max),
+			desc:req.body.desc
+		}
+	);
     res.end ( 'done' ) ;
 });
 
