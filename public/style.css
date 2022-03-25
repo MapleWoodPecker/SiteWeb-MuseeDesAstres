@@ -87,10 +87,8 @@
 }
 
 .container-footer{
-    padding-top: 21!important;
-    padding-bottom: 15!important;
-    
-    height:80px;
+    margin-bottom: -20px;
+    height:auto;
 }
 
 .actu {
@@ -220,7 +218,7 @@ h5{
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
-    margin-bottom: 160px;
+    margin-bottom: 80px;
 }
 
 .photobanner, .photobanner2 {
