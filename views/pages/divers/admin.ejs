@@ -1,13 +1,13 @@
 <%- include ('../../partials/header') %>
 
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        var titre,date_debut,duree,salle,image,particip_max,desc;
+        var titre,date_debut,date_fin,duree,salle,image,particip_max,desc;
         $("#submit").click(function(){
             titre=$("#titre").val();
             date_debut=$("#date_debut").val();
+            date_fin=$("#date_fin").val();
             duree=$("#duree").val();
             salle=$("#salle").val();
             image=$("#image").val();
@@ -16,7 +16,7 @@
             /*
             * Perform some validation here.
             */
-            $.post("/admin",{titre:titre,date_debut:date_debut,duree:duree,salle:salle,image:image,particip_max:particip_max,desc:desc},function(data){
+            $.post("/admin",{titre:titre,date_debut:date_debut,date_fin:date_fin,duree:duree,salle:salle,image:image,particip_max:particip_max,desc:desc},function(data){
                 if(data==='done') {
                     window.location.href="/admin";
                 }
@@ -26,15 +26,20 @@
 </script>
 
 <body>
-    <input type="text" size="40" placeholder="Type your titre" id="titre"><br/>
-    <input type="datetime-local" size="40" placeholder="Type your date_debut" id="date_debut"><br/>
-    <input type="number" size="40" placeholder="Type your duree" id="duree"><br/>
-    <input type="text" size="40" placeholder="Type your salle" id="salle"><br/>
-    <input type="text" size="40" placeholder="Type your image" id="image"><br/>
-    <input type="number" size="40" placeholder="Type your particip_max" id="particip_max"><br/>
-    <input type="text" size="40" placeholder="Type your desc" id="desc"><br/>
+    <select id="type">
+        <option value="activites">activites</option>
+        <option value="expositions">expositions</option>
+        <option value="shop">shop</option>
+    </select> <br/>
+    <input type="text" size="40" placeholder="titre" id="titre"><br/>
+    <input type="datetime-local" size="40" placeholder="date_debut" id="date_debut"><br/>
+    <input type="datetime-local" size="40" placeholder="date_fin" id="date_fin"><br/>
+    <input type="number" size="40" placeholder="duree" id="duree"><br/>
+    <input type="text" size="40" placeholder="salle" id="salle"><br/>
+    <input type="text" size="40" placeholder="image" id="image"><br/>
+    <input type="number" size="40" placeholder="particip_max" id="particip_max"><br/>
+    <input type="text" size="40" placeholder="desc" id="desc"><br/>
     <input type="button" value="Submit" id="submit">
 </body>
-
 
 <%- include ('../../partials/footer') %>

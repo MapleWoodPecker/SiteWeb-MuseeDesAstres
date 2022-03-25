@@ -353,17 +353,35 @@ app.get('/admin',async function (req,res) {
 });
 
 app.post('/admin',async function (req,res) {
-	activites.insertOne(
-		{
-			titre:req.body.titre,
-			date_debut:new Date(req.body.date_debut),
-			duree:parseInt(req.body.duree),
-			salle:req.body.salle,
-			image:req.body.image,
-			particip_max:parseInt(req.body.particip_max),
-			desc:req.body.desc
-		}
-	);
+	if (req.body.type == "activites") {
+		activites.insertOne(
+			{
+				titre:req.body.titre,
+				date_debut:new Date(req.body.date_debut),
+				duree:parseInt(req.body.duree),
+				salle:req.body.salle,
+				image:req.body.image,
+				particip_max:parseInt(req.body.particip_max),
+				desc:req.body.desc
+			}
+		);
+	} else if (req.body.type == "expositions") {
+		activites.insertOne(
+			{
+				titre:req.body.titre,
+				date_debut:new Date(req.body.date_debut),
+				date_fin:new Date(req.body.date_fin),
+				duree:parseInt(req.body.duree),
+				salle:req.body.salle,
+				image:req.body.image,
+				particip_max:parseInt(req.body.particip_max),
+				desc:req.body.desc
+			}
+		);
+	} else if (req.body.type == "shop") {
+		// later
+	}
+	
     res.end ( 'done' ) ;
 });
 
