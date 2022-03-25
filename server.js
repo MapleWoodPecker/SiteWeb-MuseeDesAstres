@@ -258,7 +258,7 @@ app.get('/boutique',async function (req,res) {
 
 	var result = [];
 
-    res.render('pages/divers/construction',{
+    res.render('pages/boutique',{
     	siteTitle : siteTitle,
     	pageTitle : "bout",
     	items : result
