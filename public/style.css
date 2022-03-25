@@ -207,3 +207,7 @@ h5{
 .carousel-caption > p{
     font-style: italic;
 }
+
+.fw-light{
+    color: #182030!important;
+}

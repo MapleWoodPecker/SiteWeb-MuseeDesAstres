@@ -20,7 +20,7 @@
 
     <main>
 
-      <section class="py-5 text-center container">
+      <section class="py-5 text-center container" style="margin-bottom: -75px;">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Activités et Évènements</h1>
@@ -56,7 +56,15 @@
                       <%= item.titre %>
                     </h5>
                     <p class="card-text">
-                      <%= item.desc %>
+                      <% var
+                        months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+                        %>
+                        <% var min=item.date_debut.getUTCMinutes() %>
+                        <% if (min < 10) {min="0" + min} %>
+                        Venir le <%= item.date_debut.getDate()%>
+                        <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%>
+                        <br>
+                        Salle #<%= item.salle%>
                     </p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
@@ -68,15 +76,7 @@
                       </small>
                     </div>
                     <p class="card-text" id="details_<%= item._id%>" style="display: none;">
-                      <% var
-                        months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
-                        %>
-                        <% var min=item.date_debut.getUTCMinutes() %>
-                          <% if (min < 10) {min="0" + min} %>
-                            Venir le <%= item.date_debut.getDate()%>
-                              <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%>
-                                    <br>
-                                    Salle #<%= item.salle%>
+                      <%= item.desc %>
                     </p>
                   </div>
                 </div>
