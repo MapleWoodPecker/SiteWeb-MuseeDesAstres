@@ -266,16 +266,22 @@ app.get('/boutique',async function (req,res) {
 /**
  * Connexion
 */
+var session_admin;
 
 app.get('/connexion',async function (req,res) {
 
+	session_admin = req.session;
 	var result = [];
+	if (session_admin.username){
+		return res.redirect ( '/admin' );
+	} else {
+		res.render('pages/divers/connexion',{
+			siteTitle : siteTitle,
+			pageTitle : "bout",
+			item : true
+		});
+	}
 
-    res.render('pages/divers/connexion',{
-    	siteTitle : siteTitle,
-    	pageTitle : "bout",
-    	item : true
-	});
 });
 
 app.post('/connexion', async function (req,res){
@@ -347,7 +353,9 @@ app.get('/admin',async function (req,res) {
 });
 
 app.post('/admin',async function (req,res) {
-
+	sess = req.session ;
+    sess.email = req.body.email ;
+    res.end ( 'done' ) ;
 });
 
 /**
