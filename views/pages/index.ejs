@@ -4,9 +4,19 @@
 
 	<% if (items !=undefined && items.length>0) {%>
 
+			<div class="row py-lg-5" style="text-align: center;">
+			  <div class="col-lg-6 col-md-8 mx-auto">
+				<h1 class="fw-light">Bienvenue au Musée des Astres</h1>
+				<p class="lead text-muted"></p>
+		  
+				  <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
+				
+			  </div>
+			</div>
+
 
 		<div id="carouselExampleCaptions" class="carousel slide " data-ride="carousel"
-			style="width: 50%; margin-left: auto; margin-right: auto; margin-top: 40px;">
+			style="width: 800px; margin-left: auto; margin-right: auto; margin-top: 40px;">
 			<ol class="carousel-indicators">
 				<li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
 				<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
@@ -132,15 +142,13 @@ stroke: black; stroke-width: 1px;">
 		</section>
 	<% } %>
 		
-
-	<div class="container-scroll">
-		<div class="photobanner">
-			<img class="second" src="/images/slideshow/0.png">
-			<% for (let i = 2; i < 9; i++) {%>
-				<img src="/images/slideshow/<%= i%>.png">
+	<div class="wrap">
+		<div id="permas">
+			<% for (let i = 0; i < 17; i++) {%>
+				<a href="https://www.space.com/wallpapers" target="_blank"><img src="/images/slideshow/<%= i%>.png"></a> 
 			<% }%>
-		</div>
+	  </div>
 	</div>
-	<br>
+	
 	
 <%- include ('../partials/footer') %>
