@@ -13,7 +13,7 @@ const session = require('express-session');
 const routeur = express.Router();
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
-var cookieSession = require('cookie-session');
+var cookieParser = require('cookie-parser');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -29,6 +29,7 @@ app.use('/js',express.static(__dirname + '/node_modules/tether/dist/js'));
 app.use('/js',express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js',express.static(__dirname + '/node_modules/bootstrap/js/dist'));
 app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use(cookieParser());
 
 /*
 * parse all form data
@@ -297,6 +298,14 @@ app.post('/connexion', async function (req,res){
 				// Authenticate
 				req.session.loggedin = true;
 				req.session.username = user;
+				res.cookie(`Cookie token name`,`encrypted cookie string Value`,{
+					maxAge: 5000,
+					// expires works the same as the maxAge
+					expires: new Date()+600,
+					secure: true,
+					httpOnly: true,
+					sameSite: 'lax'
+				});
 				// Redirect 
 				res.redirect('/admin');
 			} else {
