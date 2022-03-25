@@ -1,5 +1,7 @@
 <%- include ('../partials/header') %>
 
+
+
 	<% if (items !=undefined && items.length>0) {%>
 
 
@@ -114,23 +116,44 @@ stroke: black; stroke-width: 1px;">
 
 						</div>
 						<%}; %>
-							<%}); %>
+						<%}); %>
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
 
-		<% }else {%>
-			<section class="py-5 text-center container">
-				<div class="row py-lg-5">
-					<div class="col-lg-6 col-md-8 mx-auto">
-						<h1 class="fw-light">Aucune donnée trouvée.</h1>
-						<a href="https://www.google.com" class="btn btn-primary my-2" style="background-color: #182030;"
-							id="Close">Partir</a>
-						</p>
-					</div>
+	<% }else {%>
+		<section class="py-5 text-center container">
+			<div class="row py-lg-5">
+				<div class="col-lg-6 col-md-8 mx-auto">
+					<h1 class="fw-light">Aucune donnée trouvée.</h1>
+					<a href="https://www.google.com" class="btn btn-primary my-2" style="background-color: #182030;"
+						id="Close">Partir</a>
+					</p>
 				</div>
-			</section>
-			<% } %>
+			</div>
+		</section>
+	<% } %>
+		
 
-				<%- include ('../partials/footer') %>
+	<div class="container-scroll">
+		<div class="photobanner">
+			<img class="second" src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+			<img src="/images/acti/payette.png">
+		</div>
+	</div>
+
+<%- include ('../partials/footer') %>
