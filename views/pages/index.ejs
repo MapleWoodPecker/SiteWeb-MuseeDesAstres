@@ -127,9 +127,7 @@ stroke: black; stroke-width: 1px;">
 			<div class="row py-lg-5">
 				<div class="col-lg-6 col-md-8 mx-auto">
 					<h1 class="fw-light">Aucune donnée trouvée.</h1>
-					<a href="https://www.google.com" class="btn btn-primary my-2" style="background-color: #182030;"
-						id="Close">Partir</a>
-					</p>
+					<h2 class="fw-light">Nous nous excusons pour cet inconvénient</h2>
 				</div>
 			</div>
 		</section>
@@ -138,22 +136,12 @@ stroke: black; stroke-width: 1px;">
 
 	<div class="container-scroll">
 		<div class="photobanner">
-			<img class="second" src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
-			<img src="/images/acti/payette.png">
+			<img class="second" src="/images/slideshow/0.png">
+			<% for (let i = 2; i < 9; i++) {%>
+				<img src="/images/slideshow/<%= i%>.png">
+			<% }%>
 		</div>
 	</div>
 
+	
 <%- include ('../partials/footer') %>

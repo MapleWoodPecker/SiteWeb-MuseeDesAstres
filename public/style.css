@@ -217,7 +217,8 @@ h5{
 /* Photo Banner */
 .container-scroll {
     width: 100%;
-    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 20px;
     margin-bottom: 160px;
 }
@@ -259,38 +260,6 @@ h5{
 
 
 /*keyframe animations*/
-.first {
-    -webkit-animation: bannermove 30s linear infinite;
-       -moz-animation: bannermove 30s linear infinite;
-        -ms-animation: bannermove 30s linear infinite;
-         -o-animation: bannermove 30s linear infinite;
-            animation: bannermove 30s linear infinite;
-}
- 
-@keyframes "bannermove" {
- 0% {margin-left: 0px;}
- 100% {margin-left: -2130px;}
-}
- 
-@-moz-keyframes bannermove {
- 0% {margin-left: 0px;}
- 100% {margin-left: -2130px;}
-}
- 
-@-webkit-keyframes "bannermove" {
- 0% {margin-left: 0px;}
- 100% {margin-left: -2130px;}
-}
- 
-@-ms-keyframes "bannermove" {
- 0% {margin-left: 0px;}
- 100% {margin-left: -2130px;}
-}
- 
-@-o-keyframes "bannermove" {
- 0% {margin-left: 0px;}
- 100% {margin-left: -2130px;}
-}
 
 .second {
     -webkit-animation: bannermoves 30s linear infinite;
