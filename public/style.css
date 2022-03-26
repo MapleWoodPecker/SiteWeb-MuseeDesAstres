@@ -229,6 +229,9 @@ h5{
 .photobanner img {    
 margin: 0 0.5em ;
 width: 500px;
+-webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
 }
 
 @keyframes bannermove {
@@ -239,3 +242,17 @@ width: 500px;
     transform: translate(-50%, 0);
 }
 }
+
+.photobanner img:hover {
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    cursor: pointer;
+    
+    
+    -webkit-box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+    box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
+   }
