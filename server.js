@@ -97,7 +97,7 @@ run().catch(console.dir);
 const siteTitle = "Musée des Astres";
 const baseURL = "http://localhost:4000/"
 
-/* pour le .sort des sortables */
+/* pour le .sort des tables croisées en JS */
 function compare( a, b ) {
 	if ( a.date_debut > b.date_debut ){
 	  return 1;
@@ -118,21 +118,21 @@ app.get('/',async function (req,res) {
 
 	const cur2 = activites.find();
 	
-	sortable = [];
+	result = [];
 
 	await cur1.forEach(element1 => {
-		sortable.push(element1);
+		result.push(element1);
 	});
 	await cur2.forEach(element2 => {
-		sortable.push(element2);
+		result.push(element2);
 	});
 
-	sortable.sort(compare);
+	result.sort(compare);
 
 	res.render('pages/index',{
 		siteTitle : siteTitle,
 		pageTitle : "Index",
-		items : sortable
+		items : result
 	});
 	  
 });
@@ -197,7 +197,7 @@ app.get('/rdv_etoiles',async function (req,res) {
     res.render('pages/divers/construction',{
     	siteTitle : siteTitle,
     	pageTitle : "rdv",
-    	items : "result"
+    	items : result
     	
 	});
 });
@@ -213,7 +213,7 @@ app.get('/plan',async function (req,res) {
     res.render('pages/informations/plan',{
     	siteTitle : siteTitle,
     	pageTitle : "plan",
-    	items : "result"
+    	items : result
     	
 	});
 });
@@ -271,13 +271,15 @@ var session_admin;
 app.get('/connexion',async function (req,res) {
 
 	session_admin = req.session;
+
 	var result = [];
+
 	if (session_admin.username){
 		return res.redirect ( '/admin' );
 	} else {
 		res.render('pages/divers/connexion',{
 			siteTitle : siteTitle,
-			pageTitle : "bout",
+			pageTitle : "con",
 			item : true
 		});
 	}
@@ -307,7 +309,7 @@ app.post('/connexion', async function (req,res){
 			} else {
 				res.render('pages/divers/connexion',{
 					siteTitle : siteTitle,
-					pageTitle : "non",
+					pageTitle : "no",
 					item : false
 				});
 			}			
@@ -316,13 +318,13 @@ app.post('/connexion', async function (req,res){
 		} else {
 			res.render('pages/divers/connexion',{
 				siteTitle : siteTitle,
-				pageTitle : "non",
+				pageTitle : "no2",
 				item : false
 			});
 		}
 
 	} else {
-		res.send('Erreur login');
+		res.send('Erreur critique login');
 		res.end();
 	}
 
@@ -382,18 +384,17 @@ app.post('/admin',async function (req,res) {
 		// later
 	}
 	
-    res.end ( 'done' ) ;
+    res.end ('done') ;
 });
 
-app.get( '/logout' ,(req , res ) => {
-    req.session.destroy ( ( err ) => {
-        if ( err ) {
-           console.log( err ) ;
+app.get('/logout',(req,res) => {
+    req.session.destroy((err) => {
+        if (err) {
+           console.log(err);
         }
-        res.redirect ( '/' ) ;
-    } ) ;
-
-} ) ;
+        res.redirect ('/');
+    });
+});
 
 /**
 * connect to server
