@@ -396,6 +396,8 @@ app.get('/logout',(req,res) => {
     });
 });
 
+// ajax inter pages?
+
 /**
 * connect to server
 */
