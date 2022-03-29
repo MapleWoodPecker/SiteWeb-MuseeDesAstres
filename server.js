@@ -195,7 +195,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 
 	var result = [];
 
-    res.render('pages/divers/construction',{
+    res.render('pages/activites/rdvetoiles',{
     	siteTitle : siteTitle,
     	pageTitle : "rdv",
     	items : result
