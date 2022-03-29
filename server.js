@@ -260,7 +260,7 @@ app.post('/billeterie',async function (req,res) {
 	  
 	  var mailOptions = {
 		from: 'museedesastres@gmail.com',
-		to: '',
+		to: 'museedesastres@gmail.com',
 		subject: 'Confirmation de vos billets',
 		text: ''
 	  };
