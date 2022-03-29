@@ -1,11 +1,14 @@
 <%- include ('../../partials/header') %>
 
 <style>
-    input, select, a{
+    input, select, a, label{
         display: block;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
+    }
+    input, label{
+        display:none;
     }
 </style>
 
@@ -38,18 +41,26 @@
 <body >
     <br/>
     <select id="type">
+        <option disabled selected value> Choisir la table </option>
         <option value="activites">activites</option>
-        <option selected="selected" value="expositions">expositions</option>
+        <option value="expositions">expositions</option>
         <option value="shop">shop</option>
     </select> 
-    <input type="text" size="40" placeholder="titre" id="titre">
-    <input type="datetime-local" size="40" placeholder="date_debut" id="date_debut">
-    <input type="datetime-local" size="40" placeholder="date_fin" id="date_fin">
-    <input type="number" size="40" placeholder="duree" id="duree">
-    <input type="text" size="40" placeholder="salle" id="salle">
-    <input type="text" size="40" placeholder="image" id="image">
-    <input type="number" size="40" placeholder="particip_max" id="particip_max">
-    <input type="text" size="40" placeholder="desc" id="desc">
+    <input type="text" placeholder="titre" id="titre">
+    <label for="date_debut" id="p_debut">date_debut :</label>
+    <input type="datetime-local" placeholder="date_debut" id="date_debut">
+    <label for="date_fin" id="p_fin">date_fin :</label>
+    <input type="datetime-local" placeholder="date_fin" id="date_fin">
+    <input type="number" placeholder="duree" id="duree">
+    <input type="text" placeholder="salle" id="salle">
+    <input type="number" placeholder="prix" name="prix" id="prix">
+    <input type="number" placeholder="quantite" name="quantite" id="quantite">
+    <label for="magasin" id="p_dispo">Disponible ?</label>
+    <input type="checkbox" name="magasin" id="magasin">
+    <input type="text" placeholder="image" id="image">
+    <input type="number" placeholder="particip_max" id="particip_max">
+    <input type="text" placeholder="desc" id="desc">
+    <input type="text" placeholder="tags" id="tags">
     <input type="button" value="Enregistrer" id="submit">
     <a id="centre" href="/logout">logout</a>
 
@@ -64,6 +75,10 @@
                 document.getElementById("image").style.display = "block";
                 document.getElementById("particip_max").style.display = "block";
                 document.getElementById("desc").style.display = "block";
+                document.getElementById("prix").style.display = "none";
+                document.getElementById("quantite").style.display = "none";
+                document.getElementById("magasin").style.display = "none";
+                document.getElementById("tags").style.display = "none";
             } else if (document.getElementById("type").value == "expositions") {
                 document.getElementById("titre").style.display = "block";
                 document.getElementById("date_debut").style.display = "block";
@@ -73,16 +88,28 @@
                 document.getElementById("image").style.display = "block";
                 document.getElementById("particip_max").style.display = "block";
                 document.getElementById("desc").style.display = "block";
+                document.getElementById("prix").style.display = "none";
+                document.getElementById("quantite").style.display = "none";
+                document.getElementById("magasin").style.display = "none";
+                document.getElementById("tags").style.display = "none";
             } else {
-                document.getElementById("titre").style.display = "none";
+                document.getElementById("titre").style.display = "block";
                 document.getElementById("date_debut").style.display = "none";
                 document.getElementById("date_fin").style.display = "none";
                 document.getElementById("duree").style.display = "none";
                 document.getElementById("salle").style.display = "none";
-                document.getElementById("image").style.display = "none";
+                document.getElementById("image").style.display = "block";
                 document.getElementById("particip_max").style.display = "none";
-                document.getElementById("desc").style.display = "none";
+                document.getElementById("desc").style.display = "block";
+                document.getElementById("prix").style.display = "block";
+                document.getElementById("quantite").style.display = "block";
+                document.getElementById("magasin").style.display = "block";
+                document.getElementById("tags").style.display = "block";
             }
+            document.getElementById("p_debut").style.display = document.getElementById("date_debut").style.display;
+            document.getElementById("p_fin").style.display = document.getElementById("date_fin").style.display;
+            document.getElementById("p_dispo").style.display = document.getElementById("magasin").style.display;
+            document.getElementById("submit").style.display = "block";
         }
     </script>
 </body>

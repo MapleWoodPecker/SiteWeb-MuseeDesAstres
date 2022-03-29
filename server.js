@@ -420,7 +420,17 @@ app.post('/admin',async function (req,res) {
 			}
 		);
 	} else if (req.body.type == "shop") {
-		// later
+		itemsboutique.insertOne(
+			{
+				titre:req.body.titre,
+				prix:req.body.titre,
+				quantite:req.body.quantite,
+				magasin:req.body.titre,
+				image:req.body.image,
+				desc:req.body.desc,
+				tags:req.body.tags
+			}
+		);
 	}
 	
     res.end('done');
