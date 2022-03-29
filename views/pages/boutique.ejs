@@ -42,27 +42,25 @@
     <ul>
        
         <li>
-            <input class="input_" id="blick" type="checkbox">
-            <label class="input"></label>
-            <a href="#">Vêtement</a>
-            
+            <input class="input_" id="vetement" type="checkbox">
+            <label class="input" for="vetement">Vêtement</label>
         </li>
         <li>
-            <input class="input" id="orange" type="checkbox">
-            <label class="input" for="orange"></label>
-            <a href="#">Maquette</a>
+            <input class="input" id="maquette" type="checkbox">
+            <label class="input" for="maquette">Maquette</label>
         </li>
         <li>
-            <input class="input" id="blue" type="checkbox">
-            <label class="input" for="blue"></label>
-            <a href="#">Souvenir</a>
+            <input class="input" id="maquette" type="checkbox">
+            <label class="input" for="maquette">Souvenir</label>
         </li>
         <li>
-            <input class="input" id="yellow" type="checkbox">
-            <label class="input" for="yellow"></label>
-            <a href="#">Educatif</a>
+            <input class="input" id="educatif" type="checkbox">
+            <label class="input" for="educatif">Educatif</label>
         </li>
-    </ul>
+        <li>
+            <input type="submit" form="nameform" value="Filtrer" class="btn btn-primary my-2" style="background-color: #182030;"></input>
+        </li>
+    </ul> 
 </div>
 
 <% if (items !=undefined && items.length>0) {%>
@@ -79,11 +77,12 @@
                         <div class="card-body p-4">
                             <div class="text-center">
                                 <!-- Product name-->
-                                <h5 class="fw-bolder"><%= item.titre%></h5>
+                                <h5 class="fw-bolder " style="line-height: 1em;"><%= item.titre%></h5>
                                 <!-- Productdescription-->
                                     <p><%= item.desc%></p>
                                 <!-- Product price-->
-                                <%= item.prix%>
+                                <p>$ <%= item.prix%></p>
+                                
                             </div>
                         </div>
                         <!-- Product actions-->
