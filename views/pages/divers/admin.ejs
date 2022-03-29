@@ -1,10 +1,20 @@
 <%- include ('../../partials/header') %>
 
+<style>
+    input, select, a{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+</style>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        var titre,date_debut,date_fin,duree,salle,image,particip_max,desc;
+        var type,titre,date_debut,date_fin,duree,salle,image,particip_max,desc;
         $("#submit").click(function(){
+            type=$("#type").val();
             titre=$("#titre").val();
             date_debut=$("#date_debut").val();
             date_fin=$("#date_fin").val();
@@ -16,7 +26,7 @@
             /*
             * Perform some validation here.
             */
-            $.post("/admin",{titre:titre,date_debut:date_debut,date_fin:date_fin,duree:duree,salle:salle,image:image,particip_max:particip_max,desc:desc},function(data){
+            $.post("/admin",{type:type,titre:titre,date_debut:date_debut,date_fin:date_fin,duree:duree,salle:salle,image:image,particip_max:particip_max,desc:desc},function(data){
                 if(data==='done') {
                     window.location.href="/admin";
                 }
@@ -25,22 +35,56 @@
     });
 </script>
 
-<body>
+<body >
+    <br/>
     <select id="type">
         <option value="activites">activites</option>
-        <option value="expositions">expositions</option>
+        <option selected="selected" value="expositions">expositions</option>
         <option value="shop">shop</option>
-    </select> <br/>
-    <input type="text" size="40" placeholder="titre" id="titre"><br/>
-    <input type="datetime-local" size="40" placeholder="date_debut" id="date_debut"><br/>
-    <input type="datetime-local" size="40" placeholder="date_fin" id="date_fin"><br/>
-    <input type="number" size="40" placeholder="duree" id="duree"><br/>
-    <input type="text" size="40" placeholder="salle" id="salle"><br/>
-    <input type="text" size="40" placeholder="image" id="image"><br/>
-    <input type="number" size="40" placeholder="particip_max" id="particip_max"><br/>
-    <input type="text" size="40" placeholder="desc" id="desc"><br/>
-    <input type="button" value="Submit" id="submit"><br/>
-    <a href="/logout">logout</a>
+    </select> 
+    <input type="text" size="40" placeholder="titre" id="titre">
+    <input type="datetime-local" size="40" placeholder="date_debut" id="date_debut">
+    <input type="datetime-local" size="40" placeholder="date_fin" id="date_fin">
+    <input type="number" size="40" placeholder="duree" id="duree">
+    <input type="text" size="40" placeholder="salle" id="salle">
+    <input type="text" size="40" placeholder="image" id="image">
+    <input type="number" size="40" placeholder="particip_max" id="particip_max">
+    <input type="text" size="40" placeholder="desc" id="desc">
+    <input type="button" value="Enregistrer" id="submit">
+    <a id="centre" href="/logout">logout</a>
+
+    <script>
+        document.getElementById("type").onclick = function() {
+            if (document.getElementById("type").value == "activites"){
+                document.getElementById("titre").style.display = "block";
+                document.getElementById("date_debut").style.display = "block";
+                document.getElementById("date_fin").style.display = "none";
+                document.getElementById("duree").style.display = "block";
+                document.getElementById("salle").style.display = "block";
+                document.getElementById("image").style.display = "block";
+                document.getElementById("particip_max").style.display = "block";
+                document.getElementById("desc").style.display = "block";
+            } else if (document.getElementById("type").value == "expositions") {
+                document.getElementById("titre").style.display = "block";
+                document.getElementById("date_debut").style.display = "block";
+                document.getElementById("date_fin").style.display = "block";
+                document.getElementById("duree").style.display = "block";
+                document.getElementById("salle").style.display = "block";
+                document.getElementById("image").style.display = "block";
+                document.getElementById("particip_max").style.display = "block";
+                document.getElementById("desc").style.display = "block";
+            } else {
+                document.getElementById("titre").style.display = "none";
+                document.getElementById("date_debut").style.display = "none";
+                document.getElementById("date_fin").style.display = "none";
+                document.getElementById("duree").style.display = "none";
+                document.getElementById("salle").style.display = "none";
+                document.getElementById("image").style.display = "none";
+                document.getElementById("particip_max").style.display = "none";
+                document.getElementById("desc").style.display = "none";
+            }
+        }
+    </script>
 </body>
 
 <%- include ('../../partials/footer') %>

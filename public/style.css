@@ -87,7 +87,7 @@
 }
 
 .container-footer{
-    margin-bottom: -20px;
+    margin-bottom: -30px;
     height:auto;
 }
 
@@ -210,84 +210,49 @@ h5{
     color: #182030!important;
 }
 
-
-
-/* Photo Banner */
-.container-scroll {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 80px;
+#container-gallery {
+    height:350px; 
+    margin-bottom: 140px;
+    position:relative; 
+    overflow:hidden;
+  }
+  
+.photobanner {
+    position:absolute; 
+    top:0px; 
+    left:0px; 
+    overflow:hidden; 
+    white-space: nowrap;
+    animation: bannermove 100s linear infinite;
 }
 
-.photobanner, .photobanner2 {
-    height: 233px;
-    width: 3550px;
-    margin-bottom: 5px;
-    font-size: 0;
+.photobanner img {    
+margin: 0 0.5em ;
+width: 500px;
+-webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
 }
 
-.photobanner img, .photobanner2 img {
-	margin-bottom: 10px;
-	margin-right: 20px;
-	height: 233px;
-	width: 350px;
+@keyframes bannermove {
+0% {
+    transform: translate(0, 0);
+}
+100% {
+    transform: translate(-50%, 0);
+}
 }
 
-.photobanner img  {
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
- 
 .photobanner img:hover {
-    -webkit-transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    transform: scale(1.1);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
     cursor: pointer;
- 
+    
+    
     -webkit-box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
     box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
-}
-
-
-/*keyframe animations*/
-
-.second {
-    -webkit-animation: bannermoves 30s linear infinite;
-       -moz-animation: bannermoves 30s linear infinite;
-        -ms-animation: bannermoves 30s linear infinite;
-         -o-animation: bannermoves 30s linear infinite;
-            animation: bannermoves 30s linear infinite;
-}
- 
-@keyframes "bannermoves" {
- 0% {margin-left: -2130px;}
- 100% {margin-left: 0px;}
-}
- 
-@-moz-keyframes bannermoves {
- 0% {margin-left: -2130px;}
- 100% {margin-left: 0px;}
-}
- 
-@-webkit-keyframes "bannermoves" {
- 0% {margin-left: -2130px;}
- 100% {margin-left: 0px;}
-}
- 
-@-ms-keyframes "bannermoves" {
- 0% {margin-left: -2130px;}
- 100% {margin-left: 0px;}
-}
- 
-@-o-keyframes "bannermoves" {
- 0% {margin-left: -2130px;}
- 100% {margin-left: 0px;}
-}
+   }
