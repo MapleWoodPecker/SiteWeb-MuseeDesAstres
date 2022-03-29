@@ -254,7 +254,16 @@ app.get('/billeterie',async function (req,res) {
 
 app.get('/boutique',async function (req,res) {
 
+	const sort = { titre: 1 };
+
+	const cursor = itemsboutique.find({}).sort(sort);
+
 	var result = [];
+
+	await cursor.forEach(element2 => {
+		result.push(element2);
+	});
+
 
     res.render('pages/boutique',{
     	siteTitle : siteTitle,
