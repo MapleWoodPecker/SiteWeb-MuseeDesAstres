@@ -7,7 +7,8 @@
   "quantite": 250,
   "magasin": true,
   "image": "images/shop/miniatures.png",
-  "description": "Set de petits cosmonautes en jouet"
+  "description": "Set de petits cosmonautes en jouet",
+  "tags": "miniature"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141b"
@@ -16,8 +17,9 @@
   "prix": 9.99,
   "quantite": 300,
   "magasin": true,
-  "image": "images/shop/ariane.png",
-  "description": "Poster de toutes les fusées lancées par la NASA, l'ESA et l'URSS"
+  "image": "images/shop/poster.png",
+  "description": "Poster de toutes les fusées lancées par la NASA, l'ESA et l'URSS",
+  "tags": "education"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141c"
@@ -27,7 +29,8 @@
   "quantite": 100,
   "magasin": true,
   "image": "images/shop/hoodie.png",
-  "description": "Hoodie officiel du Musée des Astres"
+  "description": "Hoodie officiel du Musée des Astres",
+  "tags": "habit;goodie"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141d"
@@ -37,7 +40,8 @@
   "quantite": 200,
   "magasin": true,
   "image": "images/shop/tshirt.png",
-  "description": "T-Shirt officiel du Musée des Astres"
+  "description": "T-Shirt officiel du Musée des Astres",
+  "tags": "habit;goodie"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141e"
@@ -47,7 +51,8 @@
   "quantite": 300,
   "magasin": true,
   "image": "images/shop/mask.png",
-  "description": "Masque Covid officiel du Musée des Astres"
+  "description": "Masque Covid officiel du Musée des Astres",
+  "tags": "goodie"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141f"
@@ -57,7 +62,8 @@
   "quantite": 100,
   "magasin": true,
   "image": "images/shop/ariane.png",
-  "description": "Maquette r�aliste de la fus�e Ariane 5, 1/32"
+  "description": "Maquette réaliste de la fusée Ariane 5, 1/32",
+  "tags": "miniature;education"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41420"
@@ -67,7 +73,8 @@
   "quantite": 350,
   "magasin": true,
   "image": "images/shop/porte_cle.png",
-  "description": "Porte Clé officiel du Musée des Astres"
+  "description": "Porte Clé officiel du Musée des Astres",
+  "tags": "goodie"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41421"
@@ -77,7 +84,8 @@
   "quantite": 160,
   "magasin": false,
   "image": "images/shop/shuttle.png",
-  "description": "Maquette réaliste de la Navette Spatiale (à monter soi-même) 1/32"
+  "description": "Maquette réaliste de la Navette Spatiale (à monter soi-même) 1/32",
+  "tags": "miniature;education"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41422"
@@ -87,7 +95,8 @@
   "quantite": 200,
   "magasin": true,
   "image": "images/shop/const_tshirt.png",
-  "description": "T-Shirt des constellations les plus populaire"
+  "description": "T-Shirt des constellations les plus populaire",
+  "tags": "habit"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41423"
@@ -97,7 +106,8 @@
   "quantite": 200,
   "magasin": true,
   "image": "images/shop/mug.png",
-  "description": "Porte Clé officiel du Musée des Astres"
+  "description": "Porte Clé officiel du Musée des Astres",
+  "tags": "goodie"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41424"
@@ -107,7 +117,8 @@
   "quantite": 550,
   "magasin": true,
   "image": "images/shop/stylo.png",
-  "description": "Stylo officiel du Musée des Astres"
+  "description": "Stylo officiel du Musée des Astres",
+  "tags": "goodie"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41425"
@@ -117,7 +128,8 @@
   "quantite": 200,
   "magasin": false,
   "image": "images/shop/globe.png",
-  "description": "Globe terrestre avec relief, couleurs et capitales"
+  "description": "Globe terrestre avec relief, couleurs et capitales",
+  "tags": "education"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41426"
@@ -127,5 +139,6 @@
   "quantite": 150,
   "magasin": false,
   "image": "images/shop/const_tie.png",
-  "description": "Cravate avec motifs des constellations"
+  "description": "Cravate avec motifs des constellations",
+  "tags": "habit"
 }]

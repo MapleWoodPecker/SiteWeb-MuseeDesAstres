@@ -42,6 +42,7 @@
   },
   "nom": "Auclair",
   "prenom": "Sylvie",
+  "email": "auclairdelune432@hotmail.com",
   "adresse": "4919 Côte Joyeuse",
   "telephone": "438-593-1597",
   "datetime": {
@@ -59,6 +60,7 @@
   },
   "nom": "Desjardins",
   "prenom": "Jean",
+  "email": "leakedemail@gmail.com",
   "adresse": "4764 St Jean Baptiste St",
   "telephone": "514-617-5815",
   "datetime": {
@@ -75,6 +77,7 @@
   },
   "nom": "El-Kharraz",
   "prenom": "Amal",
+  "email": "kharraz22@yahoo.ca",
   "adresse": "2079 rue Levy",
   "telephone": "514-777-6026",
   "datetime": {
@@ -92,6 +95,7 @@
   },
   "nom": "Gravel",
   "prenom": "Roxanne",
+  "email": "roxylamini@gmail.com",
   "adresse": "1647 Boulevard Cremazie",
   "telephone": "438-572-0313",
   "datetime": {
@@ -108,6 +112,7 @@
   },
   "nom": "Pilote",
   "prenom": "Germaine",
+  "email": "hermann46@outlook.com",
   "adresse": "4144 Ste. Catherine Ouest",
   "telephone": "514-396-5853",
   "datetime": {
@@ -125,6 +130,7 @@
   },
   "nom": "Kraft",
   "prenom": "Linda",
+  "email": "macncheeselover87@hotmail.com",
   "adresse": "1629 Sherbrooke Ouest",
   "telephone": "438-261-4202",
   "datetime": {
