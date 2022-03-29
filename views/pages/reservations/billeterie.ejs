@@ -1,0 +1,45 @@
+<%- include ('../../partials/header') %>
+
+<style>
+  input, select, a{
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+  }
+</style>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    var email;
+
+    $("#submit").click(function () {
+
+      email = $("#email").val();
+
+      if (email.includes("@")) {
+
+        $.post("/billeterie", { email: email }, function (data) {
+          if (data === 'done') {
+            window.location.href = "/";
+          }
+          if (data === 'error') {
+            alert('Email incorrect');
+          }
+        });
+
+      }
+    });
+  });
+</script>
+
+<body >
+  <br/>
+  <form>
+    <input type="email" size="50" placeholder="email" id="email" required>
+    <input type="submit" value="Reserver" id="submit">
+  </form>
+</body>
+ 
+<%- include ('../../partials/footer') %>
