@@ -403,5 +403,5 @@ app.get('/logout',(req,res) => {
 */
 
 var server = app.listen(4000, function(){
-	console.log("serveur fonctionne sur 4000... ! ");
+	console.log("serveur fonctionne sur 4000...");
 });
