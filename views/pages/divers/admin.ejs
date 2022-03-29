@@ -15,7 +15,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
     $(document).ready(function(){
-        var type,titre,date_debut,date_fin,duree,salle,image,particip_max,desc;
+        var type,titre,date_debut,date_fin,duree,salle,image,particip_max,desc,prix,quantite,magasin,tags;
         $("#submit").click(function(){
             type=$("#type").val();
             titre=$("#titre").val();
@@ -26,10 +26,16 @@
             image=$("#image").val();
             particip_max=$("#particip_max").val();
             desc=$("#desc").val();
+            prix=$("#prix").val();
+            quantite=$("#quantite").val();
+            magasin=$("#magasin").val();
+            tags=$("#tags").val();
             /*
             * Perform some validation here.
             */
-            $.post("/admin",{type:type,titre:titre,date_debut:date_debut,date_fin:date_fin,duree:duree,salle:salle,image:image,particip_max:particip_max,desc:desc},function(data){
+            $.post("/admin",{type:type,titre:titre,date_debut:date_debut,date_fin:date_fin,duree:duree,salle:salle,image:image,particip_max:particip_max,
+                prix:prix,quantite:quantite,magasin:magasin,tags:tags},
+            function(data){
                 if(data==='done') {
                     window.location.href="/admin";
                 }
@@ -92,7 +98,7 @@
                 document.getElementById("quantite").style.display = "none";
                 document.getElementById("magasin").style.display = "none";
                 document.getElementById("tags").style.display = "none";
-            } else {
+            } else if (document.getElementById("type").value == "shop") {
                 document.getElementById("titre").style.display = "block";
                 document.getElementById("date_debut").style.display = "none";
                 document.getElementById("date_fin").style.display = "none";

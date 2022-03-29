@@ -423,9 +423,9 @@ app.post('/admin',async function (req,res) {
 		itemsboutique.insertOne(
 			{
 				titre:req.body.titre,
-				prix:req.body.titre,
+				prix:req.body.prix,
 				quantite:req.body.quantite,
-				magasin:req.body.titre,
+				magasin:req.body.magasin,
 				image:req.body.image,
 				desc:req.body.desc,
 				tags:req.body.tags
