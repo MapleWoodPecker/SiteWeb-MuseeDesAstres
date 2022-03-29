@@ -8,6 +8,7 @@ var mysql = require('mysql');
 var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
+var nodemailer = require('nodemailer');
 const fetch = import('node-fetch');
 const session = require('express-session');
 const routeur = express.Router();
@@ -241,11 +242,63 @@ app.get('/billeterie',async function (req,res) {
 
 	var result = [];
 
-	res.render('pages/divers/construction',{
+	res.render('pages/billeterie',{
 		siteTitle : siteTitle,
 		pageTitle : "billet",
 		items : result
 	});
+});
+
+app.post('/billeterie',async function (req,res) {
+	var transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+		  user: 'museedesastres@gmail.com',
+		  pass: 'Amal1234'
+		}
+	  });
+	  
+	  var mailOptions = {
+		from: 'museedesastres@gmail.com',
+		to: '',
+		subject: 'Confirmation de vos billets',
+		text: ''
+	  };
+	  
+	  transporter.sendMail(mailOptions, function(error, info){
+		if (error) {
+		  console.log(error);
+		} else {
+		  console.log('Email sent: ' + info.response);
+		}
+	  });
+});
+
+app.post('/confirmation',async function (req,res) {
+	var transporter = nodemailer.createTransport({
+		service: 'gmail',
+		auth: {
+		  user: 'museedesastres@gmail.com',
+		  pass: 'Amal1234'
+		}
+	  });
+	  
+	  var mailOptions = {
+		from: 'museedesastres@gmail.com',
+		to: '',
+		subject: 'Confirmation de vos billets',
+		text: ''
+	  };
+	  
+	  transporter.sendMail(mailOptions, function(error, info){
+		if (error) {
+		  console.log(error);
+		} else {
+		  console.log('Email sent: ' + info.response);
+		}
+	  });
+	  
+	res.render("congrats");
 });
 
 /**
