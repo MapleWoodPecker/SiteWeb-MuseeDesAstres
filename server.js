@@ -242,7 +242,7 @@ app.get('/billeterie',async function (req,res) {
 
 	var result = [];
 
-	res.render('pages/billeterie',{
+	res.render('pages/reservations/billeterie',{
 		siteTitle : siteTitle,
 		pageTitle : "billet",
 		items : result
@@ -256,49 +256,26 @@ app.post('/billeterie',async function (req,res) {
 		  user: 'museedesastres@gmail.com',
 		  pass: 'Amal1234'
 		}
-	  });
+	});
 	  
-	  var mailOptions = {
-		from: 'museedesastres@gmail.com',
-		to: 'museedesastres@gmail.com',
-		subject: 'Confirmation de vos billets',
-		text: ''
-	  };
-	  
-	  transporter.sendMail(mailOptions, function(error, info){
-		if (error) {
-		  console.log(error);
-		} else {
-		  console.log('Email sent: ' + info.response);
-		}
-	  });
-});
+	console.log(req.body.email);
 
-app.post('/confirmation',async function (req,res) {
-	var transporter = nodemailer.createTransport({
-		service: 'gmail',
-		auth: {
-		  user: 'museedesastres@gmail.com',
-		  pass: 'Amal1234'
-		}
-	  });
-	  
-	  var mailOptions = {
+	var mailOptions = {
 		from: 'museedesastres@gmail.com',
-		to: '',
+		to: req.body.email,
 		subject: 'Confirmation de vos billets',
-		text: ''
-	  };
+		html: '<h1>Vos billets</h1><p>billets</p>'
+	};
 	  
-	  transporter.sendMail(mailOptions, function(error, info){
+	transporter.sendMail(mailOptions, function(error, info){
 		if (error) {
-		  console.log(error);
+		  res.end('error');
 		} else {
 		  console.log('Email sent: ' + info.response);
+		  res.end('done');
 		}
-	  });
-	  
-	res.render("congrats");
+	});
+
 });
 
 /**
@@ -446,7 +423,7 @@ app.post('/admin',async function (req,res) {
 		// later
 	}
 	
-    res.end ('done') ;
+    res.end('done');
 });
 
 app.get('/logout',(req,res) => {
