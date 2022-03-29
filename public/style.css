@@ -7,6 +7,10 @@
     margin:0 auto;
 }
 
+body{
+    padding-bottom: 10%;
+}
+
 /*images in navbar brand*/
 .navbar-brand > img{
     width:210px;
@@ -255,4 +259,8 @@ width: 500px;
     -webkit-box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
     -moz-box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
     box-shadow: 0px 3px 5px rgba(0,0,0,0.2);
-   }
+}
+
+.album{
+    background-color: transparent!important;
+}
