@@ -1,36 +1,70 @@
 <%- include ('../partials/header') %>
 
+<style>
+    .containershop {
+  display: flex;
+}
+    .nextto{
+        display: table-row;
+        background: #ce8888;
+    }
+
+    .filtre{
+        width: 170px;
+        
+}
+
+.filtre h5{
+        text-align: center;
+        
+}
+
+    .filtre ul{
+        list-style-type: none;
+        text-align: left;
+        padding: 10;
+}
+
+.filtre ul li a{
+    color: black;
+       text-align: left;
+}
+
+</style>
+<div class="containershop">
 <!-- Fitre-->
-<div class="categorie_filter">
+<div class="px-4 mt-5 nextto filtre">
+
+    <h5>Filtre</h5>
     <ul>
        
         <li>
             <input class="input_" id="blick" type="checkbox">
-            <label class="input" for="blick"></label>
-            <a href="#">Black</a>
+            <label class="input"></label>
+            <a href="#">Vêtement</a>
             
         </li>
         <li>
             <input class="input" id="orange" type="checkbox">
             <label class="input" for="orange"></label>
-            <a href="#">Orange</a>
+            <a href="#">Maquette</a>
         </li>
         <li>
             <input class="input" id="blue" type="checkbox">
             <label class="input" for="blue"></label>
-            <a href="#">Blue</a>
+            <a href="#">Souvenir</a>
         </li>
         <li>
             <input class="input" id="yellow" type="checkbox">
             <label class="input" for="yellow"></label>
-            <a href="#">Yellow</a>
+            <a href="#">Educatif</a>
         </li>
     </ul>
 </div>
 
 <% if (items !=undefined && items.length>0) {%>
 <!-- Section-->
-<section class="py-5">
+<section class=" nextto">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <% items.forEach(function(item,index){ %>
@@ -43,13 +77,15 @@
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder"><%= item.titre%></h5>
+                                <!-- Productdescription-->
+                                    <p><%= item.desc%></p>
                                 <!-- Product price-->
                                 <%= item.prix%>
                             </div>
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter</a></div>
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Ajouter au panier</a></div>
                         </div>
                     </div>
                 </div>
@@ -69,5 +105,5 @@
       </div>
     </section>
     <% } %>
-
+</div>
 <%- include ('../partials/footer') %>

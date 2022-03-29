@@ -7,7 +7,7 @@
   "quantite": 250,
   "magasin": true,
   "image": "images/shop/miniatures.png",
-  "description": "Set de petits cosmonautes en jouet",
+  "desc": "Set de petits cosmonautes en jouet",
   "tags": "miniature"
 },{
   "_id": {
@@ -18,7 +18,7 @@
   "quantite": 300,
   "magasin": true,
   "image": "images/shop/poster.png",
-  "description": "Poster de toutes les fusées lancées par la NASA, l'ESA et l'URSS",
+  "desc": "Poster de toutes les fusées lancées par la NASA, l'ESA et l'URSS",
   "tags": "education"
 },{
   "_id": {
@@ -29,7 +29,7 @@
   "quantite": 100,
   "magasin": true,
   "image": "images/shop/hoodie.png",
-  "description": "Hoodie officiel du Musée des Astres",
+  "desc": "Hoodie officiel du Musée des Astres",
   "tags": "habit;goodie"
 },{
   "_id": {
@@ -40,7 +40,7 @@
   "quantite": 200,
   "magasin": true,
   "image": "images/shop/tshirt.png",
-  "description": "T-Shirt officiel du Musée des Astres",
+  "desc": "T-Shirt officiel du Musée des Astres",
   "tags": "habit;goodie"
 },{
   "_id": {
@@ -51,7 +51,7 @@
   "quantite": 300,
   "magasin": true,
   "image": "images/shop/mask.png",
-  "description": "Masque Covid officiel du Musée des Astres",
+  "desc": "Masque Covid officiel du Musée des Astres",
   "tags": "goodie"
 },{
   "_id": {
@@ -62,7 +62,7 @@
   "quantite": 100,
   "magasin": true,
   "image": "images/shop/ariane.png",
-  "description": "Maquette réaliste de la fusée Ariane 5, 1/32",
+  "desc": "Maquette réaliste de la fusée Ariane 5, 1/32",
   "tags": "miniature;education"
 },{
   "_id": {
@@ -73,7 +73,7 @@
   "quantite": 350,
   "magasin": true,
   "image": "images/shop/porte_cle.png",
-  "description": "Porte Clé officiel du Musée des Astres",
+  "desc": "Porte Clé officiel du Musée des Astres",
   "tags": "goodie"
 },{
   "_id": {
@@ -84,7 +84,7 @@
   "quantite": 160,
   "magasin": false,
   "image": "images/shop/shuttle.png",
-  "description": "Maquette réaliste de la Navette Spatiale (à monter soi-même) 1/32",
+  "desc": "Maquette réaliste de la Navette Spatiale (à monter soi-même) 1/32",
   "tags": "miniature;education"
 },{
   "_id": {
@@ -95,7 +95,7 @@
   "quantite": 200,
   "magasin": true,
   "image": "images/shop/const_tshirt.png",
-  "description": "T-Shirt des constellations les plus populaire",
+  "desc": "T-Shirt des constellations les plus populaire",
   "tags": "habit"
 },{
   "_id": {
@@ -106,7 +106,7 @@
   "quantite": 200,
   "magasin": true,
   "image": "images/shop/mug.png",
-  "description": "Porte Clé officiel du Musée des Astres",
+  "desc": "Porte Clé officiel du Musée des Astres",
   "tags": "goodie"
 },{
   "_id": {
@@ -117,7 +117,7 @@
   "quantite": 550,
   "magasin": true,
   "image": "images/shop/stylo.png",
-  "description": "Stylo officiel du Musée des Astres",
+  "desc": "Stylo officiel du Musée des Astres",
   "tags": "goodie"
 },{
   "_id": {
@@ -128,7 +128,7 @@
   "quantite": 200,
   "magasin": false,
   "image": "images/shop/globe.png",
-  "description": "Globe terrestre avec relief, couleurs et capitales",
+  "desc": "Globe terrestre avec relief, couleurs et capitales",
   "tags": "education"
 },{
   "_id": {
@@ -139,6 +139,6 @@
   "quantite": 150,
   "magasin": false,
   "image": "images/shop/const_tie.png",
-  "description": "Cravate avec motifs des constellations",
+  "desc": "Cravate avec motifs des constellations",
   "tags": "habit"
 }]
