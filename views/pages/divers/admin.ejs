@@ -33,7 +33,7 @@
             /*
             * Perform some validation here.
             */
-            $.post("/admin",{type:type,titre:titre,date_debut:date_debut,date_fin:date_fin,duree:duree,salle:salle,image:image,particip_max:particip_max,
+            $.post("/admin",{type:type,titre:titre,date_debut:date_debut,date_fin:date_fin,duree:duree,salle:salle,image:image,particip_max:particip_max,desc:desc,
                 prix:prix,quantite:quantite,magasin:magasin,tags:tags},
             function(data){
                 if(data==='done') {
@@ -59,13 +59,13 @@
     <input type="datetime-local" placeholder="date_fin" id="date_fin">
     <input type="number" placeholder="duree" id="duree">
     <input type="text" placeholder="salle" id="salle">
-    <input type="number" placeholder="prix" name="prix" id="prix">
-    <input type="number" placeholder="quantite" name="quantite" id="quantite">
+    <input type="number" placeholder="prix" id="prix">
+    <input type="number" placeholder="quantite" id="quantite">
     <label for="magasin" id="p_dispo">Disponible ?</label>
-    <input type="checkbox" name="magasin" id="magasin">
+    <input type="checkbox" id="magasin">
     <input type="text" placeholder="image" id="image">
     <input type="number" placeholder="particip_max" id="particip_max">
-    <input type="text" placeholder="desc" id="desc">
+    <input type="text" placeholder="description" id="desc">
     <input type="text" placeholder="tags" id="tags">
     <input type="button" value="Enregistrer" id="submit">
     <a id="centre" href="/logout">logout</a>
