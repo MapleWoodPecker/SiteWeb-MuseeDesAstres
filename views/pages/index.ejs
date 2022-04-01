@@ -4,15 +4,17 @@
 
 	<% if (items !=undefined && items.length>0) {%>
 
-			<div style="text-align: center;">
-			  <div>
+		<br><br>
+			<div style="text-align: center; margin-left: auto; margin-right: auto; width: 50%;">
 				<h1 class="fw-light">Bienvenue au Musée des Astres</h1>
-				<p class="lead text-muted"></p>
-
+				<p class="lead text-muted">Depuis 1996, notre établissement a pour but de présenter au grand public la beauté des Astres.
+					Pour ses magnifiques expositions, ses activités incroyables et ses évènements uniques, les Musée a tant à offrir.
+					<br><br>
+					Voyez ce qu'il y a de neuf au musée, et réservez votre billet dès maintenant:
+				</p>
 				  <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
-
 			  </div>
-			</div>
+			  <br><br>
 
 
 		<div id="carouselExampleCaptions" class="carousel slide " data-ride="carousel"
@@ -78,7 +80,8 @@
 			</button>
 		</div>
 
-
+		<br><br>
+		<h1 class="fw-light" style="text-align: center;">Nouveautés</h1>
 		<div class="album py-5">
 			<div class="container">
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -96,31 +99,8 @@
 					<%}%>
 
 						<div class="col">
-							<div class="card shadow-sm ">
-
-								<a href="<%= type%>">
-									<svg class="bd-placeholder-img card-img-top actu"
-										width="100%" height="225"
-										xmlns="http://www.w3.org/2000/svg"
-										role="img"
-										aria-label="Placeholder: Thumbnail"
-										preserveAspectRatio="xMidYMid slice"
-										focusable="false">
-										<rect width="100%" height="100%"
-											fill="#55595c" />
-										<image xlink:href="<%= item.image %>"
-											class="actuimage" x="0" y="0"
-											style="max-width:700px; height:250px;" />
-										<text x="5%" y="90%" fill="#eceeef"
-											dy=".3em" style="font-size: 20; font-weight:bolder; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-stroke: black; stroke-width: 1px;">
-											<%= item.titre %>
-										</text>
-									</svg>
-								</a>
-
-								<div class="actuMiddle"></div>
-
+							<div class=".acceuil-img-container" style="margin-bottom:25px;">
+									<img src="<%= item.image %>" width="350px"/>
 							</div>
 
 						</div>

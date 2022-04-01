@@ -216,7 +216,6 @@ h5{
 
 #container-gallery {
     height:350px; 
-    margin-bottom: 140px;
     position:relative; 
     overflow:hidden;
   }
@@ -264,3 +263,29 @@ width: 500px;
 .album{
     background-color: transparent!important;
 }
+
+.acceuil-img-container {
+    position: relative;
+    height: 200px;
+    width: 257px;
+  }
+  
+.acceuil-img-container >  .img__description {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(29, 106, 154, 0.72);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+  
+    /* transition effect. not necessary */
+    transition: opacity .2s, visibility .2s;
+  }
+  
+  .acceuil-img-container >  .img__wrap:hover .img__description {
+    visibility: visible;
+    opacity: 1;
+  }
