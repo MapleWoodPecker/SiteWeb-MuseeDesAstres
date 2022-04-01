@@ -239,12 +239,20 @@ app.get('/info',async function (req,res) {
 
 app.get('/billeterie',async function (req,res) {
 
-	var result = [];
+	const sort = { _id: 1 };
+
+	const cursor = reservations.find({prix: { $gt: 0 }}).sort(sort);
+
+	var results = [];
+
+	await cursor.forEach(element => {
+		results.push(element);
+	});
 
 	res.render('pages/reservations/billeterie',{
 		siteTitle : siteTitle,
 		pageTitle : "billet",
-		items : result
+		items : results
 	});
 });
 
@@ -289,8 +297,8 @@ app.get('/boutique',async function (req,res) {
 
 	var result = [];
 
-	await cursor.forEach(element2 => {
-		result.push(element2);
+	await cursor.forEach(element => {
+		result.push(element);
 	});
 
 
