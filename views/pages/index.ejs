@@ -5,18 +5,10 @@
 	<% if (items !=undefined && items.length>0) {%>
 
 		<br><br>
-			<div style="text-align: center; margin-left: auto; margin-right: auto; width: 50%;">
-				<h1 class="fw-light">Bienvenue au Musée des Astres</h1>
-				<p class="lead text-muted">Depuis 1996, notre établissement a pour but de présenter au grand public la beauté des Astres.
-					Pour ses magnifiques expositions, ses activités incroyables et ses évènements uniques, les Musée a tant à offrir.
-					<br><br>
-					Voyez ce qu'il y a de neuf au musée, et réservez votre billet dès maintenant:
-				</p>
-				  <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
-			  </div>
-			  <br><br>
-
-
+		
+		<h1 class="fw-light" style="font-size: 70px;text-align: center;">Bienvenue au Musée des Astres</h1>
+		<br><br>
+		
 		<div id="carouselExampleCaptions" class="carousel slide " data-ride="carousel"
 			style="width: 800px; margin-left: auto; margin-right: auto;">
 			<ol class="carousel-indicators">
@@ -30,18 +22,18 @@
 					link = "expositions"
 				} %>
 				<div class="carousel-item active" >
-					<a href="/<%= link%>"><img src="<%= items[0].image %>" class="d-block w-100" alt="..."></a>
+					<a href="/<%= link%>"><img src="<%= items[0].image %>" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h4><%= items[0].titre %></h4>
 						<p class="car-text"><%= items[0].desc %></p>
-					</div>
+					</div></a>
 				</div>
 				<% var link = "experiences"%>
 				<% if (items[1].date_fin != undefined){
 					link = "expositions"
 				} %>
 				<div class="carousel-item">
-					<a href="/<%= link%>"><img src="<%= items[1].image %>" class="d-block w-100" alt="..."></a>
+					<a href="/<%= link%>"><img src="<%= items[1].image %>" class="d-block w-100" alt="...">
 
 					<div class="carousel-caption d-none d-md-block">
 						<h4>
@@ -50,14 +42,14 @@
 						<p>
 							<%= items[1].desc %>
 						</p>
-					</div>
+					</div></a>
 				</div>
 				<% var link = "experiences"%>
 				<% if (items[2].date_fin != undefined){
 					link = "expositions"
 				} %>
 				<div class="carousel-item">
-					<a href="/<%= link%>"><img src="<%= items[2].image %>" class="d-block w-100" alt="..."></a>
+					<a href="/<%= link%>"><img src="<%= items[2].image %>" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 						<h4>
 							<%= items[2].titre %>
@@ -65,7 +57,7 @@
 						<p>
 							<%= items[2].desc %>
 						</p>
-					</div>
+					</div></a>
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev"
@@ -80,35 +72,69 @@
 			</button>
 		</div>
 
+		
+		<br>
+		<div style="text-align: center; margin-left: auto; margin-right: auto; width: 800px;">
+			<p class="lead text-muted">Depuis 1996, notre établissement a pour but de présenter au grand public la beauté des Astres.
+				Pour ses magnifiques expositions, ses activités incroyables et ses évènements uniques, les Musée a tant à offrir.
+				<br><br>
+				Voyez ce qu'il y a de neuf au musée, et réservez votre billet dès maintenant:
+			</p>
+			  <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
+		  </div>
+
+
+
+
 		<br><br>
-		<h1 class="fw-light" style="text-align: center;">Nouveautés</h1>
+		
+		<h1 class="fw-light" style="text-align: center;">À l'affiche ce mois-ci</h1>
+		<br>
+		<% items.forEach(function(item,index){ %>
+			<% if (item.salle == "CINE") {%>
+			
+				<div id="movie-container">
+					<a href="billeterie" style="text-decoration:none"><img src="<%= item.image %>" class="movie-image" width="700px"/>
+					<p class="movie-title" style="font-size: xxx-large;font-style: italic; "> <%=item.titre%></p>
+					<p class="movie-title" style="font-size: larger;"> <%-item.desc%></p></a>
+				</div>
+
+			<%}%>
+		<%}); %>
+		<br><br>
+		<h1 class="fw-light" style="text-align: center;">Nouveautés au musée</h1>
 		<div class="album py-5">
 			<div class="container">
 				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 					<% nombreActu=0 %>
 					<% items.forEach(function(item,index){ %>
-					<% nombreActu++ %>
-					<% if (nombreActu> 3 && nombreActu < 10) {%>
-					<% var type %>
+						<% nombreActu++ %>
+						<% if (nombreActu> 1 && nombreActu < 9) {%>
+							<% var type %>
 
-					<% if (item.date_fin>= 0 ) {%>
-					<% type="/expositions" %>
-					<% }else {%>
-					<% type="/experiences" %>
-					<%}%>
-
-						<div class="col">
-							<div class=".acceuil-img-container" style="margin-bottom:25px;">
-									<img src="<%= item.image %>" width="350px"/>
-							</div>
-
+							<% if (item.date_fin>= 0 ) {%>
+								<% type="/expositions" %>
+							<% }else {%>
+								<% type="/experiences" %>
+						<%}%>
+						<% if(item.salle != "CINE"){%>
+						<div class="col" style="margin-bottom: 25px;">
+							<a href="<%= type %>">
+								<div id="affiche">
+									<img class="affiche-img" width="350px" src="<%= item.image %>"/>
+									<div class="affiche-hide"><p style="margin-top: -10px;"><%- item.titre %></p><p style="font-size:small!important; margin-top: -16px;"><%- item.desc %></p></div>
+								</div>
+							</a>
 						</div>
-						<%}; %>
-						<%}); %>
+						<%} %>
+
+					<%}; %>
+					<%}); %>
 				</div>
 			</div>
 		</div>
+
 	</div>
 
 	<% }else {%>
