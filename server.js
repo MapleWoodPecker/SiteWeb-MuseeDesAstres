@@ -13,6 +13,7 @@ const session = require('express-session');
 const routeur = express.Router();
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
+const { nextTick } = require('process');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -253,14 +254,19 @@ app.get('/billeterie',async function (req,res) {
 
 	res.render('pages/reservations/billeterie',{
 		siteTitle : siteTitle,
-		pageTitle : "billet",
+		pageTitle : "billeterie",
 		items : results
 	});
 });
 
-app.post('/billeterie',async function (req,res) {
+app.post('/billet',async function (req,res) {
 
-	console.log("post exec");
+	billets = [];
+
+	req.body.billets_id.forEach(element => {
+		billets.push(parseInt(element));
+	});
+
 	reservations.insertOne(
 		{
 			nom:req.body.nom,
@@ -269,9 +275,9 @@ app.post('/billeterie',async function (req,res) {
 			adresse:req.body.adresse,
 			telephone:parseInt(req.body.telephone),
 			datetime:new Date(req.body.datetime),
-			rdv_etoile:(req.body.rdv_etoile === "on"),
-			film:(req.body.film === "on"),
-			billets_id:req.body.billets_id
+			rdv_etoile:(req.body.rdv == "true"),
+			film:(req.body.film == "true"),
+			billets_id:billets
 		}
 	);
 
@@ -297,11 +303,34 @@ app.post('/billeterie',async function (req,res) {
 		  res.end('error');
 		} else {
 		  console.log('Email sent: ' + info.response);
-		  res.end('done');
+		  res.redirect('/billet');
+		  next();
 		}
 	});
-
+	
 });
+
+app.get('/billet',async function (req,res) {
+
+	const sort = {$natural:-1};
+
+	const cursor = reservations.find({}).sort(sort);
+
+	var billet_temp = [];
+
+	await cursor.forEach(element => {
+		billet_temp.push(element);
+	});
+
+	console.log(billet_temp[0]);
+
+	res.render('pages/reservations/email_billet',{
+		siteTitle : siteTitle,
+		pageTitle : "billet",
+		billet : billet_temp[0]
+	});
+});
+
 
 /**
  * Boutique
