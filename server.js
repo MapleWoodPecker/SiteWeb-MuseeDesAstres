@@ -72,6 +72,7 @@ async function run() {
 		reservations = database.collection("reservations");
 		expo = database.collection('expositions');
 		con = database.collection('compte_admin');
+		tarifs = database.collection('tarifs');
 
 		console.log("Connexion réussie :)");
 	} finally {
@@ -87,6 +88,7 @@ var rdvetoiles;
 var reservations;
 var expo;
 var con;
+var tarifs;
 
 run().catch(console.dir);
 
@@ -241,7 +243,7 @@ app.get('/billeterie',async function (req,res) {
 
 	const sort = { _id: 1 };
 
-	const cursor = reservations.find({prix: { $gt: 0 }}).sort(sort);
+	const cursor = tarifs.find({}).sort(sort);
 
 	var results = [];
 
@@ -257,6 +259,22 @@ app.get('/billeterie',async function (req,res) {
 });
 
 app.post('/billeterie',async function (req,res) {
+
+	console.log("post exec");
+	reservations.insertOne(
+		{
+			nom:req.body.nom,
+			prenom:req.body.prenom,
+			email:req.body.email,
+			adresse:req.body.adresse,
+			telephone:parseInt(req.body.telephone),
+			datetime:new Date(req.body.datetime),
+			rdv_etoile:(req.body.rdv_etoile === "on"),
+			film:(req.body.film === "on"),
+			billets_id:req.body.billets_id
+		}
+	);
+
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
