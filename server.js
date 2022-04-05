@@ -13,6 +13,7 @@ const session = require('express-session');
 const routeur = express.Router();
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
+const { nextTick } = require('process');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -72,6 +73,7 @@ async function run() {
 		reservations = database.collection("reservations");
 		expo = database.collection('expositions');
 		con = database.collection('compte_admin');
+		tarifs = database.collection('tarifs');
 
 		console.log("Connexion réussie :)");
 	} finally {
@@ -87,6 +89,7 @@ var rdvetoiles;
 var reservations;
 var expo;
 var con;
+var tarifs;
 
 run().catch(console.dir);
 
@@ -192,7 +195,15 @@ app.get('/experiences',async function (req,res) {
 
 app.get('/rdv_etoiles',async function (req,res) {
 
+	const sort = { date_debut: -1 };
+
+	const cursor = rdv_etoiles.find({}).sort(sort);
+
 	var result = [];
+
+	await cursor.forEach(element2 => {
+		result.push(element2);
+	});
 
     res.render('pages/activites/rdvetoiles',{
     	siteTitle : siteTitle,
@@ -241,7 +252,7 @@ app.get('/billeterie',async function (req,res) {
 
 	const sort = { _id: 1 };
 
-	const cursor = reservations.find({prix: { $gt: 0 }}).sort(sort);
+	const cursor = tarifs.find({}).sort(sort);
 
 	var results = [];
 
@@ -251,12 +262,33 @@ app.get('/billeterie',async function (req,res) {
 
 	res.render('pages/reservations/billeterie',{
 		siteTitle : siteTitle,
-		pageTitle : "billet",
+		pageTitle : "billeterie",
 		items : results
 	});
 });
 
-app.post('/billeterie',async function (req,res) {
+app.post('/billet',async function (req,res) {
+
+	billets = [];
+
+	req.body.billets_id.forEach(element => {
+		billets.push(parseInt(element));
+	});
+
+	reservations.insertOne(
+		{
+			nom:req.body.nom,
+			prenom:req.body.prenom,
+			email:req.body.email,
+			adresse:req.body.adresse,
+			telephone:parseInt(req.body.telephone),
+			datetime:new Date(req.body.datetime),
+			rdv_etoile:(req.body.rdv == "true"),
+			film:(req.body.film == "true"),
+			billets_id:billets
+		}
+	);
+
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
 		auth: {
@@ -279,11 +311,34 @@ app.post('/billeterie',async function (req,res) {
 		  res.end('error');
 		} else {
 		  console.log('Email sent: ' + info.response);
-		  res.end('done');
+		  res.redirect('/billet');
+		  next();
 		}
 	});
-
+	
 });
+
+app.get('/billet',async function (req,res) {
+
+	const sort = {$natural:-1};
+
+	const cursor = reservations.find({}).sort(sort);
+
+	var billet_temp = [];
+
+	await cursor.forEach(element => {
+		billet_temp.push(element);
+	});
+
+	console.log(billet_temp[0]);
+
+	res.render('pages/reservations/email_billet',{
+		siteTitle : siteTitle,
+		pageTitle : "billet",
+		billet : billet_temp[0]
+	});
+});
+
 
 /**
  * Boutique

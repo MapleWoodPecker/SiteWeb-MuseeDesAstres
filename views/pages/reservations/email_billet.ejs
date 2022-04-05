@@ -1,0 +1,20 @@
+<% if (billet !=undefined) {%>
+<body>
+    <h1>Mr./Mme. <%= billet.nom%> <%= billet.prenom%></h1> <br>
+    <h2>email : <%= billet.email%></h2><br>
+    <h2>adresse : <%= billet.adresse%></h2><br>
+
+
+
+</body>
+<% }else {%>
+    <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <h1 class="fw-light">Aucun billet trouvé.</h1>
+                <h2 class="fw-light">Nous nous excusons pour cet inconvénient.</h2>
+                <a href="/" >Retour à l'accueil</a>
+            </div>
+        </div>
+    </section>
+<% } %>

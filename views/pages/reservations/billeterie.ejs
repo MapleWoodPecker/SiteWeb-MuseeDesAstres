@@ -26,39 +26,61 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
-  $(document).ready(function () {
-    var email;
+  $(document).ready(function () {    
+    var nom,prenom,email,adresse,telephone,datetime,rdv,film,billets_id = [];
 
     $("#submit").click(function () {
 
+      nom = $("#nom").val();
+      prenom = $("#prenom").val();
       email = $("#email").val();
+      adresse = $("#adresse").val();
+      telephone = $("#telephone").val();
+      datetime = $("#datetime").val();
+      rdv = $("#rdv").is(':checked');
+      film = $("#film").is(':checked');
 
-      if (email.includes("@")) {
+      billets_id.push($("#ticket_1").val());
+      billets_id.push($("#ticket_2").val());
+      billets_id.push($("#ticket_3").val());
+      billets_id.push($("#ticket_4").val());
+      billets_id.push($("#ticket_5").val());
+      billets_id.push($("#ticket_6").val());
+      billets_id.push($("#ticket_7").val());
 
-        $.post("/billeterie", { email: email }, function (data) {
-          if (data === 'done') {
-            window.location.href = "/";
-          }
-          if (data === 'error') {
-            alert('Email incorrect');
-          }
+      if (email.includes("@") && email.includes(".") && email.length > 5 && nom.length > 0 && prenom.length > 0 && adresse.length > 0 && datetime.length > 0) {
+        var isBillet = false;
+
+        billets_id.forEach(tarif => {
+          if (parseInt(tarif) > 0)
+            isBillet = true;
         });
 
+        if (isBillet) {
+          $.post("/billet", { nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id }, 
+          function (data) {
+            if (data === 'done') {
+              window.location.href = "/";
+            }
+            if (data === 'error') {
+              alert('Erreur inconnue');
+            }
+          });
+        } else {
+          alert('Veuillez selectionner au moins un billet.');
+        }
+        
       }
     });
 
   });
-
-  document.getElementById("+").onclick = function () {
-    document.getElementById("nombre").value = parseInt(document.getElementById("nombre").value)+1;
-  }
+  var total_billet = 0;
 </script>
 
 <% if (items !=undefined && items.length>0) {%>
   <br/>
   <form style="margin-left: 20px; width: 50%;">
-    <input type="date">
-    <input type="time" min="08:00:00" max="18:00:00" step="600">
+    <input type="datetime-local" id="datetime" min="08:00:00" max="18:00:00" required>
     <span class="validity"></span>
     <hr>
 
@@ -72,14 +94,14 @@
       <% items.forEach(function(item,index) { %>
       <tr>
         <td>
-          <select id="ticket_0">
+          <select id="ticket_<%= item._id%>" xml:id="ticket">
             <% for (var j = 0; j <= 20;  j++ ) { %>
             <option value="<%= j %>"><%= j %></option>
             <% } %>
           </select>
           <%= item.titre%>
         </td>
-        <td>
+        <td style="text-align: right;">
           <%= item.prix%> $ CA
         </td>
       </tr>
@@ -87,15 +109,15 @@
 
       <tr>
         <td>
-          <table style="width: 20%; margin: 10px;">
+          <table style="width: 40%; margin: 10px;">
             <tr>
-              <td><label for="rdv">rdv etoiles</label></td>
-              <td><input id="rdv" type="checkbox"></td>
+              <td><label for="rdv">rdv etoiles (+ 5 $ CA / personne)</label></td>
+              <td><input id="rdv" type="checkbox" name="rdv" unchecked></td>
             </tr>
 
             <tr>
-              <td><label for="film">rdv </label></td>
-              <td><input id="film" type="checkbox"></td>
+              <td><label for="film">film (+ 5 $ CA / personne)</label></td>
+              <td><input id="film" type="checkbox" name="film"></td>
             </tr>            
           </table>
         </td>
@@ -104,20 +126,41 @@
     </table>
 
     <hr>
-    <input type="text" size="50" placeholder="" id="" required> 
+    <input type="text" size="50" placeholder="nom" id="nom" required> 
     <hr>
-    <input type="text" size="50" placeholder="" id="" required>
+    <input type="text" size="50" placeholder="prenom" id="prenom" required>
     <hr>
     <input type="email" size="50" placeholder="email" id="email" required> 
     <hr>
-    <input type="text" size="50" placeholder="" id="" required> 
+    <input type="text" size="50" placeholder="adresse" id="adresse" required> 
     <hr>
-    <input type="tel" size="50" placeholder="" id="" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"> 
+    <input type="tel" size="50" placeholder="telephone" id="telephone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"> 
     <small>optionnel</small>
     <hr>
-    <input type="submit" value="Reserver" id="submit" class="">
+    <input type="submit" value="Reserver" id="submit" class="" disabled>
     <hr>
   </form>
+
+
+  <% items.forEach(function(item,index) { %>
+  <script>
+    document.getElementById("ticket_<%= item._id%>").onclick = function() {
+      if (parseInt(document.getElementById("ticket_<%= item._id%>").value) > 0) {
+        document.getElementById("submit").disabled = false;
+      }
+        total_billet = parseInt(document.getElementById("ticket_1").value) + parseInt(document.getElementById("ticket_2").value) + 
+        parseInt(document.getElementById("ticket_3").value) + parseInt(document.getElementById("ticket_4").value) + 
+        parseInt(document.getElementById("ticket_5").value) + parseInt(document.getElementById("ticket_6").value) + 
+        parseInt(document.getElementById("ticket_7").value);
+
+        if (total_billet == 0){
+        document.getElementById("submit").disabled = true;
+      }
+      document.getElementById("nom").value = document.getElementById("rdv").value;
+      document.getElementById("prenom").value = document.getElementById("film").value;
+    }
+  </script>
+  <%}); %>
 
 
 <% }else {%>
