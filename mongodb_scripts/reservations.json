@@ -1,42 +1,4 @@
 [{
-  "_id": 10,
-  "titre": "Enfant (4-12)",
-  "prix": 6.95,
-  "desc": "preuve nécessaire"
-},{
-  "_id": 20,
-  "titre": "Adolescent (13-17)",
-  "prix": 9.95,
-  "desc": "preuve nécessaire"
-},{
-  "_id": 30,
-  "titre": "Jeunes Adultes (18-29)",
-  "prix": 14.95
-},{
-  "_id": 40,
-  "titre": "Adultes (30-64)",
-  "prix": 19.95
-},{
-  "_id": 50,
-  "titre": "Ainés (65+)",
-  "prix": 8.95,
-  "desc": "preuve nécessaire"
-},{
-  "_id": 60,
-  "titre": "Famille",
-  "prix": 39.95,
-  "desc": "2 adultes + 2 enfants (17 ans et moins) OU 1 adulte + 3 enfants (17 ans et moins) "
-},{
-  "_id": 70,
-  "titre": "Étudiant",
-  "prix": 9.95,
-  "desc": "preuve nécessaire"
-},{
-  "_id": 80,
-  "titre": "Membre",
-  "prix": 0,
-  "desc": "Carte de membre du musée nécessaire"
-},{
   "_id": {
     "$oid": "623a599961108c13e7b4148d"
   },
@@ -51,8 +13,13 @@
   "rdv_etoile": true,
   "film": true,
   "billets_id": [
-    30,
-    30
+    0,
+    0,
+    2,
+    0,
+    0,
+    0,
+    0
   ]
 },{
   "_id": {
@@ -69,7 +36,13 @@
   "rdv_etoile": false,
   "film": true,
   "billets_id": [
-    60
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
   ]
 },{
   "_id": {
@@ -86,8 +59,13 @@
   "rdv_etoile": false,
   "film": false,
   "billets_id": [
-    80,
-    50
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
   ]
 },{
   "_id": {
@@ -104,7 +82,13 @@
   "rdv_etoile": true,
   "film": true,
   "billets_id": [
-    70
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0
   ]
 },{
   "_id": {
@@ -121,8 +105,13 @@
   "rdv_etoile": false,
   "film": false,
   "billets_id": [
-    60,
-    40
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    1
   ]
 },{
   "_id": {
@@ -139,7 +128,12 @@
   "rdv_etoile": false,
   "film": true,
   "billets_id": [
-    10,
-    40
+    1,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0
   ]
 }]

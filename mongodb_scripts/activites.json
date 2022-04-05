@@ -1,8 +1,10 @@
 [{
-  "_id": 11,
+  "_id": {
+    "$oid": "624c6a338f293a379b509b30"
+  },
   "titre": "Yoga sous les étoiles",
   "date_debut": {
-    "$date": "2022-01-05T16:45:00Z"
+    "$date": "2022-06-05T16:45:00Z"
   },
   "duree": 40,
   "salle": "1",
@@ -10,10 +12,12 @@
   "particip_max": 45,
   "desc": "Séance de yoga sous les astres"
 },{
-  "_id": 22,
+  "_id": {
+    "$oid": "624c6a338f293a379b509b31"
+  },
   "titre": "Expérience symphonique",
   "date_debut": {
-    "$date": "2022-04-13T17:00:00Z"
+    "$date": "2022-07-13T17:00:00Z"
   },
   "duree": 30,
   "salle": "1",
@@ -21,10 +25,12 @@
   "particip_max": 35,
   "desc": "Découvrez les sons de l'espace avec vos jeunes enfants"
 },{
-  "_id": 33,
+  "_id": {
+    "$oid": "624c6a338f293a379b509b32"
+  },
   "titre": "Conférence avec Julie Payette",
   "date_debut": {
-    "$date": "2022-02-17T18:30:00Z"
+    "$date": "2022-06-17T18:30:00Z"
   },
   "duree": 50,
   "salle": "2",

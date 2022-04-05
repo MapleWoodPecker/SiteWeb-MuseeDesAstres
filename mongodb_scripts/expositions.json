@@ -1,11 +1,13 @@
 [{
-  "_id": 1,
+  "_id": {
+    "$oid": "624c655a1afcc44095962d5b"
+  },
   "titre": "La course spatiale",
   "date_debut": {
     "$date": "2022-01-12T00:00:00Z"
   },
   "date_fin": {
-    "$date": "2022-05-23T00:00:00Z"
+    "$date": "2022-06-23T00:00:00Z"
   },
   "duree": 110,
   "salle": "A",
@@ -13,7 +15,9 @@
   "particip_max": 25,
   "desc": "La course à l'innovation et l'exploration spatiale entre les États-Unis et l'URSS, et les enjeux inquiétants"
 },{
-  "_id": 2,
+  "_id": {
+    "$oid": "624c655a1afcc44095962d5c"
+  },
   "titre": "Destination Lune",
   "date_debut": {
     "$date": "2022-01-15T00:00:00Z"
@@ -27,13 +31,15 @@
   "particip_max": 25,
   "desc": "Le programme Apollo, du désastre du 1er, au succès du 11, et les découvertes de notre astre lunaire"
 },{
-  "_id": 3,
+  "_id": {
+    "$oid": "624c655a1afcc44095962d5d"
+  },
   "titre": "Mission sur Mars",
   "date_debut": {
     "$date": "2023-01-07T00:00:00Z"
   },
   "date_fin": {
-    "$date": "2023-05-30T00:00:00Z"
+    "$date": "2023-06-30T00:00:00Z"
   },
   "duree": 55,
   "salle": "C",
@@ -41,7 +47,9 @@
   "particip_max": 25,
   "desc": "La planète rouge, pleine de mystère, d'opportunités - peut-être le futur berceau de l'humanité?"
 },{
-  "_id": 4,
+  "_id": {
+    "$oid": "624c655a1afcc44095962d5e"
+  },
   "titre": "Les astéroides",
   "date_debut": {
     "$date": "2023-01-05T00:00:00Z"
@@ -55,13 +63,15 @@
   "particip_max": 25,
   "desc": "Objets géants flottants dans l'espace, pouvant pulvériser la terre - sommes-nous en danger?"
 },{
-  "_id": 5,
+  "_id": {
+    "$oid": "624c655a1afcc44095962d5f"
+  },
   "titre": "Film: La dimension du temps",
   "date_debut": {
     "$date": "2022-01-22T00:00:00Z"
   },
   "date_fin": {
-    "$date": "2022-05-31T00:00:00Z"
+    "$date": "2022-06-30T00:00:00Z"
   },
   "duree": 90,
   "salle": "CINE",
@@ -69,13 +79,15 @@
   "particip_max": 60,
   "desc": "Un long-métrage sur la 4ème dimension - le temps est-il une illusion?<br><i>Forfait film nécessaire</i>"
 },{
-  "_id": 6,
+  "_id": {
+    "$oid": "624c655a1afcc44095962d60"
+  },
   "titre": "Les constellations",
   "date_debut": {
     "$date": "2022-01-02T15:30:00Z"
   },
   "date_fin": {
-    "$date": "2022-05-31T00:00:00Z"
+    "$date": "2022-06-30T00:00:00Z"
   },
   "duree": 40,
   "salle": "E",
@@ -83,13 +95,15 @@
   "particip_max": 40,
   "desc": "Les constellations, de la Grèce antique à nos jours"
 },{
-  "_id": 7,
+  "_id": {
+    "$oid": "624c655a1afcc44095962d61"
+  },
   "titre": "Le fonctionnement des étoiles",
   "date_debut": {
     "$date": "2023-01-01T13:00:00Z"
   },
   "date_fin": {
-    "$date": "2023-05-15T00:00:00Z"
+    "$date": "2023-06-15T00:00:00Z"
   },
   "duree": 40,
   "salle": "C",
@@ -97,13 +111,15 @@
   "particip_max": 40,
   "desc": "La naissance, la vie, et la mort de nos étoiles"
 },{
-  "_id": 8,
+  "_id": {
+    "$oid": "624c655a1afcc44095962d62"
+  },
   "titre": "La station spatiale internationale",
   "date_debut": {
     "$date": "2022-01-08T12:30:00Z"
   },
   "date_fin": {
-    "$date": "2022-05-29T00:00:00Z"
+    "$date": "2022-06-29T00:00:00Z"
   },
   "duree": 110,
   "salle": "F",
