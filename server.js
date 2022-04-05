@@ -195,7 +195,15 @@ app.get('/experiences',async function (req,res) {
 
 app.get('/rdv_etoiles',async function (req,res) {
 
+	const sort = { date_debut: -1 };
+
+	const cursor = rdv_etoiles.find({}).sort(sort);
+
 	var result = [];
+
+	await cursor.forEach(element2 => {
+		result.push(element2);
+	});
 
     res.render('pages/activites/rdvetoiles',{
     	siteTitle : siteTitle,
