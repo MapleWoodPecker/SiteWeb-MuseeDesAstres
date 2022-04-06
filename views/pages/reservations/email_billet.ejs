@@ -1,12 +1,29 @@
 <% if (billet !=undefined) {%>
+
 <body>
-    <h1>Mr./Mme. <%= billet.nom%> <%= billet.prenom%></h1> <br>
-    <h2>email : <%= billet.email%></h2><br>
-    <h2>adresse : <%= billet.adresse%></h2><br>
-
-
-
+    <h2>Mr./Mme. <%= billet.nom%> <%= billet.prenom%></h2> 
+    <p>email : <%= billet.email%></p>
+    <p>adresse : <%= billet.adresse%></p>
+    <%if (billet.telephone > 0) {%>
+    <p>Telephone : <%= billet.telephone%></p>
+    <% } %>
+    <p>Vous avez reservé : <%if (billet.billets_id[0] > 0) {%><br> - <%= billet.billets_id[0]%> billet enfant<% } %>
+        <%if (billet.billets_id[1] > 0) {%><br> - <%= billet.billets_id[1]%> billets adolescent<% } %>
+        <%if (billet.billets_id[2] > 0) {%><br> - <%= billet.billets_id[2]%> billets jeune adulte<% } %>
+        <%if (billet.billets_id[3] > 0) {%><br> - <%= billet.billets_id[3]%> billets adulte<% } %>
+        <%if (billet.billets_id[4] > 0) {%><br> - <%= billet.billets_id[4]%> billets ainé<% } %>
+        <%if (billet.billets_id[5] > 0) {%><br> - <%= billet.billets_id[5]%> billets étudiant<% } %>
+        <%if (billet.billets_id[6] > 0) {%><br> - <%= billet.billets_id[6]%> billets famille<% } %>
+    </p>
+    <%if (billet.rdv_etoile) {%>
+        <p>Option <i>Rendez-vous sous les étoiles</i></p>
+    <% } %>
+    <%if (billet.film) {%>
+        <p>Option <i>Film</i></p>
+    <% } %>
+    <p>pour le <%= billet.datetime%>.</p> 
 </body>
+
 <% }else {%>
     <section class="py-5 text-center container">
         <div class="row py-lg-5">

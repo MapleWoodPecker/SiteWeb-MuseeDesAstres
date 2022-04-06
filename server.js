@@ -301,9 +301,9 @@ app.post('/billet',async function (req,res) {
 		}
 	});
 
-	const sort = {$natural:-1};
+	var sort = {$natural:-1};
 
-	const cursor = reservations.find({}).sort(sort);
+	var cursor = reservations.find({}).sort(sort);
 
 	var billet_temp = [];
 
@@ -311,7 +311,7 @@ app.post('/billet',async function (req,res) {
 		billet_temp.push(element);
 	});
 	  
-	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp[0] }, function (err, data) {
+	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp[0] },async function (err, data) {
 		if (err) {
 			console.log(err);
 		} else {
