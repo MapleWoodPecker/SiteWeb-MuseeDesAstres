@@ -14,6 +14,7 @@ const routeur = express.Router();
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 const { nextTick } = require('process');
+const ejs = require("ejs");
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -289,31 +290,51 @@ app.post('/billet',async function (req,res) {
 		}
 	);
 
+	console.log(req.body.email);
+
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
+		secure: true,
 		auth: {
 		  user: 'museedesastres@gmail.com',
 		  pass: 'Amal1234'
 		}
 	});
-	  
-	console.log(req.body.email);
 
-	var mailOptions = {
-		from: 'museedesastres@gmail.com',
-		to: req.body.email,
-		subject: 'Confirmation de vos billets',
-		html: '<h1>Vos billets</h1><p>billets</p>'
-	};
+	const sort = {$natural:-1};
+
+	const cursor = reservations.find({}).sort(sort);
+
+	var billet_temp = [];
+
+	await cursor.forEach(element => {
+		billet_temp.push(element);
+	});
 	  
-	transporter.sendMail(mailOptions, function(error, info){
-		if (error) {
-		  res.end('error');
+	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp[0] }, function (err, data) {
+		if (err) {
+			console.log(err);
 		} else {
-		  console.log('Email sent: ' + info.response);
-		  res.redirect('/billet');
-		  next();
+			var mailOptions = {
+				from: 'museedesastres@gmail.com',
+				to: req.body.email,
+				subject: 'Vos billets DesAstres',
+				html: data
+			};
+
+			console.log("html data ======================>", mailOptions.html);
+
+			transporter.sendMail(mailOptions, function (err, info) {
+				if (err) {
+					res.end('error');
+				} else {
+					console.log('Message sent: ' + info.response);
+					res.redirect('/billet');
+		  			next();
+				}
+			});
 		}
+		
 	});
 	
 });
