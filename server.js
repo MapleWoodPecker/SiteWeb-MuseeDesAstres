@@ -329,8 +329,7 @@ app.post('/billet',async function (req,res) {
 					res.end('error');
 				} else {
 					console.log('Message sent: ' + info.response);
-					res.redirect('/billet');
-		  			next();
+					return res.redirect('/billet');
 				}
 			});
 		}
