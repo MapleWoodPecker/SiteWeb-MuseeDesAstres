@@ -15,6 +15,7 @@ const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 const { nextTick } = require('process');
 const ejs = require("ejs");
+var qrcode = require('qrcode')
 
 /**
 * import all related Javascript and css files to inject in our app
