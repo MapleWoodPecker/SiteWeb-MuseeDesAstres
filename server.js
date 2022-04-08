@@ -371,7 +371,7 @@ app.get('/billet',async function (req,res) {
 
 const generateQR = async text => {
 	try {
-	  return await qrcode.toDataURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+	  return await qrcode.toDataURL(billet_temp[0]._id.toString());
 	} catch (err) {
 	  console.error(err)
 	}
