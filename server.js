@@ -199,7 +199,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 
 	const sort = { date_debut: -1 };
 
-	const cursor = rdv_etoiles.find({}).sort(sort);
+	const cursor = rdvetoiles.find({}).sort(sort);
 
 	var result = [];
 
