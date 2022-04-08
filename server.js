@@ -86,7 +86,6 @@ async function run() {
 // Declaration des collections et execution de la connexion
 
 var activites;
-var comptes;
 var itemsboutique;
 var rdvetoiles;
 var reservations;
@@ -283,7 +282,7 @@ app.post('/billet',async function (req,res) {
 		prenom:req.body.prenom,
 		email:req.body.email,
 		adresse:req.body.adresse,
-		telephone:parseInt(req.body.telephone),
+		telephone:req.body.telephone,
 		datetime:new Date(req.body.datetime),
 		rdv_etoile:(req.body.rdv == "true"),
 		film:(req.body.film == "true"),
