@@ -8,14 +8,15 @@ var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 var nodemailer = require('nodemailer');
-const fetch = import('node-fetch');
+const fetch = require('node-fetch'); //npm install node-fetch@2
 const session = require('express-session');
 const routeur = express.Router();
 const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 const { nextTick } = require('process');
 const ejs = require("ejs");
-var qrcode = require('qrcode')
+var qrcode = require('qrcode');
+const { url } = require('inspector');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -85,7 +86,6 @@ async function run() {
 // Declaration des collections et execution de la connexion
 
 var activites;
-var comptes;
 var itemsboutique;
 var rdvetoiles;
 var reservations;
@@ -277,21 +277,21 @@ app.post('/billet',async function (req,res) {
 		billets.push(parseInt(element));
 	});
 
-	reservations.insertOne(
-		{
-			nom:req.body.nom,
-			prenom:req.body.prenom,
-			email:req.body.email,
-			adresse:req.body.adresse,
-			telephone:parseInt(req.body.telephone),
-			datetime:new Date(req.body.datetime),
-			rdv_etoile:(req.body.rdv == "true"),
-			film:(req.body.film == "true"),
-			billets_id:billets
-		}
-	);
+	var billet_temp = {
+		nom:req.body.nom,
+		prenom:req.body.prenom,
+		email:req.body.email,
+		adresse:req.body.adresse,
+		telephone:req.body.telephone,
+		datetime:new Date(req.body.datetime),
+		rdv_etoile:(req.body.rdv == "true"),
+		film:(req.body.film == "true"),
+		billets_id:billets
+	}
 
-	console.log(req.body.email);
+	reservations.insertOne(billet_temp);
+
+	console.log(billet_temp.email);
 
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
@@ -302,17 +302,7 @@ app.post('/billet',async function (req,res) {
 		}
 	});
 
-	var sort = {$natural:-1};
-
-	var cursor = reservations.find({}).sort(sort);
-
-	var billet_temp = [];
-
-	await cursor.forEach(element => {
-		billet_temp.push(element);
-	});
-	  
-	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp[0] },async function (err, data) {
+	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp },async function (err, data) {
 		if (err) {
 			console.log(err);
 		} else {
@@ -323,16 +313,16 @@ app.post('/billet',async function (req,res) {
 				html: data
 			};
 
-			console.log("html data ======================>", mailOptions.html);
-
 			transporter.sendMail(mailOptions, function (err, info) {
 				if (err) {
 					res.end('error');
 				} else {
 					console.log('Message sent: ' + info.response);
-					return res.redirect('/billet');
+					res.get("/billet");
 				}
+
 			});
+
 		}
 		
 	});
@@ -340,26 +330,70 @@ app.post('/billet',async function (req,res) {
 });
 
 app.get('/billet',async function (req,res) {
-
-	const sort = {$natural:-1};
-
-	const cursor = reservations.find({}).sort(sort);
-
-	var billet_temp = [];
-
-	await cursor.forEach(element => {
-		billet_temp.push(element);
-	});
-
-	console.log(billet_temp[0]);
-
-	res.render('pages/reservations/email_billet',{
-		siteTitle : siteTitle,
-		pageTitle : "billet",
-		billet : billet_temp[0]
-	});
+	res.redirect('/connexion');
+	res.end();
 });
 
+app.get('/billet/:id',async function (req,res) {
+
+	// If the user is loggedin
+	if (req.session.loggedin) {
+
+		var id = req.params.id;
+		console.log("requete pour le billet : " + id);
+
+		const cursor = await reservations.find({});
+
+		var billet_temp;
+	
+		await cursor.forEach(element => {
+			if	(element._id.toString() === id) {
+				billet_temp = element; 
+			}
+		});
+
+		if (billet_temp == undefined){
+			console.log("id inexistant");
+			res.redirect('/admin');
+			res.end();
+		} else {
+
+			var url = await generateQR(billet_temp._id.toString());
+
+			var result = {
+				nom:billet_temp.nom,
+				prenom:billet_temp.prenom,
+				email:billet_temp.email,
+				adresse:billet_temp.adresse,
+				telephone:billet_temp.telephone,
+				datetime:billet_temp.datetime,
+				rdv_etoile:billet_temp.rdv_etoile,
+				film:billet_temp.film,
+				billets_id:billet_temp.billets_id,
+				qr : url
+			};
+
+			res.render('pages/reservations/email_billet',{
+				siteTitle : siteTitle,
+				pageTitle : "billet",
+				billet : result
+			});
+		}
+
+	} else {
+		res.redirect('/connexion');
+	}
+	res.end();
+	
+});
+
+const generateQR = async text => {
+	try {
+	  return await qrcode.toDataURL(text);
+	} catch (err) {
+	  console.error(err)
+	}
+}
 
 /**
  * Boutique
@@ -461,7 +495,13 @@ app.get('/admin',async function (req,res) {
 	// If the user is loggedin
 	if (req.session.loggedin) {
 		
+		const cursor = reservations.find({});
+
 		var result = [];
+
+		await cursor.forEach(element => {
+			result.push(element);
+		});
 
 		res.render('pages/divers/admin',{
 			siteTitle : siteTitle,

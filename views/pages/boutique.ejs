@@ -37,34 +37,51 @@
 }
 
 </style>
-<div class="containershop">
-    <!-- Fitre-->
-    
-    <div class="px-4 mt-5 nextto filtre">
 
+
+<div class="containershop">
+
+
+   
+    <div class="px-4 mt-5 nextto filtre">
+<!--add combobox with : price desc / price asc / a-z / (z-a ?)     
+    add logo cart -->
+
+    <div class = "combo">
+        <select name="sort" id="sort">
+            <option value="A-Z" >A-Z</option>
+            <option value="Prix desc">Prix desc</option>
+            <option value="Prix asc">Prix asc</option>
+        </select>
+    </div>
+
+     <!--Fitre-->
     <h5>Filtre</h5>
-    <ul>
-       
-        <li>
-            <input class="input_" id="vetement" type="checkbox">
-            <label class="input" for="vetement">Vêtement</label>
-        </li>
-        <li>
-            <input class="input" id="maquette" type="checkbox">
-            <label class="input" for="maquette">Maquette</label>
-        </li>
-        <li>
-            <input class="input" id="maquette" type="checkbox">
-            <label class="input" for="maquette">Souvenir</label>
-        </li>
-        <li>
-            <input class="input" id="educatif" type="checkbox">
-            <label class="input" for="educatif">Educatif</label>
-        </li>
-        <li>
-            <input type="submit" form="nameform" value="Filtrer" class="btn btn-primary my-2" style="background-color: #182030;"></input>
-        </li>
-    </ul> 
+    <form action="/boutique" method="get">
+
+        <ul>
+        
+            <li>
+                <input checked class="input_" id="vetement" type="checkbox" onclick ="loadDoc ('habit')">
+                <label class="input" for="vetement">Vêtement</label>
+            </li>
+            <li>
+                <input checked class="input" id="maquette" type="checkbox" onclick ="loadDoc ('miniature')">
+                <label class="input" for="maquette">Maquette</label>
+            </li>
+            <li>
+                <input checked class="input" id="souvenir" type="checkbox" onclick ="loadDoc ('goodie')">
+                <label class="input" for="souvenir">Souvenir</label>
+            </li>
+            <li>
+                <input checked class="input" id="educatif" type="checkbox" onclick ="loadDoc ('education')">
+                <label class="input" for="educatif">Educatif</label>
+            </li>
+            <li>
+                <input type="button" value="Effacer Filtre" class="btn btn-primary my-2" style="background-color: #182030;" onclick ="loadDoc ('default')"></input>
+            </li>
+        </ul> 
+    </form>
 </div>
 
 <% if (items !=undefined && items.length>0) {%>
@@ -73,7 +90,7 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <% items.forEach(function(item,index){ %>
-                <div class="col mb-5">
+                <div  class="col mb-5 <%= item.tag%>">
                     <div class="card h-100">
                         <!-- Product image-->
                         <img class="card-img-top" src="<%= item.image%>" alt="..." />
@@ -98,9 +115,9 @@
             <%}); %>
         </div>
     </div>
-</section>
+    </section>
 
-<% }else {%>
+    <% }else {%>
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
@@ -113,3 +130,10 @@
     <% } %>
 </div>
 <%- include ('../partials/footer') %>
+
+<script>
+   function loadDoc(){
+    
+   }
+
+</script>

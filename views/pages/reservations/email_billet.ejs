@@ -1,3 +1,7 @@
+<style>
+    
+</style>
+
 <% if (billet !=undefined) {%>
 
 <body>
@@ -22,6 +26,8 @@
         <p>Option <i>Film</i></p>
     <% } %>
     <p>pour le <%= billet.datetime%>.</p> 
+
+    <img src="<%= billet.qr%>" alt="">
 
 </body>
 

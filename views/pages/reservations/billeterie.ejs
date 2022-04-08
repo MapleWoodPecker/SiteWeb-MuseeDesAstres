@@ -27,7 +27,7 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
   $(document).ready(function () {    
-    var nom,prenom,email,adresse,telephone,datetime,rdv,film,billets_id = [];
+    var nom,prenom,email,adresse,telephone,datetime,rdv,film,billets_id;
 
     $("#submit").click(function () {
 
@@ -40,6 +40,7 @@
       rdv = $("#rdv").is(':checked');
       film = $("#film").is(':checked');
 
+      billets_id = [];
       billets_id.push($("#ticket_1").val());
       billets_id.push($("#ticket_2").val());
       billets_id.push($("#ticket_3").val());
@@ -71,8 +72,9 @@
         }
         
       }
-    });
 
+    });
+    
   });
   var total_billet = 0;
 </script>

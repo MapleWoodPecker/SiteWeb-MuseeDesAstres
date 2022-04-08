@@ -1,7 +1,7 @@
 <%- include ('../../partials/header') %>
 
 <style>
-    input, select, a, label{
+    input, select, a, label, p{
         display: block;
         margin-left: auto;
         margin-right: auto;
@@ -9,6 +9,9 @@
     }
     input, label{
         display:none;
+    }
+    a{
+        color: black;
     }
 </style>
 
@@ -67,7 +70,6 @@
     <input type="text" placeholder="description" id="desc">
     <input type="text" placeholder="tags" id="tags">
     <input type="button" value="Enregistrer" id="submit">
-    <a id="centre" href="/logout">logout</a>
 
     <script>
         document.getElementById("type").onclick = function() {
@@ -117,6 +119,17 @@
             document.getElementById("submit").style.display = "block";
         }
     </script>
+
+    <br>
+    <div>
+        <p>Reservations :</p>
+        <%items.forEach(function(item,index){%>
+            <a href="/billet/<%= item._id.toString()%>"><%= item.prenom%> <%= item.nom%></a>
+        <%}); %>
+    </div>
+
+    <br> <br> <br>
+    <a id="centre" href="/logout">logout</a>
 </body>
 
 <%- include ('../../partials/footer') %>
