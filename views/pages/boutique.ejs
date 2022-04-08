@@ -132,45 +132,46 @@
 <%- include ('../partials/footer') %>
 
 <script>
-    //En utilisant AJAX avec FETCH()
-    async function loadDoc(par){
-        console.log('boutique/' + par);
-        const res = await fetch('boutique/' + par);
-        
-        // Storing data in form of JSON
-        var data = await res.json
-        console.log(data); //la console du browser
-
-        show (data);       
-    }
-
-    function show (data){
-        let tab
-        for (let r of Object.keys(data)) {
-            var o = data[r];
-            tab += `<div class="col mb-5">
-                    <div class="card h-100">
-                        
-                        <img class="card-img-top" src="${o.image}" alt="..." />
-                       
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                
-                                <h5 class="fw-bolder " style="line-height: 1em;">${o.titre}</h5>
-                                
-                                    <p>${o.desc}</p>
-                               
-                                <p>$ ${o.prix}</p>
-                                
-                            </div>
-                        </div>
-                      
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-primary my-2" style="background-color: #182030;" href="#">Ajouter au panier</a></div>
-                        </div>
-                    </div>
-                </div>`;
-            }
-    }
-
-</script>
+    $(document).ready(function () {    
+      var nom,prenom,email,adresse,telephone,datetime,rdv,film,billets_id = [];
+  
+      $("#submit").click(function () {
+  
+        nom = $("#nom").val();
+        prenom = $("#prenom").val();
+        email = $("#email").val();
+        adresse = $("#adresse").val();
+        telephone = $("#telephone").val();
+        datetime = $("#datetime").val();
+        rdv = $("#rdv").is(':checked');
+        film = $("#film").is(':checked');
+  
+  
+        if (email.includes("@") && email.includes(".") && email.length > 5 && nom.length > 0 && prenom.length > 0 && adresse.length > 0 && datetime.length > 0) {
+          var isBillet = false;
+  
+          billets_id.forEach(tarif => {
+            if (parseInt(tarif) > 0)
+              isBillet = true;
+          });
+  
+          if (isBillet) {
+            $.post("/billet", { nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id }, 
+            function (data) {
+              if (data === 'done') {
+                window.location.href = "/";
+              }
+              if (data === 'error') {
+                alert('Erreur inconnue');
+              }
+            });
+          } else {
+            alert('Veuillez selectionner au moins un billet.');
+          }
+          
+        }
+      });
+  
+    });
+    var total_billet = 0;
+  </script>

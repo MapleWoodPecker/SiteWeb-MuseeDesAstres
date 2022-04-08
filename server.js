@@ -394,7 +394,7 @@ app.get('/boutique/*',async function (req,res) {
 		result.push(element);
 	});
 
-	var f = fetch(itemsboutique.find({}));
+	var f = fetch(cursor);
 
 	f.then (result => result.json ()) // type de réponse
 	f.then (data => console.log (data)); // la console du terminal
