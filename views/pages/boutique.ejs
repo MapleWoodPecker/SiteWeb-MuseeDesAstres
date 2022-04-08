@@ -62,23 +62,23 @@
         <ul>
         
             <li>
-                <input class="input_" id="vetement" type="checkbox" onclick ="loadDoc ('habit')">
+                <input checked class="input_" id="vetement" type="checkbox" onclick ="loadDoc ('habit')">
                 <label class="input" for="vetement">Vêtement</label>
             </li>
             <li>
-                <input class="input" id="maquette" type="checkbox" onclick ="loadDoc ('miniature')">
+                <input checked class="input" id="maquette" type="checkbox" onclick ="loadDoc ('miniature')">
                 <label class="input" for="maquette">Maquette</label>
             </li>
             <li>
-                <input class="input" id="souvenir" type="checkbox" onclick ="loadDoc ('goodie')">
+                <input checked class="input" id="souvenir" type="checkbox" onclick ="loadDoc ('goodie')">
                 <label class="input" for="souvenir">Souvenir</label>
             </li>
             <li>
-                <input class="input" id="educatif" type="checkbox" onclick ="loadDoc ('education')">
+                <input checked class="input" id="educatif" type="checkbox" onclick ="loadDoc ('education')">
                 <label class="input" for="educatif">Educatif</label>
             </li>
             <li>
-                <input type="submit" value="Effacer Filtre" class="btn btn-primary my-2" style="background-color: #182030;"></input>
+                <input type="button" value="Effacer Filtre" class="btn btn-primary my-2" style="background-color: #182030;" onclick ="loadDoc ('default')"></input>
             </li>
         </ul> 
     </form>
@@ -90,7 +90,7 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <% items.forEach(function(item,index){ %>
-                <div class="col mb-5">
+                <div  class="col mb-5 <%= item.tag%>">
                     <div class="card h-100">
                         <!-- Product image-->
                         <img class="card-img-top" src="<%= item.image%>" alt="..." />
@@ -132,46 +132,8 @@
 <%- include ('../partials/footer') %>
 
 <script>
-    $(document).ready(function () {    
-      var nom,prenom,email,adresse,telephone,datetime,rdv,film,billets_id = [];
-  
-      $("#submit").click(function () {
-  
-        nom = $("#nom").val();
-        prenom = $("#prenom").val();
-        email = $("#email").val();
-        adresse = $("#adresse").val();
-        telephone = $("#telephone").val();
-        datetime = $("#datetime").val();
-        rdv = $("#rdv").is(':checked');
-        film = $("#film").is(':checked');
-  
-  
-        if (email.includes("@") && email.includes(".") && email.length > 5 && nom.length > 0 && prenom.length > 0 && adresse.length > 0 && datetime.length > 0) {
-          var isBillet = false;
-  
-          billets_id.forEach(tarif => {
-            if (parseInt(tarif) > 0)
-              isBillet = true;
-          });
-  
-          if (isBillet) {
-            $.post("/billet", { nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id }, 
-            function (data) {
-              if (data === 'done') {
-                window.location.href = "/";
-              }
-              if (data === 'error') {
-                alert('Erreur inconnue');
-              }
-            });
-          } else {
-            alert('Veuillez selectionner au moins un billet.');
-          }
-          
-        }
-      });
-  
-    });
-    var total_billet = 0;
-  </script>
+   function loadDoc(){
+    
+   }
+
+</script>

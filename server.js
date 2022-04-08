@@ -420,21 +420,6 @@ app.get('/boutique',async function (req,res) {
 	});
 });
 
-app.get('/boutique/*',async function (req,res) {
-	//console.log (itemsboutique.find({}));
-	var result = [];
-	const cursor = itemsboutique.find({});
-
-	await cursor.forEach(element => {
-		result.push(element);
-	});
-
-	var f = fetch(cursor);
-
-	f.then (result => result.json ()) // type de réponse
-	f.then (data => console.log (data)); // la console du terminal
-});
-
 /**
  * Connexion
 */
