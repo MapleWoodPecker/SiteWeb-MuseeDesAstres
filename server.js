@@ -15,7 +15,8 @@ const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 const { nextTick } = require('process');
 const ejs = require("ejs");
-var qrcode = require('qrcode')
+var qrcode = require('qrcode');
+const { url } = require('inspector');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -277,21 +278,21 @@ app.post('/billet',async function (req,res) {
 		billets.push(parseInt(element));
 	});
 
-	reservations.insertOne(
-		{
-			nom:req.body.nom,
-			prenom:req.body.prenom,
-			email:req.body.email,
-			adresse:req.body.adresse,
-			telephone:parseInt(req.body.telephone),
-			datetime:new Date(req.body.datetime),
-			rdv_etoile:(req.body.rdv == "true"),
-			film:(req.body.film == "true"),
-			billets_id:billets
-		}
-	);
+	var billet_temp = {
+		nom:req.body.nom,
+		prenom:req.body.prenom,
+		email:req.body.email,
+		adresse:req.body.adresse,
+		telephone:parseInt(req.body.telephone),
+		datetime:new Date(req.body.datetime),
+		rdv_etoile:(req.body.rdv == "true"),
+		film:(req.body.film == "true"),
+		billets_id:billets
+	}
 
-	console.log(req.body.email);
+	reservations.insertOne(billet_temp);
+
+	console.log(billet_temp.email);
 
 	var transporter = nodemailer.createTransport({
 		service: 'gmail',
@@ -302,17 +303,7 @@ app.post('/billet',async function (req,res) {
 		}
 	});
 
-	var sort = {$natural:-1};
-
-	var cursor = reservations.find({}).sort(sort);
-
-	var billet_temp = [];
-
-	await cursor.forEach(element => {
-		billet_temp.push(element);
-	});
-	  
-	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp[0] },async function (err, data) {
+	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp },async function (err, data) {
 		if (err) {
 			console.log(err);
 		} else {
@@ -323,16 +314,16 @@ app.post('/billet',async function (req,res) {
 				html: data
 			};
 
-			console.log("html data ======================>", mailOptions.html);
-
 			transporter.sendMail(mailOptions, function (err, info) {
 				if (err) {
 					res.end('error');
 				} else {
 					console.log('Message sent: ' + info.response);
-					return res.redirect('/billet');
+					res.get("/billet");
 				}
+
 			});
+
 		}
 		
 	});
@@ -351,15 +342,40 @@ app.get('/billet',async function (req,res) {
 		billet_temp.push(element);
 	});
 
+	var url;
+
+	url = await generateQR(billet_temp[0]._id.toString());
+
+	var result = {
+		nom:billet_temp[0].nom,
+		prenom:billet_temp[0].prenom,
+		email:billet_temp[0].email,
+		adresse:billet_temp[0].adresse,
+		telephone:billet_temp[0].telephone,
+		datetime:billet_temp[0].datetime,
+		rdv_etoile:billet_temp[0].rdv_etoile,
+		film:billet_temp[0].film,
+		billets_id:billet_temp[0].billets_id,
+		qr : url
+		};
+
 	console.log(billet_temp[0]);
+	console.log(result);
 
 	res.render('pages/reservations/email_billet',{
 		siteTitle : siteTitle,
 		pageTitle : "billet",
-		billet : billet_temp[0]
+		billet : result
 	});
 });
 
+const generateQR = async text => {
+	try {
+	  return await qrcode.toDataURL("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+	} catch (err) {
+	  console.error(err)
+	}
+}
 
 /**
  * Boutique
