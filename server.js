@@ -371,7 +371,7 @@ app.get('/billet',async function (req,res) {
 
 const generateQR = async text => {
 	try {
-	  return await qrcode.toDataURL(billet_temp[0]._id.toString());
+	  return await qrcode.toDataURL(text);
 	} catch (err) {
 	  console.error(err)
 	}
