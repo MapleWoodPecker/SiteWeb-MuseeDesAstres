@@ -8,7 +8,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var dateFormat = require('dateformat');
 var nodemailer = require('nodemailer');
-const fetch = import('node-fetch');
+const fetch = require('node-fetch'); //npm install node-fetch@2
 const session = require('express-session');
 const routeur = express.Router();
 const MongoClient = require("mongodb").MongoClient;
@@ -200,7 +200,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 
 	const sort = { date_debut: -1 };
 
-	const cursor = rdv_etoiles.find({}).sort(sort);
+	const cursor = rdvetoiles.find({}).sort(sort);
 
 	var result = [];
 
@@ -399,6 +399,21 @@ app.get('/boutique',async function (req,res) {
     	pageTitle : "bout",
     	items : result
 	});
+});
+
+app.get('/boutique/*',async function (req,res) {
+	//console.log (itemsboutique.find({}));
+	var result = [];
+	const cursor = itemsboutique.find({});
+
+	await cursor.forEach(element => {
+		result.push(element);
+	});
+
+	var f = fetch(itemsboutique.find({}));
+
+	f.then (result => result.json ()) // type de réponse
+	f.then (data => console.log (data)); // la console du terminal
 });
 
 /**
