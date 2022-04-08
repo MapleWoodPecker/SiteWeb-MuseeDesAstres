@@ -331,42 +331,61 @@ app.post('/billet',async function (req,res) {
 });
 
 app.get('/billet',async function (req,res) {
+	res.redirect('/connexion');
+	res.end();
+});
 
-	const sort = {$natural:-1};
+app.get('/billet/:id',async function (req,res) {
 
-	const cursor = reservations.find({}).sort(sort);
+	// If the user is loggedin
+	if (req.session.loggedin) {
 
-	var billet_temp = [];
+		var id = req.params.id;
+		console.log("requete pour le billet : " + id);
 
-	await cursor.forEach(element => {
-		billet_temp.push(element);
-	});
+		const cursor = await reservations.find({});
 
-	var url;
+		var billet_temp;
+	
+		await cursor.forEach(element => {
+			if	(element._id.toString() === id) {
+				billet_temp = element; 
+			}
+		});
 
-	url = await generateQR(billet_temp[0]._id.toString());
+		if (billet_temp == undefined){
+			console.log("id inexistant");
+			res.redirect('/admin');
+			res.end();
+		} else {
 
-	var result = {
-		nom:billet_temp[0].nom,
-		prenom:billet_temp[0].prenom,
-		email:billet_temp[0].email,
-		adresse:billet_temp[0].adresse,
-		telephone:billet_temp[0].telephone,
-		datetime:billet_temp[0].datetime,
-		rdv_etoile:billet_temp[0].rdv_etoile,
-		film:billet_temp[0].film,
-		billets_id:billet_temp[0].billets_id,
-		qr : url
-		};
+			var url = await generateQR(billet_temp._id.toString());
 
-	console.log(billet_temp[0]);
-	console.log(result);
+			var result = {
+				nom:billet_temp.nom,
+				prenom:billet_temp.prenom,
+				email:billet_temp.email,
+				adresse:billet_temp.adresse,
+				telephone:billet_temp.telephone,
+				datetime:billet_temp.datetime,
+				rdv_etoile:billet_temp.rdv_etoile,
+				film:billet_temp.film,
+				billets_id:billet_temp.billets_id,
+				qr : url
+			};
 
-	res.render('pages/reservations/email_billet',{
-		siteTitle : siteTitle,
-		pageTitle : "billet",
-		billet : result
-	});
+			res.render('pages/reservations/email_billet',{
+				siteTitle : siteTitle,
+				pageTitle : "billet",
+				billet : result
+			});
+		}
+
+	} else {
+		res.redirect('/connexion');
+	}
+	res.end();
+	
 });
 
 const generateQR = async text => {
@@ -492,7 +511,13 @@ app.get('/admin',async function (req,res) {
 	// If the user is loggedin
 	if (req.session.loggedin) {
 		
+		const cursor = reservations.find({});
+
 		var result = [];
+
+		await cursor.forEach(element => {
+			result.push(element);
+		});
 
 		res.render('pages/divers/admin',{
 			siteTitle : siteTitle,
