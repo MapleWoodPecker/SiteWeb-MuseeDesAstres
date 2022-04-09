@@ -38,27 +38,6 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-
-
-
-.navbar-brand{
-    padding-left: 5%;
-    position: absolute;
-    left: 0;
-    text-align: left;
-    margin-right: auto;
-    margin-left: 0;
-}
-
-
-
-.cart{
-    padding-right: 5%;
-    position: absolute;
-    right: 0;
-    text-align: right;
-}
-
 body{
     padding-bottom: 10%;
 }
