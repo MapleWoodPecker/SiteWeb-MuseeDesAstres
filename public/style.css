@@ -1,45 +1,12 @@
-/*navbar brand*/
-.navbar-brand{
-    padding-left: 5%;
-    position: absolute;
-    left: 0;
-    text-align: left;
-    margin:0 auto;
-}
-
-body{
-    padding-bottom: 10%;
-}
-
-/*images in navbar brand*/
-.navbar-brand > img{
-    width:210px;
-}
 
 /*navbar menu*/
 .navbar {
-    width: 100%;
-    height:fit-content;
     background-color: #182030!important;
-    padding-bottom: 20px;
-}
 
-#movie-container{
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-    text-decoration: none;
-}
-
-/*Menu text*/
-.container-header{
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .navbar-nav > li > a 
 {
-    padding-top:33%;
     font-size: 130%;
     background: transparent;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -52,7 +19,9 @@ body{
 {
     color:#9cabc9!important;
 }
- 
+
+
+
 /* Dropdown menu*/
 .navbar-nav > li > div > a{
     font-size: 100%;
@@ -67,6 +36,39 @@ body{
     color: #182030;
     background-color:#9cabc9;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+
+
+
+.navbar-brand{
+    padding-left: 5%;
+    position: absolute;
+    left: 0;
+    text-align: left;
+    margin-right: auto;
+    margin-left: 0;
+}
+
+
+
+.cart{
+    padding-right: 5%;
+    position: absolute;
+    right: 0;
+    text-align: right;
+}
+
+body{
+    padding-bottom: 10%;
+}
+
+
+#movie-container{
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    text-decoration: none;
 }
 
 .construction-container{
@@ -89,6 +91,10 @@ body{
     
 }
 
+.btn-outline-light{
+    width: 40px;
+}
+
 .retour-acceuil{
     margin-left: auto;
     margin-right: auto;
@@ -98,7 +104,8 @@ body{
 }
 
 .container-footer{
-    margin-bottom: -30px;
+    margin-top: -10px;
+    margin-bottom: -35px;
     height:auto;
 }
 
@@ -321,7 +328,7 @@ width: 500px;
 
 
 #affiche:hover .affiche-img{
-    -webkit-filter: brightness(70%);
+    -webkit-filter: brightness(80%);
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
