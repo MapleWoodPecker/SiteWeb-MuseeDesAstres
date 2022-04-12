@@ -419,6 +419,17 @@ app.get('/boutique',async function (req,res) {
 	});
 });
 
+app.get('/checkout',async function (req,res) {
+
+	var result = [];
+
+    res.render('pages/checkout',{
+    	siteTitle : siteTitle,
+    	pageTitle : "bout",
+    	items : result
+	});
+});
+
 /**
  * Connexion
 */
