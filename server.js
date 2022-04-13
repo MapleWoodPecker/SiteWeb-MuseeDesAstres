@@ -213,6 +213,7 @@ app.get('/rdv_etoiles',async function (req,res) {
     	items : result
     	
 	});
+	
 });
 
 /**
@@ -262,10 +263,17 @@ app.get('/billeterie',async function (req,res) {
 		results.push(element);
 	});
 
+	var ajrd = dateFormat(now, 'yyyy-mm-dd');
+	var date = (new Date().getDate()+7).toString();
+	var moisAnnee = dateFormat(now, 'yyyy-mm');
+	var semaine = moisAnnee + "-" + date;
+
 	res.render('pages/reservations/billeterie',{
 		siteTitle : siteTitle,
 		pageTitle : "billeterie",
-		items : results
+		items : results,
+		ajrd : ajrd,
+		semaine : semaine
 	});
 });
 

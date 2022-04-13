@@ -1,11 +1,8 @@
 <%- include ('../../partials/header') %>
 
-<!-- <style>
+<style>
   input, select, a, label, button{
       font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
-  input { 
-    text-align: center; 
   }
   select{
     width: 80px;
@@ -20,9 +17,15 @@
   table, thead, th, tr { 
     border-bottom: 1px solid lightgray; 
     padding: 5px;
+  } 
+  .form-check{
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
-  
-</style> -->
+  .bodyBillet{
+    margin-left: 5%;
+  }
+</style> 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
@@ -52,8 +55,8 @@
       if (email.includes("@") && email.includes(".") && email.length > 5 && nom.length > 0 && prenom.length > 0 && adresse.length > 0 && datetime.length > 0) {
         var isBillet = false;
 
-        billets_id.forEach(tarif => {
-          if (parseInt(tarif) > 0)
+        billets_id.forEach(billet => {
+          if (parseInt(billet) > 0)
             isBillet = true;
         });
 
@@ -79,13 +82,14 @@
   var total_billet = 0;
 </script>
 
+<div class="bodyBillet">
 <% if (items !=undefined && items.length>0) {%>
   <br/>
   <form style="margin-left: 20px; width: 50%;">
-    <input type="datetime-local" id="datetime" min="08:00:00" max="18:00:00" required>
+    <input class="date" type="date" id="datetime" min="<%= ajrd;%>" max="<%= semaine;%>" style="width:20%" required>
     <span class="validity"></span>
-    <hr>
 
+    <hr>
     <table>
       <tr>
         <th>
@@ -111,37 +115,54 @@
 
       <tr>
         <td>
-          <table style="width: 40%; margin: 10px;">
-            <tr>
-              <td><label for="rdv">rdv etoiles (+ 5 $ CA / personne)</label></td>
-              <td><input id="rdv" type="checkbox" name="rdv" unchecked></td>
-            </tr>
-
-            <tr>
-              <td><label for="film">film (+ 5 $ CA / personne)</label></td>
-              <td><input id="film" type="checkbox" name="film"></td>
-            </tr>            
-          </table>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="rdv">
+            <label class="form-check-label" for="rdv">
+              rdv etoiles (+ 5 $ CA / personne)
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="film">
+            <label class="form-check-label" for="film">
+              film (+ 5 $ CA / personne)
+            </label>
+          </div>
         </td>
       </tr>
       
     </table>
 
+    <br>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Prénom</label>
+      <input type="text" class="form-control" id="prenom" placeholder="Prénom" required>
+    </div>
     <hr>
-    <input type="text" size="50" placeholder="nom" id="nom" required> 
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="nom" placeholder="Nom" required>
+    </div>
     <hr>
-    <input type="text" size="50" placeholder="prenom" id="prenom" required>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+    </div>
     <hr>
-    <input type="email" size="50" placeholder="email" id="email" required> 
+    <div class="mb-3">
+      <label for="adresse" class="form-label">Adresse</label>
+      <input type="text" class="form-control" id="adresse" placeholder="Adresse" required>
+    </div>
     <hr>
-    <input type="text" size="50" placeholder="adresse" id="adresse" required> 
+    <div class="mb-3">
+      <label for="telephone" class="form-label">Telephone</label>
+      <input type="text" class="form-control" id="telephone" placeholder="Telephone" aria-describedby="tel" required>
+      <small id="tel" class="form-text" style="color: gray;">Optionnel</small>
+    </div>
     <hr>
-    <input type="tel" size="50" placeholder="telephone" id="telephone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"> 
-    <small>optionnel</small>
-    <hr>
-    <input type="submit" value="Reserver" id="submit" class="" disabled>
+    <input type="submit" value="Reserver" id="submit" class="btn btn-secondary my-2" disabled>
     <hr>
   </form>
+</div>
 
 
   <% items.forEach(function(item,index) { %>
