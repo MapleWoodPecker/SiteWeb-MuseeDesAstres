@@ -124,7 +124,7 @@
     <div>
         <p>Reservations :</p>
         <%items.forEach(function(item,index){%>
-            <a href="/billet/<%= item._id.toString()%>"><%= item.prenom%> <%= item.nom%></a>
+            <a href="/billet/<%= item._id.toString()%>" target="_blank"><%= item.prenom%> <%= item.nom%></a>
         <%}); %>
     </div>
 

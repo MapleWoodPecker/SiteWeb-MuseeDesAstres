@@ -310,10 +310,14 @@ app.post('/billet',async function (req,res) {
 		}
 	});
 
-	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp },async function (err, data) {
+	var url = await generateQR(billet_temp._id.toString());
+
+	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp, qr : url },async function (err, data) {
 		if (err) {
 			console.log(err);
 		} else {
+			console.log(data);
+
 			var mailOptions = {
 				from: 'museedesastres@gmail.com',
 				to: req.body.email,
@@ -352,39 +356,27 @@ app.get('/billet/:id',async function (req,res) {
 
 		const cursor = await reservations.find({});
 
-		var billet_temp;
+		var result;
 	
 		await cursor.forEach(element => {
 			if	(element._id.toString() === id) {
-				billet_temp = element; 
+				result = element; 
 			}
 		});
 
-		if (billet_temp == undefined){
+		if (result == undefined){
 			console.log("id inexistant");
 			res.redirect('/admin');
 			res.end();
 		} else {
 
-			var url = await generateQR(billet_temp._id.toString());
-
-			var result = {
-				nom:billet_temp.nom,
-				prenom:billet_temp.prenom,
-				email:billet_temp.email,
-				adresse:billet_temp.adresse,
-				telephone:billet_temp.telephone,
-				datetime:billet_temp.datetime,
-				rdv_etoile:billet_temp.rdv_etoile,
-				film:billet_temp.film,
-				billets_id:billet_temp.billets_id,
-				qr : url
-			};
+			var url = await generateQR(result._id.toString());
 
 			res.render('pages/reservations/email_billet',{
 				siteTitle : siteTitle,
 				pageTitle : "billet",
-				billet : result
+				billet : result,
+				qr : url
 			});
 		}
 
