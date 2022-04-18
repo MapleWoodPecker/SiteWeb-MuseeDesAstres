@@ -115,11 +115,28 @@ function compare( a, b ) {
 	return 0;
 }
 
+// client.connect((error , db) => {
+// 	if (error){
+// 		throw error;
+// 	}
+// 	const database = client.db('musee_desastres_db');
+// 	//Search query for deletion
+// 	var query = { nom : "" };
+	
+// 	//Accessing the collection
+// 	database.collection("reservations").deleteMany(query , (err , collection) => {
+// 		if(err) throw err;
+// 		console.log(collection.result.n + " Record(s) deleted successfully");
+// 		console.log(collection);
+// 		db.close();
+// 	});
+// });
+
 /*
 * Accueil
 */
 app.get('/',async function (req,res) {    
-		
+
 	// recuperer les info des tables expo et activites
 	const cur1 = expo.find();
 
