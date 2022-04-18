@@ -7,12 +7,12 @@
         margin-left: 5%;
         border-style: solid;
         text-align: center;
-        width: 45%;
+        width: max-content;
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         font-size: 20px;
         flex-wrap: wrap;
         ">
-        <div class="" width="50%" style="margin-left: 2%; margin-right: 2%;">
+        <div>
             <h2>Mr./Mme. <%= billet.prenom%> <%= billet.nom%></h2> 
             <p>Email : <%= billet.email%></p>
             <small>Adresse : <%= billet.adresse%></small>
@@ -36,7 +36,11 @@
             <p>pour le <%= billet.datetime.getDate() %> <%= months[billet.datetime.getMonth()] %> <%= billet.datetime.getFullYear() %>.</p>     
         </div>
 
-        <img width="40%" height="40%" style="align-self: center;" src="<%= qr%>" alt="QRCode">
+        <div style="align-self: center;">
+            <img  width="80%" src="<%= qr%>" alt="QRCode">
+            <small><%= billet._id %></small>
+        </div>
+        
     </div>
 </body>
 
