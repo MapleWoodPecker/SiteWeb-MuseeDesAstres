@@ -1,13 +1,28 @@
 <%- include ('../../partials/header') %>
+<script>
+    $(function () {
+    $('[data-toggle="popover"]').popover()
+    })
 
+    new Tether({
+    element: yellowBox,
+    target: greenBox,
+    attachment: 'top right',
+    targetAttachment: 'top left',
+    offset: '0 10px'
+    });
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
 
-<!--img src="/svg/floor_1.svg" alt="My Happy SVG" /-->
+<button style="margin-left:50px;margin-bottom: 75px" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus." data-offset="0 -25%">
+  Shifted 25%
+</button>
+
 <div class="plan">
-    <script>
-        $(document).ready(function () {
-                $('[data-toggle="popover"]').popover();
-            });
-    </script>
+   
 
 
     <div class="floor-1">
@@ -15,12 +30,9 @@
         <style>.cls-1{fill:#8dd2f0;}.cls-2{fill:#ecefc0;}.cls-3{fill:#d6e9d2;}.cls-4{fill:#e1c0dc;}.cls-10,.cls-11,.cls-5,.cls-7,.cls-8,.cls-9{fill:none;}.cls-10,.cls-11,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{stroke:#000;}.cls-10,.cls-5,.cls-6{stroke-width:15px;}.cls-7{stroke-width:10px;}.cls-8{stroke-width:14px;}.cls-9{stroke-width:2px;}.cls-10{stroke-linecap:square;}.cls-11{stroke-width:7px;}</style>
         <g id="Layer_2" data-name="Layer 2">
 
+            
 
-            <a href="#" data-toggle="popover" title="Dismissibles popover"
-                data-content="And here's some amazing content. It's very engaging. Right?" data-placement="bottom"  >
-                <polyline class="cls-1" points="7.5 55.16 482.8 55.16 486.3 218.06 498.5 223.56 497.6 865.57 5.7 861.87"/>
-            </a>
-
+            <polyline class="cls-1" points="7.5 55.16 482.8 55.16 486.3 218.06 498.5 223.56 497.6 865.57 5.7 861.87"/>
 
             <polyline class="cls-2" points="635.8 119.36 635.8 862.66 1450.2 862.66 1450.1 117.17 1288.9 74.47 1160.9 53.16 1156 7.07 930 9.16 929.8 46.97 922.9 55.97 757.8 83.47"/>
             <polyline class="cls-3" points="1603.1 53.06 2078.4 53.06 2078.4 863.16 1587.5 863.16 1586.1 218.06 1607.1 214.37"/>

@@ -1,6 +1,7 @@
 /*navbar menu*/
 .navbar {
     background-color: #182030!important;
+    overflow: hidden;
 }
 
 
@@ -83,7 +84,7 @@ body{
 
 .container-footer{
     margin-top: -10px;
-    margin-bottom: -35px;
+    margin-bottom: -5px;
     height:auto;
 }
 
@@ -209,16 +210,16 @@ h5{
 }
 
 #container-gallery {
-    height:350px; 
+    height:350px;
     position:relative; 
-    overflow:hidden;
+    overflow:hidden!important;
   }
   
 .photobanner {
     position:absolute; 
     top:0px; 
     left:0px; 
-    overflow:hidden; 
+    overflow:hidden!important; 
     white-space: nowrap;
     animation: bannermove 100s linear infinite;
 }
