@@ -33,3 +33,10 @@
     opacity: 100%;
     transition: all 0.2s ease-out;
 }
+
+
+.plan{
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
