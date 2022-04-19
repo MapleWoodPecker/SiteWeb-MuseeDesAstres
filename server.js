@@ -299,9 +299,14 @@ app.get('/billeterie',async function (req,res) {
 app.post('/billet',async function (req,res) {
 
 	billets = [];
+	var err;
 
 	req.body.billets_id.forEach(element => {
-		billets.push(parseInt(element));
+		if (parseInt(element) < 0) {
+			err = "Erreur petit malin";
+		} else {
+			billets.push(parseInt(element));
+		}
 	});
 
 	var billet_temp = {
@@ -337,7 +342,7 @@ app.post('/billet',async function (req,res) {
 	  	} else {
 
 			pdf.generatePdf({ content: data }, { }).then(pdfBuffer => {
-				console.log("PDF Buffer:-", pdfBuffer);
+				console.log("PDF generated");
 	  
 				var mailOptions = {
 				  from: 'museedesastres@gmail.com',
