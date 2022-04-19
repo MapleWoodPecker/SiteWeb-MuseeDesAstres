@@ -58,7 +58,7 @@
     "$date": "2023-06-14T00:00:00Z"
   },
   "duree": 45,
-  "salle": "D",
+  "salle": "A",
   "image": "images/expos/asteroid.png",
   "particip_max": 25,
   "desc": "Objets géants flottants dans l'espace, pouvant pulvériser la terre - sommes-nous en danger?"
@@ -114,7 +114,7 @@
   "_id": {
     "$oid": "624c655a1afcc44095962d62"
   },
-  "titre": "La station spatiale internationale",
+    "titre": "La station spatiale internationale",
   "date_debut": {
     "$date": "2022-01-08T12:30:00Z"
   },
@@ -122,7 +122,7 @@
     "$date": "2022-06-29T00:00:00Z"
   },
   "duree": 110,
-  "salle": "F",
+  "salle": "E",
   "image": "images/expos/iss.png",
   "particip_max": 30,
   "desc": "Visite de l'ISS virtuelle et quelques salles reproduites"

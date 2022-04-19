@@ -2,12 +2,12 @@
 * import all modules
 **/
 
-var express = require('express');
-var http = require('http');
-var app = express();
-var bodyParser = require('body-parser');
-var dateFormat = require('dateformat');
-var nodemailer = require('nodemailer');
+const express = require('express');
+const http = require('http');
+const app = express();
+const bodyParser = require('body-parser');
+const dateFormat = require('dateformat');
+const nodemailer = require('nodemailer');
 const fetch = require('node-fetch'); //npm install node-fetch@2
 const session = require('express-session');
 const routeur = express.Router();
@@ -15,8 +15,10 @@ const MongoClient = require("mongodb").MongoClient;
 const assert = require("assert");
 const { nextTick } = require('process');
 const ejs = require("ejs");
-var qrcode = require('qrcode');
+const pdf = require("html-pdf-node");
+const qrcode = require('qrcode');
 const { url } = require('inspector');
+const { pbkdf2 } = require('crypto');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -113,11 +115,28 @@ function compare( a, b ) {
 	return 0;
 }
 
+// client.connect((error , db) => {
+// 	if (error){
+// 		throw error;
+// 	}
+// 	const database = client.db('musee_desastres_db');
+// 	//Search query for deletion
+// 	var query = { nom : "" };
+	
+// 	//Accessing the collection
+// 	database.collection("reservations").deleteMany(query , (err , collection) => {
+// 		if(err) throw err;
+// 		console.log(collection.result.n + " Record(s) deleted successfully");
+// 		console.log(collection);
+// 		db.close();
+// 	});
+// });
+
 /*
 * Accueil
 */
 app.get('/',async function (req,res) {    
-		
+
 	// recuperer les info des tables expo et activites
 	const cur1 = expo.find();
 
@@ -310,35 +329,38 @@ app.post('/billet',async function (req,res) {
 		}
 	});
 
-	var url = await generateQR(billet_temp._id.toString());
-
-	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs", { billet : billet_temp, qr : url },async function (err, data) {
+	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs",
+	{ billet : billet_temp, qr : await generateQR(billet_temp._id.toString()) },
+	async function (err, data) {
 		if (err) {
 			console.log(err);
-		} else {
-			console.log(data);
+	  	} else {
 
-			var mailOptions = {
-				from: 'museedesastres@gmail.com',
-				to: req.body.email,
-				subject: 'Vos billets DesAstres',
-				html: data
-			};
-
-			transporter.sendMail(mailOptions, function (err, info) {
-				if (err) {
-					res.end('error');
-				} else {
-					console.log('Message sent: ' + info.response);
-					res.get("/billet");
-				}
-
-			});
-
-		}
-		
+			pdf.generatePdf({ content: data }, { }).then(pdfBuffer => {
+				console.log("PDF Buffer:-", pdfBuffer);
+	  
+				var mailOptions = {
+				  from: 'museedesastres@gmail.com',
+				  to: req.body.email,
+				  subject: 'Vos billets DesAstres',
+				  text: "Vos billets DesAstres",
+				  attachments:[{
+					  filename: 'billet.pdf',
+					  content: pdfBuffer,
+					  contentType: 'application/pdf'
+				    }]
+			    };
+		  
+			  	transporter.sendMail(mailOptions, function (err, info) {
+				  	if (err) {
+					  	res.end('error');
+				  	} else {
+					  	console.log('Message sent: ' + info.response);
+					}
+			  	});
+		  	});
+	  	}
 	});
-	
 });
 
 app.get('/billet',async function (req,res) {

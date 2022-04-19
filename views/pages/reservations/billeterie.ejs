@@ -1,9 +1,6 @@
 <%- include ('../../partials/header') %>
 
 <style>
-  input, select, a, label, button{
-      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  }
   select{
     width: 80px;
     margin: 10px;
@@ -18,17 +15,51 @@
     border-bottom: 1px solid lightgray; 
     padding: 5px;
   } 
+  label{
+    font-size: large;
+  }
   .form-check{
     margin-top: 15px;
     margin-bottom: 15px;
   }
   .bodyBillet{
     margin-left: 5%;
+    color: #182030;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    display: flex;
+  }
+  .form{
+    background-color: lightgray;
+    padding: 2% 2% 2% 2%;
+    margin-top: 2%;
+    }
+  .date{
+    border-color: #182030;
+    border-width: 3px;
+    font-weight: bold;
+  }
+  .select{
+    background-color: whitesmoke;
+    border-width: 5px;
+    border-style: hidden  hidden hidden solid;
+    border-color: #182030;
+    font-weight: bold;
+  }
+  .option{
+    border-color: #182030;
+    border-width: 3px;
+  }
+  .submit{
+    margin-left: 80%;
+    width: 20%;
+    font-size: large;
+    font-weight: bold;
   }
 </style> 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
+  
   $(document).ready(function () {    
     var nom,prenom,email,adresse,telephone,datetime,rdv,film,billets_id;
 
@@ -61,6 +92,24 @@
         });
 
         if (isBillet) {
+
+          var headers = {"Content-Type": "application/json","Access-Control-Origin": "*", "Expires": ""}
+
+          var data = {nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id}
+
+          fetch("/billet", {
+            method: "POST",
+            headers: headers,
+            body:  JSON.stringify(data)
+          })
+          .then(function(response){ 
+            return response.json(); 
+          })
+          .then(function(data){ 
+            console.log(data)
+          });
+
+          
           $.post("/billet", { nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id }, 
           function (data) {
             if (data === 'done') {
@@ -68,7 +117,7 @@
             }
             if (data === 'error') {
               alert('Erreur inconnue');
-            }
+            } 
           });
         } else {
           alert('Veuillez selectionner au moins un billet.');
@@ -84,8 +133,7 @@
 
 <div class="bodyBillet">
 <% if (items !=undefined && items.length>0) {%>
-  <br/>
-  <form style="margin-left: 20px; width: 50%;">
+  <form style="margin-left: 20px; width: 50%;" class="form">
     <input class="date" type="date" id="datetime" min="<%= ajrd;%>" max="<%= semaine;%>" style="width:20%" required>
     <span class="validity"></span>
 
@@ -100,15 +148,15 @@
       <% items.forEach(function(item,index) { %>
       <tr>
         <td>
-          <select id="ticket_<%= item._id%>" xml:id="ticket">
+          <select class="select" id="ticket_<%= item._id%>">
             <% for (var j = 0; j <= 20;  j++ ) { %>
             <option value="<%= j %>"><%= j %></option>
             <% } %>
           </select>
-          <%= item.titre%>
+          <label for="ticket_<%= item._id%>"><%= item.titre%></label>
         </td>
         <td style="text-align: right;">
-          <%= item.prix%> $ CA
+          <b> <%= item.prix%> $ CA</b>
         </td>
       </tr>
       <%}); %>
@@ -116,15 +164,15 @@
       <tr>
         <td>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="rdv">
+            <input class="form-check-input" type="checkbox" id="rdv" class="option">
             <label class="form-check-label" for="rdv">
-              rdv etoiles (+ 5 $ CA / personne)
+              <b> rdv etoiles </b> (+ 5 $ CA / personne)
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="film">
+            <input class="form-check-input" type="checkbox" id="film" class="option">
             <label class="form-check-label" for="film">
-              film (+ 5 $ CA / personne)
+              <b> film </b> (+ 5 $ CA / personne)
             </label>
           </div>
         </td>
@@ -159,9 +207,10 @@
       <small id="tel" class="form-text" style="color: gray;">Optionnel</small>
     </div>
     <hr>
-    <input type="submit" value="Reserver" id="submit" class="btn btn-secondary my-2" disabled>
+    <input type="submit" value="Reserver" id="submit" class="btn btn-secondary my-2 submit" disabled>
     <hr>
   </form>
+  <img style="display: flex; padding: 5%;" width="50%" src="/images/obs.png" alt="">
 </div>
 
 
