@@ -22,7 +22,7 @@
     "express-partials": "^0.3.0",
     "express-session": "^1.17.2",
     "html-pdf": "^3.0.1",
-    "html-pdf-node": "^1.0.7",
+    "html-pdf-node": "^1.0.8",
     "http": "^0.0.1-security",
     "jquery": "^3.5.1",
     "mangodb": "^1.0.0",
