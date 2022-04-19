@@ -7,7 +7,7 @@
     "$date": "2022-06-05T16:45:00Z"
   },
   "duree": 40,
-  "salle": "1",
+  "salle": "C",
   "image": "images/acti/yoga.png",
   "particip_max": 45,
   "desc": "Séance de yoga sous les astres"
@@ -20,7 +20,7 @@
     "$date": "2022-07-13T17:00:00Z"
   },
   "duree": 30,
-  "salle": "1",
+  "salle": "C",
   "image": "images/acti/sound.png",
   "particip_max": 35,
   "desc": "Découvrez les sons de l'espace avec vos jeunes enfants"
@@ -33,7 +33,7 @@
     "$date": "2022-06-17T18:30:00Z"
   },
   "duree": 50,
-  "salle": "2",
+  "salle": "A",
   "image": "images/acti/payette.png",
   "particip_max": 35,
   "desc": "Une conférence inédite sur l'expérience spatiale de Julie Payette"

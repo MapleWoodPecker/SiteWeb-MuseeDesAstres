@@ -1,8 +1,8 @@
-
 /*navbar menu*/
 .navbar {
     background-color: #182030!important;
 }
+
 
 .navbar-nav > li > a 
 {
@@ -307,6 +307,7 @@ width: 500px;
 
 #affiche:hover .affiche-img{
     -webkit-filter: brightness(80%);
+            filter: brightness(80%);
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -o-transition: all 1s ease;
