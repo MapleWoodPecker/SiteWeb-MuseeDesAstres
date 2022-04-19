@@ -39,11 +39,11 @@
 </style>
 
 
-<div class="containershop">
+<div class="containershop" >
 
 
    
-    <div class="px-4 mt-5 nextto filtre" style="margin-left: 0px !important;">
+    <div class="px-4 mt-5 nextto filtre" >
     
 
     <div class = "combo">
@@ -85,7 +85,7 @@
 
 <% if (items !=undefined && items.length>0) {%>
 <!-- Section-->
-<section class=" nextto">
+<section class=" nextto ">
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <% items.forEach(function(item,index){ %>
@@ -117,7 +117,7 @@
     </section>
 
     <% }else {%>
-    <section class="py-5 text-center container">
+    <section class="py-5 text-center container" id="noData">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
           <h1 class="fw-light">Aucune donnée trouvée.</h1>
@@ -142,7 +142,6 @@
         element[i].style.display = "block";
        }
     }
-
      // add obj habit
     else{
         var element = document.getElementsByClassName('habit');
@@ -201,8 +200,16 @@
        for (let i = 0; i < element.length; i++) {
         element[i].style.display = "none";
        }
-    }    
+    } 
     
-   }
+   /* if(!document.getElementById("checkvetement").checked && !document.getElementById("checkmaquette").checked && !document.getElementById("checkeducatif").checked && !document.getElementById("checksouvenir").checked){
+    
+    var info = document.getElementsByClassName("container");
+    
+    info.
+   }else{
+    document.getElementById("container").style.display = "none";
+   }*/
+}
 
 </script>
