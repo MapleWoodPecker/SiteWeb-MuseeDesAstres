@@ -37,6 +37,7 @@
     border-color: #182030;
     border-width: 3px;
     font-weight: bold;
+    width: 200px;
   }
   .select{
     background-color: whitesmoke;
@@ -50,8 +51,9 @@
     border-width: 3px;
   }
   .submit{
-    margin-left: 80%;
-    width: 20%;
+    margin-left: auto;
+    margin-right: 0%;
+    width: 150px;
     font-size: large;
     font-weight: bold;
   }
@@ -134,7 +136,7 @@
 <div class="bodyBillet">
 <% if (items !=undefined && items.length>0) {%>
   <form style="margin-left: 20px; width: 50%;" class="form">
-    <input class="date" type="date" id="datetime" min="<%= ajrd;%>" max="<%= semaine;%>" style="width:20%" required>
+    <input class="date" type="date" id="datetime" min="<%= ajrd;%>" max="<%= semaine;%>" required>
     <span class="validity"></span>
 
     <hr>
@@ -208,9 +210,10 @@
     </div>
     <hr>
     <input type="submit" value="Reserver" id="submit" class="btn btn-secondary my-2 submit" disabled>
+    <small id="alerteSubmit" style="color: gray; display: block;">Veuillez choisir au moins un billet</small>
     <hr>
   </form>
-  <img style="display: flex; padding: 5%;" width="50%" src="/images/obs.png" alt="">
+  <img style="display: flex; padding: 5%; width: 1000px; height: fit-content;" src="/images/obs.png" alt="">
 </div>
 
 
@@ -227,6 +230,11 @@
 
         if (total_billet == 0){
         document.getElementById("submit").disabled = true;
+      }
+      if (document.getElementById("submit").disabled){
+        document.getElementById("alerteSubmit").style.display = "block";
+      } else {
+        document.getElementById("alerteSubmit").style.display = "none";
       }
     }
   </script>
