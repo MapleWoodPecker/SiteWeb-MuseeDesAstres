@@ -39,7 +39,7 @@
 </style>
 
 
-<div class="containershop" style="position: absolute;">
+<div class="containershop" >
 
 
    
@@ -77,7 +77,7 @@
                 <label class="input" for="checkeducatif">Educatif</label>
             </li>
             <li>
-                <input type="button" value="Effacer Filtre" class="btn btn-primary my-2" style="background-color: #182030;" onclick ="loadDoc ()"></input>
+                <input type="button" value="Effacer Filtre" class="btn btn-primary my-2" style="background-color: #182030;" onclick ="EffacerFiltre ()"></input>
             </li>
         </ul> 
     </form>
@@ -89,7 +89,7 @@
     <div class="container px-4 px-lg-5 mt-5">
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
             <% items.forEach(function(item,index){ %>
-                <div  class="col mb-5 <%= item.tags%>" id="<%= item.tags%>">
+                <div  class="col mb-5 <%= item.tags%> shopElement" >
                     <div class="card h-100">
                         <!-- Product image-->
                         <img class="card-img-top" src="<%= item.image%>" alt="..." />
@@ -131,6 +131,24 @@
 <%- include ('../partials/footer') %>
 
 <script>
+function EffacerFiltre(){
+    var element = document.getElementsByTagName('input');
+    for (let i = 0; i < element.length; i++) {
+        console.debug(element[i].type)
+        if(element[i].type === 'checkbox'){
+            //console.debug(element[i].type)
+            console.debug("IN LOOP")
+
+            element[i].checked = false;
+            console.debug(element[i].checked)
+
+        }
+        
+    }
+
+    loadDoc();
+}
+
    function loadDoc(){
     
     
@@ -202,14 +220,14 @@
        }
     } 
     
-   /* if(!document.getElementById("checkvetement").checked && !document.getElementById("checkmaquette").checked && !document.getElementById("checkeducatif").checked && !document.getElementById("checksouvenir").checked){
+    if(!document.getElementById("checkvetement").checked && !document.getElementById("checkmaquette").checked && !document.getElementById("checkeducatif").checked && !document.getElementById("checksouvenir").checked){
     
-    var info = document.getElementsByClassName("container");
-    
-    info.
-   }else{
-    document.getElementById("container").style.display = "none";
-   }*/
+        var element = document.getElementsByClassName('shopElement');
+
+        for (let i = 0; i < element.length; i++) {
+        element[i].style.display = "block";
+}
+   }
 }
 
 </script>
