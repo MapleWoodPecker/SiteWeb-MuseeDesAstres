@@ -46,19 +46,35 @@
 </style>
 
 <script>
-    const api_url = 'http://api.weatherapi.com/v1/forecast.json?key=2af0c9b4b7c04005957140735221204&q=Montreal&days=3&aqi=no&alerts=yes'
+    function fetchData(){
+        fetch("http://api.weatherapi.com/v1/forecast.json?key=2af0c9b4b7c04005957140735221204&q=Montreal&days=3&aqi=no&alerts=yes")
+            .then(res => {
+                return res.json();
+            })
+            .then(data => {
+                console.log(data)
+                const html = [data].map(weather =>{
+                  return `<div class= "weather">
+                        <p>Température: ${weather.current.temp_c}°C</p>
+                        <p>Température Réssentie: ${weather.current.feelslike_c}°C</p>
+                        <img src = ${weather.current.condition.icon}>
+                        <p>Météo: ${weather.current.condition.text}</p>
 
-async function getData(){
-    const response = await fetch(api_url);
-    const data = await response.json();
-    console.log(data);
-}
+                    </div>` 
+                }).join('');
+                console.log(html);
+                document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
+            })
+            .catch(err =>{
+                console.log(err)
+            });
+    }
 
-getData();  
+    fetchData();
 </script>
 
 <h1 style="margin-top: 15px; text-align: center;">Rendez-vous Sous Les Étoiles</h1>
-
+<div id = 'app'></div>
 <table>
     <tr>
         <td>
@@ -71,6 +87,8 @@ getData();
         </td>
     </tr>
 </table>
+
+
 <br>
 <br>
 <br>
