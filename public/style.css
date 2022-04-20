@@ -1,7 +1,9 @@
 /*navbar menu*/
 .navbar {
     background-color: #182030!important;
-    overflow: hidden;
+    /*overflow-x: hidden;
+    * does not work: causes dropdown to be hidden
+    */
 }
 
 
