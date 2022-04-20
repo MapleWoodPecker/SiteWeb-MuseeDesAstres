@@ -134,15 +134,9 @@
   
           <% if (item.date_debut > new Date() && item.date_fin > new Date()){ %>
   
-            <div class="col">
+            <div class="col"  style="margin-bottom:30px">
               <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" 
-                role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                  <rect width="100%" height="100%" fill="#55595c"/>
-                  <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                  <image xlink:href="<%= item.image %>" 
-                  x="0" y="0" style="max-width:700px; height:250px;"/>
-                </svg>
+                <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">
         
                 <div class="card-body">
                   <h5><%= item.titre %></h5>
