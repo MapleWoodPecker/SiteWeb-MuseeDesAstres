@@ -1,30 +1,20 @@
 <%- include ('../../partials/header') %>
 <script>
-    $(function () {
-    $('[data-toggle="popover"]').popover()
-    })
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})
 
-    new Tether({
-    element: yellowBox,
-    target: greenBox,
-    attachment: 'top right',
-    targetAttachment: 'top left',
-    offset: '0 10px'
-    });
+var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+  trigger: 'focus'
+})
+
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
 
-<button style="margin-left:50px;margin-bottom: 75px" type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
-sagittis lacus vel augue laoreet rutrum faucibus." data-offset="0 -25%">
-  Shifted 25%
-</button>
+<a tabindex="0" class="btn btn-lg btn-danger" role="button" data-bs-toggle="popover" data-bs-trigger="focus" title="Dismissible popover" data-bs-content="And here's some amazing content. It's very engaging. Right?">Dismissible popover</a>
 
 <div class="plan">
    
-
-
     <div class="floor-1">
         <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2085.9 1526.57">
         <style>.cls-1{fill:#8dd2f0;}.cls-2{fill:#ecefc0;}.cls-3{fill:#d6e9d2;}.cls-4{fill:#e1c0dc;}.cls-10,.cls-11,.cls-5,.cls-7,.cls-8,.cls-9{fill:none;}.cls-10,.cls-11,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{stroke:#000;}.cls-10,.cls-5,.cls-6{stroke-width:15px;}.cls-7{stroke-width:10px;}.cls-8{stroke-width:14px;}.cls-9{stroke-width:2px;}.cls-10{stroke-linecap:square;}.cls-11{stroke-width:7px;}</style>

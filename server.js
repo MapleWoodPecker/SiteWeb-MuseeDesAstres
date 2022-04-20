@@ -169,8 +169,8 @@ app.get('/expositions',async function (req,res) {
 	});
 
 	res.render('pages/activites/expositions',{
-		siteTitle : siteTitle,
-		pageTitle : "Experience",
+		siteTitle : "Expositions - Musée des Astres",
+		pageTitle : "Expositions",
 		items : result
 	});
 
@@ -180,7 +180,7 @@ app.get('/expositions',async function (req,res) {
  * Experiences
 */
 
-app.get('/experiences',async function (req,res) {
+app.get('/activites',async function (req,res) {
 
 	const cursor = activites.find({}).sort({ date_debut: -1 });
 
@@ -191,7 +191,7 @@ app.get('/experiences',async function (req,res) {
 	});
 
 	res.render('pages/activites/activites',{
-		siteTitle : siteTitle,
+		siteTitle : "Activités - Musée des Astres",
 		pageTitle : "Exp",
 		items : result
 	});
@@ -213,7 +213,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 	});
 
     res.render('pages/activites/rdvetoiles',{
-    	siteTitle : siteTitle,
+    	siteTitle : "Rendez-vous sous les étoiles - Musée des Astres",
     	pageTitle : "rdv",
     	items : result
     	
@@ -237,7 +237,7 @@ app.get('/plan',async function (req,res) {
 	});
 
     res.render('pages/informations/plan',{
-    	siteTitle : siteTitle,
+    	siteTitle : "Plan du Musée - Musée des Astres",
     	pageTitle : "plan",
     	items : result
 	});
@@ -250,7 +250,7 @@ app.get('/plan',async function (req,res) {
 app.get('/info',async function (req,res) {
 
     res.render('pages/informations/coord',{
-    	siteTitle : siteTitle,
+    	siteTitle : "Informations - Musée des Astres",
     	pageTitle : "info"
 	});
 });
@@ -270,7 +270,7 @@ app.get('/billeterie',async function (req,res) {
 	});
 
 	res.render('pages/reservations/billeterie',{
-		siteTitle : siteTitle,
+		siteTitle : "Billeterie - Musée des Astres",
 		pageTitle : "billeterie",
 		items : results,
 		ajrd : dateFormat(new Date(), 'yyyy-mm-dd'),
@@ -380,7 +380,7 @@ app.get('/billet/:id',async function (req,res) {
 			var url = await generateQR(result._id.toString());
 
 			res.render('pages/reservations/email_billet',{
-				siteTitle : siteTitle,
+				siteTitle : "Votre Billet - Musée des Astres",
 				pageTitle : "billet",
 				billet : result,
 				qr : url
@@ -417,7 +417,7 @@ app.get('/boutique',async function (req,res) {
 	});
 
     res.render('pages/boutique',{
-    	siteTitle : siteTitle,
+    	siteTitle : "Boutique en ligne - Musée des Astres",
     	pageTitle : "bout",
     	items : result
 	});
@@ -428,7 +428,7 @@ app.get('/checkout',async function (req,res) {
 	var result = [];
 
     res.render('pages/checkout',{
-    	siteTitle : siteTitle,
+    	siteTitle : "Transaction - Musée des Astres",
     	pageTitle : "bout",
     	items : result
 	});
@@ -447,7 +447,7 @@ app.get('/connexion',async function (req,res) {
 		return res.redirect ( '/admin' );
 	} else {
 		res.render('pages/divers/connexion',{
-			siteTitle : siteTitle,
+			siteTitle : "Connexion Admin - MDA",
 			pageTitle : "con",
 			item : true
 		});
@@ -477,7 +477,7 @@ app.post('/connexion', async function (req,res){
 				res.redirect('/admin');
 			} else {
 				res.render('pages/divers/connexion',{
-					siteTitle : siteTitle,
+					siteTitle : "Connexion Admin - MDA",
 					pageTitle : "no",
 					item : false
 				});
@@ -486,7 +486,7 @@ app.post('/connexion', async function (req,res){
 
 		} else {
 			res.render('pages/divers/connexion',{
-				siteTitle : siteTitle,
+				siteTitle : "Connexion Admin - MDA",
 				pageTitle : "no2",
 				item : false
 			});
@@ -517,7 +517,7 @@ app.get('/admin',async function (req,res) {
 		});
 
 		res.render('pages/divers/admin',{
-			siteTitle : siteTitle,
+			siteTitle : "Accès Admin - MDA",
 			pageTitle : "bout",
 			items : result
 		});
