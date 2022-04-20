@@ -43,12 +43,6 @@ app.use(bodyParser.urlencoded({ extended: true}));
 module.exports = app;
 
 /*
-*used for formatting dates
-*/
- 
-var now = new Date();
-
-/*
 * view engine template parsing (ejs types)
 */
 
@@ -81,7 +75,7 @@ async function run() {
 		tarifs = database.collection('tarifs');
 
 		console.log("Connexion réussie :)");
-	} finally {
+	} catch {
 	}
 }
 
@@ -96,6 +90,24 @@ var con;
 var tarifs;
 
 run().catch(console.dir);
+
+
+// client.connect((error , db) => {
+// 	if (error){
+// 		throw error;
+// 	}
+// 	const database = client.db('musee_desastres_db');
+// 	//Search query for deletion
+// 	var query = { nom : "" };
+	
+// 	//Accessing the collection
+// 	database.collection("reservations").deleteMany(query , (err , collection) => {
+// 		if(err) throw err;
+// 		console.log(collection.result.n + " Record(s) deleted successfully");
+// 		console.log(collection);
+// 		db.close();
+// 	});
+// });
 
 /**
 * Global site title and base url
@@ -115,39 +127,19 @@ function compare( a, b ) {
 	return 0;
 }
 
-// client.connect((error , db) => {
-// 	if (error){
-// 		throw error;
-// 	}
-// 	const database = client.db('musee_desastres_db');
-// 	//Search query for deletion
-// 	var query = { nom : "" };
-	
-// 	//Accessing the collection
-// 	database.collection("reservations").deleteMany(query , (err , collection) => {
-// 		if(err) throw err;
-// 		console.log(collection.result.n + " Record(s) deleted successfully");
-// 		console.log(collection);
-// 		db.close();
-// 	});
-// });
-
 /*
 * Accueil
 */
 app.get('/',async function (req,res) {    
 
 	// recuperer les info des tables expo et activites
-	const cur1 = expo.find();
-
-	const cur2 = activites.find();
 	
 	result = [];
 
-	await cur1.forEach(element1 => {
+	await expo.find().forEach(element1 => {
 		result.push(element1);
 	});
-	await cur2.forEach(element2 => {
+	await activites.find().forEach(element2 => {
 		result.push(element2);
 	});
 
@@ -168,9 +160,7 @@ app.get('/',async function (req,res) {
 
 app.get('/expositions',async function (req,res) {
 
-	const sort = { date_debut: -1 };
-
-	const cursor = expo.find({}).sort(sort);
+	const cursor = expo.find({}).sort({ date_debut: -1 });
 
 	var result = [];
 
@@ -192,9 +182,7 @@ app.get('/expositions',async function (req,res) {
 
 app.get('/experiences',async function (req,res) {
 
-	const sort = { date_debut: -1 };
-
-	const cursor = activites.find({}).sort(sort);
+	const cursor = activites.find({}).sort({ date_debut: -1 });
 
 	var result = [];
 
@@ -216,9 +204,7 @@ app.get('/experiences',async function (req,res) {
 
 app.get('/rdv_etoiles',async function (req,res) {
 
-	const sort = { date_debut: -1 };
-
-	const cursor = rdvetoiles.find({}).sort(sort);
+	const cursor = rdvetoiles.find({}).sort({ date_debut: -1 });
 
 	var result = [];
 
@@ -241,13 +227,19 @@ app.get('/rdv_etoiles',async function (req,res) {
 
 app.get('/plan',async function (req,res) {
 
-	var result = [];
+	result = [];
+
+	await expo.find().forEach(element1 => {
+		result.push(element1);
+	});
+	await activites.find().forEach(element2 => {
+		result.push(element2);
+	});
 
     res.render('pages/informations/plan',{
     	siteTitle : siteTitle,
     	pageTitle : "plan",
     	items : result
-    	
 	});
 });
 
@@ -257,12 +249,9 @@ app.get('/plan',async function (req,res) {
 
 app.get('/info',async function (req,res) {
 
-	var result = [];
-
     res.render('pages/informations/coord',{
     	siteTitle : siteTitle,
-    	pageTitle : "coord",
-    	items : result
+    	pageTitle : "info"
 	});
 });
 
@@ -272,9 +261,7 @@ app.get('/info',async function (req,res) {
 
 app.get('/billeterie',async function (req,res) {
 
-	const sort = { _id: 1 };
-
-	const cursor = tarifs.find({}).sort(sort);
+	const cursor = tarifs.find({}).sort({ _id: 1 });
 
 	var results = [];
 
@@ -282,22 +269,16 @@ app.get('/billeterie',async function (req,res) {
 		results.push(element);
 	});
 
-	var ajrd = dateFormat(now, 'yyyy-mm-dd');
-	var date = (new Date().getDate()+7).toString();
-	var moisAnnee = dateFormat(now, 'yyyy-mm');
-	var semaine = moisAnnee + "-" + date;
-
 	res.render('pages/reservations/billeterie',{
 		siteTitle : siteTitle,
 		pageTitle : "billeterie",
 		items : results,
-		ajrd : ajrd,
-		semaine : semaine
+		ajrd : dateFormat(new Date(), 'yyyy-mm-dd'),
+		semaine : dateFormat(new Date(), 'yyyy-mm') + "-" + (new Date().getDate()+7).toString()
 	});
 });
 
 app.post('/billet',async function (req,res) {
-
 	billets = [];
 	var err;
 
@@ -336,11 +317,10 @@ app.post('/billet',async function (req,res) {
 
 	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs",
 	{ billet : billet_temp, qr : await generateQR(billet_temp._id.toString()) },
-	async function (err, data) {
+	function (err, data) {
 		if (err) {
 			console.log(err);
 	  	} else {
-
 			pdf.generatePdf({ content: data }, { }).then(pdfBuffer => {
 				console.log("PDF generated");
 	  
@@ -428,16 +408,13 @@ const generateQR = async text => {
 
 app.get('/boutique',async function (req,res) {
 
-	const sort = { titre: 1 };
-
-	const cursor = itemsboutique.find({}).sort(sort);
+	const cursor = itemsboutique.find({}).sort({ titre: 1 });
 
 	var result = [];
 
 	await cursor.forEach(element => {
 		result.push(element);
 	});
-
 
     res.render('pages/boutique',{
     	siteTitle : siteTitle,
@@ -465,8 +442,6 @@ var session_admin;
 app.get('/connexion',async function (req,res) {
 
 	session_admin = req.session;
-
-	var result = [];
 
 	if (session_admin.username){
 		return res.redirect ( '/admin' );
@@ -612,6 +587,6 @@ app.get('/logout',(req,res) => {
 * connect to server
 */
 
-var server = app.listen(4000, function(){
+const server = app.listen(4000, function(){
 	console.log("serveur fonctionne sur 4000...");
 });

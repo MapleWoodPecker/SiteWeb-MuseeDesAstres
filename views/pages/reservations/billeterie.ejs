@@ -111,16 +111,16 @@
             console.log(data)
           });
 
-          
-          $.post("/billet", { nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id }, 
-          function (data) {
-            if (data === 'done') {
-              window.location.href = "/";
-            }
-            if (data === 'error') {
-              alert('Erreur inconnue');
-            } 
-          });
+          // $.post("/billet", { nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id }, 
+          // function (data) {
+          //   if (data === 'done') {
+          //     window.location.href = "/";
+          //   }
+          //   if (data === 'error') {
+          //     alert('Erreur inconnue');
+          //   } 
+          // });
+
         } else {
           alert('Veuillez selectionner au moins un billet.');
         }
