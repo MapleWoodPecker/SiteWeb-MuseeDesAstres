@@ -40,9 +40,6 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-body{
-    padding-bottom: 10%;
-}
 
 
 #movie-container{
@@ -129,6 +126,7 @@ html{
 
 body{
     margin: 0 0 0px;
+    margin-bottom: 130px;
 }
 
 footer{
