@@ -508,7 +508,7 @@ app.get('/admin',async function (req,res) {
 	// If the user is loggedin
 	if (req.session.loggedin) {
 		
-		const cursor = reservations.find({});
+		const cursor = reservations.find({}).sort({ datetime: 1 });
 
 		var result = [];
 
