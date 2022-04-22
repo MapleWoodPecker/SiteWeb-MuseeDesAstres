@@ -1,50 +1,53 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
 	  <a class="navbar-brand" href="http://localhost:4000/"><img src="images/logo_text.png"  width="250px" alt="Musée des Astres" style="margin-left: 30px!important"/></a>
 	  
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
+	  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	  </button>
 
-	  <div class="collapse navbar-collapse" id="navbarsExample07" style="padding-top:50px; margin-bottom: -10px;">
-		<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-		 <li class="nav-item">
-			<a class="nav-link navsection" aria-current="page" href="/">Accueil</a>
-		  </li>
 
-			<li class="nav-item dropdown navsection">
-			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Expériences</a>
+	  <div class="collapse navbar-collapse" id="navbarNavDropdown" style="padding-top:50px; margin-bottom: -15px;">
+		<ul class="navbar-nav me-auto">
+			<li class="nav-item">
+				<a class="nav-link" aria-current="page" href="/">Accueil</a>
+			  </li>
+
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Expériences</a>
 			<div class="dropdown-menu">
 				<a class="dropdown-item navsoussection" href="/expositions">Expositions saisonnières</a>
-				<div class="dropdown-divider"></div>
 				<a class="dropdown-item navsoussection" href="/activites">Activités</a>
-				<div class="dropdown-divider"></div>
 				<a class="dropdown-item navsoussection" href="/rdv_etoiles"><i>Rendez-vous sous les étoiles</i></a>
 			</div>
 			</li>
 
-			<li class="nav-item dropdown navsection">
-			<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="" role="button" aria-haspopup="true" aria-expanded="false">Information</a>
-			<div class="dropdown-menu">
-				<a class="dropdown-item navsoussection" href="/plan">Plan du musée</a>
-				<div class="dropdown-divider"></div>
-				<a class="dropdown-item navsoussection" href="/info">Coordonnées</a>
-			</div>
+			<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Information</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item navsoussection" href="/plan">Plan du musée</a>
+					<a class="dropdown-item navsoussection" href="/info">Coordonnées</a>
+				</div>
 			</li>
 
-			<li class="nav-item navsection">
-			<a class="nav-link navsection" href="/billeterie">Billetterie</a>
-			</li>
-
-			<li class="nav-item navsection">
-			<a class="nav-link navsection" href="/boutique">Boutique</a>
-			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/billeterie">Billetterie</a>
+				</li>
+	
+				<li class="nav-item">
+				<a class="nav-link" href="/boutique">Boutique</a>
+				</li>
 		</ul>
+
 		<ul style="padding-top:10px; ">
-			<li class="nav-item navsection me-auto" style="margin-right: 30px!important;">
-				<button type="button" class="btn btn-light" style="color: #182030;      vertical-align:middle;      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 120px;     margin-top: 2px; overflow: hidden;">
+			<li class="nav-item me-auto" style="margin-right: 30px!important;">
+				<button type="button" class="btn btn-light" style="color: #182030;      vertical-align:middle;      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px; overflow: hidden;">
 					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
 					Panier
 				  </button>
 			</li>
 	  </ul>
+
+	  </div>
+	</div>
   </nav>
