@@ -46,7 +46,6 @@
 
 .card{
     background: #182030;
-    margin-left: auto;
     margin-right: auto;
     width: 100%;
     padding: 2em;
@@ -55,12 +54,26 @@
     border-radius: 50px !important;
     max-width: 420px;
     font-family: 'Open Sans', sans-serif;
-
 }
+
+table, th{
+    padding-left: 150px;
+}
+
+.MeteoAJD{
+    margin-right: auto;
+}
+
+.MeteoDemain{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 body{
     background-image: "/backgroundrdv.jpg" !important;
     background: transparent;
 }
+
 </style>
 
 <script>
@@ -72,15 +85,44 @@ body{
             .then(data => {
                 console.log(data)
                 const html = [data].map(weather =>{
-                  return `<div class = "card">
-                    <h3 style = "color: #FFFFFF">Météo à Montréal</h3>
-                        <div>
-                            <div class = "temp" style = "color: #FFFFFF; font-size: 35px"> ${weather.current.temp_c}°C</div>
-                            <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">T. Réssentie ${weather.current.feelslike_c}°C</div>
-                            <img src = ${weather.current.condition.icon}>
-                            <div class = "condition" style = "color: #FFFFFF"> ${weather.current.condition.text}</div>
-                        </div>
-                    </div>` 
+                  return `<table>
+                        <th>
+                            <div class = "card">
+                                <h3 style = "color: #FFFFFF">Météo à Montréal</h3>
+                                <div class = "MeteoAJD">
+                                    <div class = "temp" style = "color: #FFFFFF; font-size: 35px"> ${weather.current.temp_c}°C</div>
+                                    <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">T. Réssentie ${weather.current.feelslike_c}°C</div>
+                                    <img src = ${weather.current.condition.icon}>
+                                    <div style = "color: #FFFFFF"> Coucher du Soleil: ${weather.forecast.forecastday[0].astro.sunset}</div>
+                                    <div class = "condition" style = "color: #FFFFFF"> ${weather.current.condition.text}</div>
+                                </div>
+                            </div>
+                        </th>
+                        <th>  
+                            <div class = "card">
+                                <h3 style = "color: #FFFFFF">Météo demain</h3>
+                                <div class = "MeteoDemain">
+                                    <div class = "temp" style = "color: #FFFFFF; font-size: 35px">Max: ${weather.forecast.forecastday[1].day.maxtemp_c}°C</div>
+                                    <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">Min: ${weather.forecast.forecastday[1].day.mintemp_c}°C</div>
+                                    <img src = ${weather.forecast.forecastday[1].day.condition.icon}>
+                                    <div style = "color: #FFFFFF"> Coucher du Soleil: ${weather.forecast.forecastday[1].astro.sunset}</div>
+                                    <div class = "condition" style = "color: #FFFFFF"> ${weather.forecast.forecastday[1].day.condition.text}</div>
+                                </div>
+                            </div>
+                        </th>
+                        <th>  
+                            <div class = "card">
+                                <h3 style = "color: #FFFFFF">Météo après-demain</h3>
+                                <div class = "MeteoDemain">
+                                    <div class = "temp" style = "color: #FFFFFF; font-size: 35px">Max: ${weather.forecast.forecastday[2].day.maxtemp_c}°C</div>
+                                    <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">Min: ${weather.forecast.forecastday[2].day.mintemp_c}°C</div>
+                                    <img src = ${weather.forecast.forecastday[2].day.condition.icon}>
+                                    <div style = "color: #FFFFFF"> Coucher du Soleil: ${weather.forecast.forecastday[2].astro.sunset}</div>
+                                    <div class = "condition" style = "color: #FFFFFF"> ${weather.forecast.forecastday[2].day.condition.text}</div>
+                                </div>
+                            </div>
+                        </th>
+                    </table >` 
                 }).join('');
                 console.log(html);
                 document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
@@ -97,7 +139,6 @@ body{
 <div id = 'app'>
     <p style="margin-left: 10px; margin-top: 30px; text-align: center; font-size: 20px;">Dans cette activité spéciale, vous êtes invités à venir observer le ciel étoilé à notre observatoire. Vous allez avoir accès à notre télescope
         pour avoir une vision incroyable de notre Voie Lactée et des plannetes visibles, comme Mars et Venus, mais aussi Jupiter et Saturne. 
-
 </div>
 <br>
 <br>
