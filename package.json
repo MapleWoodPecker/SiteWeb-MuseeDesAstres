@@ -21,6 +21,7 @@
     "express": "^4.17.3",
     "express-partials": "^0.3.0",
     "express-session": "^1.17.2",
+    "find": "^0.3.0",
     "html-pdf": "^3.0.1",
     "html-pdf-node": "^1.0.8",
     "http": "^0.0.1-security",

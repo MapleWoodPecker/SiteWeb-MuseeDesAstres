@@ -43,6 +43,24 @@
  box-shadow: none;
  transform: translateY(0);
 }
+
+.card{
+    background: #182030;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    padding: 2em;
+    perspective: 1px;
+    border: 2px;
+    border-radius: 50px !important;
+    max-width: 420px;
+    font-family: 'Open Sans', sans-serif;
+
+}
+body{
+    background-image: "/backgroundrdv.jpg" !important;
+    background: transparent;
+}
 </style>
 
 <script>
@@ -54,12 +72,14 @@
             .then(data => {
                 console.log(data)
                 const html = [data].map(weather =>{
-                  return `<div class= "weather">
-                        <p>Température: ${weather.current.temp_c}°C</p>
-                        <p>Température Réssentie: ${weather.current.feelslike_c}°C</p>
-                        <img src = ${weather.current.condition.icon}>
-                        <p>Météo: ${weather.current.condition.text}</p>
-
+                  return `<div class = "card">
+                    <h3 style = "color: #FFFFFF">Météo à Montréal</h3>
+                        <div>
+                            <div class = "temp" style = "color: #FFFFFF; font-size: 35px"> ${weather.current.temp_c}°C</div>
+                            <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">T. Réssentie ${weather.current.feelslike_c}°C</div>
+                            <img src = ${weather.current.condition.icon}>
+                            <div class = "condition" style = "color: #FFFFFF"> ${weather.current.condition.text}</div>
+                        </div>
                     </div>` 
                 }).join('');
                 console.log(html);
@@ -74,21 +94,11 @@
 </script>
 
 <h1 style="margin-top: 15px; text-align: center;">Rendez-vous Sous Les Étoiles</h1>
-<div id = 'app'></div>
-<table>
-    <tr>
-        <td>
-            <p style="margin-left: 15px; margin-top: 30px; margin-right: 50%;  text-align: left;">Dans cette activité spéciale, vous êtes invités à venir observer le ciel étoilé à notre observatoire. Vous allez avoir accès à notre télescope
-                pour avoir une vision incroyable de notre Voie Lactée et des plannetes visibles, comme Mars et Venus, mais aussi Jupiter et Saturne. 
-            </p>
-        </td>
-        <td>
-            <img src="/images/rdv/observatoire.jpg" alt="observatoire" style="width: 500px; height: 400px; margin-bottom: 55px;">
-        </td>
-    </tr>
-</table>
+<div id = 'app'>
+    <p style="margin-left: 10px; margin-top: 30px; text-align: center; font-size: 20px;">Dans cette activité spéciale, vous êtes invités à venir observer le ciel étoilé à notre observatoire. Vous allez avoir accès à notre télescope
+        pour avoir une vision incroyable de notre Voie Lactée et des plannetes visibles, comme Mars et Venus, mais aussi Jupiter et Saturne. 
 
-
+</div>
 <br>
 <br>
 <br>
