@@ -98,7 +98,7 @@ run().catch(console.dir);
 // 	}
 // 	const database = client.db('musee_desastres_db');
 // 	//Search query for deletion
-// 	var query = { nom : "" };
+// 	var query = { nom : "1234" };
 	
 // 	//Accessing the collection
 // 	database.collection("reservations").deleteMany(query , (err , collection) => {
@@ -300,6 +300,14 @@ app.get('/reservation',async function (req,res) {
 });
 
 app.post('/billet',async function (req,res) {
+
+	tarif = [];
+	const cursor = tarifs.find({}).sort({ _id: 1 });
+
+	await cursor.forEach(element => {
+		tarif.push(element);
+	});
+
 	billets = [];
 	var err;
 
@@ -311,6 +319,12 @@ app.post('/billet',async function (req,res) {
 		}
 	});
 
+	var prix = 0;
+	for (let i = 0; i < billets.length; i++){
+		prix += tarif[i].prix * billets[i];
+	}
+	console.log(prix);
+
 	var billet_temp = {
 		nom:req.body.nom,
 		prenom:req.body.prenom,
@@ -320,6 +334,7 @@ app.post('/billet',async function (req,res) {
 		datetime:new Date(req.body.datetime),
 		rdv_etoile:(req.body.rdv == "true"),
 		film:(req.body.film == "true"),
+		prix:prix,
 		billets_id:billets
 	}
 
@@ -447,13 +462,19 @@ app.get('/boutique',async function (req,res) {
 
 app.get('/checkout',async function (req,res) {
 
-	var result = [];
+	const cursor = reservations.find({}).sort({ datetime: 1 });
 
-    res.render('pages/checkout',{
-    	siteTitle : "Transaction - Musée des Astres",
-    	pageTitle : "bout",
-    	items : result
-	});
+		var result = [];
+
+		await cursor.forEach(element => {
+			result.push(element);
+		});
+
+		res.render('pages/checkout',{
+			siteTitle : "Accès Admin - MDA",
+			pageTitle : "bout",
+			items : result
+		});
 });
 
 /**
@@ -553,7 +574,7 @@ app.get('/admin',async function (req,res) {
 
 app.post('/admin',async function (req,res) {
 	if (req.body.type == "activites") {
-		activites.insertOne(
+		console.log(await activites.insertOne(
 			{
 				titre:req.body.titre,
 				date_debut:new Date(req.body.date_debut),
@@ -563,9 +584,9 @@ app.post('/admin',async function (req,res) {
 				particip_max:parseInt(req.body.particip_max),
 				desc:req.body.desc
 			}
-		);
+		));
 	} else if (req.body.type == "expositions") {
-		activites.insertOne(
+		console.log(await expo.insertOne(
 			{
 				titre:req.body.titre,
 				date_debut:new Date(req.body.date_debut),
@@ -576,9 +597,9 @@ app.post('/admin',async function (req,res) {
 				particip_max:parseInt(req.body.particip_max),
 				desc:req.body.desc
 			}
-		);
+		));
 	} else if (req.body.type == "shop") {
-		itemsboutique.insertOne(
+		console.log(await itemsboutique.insertOne(
 			{
 				titre:req.body.titre,
 				prix:parseInt(req.body.prix),
@@ -588,9 +609,9 @@ app.post('/admin',async function (req,res) {
 				desc:req.body.desc,
 				tags:req.body.tags
 			}
-		);
+		));
 	}
-	
+	console.log("Document inséré");
     res.end('done');
 });
 

@@ -1,135 +1,321 @@
 <%- include ('../../partials/header') %>
 
-<style>
-    input, select, a, label, p{
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
-    input, label{
-        display:none;
-    }
-    a{
-        color: black;
-    }
-</style>
+    <style>
+        .main {
+            display: flex;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script>
-    $(document).ready(function(){
-        var type,titre,date_debut,date_fin,duree,salle,image,particip_max,desc,prix,quantite,magasin,tags;
-        $("#submit").click(function(){
-            type=$("#type").val();
-            titre=$("#titre").val();
-            date_debut=$("#date_debut").val();
-            date_fin=$("#date_fin").val();
-            duree=$("#duree").val();
-            salle=$("#salle").val();
-            image=$("#image").val();
-            particip_max=$("#particip_max").val();
-            desc=$("#desc").val();
-            prix=$("#prix").val();
-            quantite=$("#quantite").val();
-            magasin=$("#magasin").val();
-            tags=$("#tags").val();
-            /*
-            * Perform some validation here.
-            */
-            $.post("/admin",{type:type,titre:titre,date_debut:date_debut,date_fin:date_fin,duree:duree,salle:salle,image:image,particip_max:particip_max,desc:desc,
-                prix:prix,quantite:quantite,magasin:magasin,tags:tags},function(data){
-                if(data==='done') {
-                    window.location.href="/admin";
-                }
-            });
-        });
-    });
-</script>
+        .option {
+            width: 15%;
+            height: 815px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-<body >
-    <br/>
-    <select id="type">
-        <option disabled selected value> Choisir la table </option>
-        <option value="activites">activites</option>
-        <option value="expositions">expositions</option>
-        <option value="shop">shop</option>
-    </select> 
-    <input type="text" placeholder="titre" id="titre">
-    <label for="date_debut" id="p_debut">date_debut :</label>
-    <input type="datetime-local" placeholder="date_debut" id="date_debut">
-    <label for="date_fin" id="p_fin">date_fin :</label>
-    <input type="datetime-local" placeholder="date_fin" id="date_fin">
-    <input type="number" placeholder="duree" id="duree">
-    <input type="text" placeholder="salle" id="salle">
-    <input type="number" placeholder="prix" id="prix">
-    <input type="number" placeholder="quantite" id="quantite">
-    <label for="magasin" id="p_dispo">Disponible ?</label>
-    <input type="checkbox" id="magasin">
-    <input type="text" placeholder="image" id="image">
-    <input type="number" placeholder="particip_max" id="particip_max">
-    <input type="text" placeholder="description" id="desc">
-    <input type="text" placeholder="tags" id="tags">
-    <input type="button" value="Enregistrer" id="submit">
+        .post {
+            display: none;
+            width: 30%;
+            height: 815px;
+            padding: 2%;
+            padding-top: 175px;
+        }
+
+        input {
+            margin-top: 12px;
+        }
+
+        .liste {
+            display: none;
+            height: 815px;
+            padding: 2%;
+            font-size: larger;
+            overflow-x: hidden;
+        }
+
+        .center {
+            width: fit-content;
+            height: fit-content;
+        }
+
+        .bouton {
+            display: block;
+            width: 250px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: larger;
+            background-color: gray;
+        }
+
+        .date {
+            border-color: #182030;
+            border-width: 3px;
+            font-weight: bold;
+            width: 200px;
+        }
+
+        .submit {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 150px;
+            font-size: large;
+            font-weight: bold;
+        }
+
+        .logout {
+            text-decoration: none;
+        }
+
+        .out {
+            background-color: gray;
+            font-size: large;
+            display: block;
+            font-size: larger;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+
+    <div class="main">
+        <div class="option">
+            <div class="center">
+                <button class="btn btn-secondary my-2 bouton" id="inser">
+                    Insérer dans la table
+                </button>
+                <button class="btn btn-secondary my-2 bouton" id="reserv">
+                    Voir les reservations
+                </button>
+                <a class="logout" href="/logout"><button class="btn btn-secondary my-2 out">Déconnexion</button></a>
+            </div>
+        </div>
+        <div class="option" id="tables" style="display: none;">
+            <div class="center">
+                <button class="btn btn-secondary my-2 bouton" id="btn-act">
+                    Activitées
+                </button>
+                <button class="btn btn-secondary my-2 bouton" id="btn-exp">
+                    Expositions
+                </button>
+                <button class="btn btn-secondary my-2 bouton" id="btn-shop">
+                    Boutique
+                </button>
+            </div>
+        </div>
+        <div class="post" id="activitees">
+            <input type="text" class="form-control" placeholder="titre" id="act-titre">
+            <label for="act-date_debut" class="date" id="act-p_debut">date_debut :</label>
+            <input type="datetime-local" class="date" placeholder="date_debut" id="act-date_debut"> <br>
+            <input type="number" class="form-control" placeholder="duree" id="act-duree">
+            <input type="text" class="form-control" placeholder="salle" id="act-salle">
+            <input type="text" class="form-control" placeholder="image" id="act-image">
+            <input type="number" class="form-control" placeholder="particip_max" id="act-particip_max">
+            <input type="text" class="form-control" placeholder="description" id="act-desc">
+            <input type="button" class="btn btn-secondary my-2 submit" value="Enregistrer" id="act-submit">
+        </div>
+        <div class="post" id="expo">
+            <input type="text" class="form-control" placeholder="titre" id="exp-titre">
+            <label for="exp-date_debut" class="date" id="exp-p_debut">date_debut :</label>
+            <input type="datetime-local" class="date" placeholder="date_debut" id="exp-date_debut"> <br>
+            <label for="exp-date_fin" class="date" id="exp-p_fin">date_fin :</label>
+            <input type="datetime-local" class="date" placeholder="date_fin" id="exp-date_fin"> <br>
+            <input type="number" class="form-control" placeholder="duree" id="exp-duree">
+            <input type="text" class="form-control" placeholder="salle" id="exp-salle">
+            <input type="text" class="form-control" placeholder="image" id="exp-image">
+            <input type="number" class="form-control" placeholder="particip_max" id="exp-particip_max">
+            <input type="text" class="form-control" placeholder="description" id="exp-desc">
+            <input type="button" class="btn btn-secondary my-2 submit" value="Enregistrer" id="exp-submit">
+        </div>
+        <div class="post" id="shop">
+            <input type="text" class="form-control" placeholder="titre" id="shop-titre">
+            <input type="number" class="form-control" placeholder="prix" id="shop-prix">
+            <input type="number" class="form-control" placeholder="quantite" id="shop-quantite">
+            <input type="checkbox" class="form-check-input" id="shop-magasin">
+            <label for="shop-magasin" class="form-check-label" id="shop-p_dispo">Disponible ?</label>
+            <input type="text" class="form-control" placeholder="image" id="shop-image">
+            <input type="text" class="form-control" placeholder="description" id="shop-desc">
+            <input type="text" class="form-control" placeholder="tags" id="shop-tags">
+            <input type="button" class="btn btn-secondary my-2 submit" value="Enregistrer" id="shop-submit">
+        </div>
+
+        <div class="liste" id="reservations">
+            <div class="list-group">
+                <%items.forEach(function(item,index){%>
+                    <a href="/billet/<%= item._id.toString()%>" target="_blank"
+                        class="list-group-item list-group-item-action">
+                        <%= item.prenom%>
+                            <%= item.nom%>
+                    </a>
+                <%}); %>
+            </div>
+        </div>
+    </div>
+
 
     <script>
-        document.getElementById("type").onclick = function() {
-            if (document.getElementById("type").value == "activites"){
-                document.getElementById("titre").style.display = "block";
-                document.getElementById("date_debut").style.display = "block";
-                document.getElementById("date_fin").style.display = "none";
-                document.getElementById("duree").style.display = "block";
-                document.getElementById("salle").style.display = "block";
-                document.getElementById("image").style.display = "block";
-                document.getElementById("particip_max").style.display = "block";
-                document.getElementById("desc").style.display = "block";
-                document.getElementById("prix").style.display = "none";
-                document.getElementById("quantite").style.display = "none";
-                document.getElementById("magasin").style.display = "none";
-                document.getElementById("tags").style.display = "none";
-            } else if (document.getElementById("type").value == "expositions") {
-                document.getElementById("titre").style.display = "block";
-                document.getElementById("date_debut").style.display = "block";
-                document.getElementById("date_fin").style.display = "block";
-                document.getElementById("duree").style.display = "block";
-                document.getElementById("salle").style.display = "block";
-                document.getElementById("image").style.display = "block";
-                document.getElementById("particip_max").style.display = "block";
-                document.getElementById("desc").style.display = "block";
-                document.getElementById("prix").style.display = "none";
-                document.getElementById("quantite").style.display = "none";
-                document.getElementById("magasin").style.display = "none";
-                document.getElementById("tags").style.display = "none";
-            } else if (document.getElementById("type").value == "shop") {
-                document.getElementById("titre").style.display = "block";
-                document.getElementById("date_debut").style.display = "none";
-                document.getElementById("date_fin").style.display = "none";
-                document.getElementById("duree").style.display = "none";
-                document.getElementById("salle").style.display = "none";
-                document.getElementById("image").style.display = "block";
-                document.getElementById("particip_max").style.display = "none";
-                document.getElementById("desc").style.display = "block";
-                document.getElementById("prix").style.display = "block";
-                document.getElementById("quantite").style.display = "block";
-                document.getElementById("magasin").style.display = "block";
-                document.getElementById("tags").style.display = "block";
-            }
-            document.getElementById("p_debut").style.display = document.getElementById("date_debut").style.display;
-            document.getElementById("p_fin").style.display = document.getElementById("date_fin").style.display;
-            document.getElementById("p_dispo").style.display = document.getElementById("magasin").style.display;
-            document.getElementById("submit").style.display = "block";
+        document.getElementById("inser").onclick = function () {
+            document.getElementById("inser").style.backgroundColor = "#182030";
+            document.getElementById("reserv").style.backgroundColor = "gray";
+
+            document.getElementById("tables").style.display = "flex";
+            document.getElementById("reservations").style.display = "none";
+        }
+
+        document.getElementById("reserv").onclick = function () {
+            document.getElementById("reserv").style.backgroundColor = "#182030";
+            document.getElementById("inser").style.backgroundColor = "gray";
+
+            document.getElementById("tables").style.display = "none";
+            document.getElementById("reservations").style.display = "flex";
+
+            document.getElementById("expo").style.display = "none";
+            document.getElementById("shop").style.display = "none";
+            document.getElementById("activitees").style.display = "none";
+        }
+
+
+
+        document.getElementById("btn-act").onclick = function () {
+            document.getElementById("btn-act").style.backgroundColor = "#182030";
+            document.getElementById("btn-exp").style.backgroundColor = "gray";
+            document.getElementById("btn-shop").style.backgroundColor = "gray";
+
+            document.getElementById("expo").style.display = "none";
+            document.getElementById("shop").style.display = "none";
+            document.getElementById("activitees").style.display = "block";
+        }
+        document.getElementById("btn-exp").onclick = function () {
+            document.getElementById("btn-act").style.backgroundColor = "gray";
+            document.getElementById("btn-exp").style.backgroundColor = "#182030";
+            document.getElementById("btn-shop").style.backgroundColor = "gray";
+
+            document.getElementById("activitees").style.display = "none";
+            document.getElementById("shop").style.display = "none";
+            document.getElementById("expo").style.display = "block";
+        }
+        document.getElementById("btn-shop").onclick = function () {
+            document.getElementById("btn-act").style.backgroundColor = "gray";
+            document.getElementById("btn-exp").style.backgroundColor = "gray";
+            document.getElementById("btn-shop").style.backgroundColor = "#182030";
+
+            document.getElementById("expo").style.display = "none";
+            document.getElementById("activitees").style.display = "none";
+            document.getElementById("shop").style.display = "block";
         }
     </script>
 
-    <br>
-    <div>
-        <p>Reservations :</p>
-        <%items.forEach(function(item,index){%>
-            <a href="/billet/<%= item._id.toString()%>" target="_blank"><%= item.prenom%> <%= item.nom%></a>
-        <%}); %>
-    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var type, titre, date_debut, date_fin, duree, salle, image, particip_max, desc, prix, quantite, magasin, tags;
 
-    <br> <br> <br>
-    <a id="centre" href="/logout">logout</a>
-</body>
+            // POST activitées
+            $("#act-submit").click(function () {
+
+                type = "activites";
+                titre = $("#act-titre").val();
+                date_debut = $("#act-date_debut").val();
+                duree = $("#act-duree").val();
+                salle = $("#act-salle").val();
+                image = $("#act-image").val();
+                particip_max = $("#act-particip_max").val();
+                desc = $("#act-desc").val();
+                /*
+                * Perform some validation here.
+                */
+                var headers = { "Content-Type": "application/json", "Access-Control-Origin": "*", "Expires": "" }
+
+                var data = {
+                    type: type, titre: titre, date_debut: date_debut, duree: duree, salle: salle, image: image, particip_max: particip_max, desc: desc
+                }
+
+                fetch("/admin", {
+                    method: "POST",
+                    headers: headers,
+                    body: JSON.stringify(data)
+                })
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data)
+                    });
+
+                    location.reload();
+            });
+
+            // POST expositions
+            $("#exp-submit").click(function () {
+
+                type = "expositions";
+                titre = $("#exp-titre").val();
+                date_debut = $("#exp-date_debut").val();
+                date_fin = $("#exp-date_fin").val();
+                duree = $("#exp-duree").val();
+                salle = $("#exp-salle").val();
+                image = $("#exp-image").val();
+                particip_max = $("#exp-particip_max").val();
+                desc = $("#exp-desc").val();
+                /*
+                * Perform some validation here.
+                */
+                var headers = { "Content-Type": "application/json", "Access-Control-Origin": "*", "Expires": "" }
+
+                var data = {
+                    type: type, titre: titre, date_debut: date_debut, date_fin: date_fin, duree: duree, salle: salle, image: image, particip_max: particip_max, desc: desc
+                }
+
+                fetch("/admin", {
+                    method: "POST",
+                    headers: headers,
+                    body: JSON.stringify(data)
+                })
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data)
+                    });
+
+                    location.reload();
+            });
+
+            // POST boutique
+            $("#shop-submit").click(function () {
+
+                type = "shop";
+                titre = $("#shop-titre").val();
+                image = $("#shop-image").val();
+                desc = $("#shop-desc").val();
+                prix = $("#shop-prix").val();
+                quantite = $("#shop-quantite").val();
+                magasin = $("#shop-magasin").val();
+                tags = $("#shop-tags").val();
+                /*
+                * Perform some validation here.
+                */
+                var headers = { "Content-Type": "application/json", "Access-Control-Origin": "*", "Expires": "" }
+
+                var data = {
+                    type: type, titre: titre, image: image, desc: desc, prix: prix, quantite: quantite, magasin: magasin, tags: tags
+                }
+
+                fetch("/admin", {
+                    method: "POST",
+                    headers: headers,
+                    body: JSON.stringify(data)
+                })
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        console.log(data)
+                    });
+
+                location.reload();
+            });
+        });
+    </script>
 
 <%- include ('../../partials/footer') %>
