@@ -462,13 +462,13 @@ app.get('/boutique',async function (req,res) {
 
 app.get('/checkout',async function (req,res) {
 
-		var result = [];
+	var result = [];
 
-		res.render('pages/checkout',{
-			siteTitle : "Accès Admin - MDA",
-			pageTitle : "bout",
-			items : result
-		});
+	res.render('pages/checkout',{
+		siteTitle : "Accès Admin - MDA",
+		pageTitle : "bout",
+		items : result
+	});
 });
 
 /**
