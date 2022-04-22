@@ -440,13 +440,7 @@ app.get('/boutique',async function (req,res) {
 
 app.get('/checkout',async function (req,res) {
 
-	const cursor = reservations.find({}).sort({ datetime: 1 });
-
 		var result = [];
-
-		await cursor.forEach(element => {
-			result.push(element);
-		});
 
 		res.render('pages/checkout',{
 			siteTitle : "Accès Admin - MDA",
