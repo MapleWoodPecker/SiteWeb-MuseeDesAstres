@@ -101,7 +101,7 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-primary my-2" style="background-color: #182030;" href="#">Ajouter au panier</a></div>
+                            <div class="text-center"><a class="btn btn-primary my-2" style="background-color: #182030;" onclick="addToCart('<%= item._id%>')">Ajouter au panier </a></div>
                         </div>
                     </div>
                 </div>
@@ -224,4 +224,9 @@ function EffacerFiltre(){
    }
 }
 
+</script>
+<script>
+    function addToCart(id){
+        sessionStorage.setItem(sessionStorage.length, id);
+    }
 </script>

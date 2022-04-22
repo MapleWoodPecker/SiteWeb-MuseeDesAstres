@@ -209,7 +209,7 @@
       <small id="tel" class="form-text" style="color: gray;">Optionnel</small>
     </div>
     <hr>
-    <input type="submit" value="Reserver" id="submit" class="btn btn-secondary my-2 submit" disabled>
+    <input type="submit" value="Reserver" id="submit" class="btn btn-secondary my-2 submit" disabled onclick="">
     <small id="alerteSubmit" style="color: gray; display: block;">Veuillez choisir au moins un billet</small>
     <hr>
   </form>
@@ -254,3 +254,9 @@
 <% } %>
  
 <%- include ('../../partials/footer') %>
+
+<script>
+  function addToCart(){
+      sessionStorage.setItem(sessionStorage.length, id);
+  }
+</script>
