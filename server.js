@@ -274,7 +274,7 @@ app.get('/billeterie',async function (req,res) {
 		pageTitle : "billeterie",
 		items : results,
 		ajrd : dateFormat(new Date(), 'yyyy-mm-dd'),
-		semaine : dateFormat(new Date(), 'yyyy-mm') + "-" + (new Date().getDate()+7).toString()
+		semaine : dateFormat(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), 'yyyy-mm-dd')
 	});
 });
 
