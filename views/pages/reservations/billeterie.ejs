@@ -99,6 +99,8 @@
 
           var data = {nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id}
 
+          addToCart(data);
+
           fetch("/billet", {
             method: "POST",
             headers: headers,
@@ -256,7 +258,7 @@
 <%- include ('../../partials/footer') %>
 
 <script>
-  function addToCart(){
-      sessionStorage.setItem(sessionStorage.length, id);
+  function addToCart(item){
+      sessionStorage.setItem(sessionStorage.length, JSON.stringify(item));
   }
 </script>

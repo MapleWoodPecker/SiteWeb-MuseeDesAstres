@@ -41,13 +41,27 @@
 
 		<ul style="padding-top:10px; ">
 			<li class="nav-item me-auto" style="margin-right: 30px!important;">
-				<button type="button" class="btn btn-light" style="color: #182030;      vertical-align:middle;      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px; overflow: hidden;">
+				<a  tabindex="0" role="button" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="bottom"
+				title="Panier" data-bs-content="And here's some amazing content. It's very engaging. Right?">
+				<button style="color: #182030; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px; overflow: hidden;"
+				type="button" class="btn btn-light">
 					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
 					Panier
-				  </button>
+				</button>
+			</a>
 			</li>
 	  </ul>
 
 	  </div>
 	</div>
   </nav>
+
+<script>
+$('#cart-popover').popover({
+  html : true,
+        container: 'body',
+        content:function(){
+         return $('#popover_content_wrapper').html();
+        }
+});
+</script>
