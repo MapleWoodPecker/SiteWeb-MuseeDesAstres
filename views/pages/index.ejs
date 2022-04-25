@@ -9,68 +9,67 @@
 		<h1 class="fw-light" style="font-size: 70px;text-align: center;">Bienvenue au Musée des Astres</h1>
 		<br><br>
 		
-		<div id="carouselExampleCaptions" class="carousel slide " data-ride="carousel"
-			style="width: 800px; margin-left: auto; margin-right: auto;">
-			<ol class="carousel-indicators">
-				<li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-				<li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-				<li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-			</ol>
-			<div class="carousel-inner">
-				<% var link = "activites"%>
-				<% if (items[0].date_fin != undefined){
-					link = "expositions"
-				} %>
-				<div class="carousel-item active" >
-					<a href="/<%= link%>"><img src="<%= items[0].image %>" class="d-block w-100" alt="...">
-					<div class="carousel-caption d-none d-md-block">
-						<h4><%= items[0].titre %></h4>
-						<p class="car-text"><%= items[0].desc %></p>
-					</div></a>
-				</div>
-				<% var link = "activites"%>
-				<% if (items[1].date_fin != undefined){
-					link = "expositions"
-				} %>
-				<div class="carousel-item">
-					<a href="/<%= link%>"><img src="<%= items[1].image %>" class="d-block w-100" alt="...">
-
-					<div class="carousel-caption d-none d-md-block">
-						<h4>
-							<%= items[1].titre %>
-						</h4>
-						<p>
-							<%= items[1].desc %>
-						</p>
-					</div></a>
-				</div>
-				<% var link = "activites"%>
-				<% if (items[2].date_fin != undefined){
-					link = "expositions"
-				} %>
-				<div class="carousel-item">
-					<a href="/<%= link%>"><img src="<%= items[2].image %>" class="d-block w-100" alt="...">
-					<div class="carousel-caption d-none d-md-block">
-						<h4>
-							<%= items[2].titre %>
-						</h4>
-						<p>
-							<%= items[2].desc %>
-						</p>
-					</div></a>
-				</div>
-			</div>
-			<button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev"
-				style="margin-left: -110px!important;">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</button>
-			<button class="carousel-control-next" type="button" data-target="#carouselExampleCaptions" data-slide="next"
-				style="margin-right: -110px!important;">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</button>
-		</div>
+		
+<div id="carouselExampleCaptions" class="carousel slide carousel-fade" data-bs-ride="carousel">
+	<div class="carousel-indicators">
+	  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+	  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+	  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	</div>
+	<div class="carousel-inner">
+	  <% var link = "activites"%>
+		  <% if (items[0].date_fin != undefined){
+			  link = "expositions"
+		  } %>
+		  <div class="carousel-item active" data-bs-interval="2000">
+			  <a href="/<%= link%>"><img src="<%= items[0].image %>" class="d-block w-100" alt="...">
+			  <div class="carousel-caption d-none d-md-block">
+				  <h4><%= items[0].titre %></h4>
+				  <p class="car-text"><%= items[0].desc %></p>
+			  </div></a>
+		  </div>
+	  <% var link = "activites"%>
+		  <% if (items[1].date_fin != undefined){
+			  link = "expositions"
+		  } %>
+		  <div class="carousel-item" data-bs-interval="2000">
+			  <a href="/<%= link%>"><img src="<%= items[1].image %>" class="d-block w-100" alt="...">
+  
+			  <div class="carousel-caption d-none d-md-block">
+				  <h4>
+					  <%= items[1].titre %>
+				  </h4>
+				  <p>
+					  <%= items[1].desc %>
+				  </p>
+			  </div></a>
+		  </div>
+		  <% var link = "activites"%>
+		  <% if (items[2].date_fin != undefined){
+			  link = "expositions"
+		  } %>
+		  <div class="carousel-item" data-bs-interval="2000">
+			  <a href="/<%= link%>"><img src="<%= items[2].image %>" class="d-block w-100" alt="...">
+			  <div class="carousel-caption d-none d-md-block">
+				  <h4>
+					  <%= items[2].titre %>
+				  </h4>
+				  <p>
+					  <%= items[2].desc %>
+				  </p>
+			  </div></a>
+		  </div>
+	  </div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" style="margin-left: -110px!important;">
+	  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	  <span class="visually-hidden">Previous</span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" style="margin-right: -110px!important;">
+	  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	  <span class="visually-hidden">Next</span>
+	</button>
+  </div>
+  
 
 		
 		<br>
