@@ -33,6 +33,7 @@
             <%if (billet.film) {%>
                 <p>Option <i>Film</i></p>
             <% } %>
+            <p>Prix : <%= billet.prix %> $ CA</p>
             <p>pour le <%= billet.datetime.getDate() %> <%= months[billet.datetime.getMonth()] %> <%= billet.datetime.getFullYear() %>.</p>     
         </div>
 

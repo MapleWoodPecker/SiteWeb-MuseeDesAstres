@@ -278,6 +278,27 @@ app.get('/billeterie',async function (req,res) {
 	});
 });
 
+app.get('/reservation',async function (req,res) {
+
+	var reserv = {nom : req.body.nom, prenom : req.body.prenom , email : req.body.email, adresse : req.body.adresse, telephone : req.body.telephone,datetime : req.body.datetime,rdv_etoile : req.body.rdv_etoile, film : req.body.film, billets_id : req.body.billets_id}
+
+	const cursor = reservations.find(reserv);
+
+	var results = [];
+
+	await cursor.forEach(element => {
+		results.push(element);
+	});
+
+	res.render('pages/reservations/billeterie',{
+		siteTitle : "Billeterie - Musée des Astres",
+		pageTitle : "billeterie",
+		items : results,
+		ajrd : dateFormat(new Date(), 'yyyy-mm-dd'),
+		semaine : dateFormat(new Date(), 'yyyy-mm') + "-" + (new Date().getDate()+7).toString()
+	});
+});
+
 app.post('/billet',async function (req,res) {
 
 	tarif = [];
@@ -438,21 +459,16 @@ app.get('/boutique',async function (req,res) {
 	});
 });
 
+
 app.get('/checkout',async function (req,res) {
 
-	const cursor = reservations.find({}).sort({ datetime: 1 });
+	var result = [];
 
-		var result = [];
-
-		await cursor.forEach(element => {
-			result.push(element);
-		});
-
-		res.render('pages/checkout',{
-			siteTitle : "Accès Admin - MDA",
-			pageTitle : "bout",
-			items : result
-		});
+	res.render('pages/checkout',{
+		siteTitle : "Accès Admin - MDA",
+		pageTitle : "bout",
+		items : result
+	});
 });
 
 /**
