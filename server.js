@@ -464,6 +464,8 @@ app.get('/checkout',async function (req,res) {
 
 	var result = [];
 
+
+
 	res.render('pages/checkout',{
 		siteTitle : "Accès Admin - MDA",
 		pageTitle : "bout",
