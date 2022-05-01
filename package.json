@@ -23,7 +23,7 @@
     "express-session": "^1.17.2",
     "find": "^0.3.0",
     "html-pdf": "^3.0.1",
-    "html-pdf-node": "^1.0.8",
+    "html-pdf-node": "^1.0.7",
     "http": "^0.0.1-security",
     "jquery": "^3.5.1",
     "mangodb": "^1.0.0",
@@ -32,10 +32,12 @@
     "mysql": "^2.18.1",
     "node-fetch": "^2.6.7",
     "nodemailer": "^6.7.3",
+    "npm-check-updates": "^12.5.10",
+    "puppeteer": "^13.7.0",
     "qrcode": "^1.5.0",
     "tether": "^1.4.7"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.16"
   }
 }
