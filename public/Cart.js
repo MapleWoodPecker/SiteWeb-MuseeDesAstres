@@ -1,6 +1,10 @@
 var headers = {"Content-Type": "application/json","Access-Control-Origin": "*", "Expires": ""}
-
-          var data = Object.keys(sessionStorage);
+ var data = [];
+for (let i = 0; i < sessionStorage.length; i++) {
+    data[i] = sessionStorage.getItem(i);
+    alert(sessionStorage.getItem(i));
+};
+         
           console.log(data);
 
           fetch("/test", {
