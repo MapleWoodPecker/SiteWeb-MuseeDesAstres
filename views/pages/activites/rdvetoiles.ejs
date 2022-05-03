@@ -34,8 +34,8 @@
 
 .Bouton_Reserv:hover {
  color: #fff;
- background-color: #1A1A1A;
- box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+ background-color: #182030;
+ box-shadow: rgba(#182030) 0 8px 15px;
  transform: translateY(-2px);
 }
 
@@ -43,31 +43,19 @@
  box-shadow: none;
  transform: translateY(0);
 }
-
-.card{
+.col{
     background: #182030;
+    margin-right: auto;
+    border-radius: 50px !important;
+    font-family: 'Open Sans', sans-serif;
     margin-right: auto;
     width: 100%;
     padding: 2em;
     perspective: 1px;
     border: 2px;
-    border-radius: 50px !important;
     max-width: 420px;
-    font-family: 'Open Sans', sans-serif;
 }
 
-table, th{
-    padding-left: 150px;
-}
-
-.MeteoAJD{
-    margin-right: auto;
-}
-
-.MeteoDemain{
-    margin-left: auto;
-    margin-right: auto;
-}
 
 body{
     background-image: "/backgroundrdv.jpg" !important;
@@ -75,6 +63,19 @@ body{
 }
 
 </style>
+
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">Rendez-vous Sous Les Étoiles</h1>
+        <p class="lead text-muted">Dans cette activité spéciale, vous êtes invités à venir observer le ciel étoilé à notre observatoire. Vous allez avoir accès à notre télescope
+        pour avoir une vision incroyable de notre Voie Lactée et des plannetes visibles, comme Mars et Venus, mais aussi Jupiter et Saturne. </p>
+        <div class="reserve">
+            <a href="/billeterie"> <button class="Bouton_Reserv">Réservez</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
 
 <script>
     function fetchData(){
@@ -85,44 +86,44 @@ body{
             .then(data => {
                 console.log(data)
                 const html = [data].map(weather =>{
-                  return `<table>
-                        <th>
-                            <div class = "card">
-                                <h3 style = "color: #FFFFFF">Météo à Montréal</h3>
-                                <div class = "MeteoAJD">
-                                    <div class = "temp" style = "color: #FFFFFF; font-size: 35px"> ${weather.current.temp_c}°C</div>
-                                    <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">T. Réssentie ${weather.current.feelslike_c}°C</div>
-                                    <img src = ${weather.current.condition.icon}>
-                                    <div style = "color: #FFFFFF"> Coucher du Soleil: ${weather.forecast.forecastday[0].astro.sunset}</div>
-                                    <div class = "condition" style = "color: #FFFFFF"> ${weather.current.condition.text}</div>
-                                </div>
+                  return `<div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div class = "col">
+                            <h3 style = "color: #FFFFFF">Météo à Montréal</h3>
+                            <div class = "MeteoAJD">
+                                <div class = "temp" style = "color: #FFFFFF; font-size: 35px"> ${weather.current.temp_c}°C</div>
+                                <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">T. Réssentie ${weather.current.feelslike_c}°C</div>
+                                <img src = ${weather.current.condition.icon}>
+                                <div style = "color: #FFFFFF"> Coucher du Soleil: ${weather.forecast.forecastday[0].astro.sunset}</div>
+                                <div class = "condition" style = "color: #FFFFFF"> ${weather.current.condition.text}</div>
                             </div>
-                        </th>
-                        <th>  
-                            <div class = "card">
-                                <h3 style = "color: #FFFFFF">Météo demain</h3>
-                                <div class = "MeteoDemain">
-                                    <div class = "temp" style = "color: #FFFFFF; font-size: 35px">Max: ${weather.forecast.forecastday[1].day.maxtemp_c}°C</div>
-                                    <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">Min: ${weather.forecast.forecastday[1].day.mintemp_c}°C</div>
-                                    <img src = ${weather.forecast.forecastday[1].day.condition.icon}>
-                                    <div style = "color: #FFFFFF"> Coucher du Soleil: ${weather.forecast.forecastday[1].astro.sunset}</div>
-                                    <div class = "condition" style = "color: #FFFFFF"> ${weather.forecast.forecastday[1].day.condition.text}</div>
-                                </div>
+                        </div>
+
+                        <div class = "col">
+                            <h3 style = "color: #FFFFFF">Météo demain</h3>
+                            <div class = "MeteoDemain">
+                                <div class = "temp card-text" style = "color: #FFFFFF; font-size: 35px">Max: ${weather.forecast.forecastday[1].day.maxtemp_c}°C</div>
+                                <div class = "feels_like card-text" style = "color: #FFFFFF; margin-left: 55px">Min: ${weather.forecast.forecastday[1].day.mintemp_c}°C</div>
+                                <img src = ${weather.forecast.forecastday[1].day.condition.icon}>
+                                <div style = "color: #FFFFFF"> Coucher du Soleil: ${weather.forecast.forecastday[1].astro.sunset}</div>
+                                <div class = "condition " style = "color: #FFFFFF"> ${weather.forecast.forecastday[1].day.condition.text}</div>
                             </div>
-                        </th>
-                        <th>  
-                            <div class = "card">
-                                <h3 style = "color: #FFFFFF">Météo après-demain</h3>
-                                <div class = "MeteoDemain">
-                                    <div class = "temp" style = "color: #FFFFFF; font-size: 35px">Max: ${weather.forecast.forecastday[2].day.maxtemp_c}°C</div>
-                                    <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">Min: ${weather.forecast.forecastday[2].day.mintemp_c}°C</div>
-                                    <img src = ${weather.forecast.forecastday[2].day.condition.icon}>
-                                    <div style = "color: #FFFFFF"> Coucher du Soleil: ${weather.forecast.forecastday[2].astro.sunset}</div>
-                                    <div class = "condition" style = "color: #FFFFFF"> ${weather.forecast.forecastday[2].day.condition.text}</div>
-                                </div>
+                        </div>    
+
+                        <div class = "col">
+                            <h3 style = "color: #FFFFFF">Météo après-demain</h3>
+                            <div class = "MeteoDemain">
+                                <div class = "temp" style = "color: #FFFFFF; font-size: 35px">Max: ${weather.forecast.forecastday[2].day.maxtemp_c}°C</div>
+                                <div class = "feels_like" style = "color: #FFFFFF; margin-left: 55px">Min: ${weather.forecast.forecastday[2].day.mintemp_c}°C</div>
+                                <img src = ${weather.forecast.forecastday[2].day.condition.icon}>
+                                <div style = "color: #FFFFFF"> Coucher du Soleil: ${weather.forecast.forecastday[2].astro.sunset}</div>
+                                <div class = "condition" style = "color: #FFFFFF"> ${weather.forecast.forecastday[2].day.condition.text}</div>
                             </div>
-                        </th>
-                    </table >` 
+                        </div>    
+                    </div>
+                </div>
+            </div>` 
                 }).join('');
                 console.log(html);
                 document.querySelector("#app").insertAdjacentHTML("afterbegin", html);
@@ -135,17 +136,8 @@ body{
     fetchData();
 </script>
 
-<h1 style="margin-top: 15px; text-align: center;">Rendez-vous Sous Les Étoiles</h1>
-<div id = 'app'>
-    <p style="margin-left: 10px; margin-top: 30px; text-align: center; font-size: 20px;">Dans cette activité spéciale, vous êtes invités à venir observer le ciel étoilé à notre observatoire. Vous allez avoir accès à notre télescope
-        pour avoir une vision incroyable de notre Voie Lactée et des plannetes visibles, comme Mars et Venus, mais aussi Jupiter et Saturne. 
-</div>
-<br>
-<br>
-<br>
+<div id="app"></div>
 
-
-<a href="/billeterie"> <button class="Bouton_Reserv", style="margin-left: 45%;">Réservez</button></a>
-
+<br>
 
 <%- include ('../../partials/footer') %>
