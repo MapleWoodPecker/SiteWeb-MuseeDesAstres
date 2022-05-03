@@ -259,11 +259,7 @@ width: 500px;
     background-color: transparent!important;
 }
 
-.col{
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;
-}
+
 
 #affiche{
     width: 350px;
