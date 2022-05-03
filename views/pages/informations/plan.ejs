@@ -74,7 +74,7 @@
     <g id="Layer_2" data-name="Layer 2">
 
         <a tabindex="0" role="button"  data-bs-placement="bottom"  data-bs-toggle="popover" data-bs-trigger="focus"
-        title="Salle B" data-bs-content="And here's some amazing content. It's very engaging. Right?">
+        title="Salle B" data-bs-content="<i>And here's some amazing</i> content. It's very engaging. Right?">
             <polyline class="cls-1" points="7.5 55.16 482.8 55.16 486.3 218.06 498.5 223.56 497.6 865.57 5.7 861.87"/>
         </a>
         <a tabindex="0" role="button"  data-bs-placement="bottom"  data-bs-toggle="popover" data-bs-trigger="focus"
@@ -127,24 +127,20 @@
 <br><br><br><br><br><br><br>
 
 <script>
-    $('#toggle > button').click(function() {
-    var ix = $(this).index();
-    
-    $('#left').toggle( ix === 0 );
-    $('#right').toggle( ix === 1 );
+    $('#toggle > button').click(function () {
+        var ix = $(this).index();
+
+        $('#left').toggle(ix === 0);
+        $('#right').toggle(ix === 1);
     });
 
     var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
     var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-      return new bootstrap.Popover(popoverTriggerEl)
-    })
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl)
-    })
+        return new bootstrap.Popover(popoverTriggerEl, { html: true })
+    });
     var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
-  trigger: 'focus'
-})
+        trigger: 'focus'
+    })
 
 </script>
 
