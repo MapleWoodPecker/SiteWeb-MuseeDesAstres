@@ -98,42 +98,14 @@
 					<p class="movie-title" style="font-size: xxx-large;font-style: italic; "> <%=items[i].titre%></p>
 					<p class="movie-title" style="font-size: larger;"> <%-items[i].desc%></p></a>
 				</div>
-			<% break %>
-			<%;}%>
-			<%;}%>
+			<% break; %>
+			<%}%>
+			<%}%>
 		<br><br>
 		<h1 class="fw-light" style="text-align: center;">Nouveautés au musée</h1>
-		<div class="album py-5">
-			<div class="container">
-				<div class="row row-cols-1 row-cols-sm-1 row-cols-md-3 g-1">
+		<br>
 
-					<%for(i = 0; i < 6; i++){%>
-						<% var type%>
-						<% if (items[i].date_fin>= 0 ) {%>
-							<% type="/expositions" %>
-						<% }else {%>
-							<% type="/activites"%>
-						<%}%>
-
-						<% if(items[i].salle == "A" && type=="/expositions"){%>
-							<% i--; %>
-						<%} else{%>
-						<div class="col-sm-8 col-md-7 py-4">
-							<a href="<%= type %>">
-								<div id="affiche">
-									<img class="affiche-img" width="350px" src="<%= items[i].image %>"/>
-									<div class="affiche-hide"><p style="margin-top: -10px;"><%- items[i].titre %></p><p style="font-size:small!important; margin-top: -16px;"><%- items[i].desc %></p></div>
-								</div>
-							</a>
-						</div>
-						<%} %>
-						
-					<%}; %>
-				</div>
-			</div>
-		</div>
-
-	</div>
+		<!-- Code album ici-->
 
 	<% }else {%>
 		<section class="py-5 text-center container">
