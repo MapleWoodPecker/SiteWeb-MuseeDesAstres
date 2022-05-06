@@ -11,37 +11,54 @@
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         font-size: 20px;
         flex-wrap: wrap;
+        padding: 15px;
         ">
         <div>
-            <h2>Mr./Mme. <%= billet.prenom%> <%= billet.nom%></h2> 
-            <p>Email : <%= billet.email%></p>
-            <small>Adresse : <%= billet.adresse%></small>
-            <%if (billet.telephone > 0) {%>
-            <p>Telephone : <%= billet.telephone%></p>
-            <% } %>
-            <p>Vous avez reservé : <%if (billet.billets_id[0] > 0) {%><br> - <%= billet.billets_id[0]%> billet enfant<% } %>
-                <%if (billet.billets_id[1] > 0) {%><br> - <%= billet.billets_id[1]%> billets adolescent<% } %>
-                <%if (billet.billets_id[2] > 0) {%><br> - <%= billet.billets_id[2]%> billets jeune adulte<% } %>
-                <%if (billet.billets_id[3] > 0) {%><br> - <%= billet.billets_id[3]%> billets adulte<% } %>
-                <%if (billet.billets_id[4] > 0) {%><br> - <%= billet.billets_id[4]%> billets ainé<% } %>
-                <%if (billet.billets_id[5] > 0) {%><br> - <%= billet.billets_id[5]%> billets étudiant<% } %>
-                <%if (billet.billets_id[6] > 0) {%><br> - <%= billet.billets_id[6]%> billets famille<% } %>
-            </p>
-            <%if (billet.rdv_etoile) {%>
-                <p>Option <i>Rendez-vous sous les étoiles</i></p>
-            <% } %>
-            <%if (billet.film) {%>
-                <p>Option <i>Film</i></p>
-            <% } %>
-            <p>Prix : <%= billet.prix %> $ CA</p>
-            <p>pour le <%= billet.datetime.getDate() %> <%= months[billet.datetime.getMonth()] %> <%= billet.datetime.getFullYear() %>.</p>     
-        </div>
-
-        <div style="align-self: center;">
-            <img  width="80%" src="<%= qr%>" alt="QRCode">
-            <small><%= billet._id %></small>
-        </div>
-        
+            <table>
+                 <tr>
+                    <td>
+                        <img src="<%= img%>" alt="" style="height: 300px; width: 300px; margin-top: 15px; 
+                        margin-left: 15px; margin-bottom: 15px;">
+                    </td>
+                    <td>
+                        <h1 style="text-align: center;">MUSÉE</h1>     
+                        <h1 style="text-align: center;"> DES ASTRES</h1>
+                        <img src="<%= logo%>" alt="" style="width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;">
+                    </td>
+                </tr>
+                <tr>
+                    <td >
+                        <h2 style="text-align: center; width: 300px"><%= billet.prenom%> <%= billet.nom%></h2> 
+                        <p style="text-align: center; width: 300px">Email : <%= billet.email%></p>
+                        <p style="text-align: center; width: 300px">Adresse : <%= billet.adresse%></p>
+                        <%if (billet.telephone > 0) {%>
+                        <p style="text-align: center;">Telephone : <%= billet.telephone%></p>
+                        <% } %>
+                        <p style="text-align: center;">Vous avez reservé : <%if (billet.billets_id[0] > 0) {%><br> - <%= billet.billets_id[0]%> billet enfant<% } %>
+                            <%if (billet.billets_id[1] > 0) {%><br> - <%= billet.billets_id[1]%> billets adolescent<% } %>
+                            <%if (billet.billets_id[2] > 0) {%><br> - <%= billet.billets_id[2]%> billets jeune adulte<% } %>
+                            <%if (billet.billets_id[3] > 0) {%><br> - <%= billet.billets_id[3]%> billets adulte<% } %>
+                            <%if (billet.billets_id[4] > 0) {%><br> - <%= billet.billets_id[4]%> billets ainé<% } %>
+                            <%if (billet.billets_id[5] > 0) {%><br> - <%= billet.billets_id[5]%> billets étudiant<% } %>
+                            <%if (billet.billets_id[6] > 0) {%><br> - <%= billet.billets_id[6]%> billets famille<% } %>
+                        </p>
+                        <%if (billet.rdv_etoile) {%>
+                            <p style="text-align: center;">Option <i>Rendez-vous sous les étoiles</i></p>
+                        <% } %>
+                        <%if (billet.film) {%>
+                            <p style="text-align: center;">Option <i>Film</i></p>
+                        <% } %>
+                        <p style="text-align: center;">Prix : <%= billet.prix %> $ CA</p>
+                        <p style="text-align: center;">pour le <%= billet.datetime.getDate() %> <%= months[billet.datetime.getMonth()] %> <%= billet.datetime.getFullYear() %>.</p>
+                    </td>
+                    <td>
+                        <div style="align-self: center; text-align: center;">
+                            <img  width="80%" src="<%= qr%>" alt="QRCode">
+                            <small><%= billet._id %></small> 
+                        </div> 
+                    </td>
+                </tr>
+            </table>
     </div>
 </body>
 

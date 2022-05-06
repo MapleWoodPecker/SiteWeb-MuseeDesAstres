@@ -73,20 +73,20 @@
     <style>.cls-1{fill:#8dd2f0;}.cls-2{fill:#ecefc0;}.cls-3{fill:#d6e9d2;}.cls-4{fill:#e1c0dc;}.cls-10,.cls-11,.cls-5,.cls-7,.cls-8,.cls-9{fill:none;}.cls-10,.cls-11,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{stroke:#000;}.cls-10,.cls-5,.cls-6{stroke-width:15px;}.cls-7{stroke-width:10px;}.cls-8{stroke-width:14px;}.cls-9{stroke-width:2px;}.cls-10{stroke-linecap:square;}.cls-11{stroke-width:7px;}</style>
     <g id="Layer_2" data-name="Layer 2">
 
-        <a tabindex="0" role="button"  data-bs-placement="bottom"  data-bs-toggle="popover" data-bs-trigger="focus"
-        title="Salle B" data-bs-content="<i>And here's some amazing</i> content. It's very engaging. Right?">
+        <a tabindex="0" role="button" class="btn btn-primary" data-toggle="popover_B" data-trigger="focus"
+         title="Salle d'exposition B">
             <polyline class="cls-1" points="7.5 55.16 482.8 55.16 486.3 218.06 498.5 223.56 497.6 865.57 5.7 861.87"/>
         </a>
-        <a tabindex="0" role="button"  data-bs-placement="bottom"  data-bs-toggle="popover" data-bs-trigger="focus"
-        title="Amphithéatre" data-bs-content="And here's some amazing content. It's very engaging. Right?">
+        <a tabindex="0" role="button" class="btn btn-primary" data-toggle="popover_A" data-trigger="focus"
+         title="Amphitéatre">
             <polyline class="cls-2" points="635.8 119.36 635.8 862.66 1450.2 862.66 1450.1 117.17 1288.9 74.47 1160.9 53.16 1156 7.07 930 9.16 929.8 46.97 922.9 55.97 757.8 83.47"/>
         </a>
-        <a tabindex="0" role="button"  data-bs-placement="bottom"  data-bs-toggle="popover" data-bs-trigger="focus"
-        title="Boutique" data-bs-content="And here's some amazing content. It's very engaging. Right?">
+        <a tabindex="0" role="button" class="btn btn-primary" data-toggle="popover_boutique" data-trigger="focus"
+         title="Boutique">
             <polyline class="cls-3" points="1603.1 53.06 2078.4 53.06 2078.4 863.16 1587.5 863.16 1586.1 218.06 1607.1 214.37"/>
         </a>
-        <a tabindex="0" role="button"  data-bs-placement="bottom"  data-bs-toggle="popover" data-bs-trigger="focus"
-        title="Planétarium" data-bs-content="And here's some amazing content. It's very engaging. Right?">
+        <a tabindex="0" role="button" class="btn btn-primary" data-toggle="popover_B" data-trigger="focus"
+         title="Salle d'exposition C">
             <circle class="cls-4" cx="322.8" cy="1189.37" r="235"/>
         </a>
 
@@ -124,9 +124,16 @@
     </svg>
 </div>
 
-<br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
 <script>
+    function generatePopoverContent(id){
+        content = "";
+
+        return content;
+    }
+
+
     $('#toggle > button').click(function () {
         var ix = $(this).index();
 
@@ -134,13 +141,64 @@
         $('#right').toggle(ix === 1);
     });
 
-    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-        return new bootstrap.Popover(popoverTriggerEl, { html: true })
+    $(document).ready(function(){
+    $('[data-toggle="popover_A"]').popover({
+        placement : 'bottom',
+        animation: true,
+		trigger : 'focus',
+        html : true,
+        content : 'Desc: <%- items[1].desc %>'
     });
-    var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
-        trigger: 'focus'
-    })
+    $('[data-toggle="popover_B"]').popover({
+        placement : 'bottom',
+        animation: true,
+		trigger : 'focus',
+        html : true,
+        content : ''
+    });
+    $('[data-toggle="popover_C"]').popover({
+        placement : 'bottom',
+        animation: true,
+		trigger : 'focus',
+        html : true,
+        content : ''
+    });
+    $('[data-toggle="popover_boutique"]').popover({
+        placement : 'bottom',
+        animation: true,
+		trigger : 'focus',
+        html : true,
+        content : ''
+    });
+    $('[data-toggle="popover_E"]').popover({
+        placement : 'bottom',
+        animation: true,
+		trigger : 'focus',
+        html : true,
+        content : ''
+    });
+    $('[data-toggle="popover_F"]').popover({
+        placement : 'bottom',
+        animation: true,
+		trigger : 'focus',
+        html : true,
+        content : ''
+    });
+    $('[data-toggle="popover_G"]').popover({
+        placement : 'bottom',
+        animation: true,
+		trigger : 'focus',
+        html : true,
+        content : ''
+    });
+    $('[data-toggle="popover_H"]').popover({
+        placement : 'bottom',
+        animation: true,
+		trigger : 'focus',
+        html : true,
+        content : ''
+    });
+});
 
 </script>
 
