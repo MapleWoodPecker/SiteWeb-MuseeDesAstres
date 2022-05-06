@@ -12,22 +12,23 @@
         font-size: 20px;
         flex-wrap: wrap;
         padding: 15px;
-        background-color: 182030;
         ">
         <div>
-            <table style="color: whitesmoke;">
+            <table>
                  <tr>
                     <td>
-                        <img src="/images/sqr_obs.png" alt="" style="height: 300px; width: 300px; margin-top: 15px; 
+                        <img src="<%= img%>" alt="" style="height: 300px; width: 300px; margin-top: 15px; 
                         margin-left: 15px; margin-bottom: 15px;">
                     </td>
                     <td>
-                        <img src="/images/logo_text.png" alt="" style="width: 300px; height: 100px; display: block; margin-left: auto; margin-right: auto;">
+                        <h1 style="text-align: center;">MUSÉE</h1>     
+                        <h1 style="text-align: center;"> DES ASTRES</h1>
+                        <img src="<%= logo%>" alt="" style="width: 100px; height: 100px; display: block; margin-left: auto; margin-right: auto;">
                     </td>
                 </tr>
                 <tr>
                     <td >
-                        <h2 style="text-align: center; width: 300px">Mr./Mme. <%= billet.prenom%> <%= billet.nom%></h2> 
+                        <h2 style="text-align: center; width: 300px"><%= billet.prenom%> <%= billet.nom%></h2> 
                         <p style="text-align: center; width: 300px">Email : <%= billet.email%></p>
                         <p style="text-align: center; width: 300px">Adresse : <%= billet.adresse%></p>
                         <%if (billet.telephone > 0) {%>
