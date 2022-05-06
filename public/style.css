@@ -349,3 +349,9 @@ width: 500px;
     margin-left: auto;
     margin-right: auto;
 }
+
+
+.popover_b{
+    width: 250px!important;
+    max-width: 100%; /* Max Width of the popover (depending on the container!) */
+}
