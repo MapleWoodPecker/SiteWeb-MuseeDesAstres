@@ -70,13 +70,14 @@ body{
         <h1 class="fw-light">Rendez-vous Sous Les Étoiles</h1>
         <p class="lead text-muted">Dans cette activité spéciale, vous êtes invités à venir observer le ciel étoilé à notre observatoire. Vous allez avoir accès à notre télescope
         pour avoir une vision incroyable de notre Voie Lactée et des plannetes visibles, comme Mars et Venus, mais aussi Jupiter et Saturne. </p>
+        <p class="lead text-muted">Il est récommandé de résérver quand le ciel est dégagé.</p>  
         <div class="reserve">
-            <a href="/billeterie"> <button class="Bouton_Reserv">Réservez</button></a>
+            <a href="/billeterie"> <button class="Bouton_Reserv">Résérvez</button></a>
         </div>
       </div>
     </div>
   </section>
-
+  <div id="app"></div>
 <script>
     function fetchData(){
         fetch("http://api.weatherapi.com/v1/forecast.json?key=2af0c9b4b7c04005957140735221204&q=Montreal&days=3&aqi=no&alerts=yes")
@@ -135,9 +136,4 @@ body{
 
     fetchData();
 </script>
-
-<div id="app"></div>
-
-<br>
-
 <%- include ('../../partials/footer') %>

@@ -102,10 +102,54 @@
 			<%}%>
 			<%}%>
 		<br><br>
-		<h1 class="fw-light" style="text-align: center;">Nouveautés au musée</h1>
+		<h1 class="fw-light" style="text-align: center;">Expositions et activitées récentes</h1>
 		<br>
 
-		<!-- Code album ici-->
+		<!-- Code album -->
+		
+		<div class="album py-5 bg-light">
+			<div class="container">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+				
+				<% var temp = 0;%>
+
+				<% items.forEach(function(item,index){ %>
+
+					<%if (temp < 2) {%>
+
+						<% temp++; %>
+
+					<%} else if (!(item.salle == "A" && item.date_fin >= 0) && temp < 8) {%>
+
+					<% var type;%>
+                    <% if (item.date_fin>=0 ) {%>
+                            <% type="/expositions"; %>
+                        <% }else {%>
+                            <% type="/activites"; %>
+                    <%}%>
+
+					<div class="col" > 
+						<div class="card" style="height: 290px; border: 0ch;">
+							<a href="<%= type %>">
+								<div id="affiche">
+									<img src="<%= item.image %>" style="max-width: 420px; min-width: 420px;"/>
+									<div class="affiche-hide">
+										<p style="margin-top: -10px;"><%- item.titre %></p>
+										<p style="font-size:small!important; margin-top: -16px;"><%- item.desc %></p>
+									</div>
+								</div>
+							</a>
+						</div>
+					</div>
+					
+					<% temp++; %>
+
+					<%}%>
+
+				<%});%>
+				</div>
+			</div>
+		</div>
 
 	<% }else {%>
 		<section class="py-5 text-center container">
