@@ -350,3 +350,13 @@ width: 500px;
     width: 250px!important;
     max-width: 100%; /* Max Width of the popover (depending on the container!) */
 }
+
+#content-desktop {display: block;}
+#content-mobile {display: none;}
+
+@media screen and (max-width: 991px) {
+
+#content-desktop {display: none;}
+#content-mobile {display: block;}
+
+}
