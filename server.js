@@ -459,6 +459,25 @@ app.get('/boutique',async function (req,res) {
 	});
 });
 
+app.get('/cart',async function (req,res) {
+	
+
+
+	const cursor = itemsboutique.find({req});
+
+	var result = [];
+
+	await cursor.forEach(element => {
+		result.push(element);
+	});
+
+    res.render('pages/boutique',{
+    	siteTitle : "Boutique en ligne - Musée des Astres",
+    	pageTitle : "bout",
+    	items : result
+	});
+});
+
 
 app.get('/checkout',async function (req,res) {
 
