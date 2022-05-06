@@ -7,7 +7,7 @@ for (let i = 0; i < sessionStorage.length; i++) {
          
           console.log(data);
 
-          fetch("/test", {
+          fetch("/cart", {
             method: "GET",
             headers: headers,
             body:  JSON.stringify(data)

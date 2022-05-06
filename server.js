@@ -19,6 +19,7 @@ const pdf = require("html-pdf-node");
 const qrcode = require('qrcode');
 const { url } = require('inspector');
 const { pbkdf2 } = require('crypto');
+const { json } = require('body-parser');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -459,23 +460,32 @@ app.get('/boutique',async function (req,res) {
 	});
 });
 
-app.get('/cart',async function (req,res) {
+app.post('/cart',async function (req,res) {
 	
+	let json = req.body;
 
-
-	const cursor = itemsboutique.find({req});
-
+	console.log(json);
 	var result = [];
+	for (let value of Object.values(json)) {
+		//console.log(value);
+		const cursor = await itemsboutique.find({});
 
-	await cursor.forEach(element => {
-		result.push(element);
-	});
+		await cursor.forEach(element => {
+			console.log(element["_id"])
+			console.log(element["_id"] == value)
 
-    res.render('pages/boutique',{
-    	siteTitle : "Boutique en ligne - Musée des Astres",
-    	pageTitle : "bout",
-    	items : result
-	});
+			if (element["_id"] == value) {
+				result.push(element);
+			}
+			
+		});
+	}
+	
+	console.log(result);
+res.set('Content-Type', 'application/json')
+//res.statusCode(200)	
+res.send (result)
+
 });
 
 

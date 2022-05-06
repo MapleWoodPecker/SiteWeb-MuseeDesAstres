@@ -24,14 +24,13 @@
 
   
   <!-- Custom styles for this template -->
-  <link href="form-validation.css" rel="stylesheet">
 </head>
 <body class="bg-light">
   
 <div class="container">
 <main>
   <div class="py-5 text-center">
-    <img class="d-block mx-auto mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    
     <h2>Checkout form</h2>
     <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
   </div>
@@ -43,27 +42,7 @@
         <span class="badge bg-primary rounded-pill">3</span>
       </h4>
       <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-sm">
-          <div>
-            <h6 class="my-0">Product name</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$12</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-sm">
-          <div>
-            <h6 class="my-0">Second product</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$8</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-sm">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">Brief description</small>
-          </div>
-          <span class="text-muted">$5</span>
-        </li>
+        
     
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (USD)</span>
@@ -240,9 +219,52 @@
 </footer>
 </div>
 
-
-  <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
     <script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
+    
+    
+    <script> 
+      var headers = {"Content-Type": "application/json","Access-Control-Origin": "*", "Expires": ""}
+        var data = [];
+      for (let i = 0; i < sessionStorage.length; i++) {
+          data[i] = sessionStorage.getItem(i);
+      };
+                
+                console.debug(" data : "+ data);
+                console.debug("data Json : " + JSON.stringify((Object.assign({}, data))));
+      
+                fetch("/cart", {
+                  method: "POST",
+                  headers: headers,
+                  body:  JSON.stringify((Object.assign({}, data)))
+                })
+
+                .then(response => response.json())
+                .then(data => {
+                  for (const Items of data) {
+                    
+                    let listItem = document.createElement('li');
+                    listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
+
+                    let indiv = document.createElement('div');
+
+                    let Titre = document.createElement('h6');
+                    Titre.classList.add('my-0');
+                    Titre.innerText = Items.titre;
+
+                    let Descrip = document.createElement('p');
+                    Descrip.classList.add('text-muted');
+                    Descrip.innerText = Items.desc;
+
+                    let Prix = document.createElement('span');
+                    Prix.classList.add('text-muted');
+                    Prix.innerText = Items.prix;
+                   
+                    listItem.appendChild(indiv);
+                    indiv.appendChild(Titre, Descrip);
+                    listItem.appendChild(Prix);
+                  }
+                })
+                .catch(console.error);
+      </script>
 
 <%- include ('../partials/footer') %>
