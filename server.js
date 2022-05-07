@@ -236,6 +236,8 @@ app.get('/plan',async function (req,res) {
 		result.push(element2);
 	});
 
+	result.sort(compare);
+	
     res.render('pages/informations/plan',{
     	siteTitle : "Plan du Musée - Musée des Astres",
     	pageTitle : "plan",
