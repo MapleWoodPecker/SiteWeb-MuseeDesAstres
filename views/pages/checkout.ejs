@@ -36,18 +36,12 @@
   </div>
 
   <div class="row g-5">
-    <div class="col-md-5 col-lg-4 order-md-last">
+    <div class="col-md-5 col-lg-4 order-md-last" id="cart">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-primary">Your cart</span>
-        <span class="badge bg-primary rounded-pill">3</span>
+        <span class="badge bg-primary rounded-pill" id="nbItems">3</span>
       </h4>
-      <ul class="list-group mb-3">
-        
-    
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total (USD)</span>
-          <strong>$20</strong>
-        </li>
+      <ul class="list-group mb-3" id="list">
       </ul>
 
     </div>
@@ -240,9 +234,23 @@
 
                 .then(response => response.json())
                 .then(data => {
+
+                  let racine = document.getElementById('cart');
+                  console.debug(racine);
+                  let nbitems = document.getElementById('nbItems');
+
+                  let listItems = document.getElementById('list');
+
+                  nbitems.innerText = data.length;
+                  
+                  let prixTotHT = 0;
+                 
                   for (const Items of data) {
                     
+                    prixTotHT= prixTotHT+Items.prix;
+
                     let listItem = document.createElement('li');
+                    
                     listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
 
                     let indiv = document.createElement('div');
@@ -251,18 +259,41 @@
                     Titre.classList.add('my-0');
                     Titre.innerText = Items.titre;
 
-                    let Descrip = document.createElement('p');
+                    let Descrip = document.createElement('small');
                     Descrip.classList.add('text-muted');
                     Descrip.innerText = Items.desc;
 
                     let Prix = document.createElement('span');
                     Prix.classList.add('text-muted');
-                    Prix.innerText = Items.prix;
-                   
+                    Prix.innerText = "$ " +Items.prix;
+
+                    indiv.appendChild(Titre);
+                    indiv.appendChild(Descrip);
+
                     listItem.appendChild(indiv);
-                    indiv.appendChild(Titre, Descrip);
                     listItem.appendChild(Prix);
+                    
+                    listItems.appendChild(listItem);
                   }
+                  let total = document.createElement('li');
+                  total.classList.add('list-group-item', 'd-flex', 'justify-content-between');
+
+                  let textTotal = document.createElement('span');
+                  textTotal.innerText = "Total (CAD)";
+
+                  let prixTotal = document.createElement('strong');
+                  prixTotal.innerText = "$ "+prixTotHT;
+                  console.debug(prixTotHT);
+
+                  total.appendChild(textTotal);
+                  total.appendChild(prixTotal);
+
+                  console.debug(total.innerHTML);
+                  listItems.appendChild(total);
+
+
+
+
                 })
                 .catch(console.error);
       </script>
