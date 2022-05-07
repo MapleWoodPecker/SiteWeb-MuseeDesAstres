@@ -367,3 +367,12 @@ p, h1, h2, h3, h4, h5 {
   .plan-title{
     text-align: center;margin-top:5%;
   }
+
+
+  #content-desktop {display: block;}
+  #content-mobile {display: none;}
+
+  @media screen and (max-width: 991px) {
+
+  #content-desktop {display: none;}
+  #content-mobile {display: block;}

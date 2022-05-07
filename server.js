@@ -19,6 +19,7 @@ const pdf = require("html-pdf-node");
 const qrcode = require('qrcode');
 const { url } = require('inspector');
 const { pbkdf2 } = require('crypto');
+const fs = require('fs');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -92,22 +93,22 @@ var tarifs;
 run().catch(console.dir);
 
 
-// client.connect((error , db) => {
-// 	if (error){
-// 		throw error;
-// 	}
-// 	const database = client.db('musee_desastres_db');
-// 	//Search query for deletion
-// 	var query = { nom : "1234" };
+/* client.connect((error , db) => {
+	if (error){
+		throw error;
+	}
+	const database = client.db('musee_desastres_db');
+	//Search query for deletion
+	var query = { prenom : "Christophe" };
 	
-// 	//Accessing the collection
-// 	database.collection("reservations").deleteMany(query , (err , collection) => {
-// 		if(err) throw err;
-// 		console.log(collection.result.n + " Record(s) deleted successfully");
-// 		console.log(collection);
-// 		db.close();
-// 	});
-// });
+	//Accessing the collection
+	database.collection("reservations").deleteMany(query , (err , collection) => {
+		if(err) throw err;
+		console.log(collection.result.n + " Record(s) deleted successfully");
+		console.log(collection);
+		db.close();
+	});
+}); */
 
 /**
 * Global site title and base url
@@ -323,8 +324,10 @@ app.post('/billet',async function (req,res) {
 
 	var prix = 0;
 	for (let i = 0; i < billets.length; i++){
-		prix += tarif[i].prix * billets[i];
+		prix += (tarif[i].prix * 100) * billets[i];
 	}
+	prix = prix/100;
+
 	console.log(prix);
 
 	var billet_temp = {
@@ -354,11 +357,13 @@ app.post('/billet',async function (req,res) {
 	});
 
 	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs",
-	{ billet : billet_temp, qr : await generateQR(billet_temp._id.toString()) },
+	{ billet : billet_temp, qr : await generateQR(billet_temp._id.toString()), 
+		logo : base64_encode('public\\images\\logo_border.png'), img : base64_encode('public\\images\\sqr_obs.png') },
 	function (err, data) {
 		if (err) {
 			console.log(err);
 	  	} else {
+			  
 			pdf.generatePdf({ content: data }, { }).then(pdfBuffer => {
 				console.log("PDF generated");
 	  
@@ -385,6 +390,14 @@ app.post('/billet',async function (req,res) {
 	  	}
 	});
 });
+
+// function to encode file data to base64 encoded string
+function base64_encode(file) {
+    // read binary data
+    var bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return "data:image/png;base64," + new Buffer(bitmap).toString('base64');
+}
 
 app.get('/billet',async function (req,res) {
 	res.redirect('/connexion');
@@ -415,13 +428,13 @@ app.get('/billet/:id',async function (req,res) {
 			res.end();
 		} else {
 
-			var url = await generateQR(result._id.toString());
-
 			res.render('pages/reservations/email_billet',{
 				siteTitle : "Votre Billet - Musée des Astres",
 				pageTitle : "billet",
 				billet : result,
-				qr : url
+				qr : await generateQR(result._id.toString()),
+				logo : base64_encode('public\\images\\logo_border.png'), 
+				img : base64_encode('public\\images\\sqr_obs.png')
 			});
 		}
 
@@ -461,23 +474,32 @@ app.get('/boutique',async function (req,res) {
 	});
 });
 
-app.get('/cart',async function (req,res) {
+app.post('/cart',async function (req,res) {
 	
+	let json = req.body;
 
-
-	const cursor = itemsboutique.find({req});
-
+	console.log(json);
 	var result = [];
+	for (let value of Object.values(json)) {
+		//console.log(value);
+		const cursor = await itemsboutique.find({});
 
-	await cursor.forEach(element => {
-		result.push(element);
-	});
+		await cursor.forEach(element => {
+			console.log(element["_id"])
+			console.log(element["_id"] == value)
 
-    res.render('pages/boutique',{
-    	siteTitle : "Boutique en ligne - Musée des Astres",
-    	pageTitle : "bout",
-    	items : result
-	});
+			if (element["_id"] == value) {
+				result.push(element);
+			}
+			
+		});
+	}
+	
+	console.log(result);
+res.set('Content-Type', 'application/json')
+//res.statusCode(200)	
+res.send (result)
+
 });
 
 
