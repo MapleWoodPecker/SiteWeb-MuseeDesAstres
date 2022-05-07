@@ -373,6 +373,6 @@ p, h1, h2, h3, h4, h5 {
   #content-mobile {display: none;}
 
   @media screen and (max-width: 991px) {
-
-  #content-desktop {display: none;}
-  #content-mobile {display: block;}
+    #content-desktop {display: none;}
+    #content-mobile {display: block;}
+  }
