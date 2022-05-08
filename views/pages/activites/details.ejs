@@ -1,11 +1,11 @@
 <%- include ('../../partials/header') %>
 
 <div style="width: 80%; margin-left: auto; margin-right: auto; text-align: center; align-items: center;">
-<h1 class="fw-light"><%= items[0].titre %></h1>
+<h1 class="fw-light"><%= item.titre %></h1>
 
-<img src="<%= items[0].image%>" >
+<img src="<%= item.image%>">
 
-<p class="lead text-muted"><%- items[0].desc %></p>
+<p class="lead text-muted"><%- item.desc %></p>
 
     <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
     
