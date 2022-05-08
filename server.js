@@ -600,8 +600,8 @@ app.post('/connexion', async function (req,res){
 	});
 	
     res.render('pages/activites/details',{
-    	siteTitle : "Details - Musée des Astres",
-    	pageTitle : "det",
+    	siteTitle : result[0].titre + " - Musée des Astres",
+    	pageTitle : "details",
 		items: result
 	});
 });
