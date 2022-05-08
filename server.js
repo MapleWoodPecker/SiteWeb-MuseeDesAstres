@@ -21,6 +21,8 @@ const { url } = require('inspector');
 const { pbkdf2 } = require('crypto');
 const fs = require('fs');
 
+var ObjectId = require('mongodb').ObjectID;
+
 /**
 * import all related Javascript and css files to inject in our app
 */
@@ -161,7 +163,7 @@ app.get('/',async function (req,res) {
 
 app.get('/expositions',async function (req,res) {
 
-	const cursor = expo.find({}).sort({ date_debut: -1 });
+	const cursor = expo.find().sort({ date_debut: -1 });
 
 	var result = [];
 
@@ -510,7 +512,7 @@ app.get('/checkout',async function (req,res) {
 
 
 	res.render('pages/checkout',{
-		siteTitle : "Accès Admin - MDA",
+		siteTitle : "Confirmer la commande - Musée des Astres",
 		pageTitle : "bout",
 		items : result
 	});
@@ -579,6 +581,30 @@ app.post('/connexion', async function (req,res){
 		res.end();
 	}
 
+});
+
+/**
+ * Experiences page generator
+ */
+
+ app.get('/experience/:id',async function (req,res) {
+	var id_exp = req.params.id;
+
+	result = [];
+
+	await expo.find(ObjectId(id_exp)).forEach(element1 => {
+		result.push(element1);
+	});
+	await activites.find(ObjectId(id_exp)).forEach(element2 => {
+		result.push(element2);
+	});
+
+	console.log(result);
+    res.render('pages/activites/details',{
+    	siteTitle : "Details - Musée des Astres",
+    	pageTitle : "det",
+		items: result
+	});
 });
 
 /**

@@ -118,11 +118,11 @@
 
 				<% items.forEach(function(item,index){ %>
 
-					<%if (temp < 2) {%>
+					<%if (temp < 3) {%>
 
 						<% temp++; %>
 
-					<%} else if (!(item.salle == "A" && item.date_fin >= 0) && temp < 8) {%>
+					<%} else if (!(item.salle == "A" && item.date_fin >= 0) && temp < 9) {%>
 
 					<% var type;%>
                     <% if (item.date_fin>=0 ) {%>
@@ -137,8 +137,7 @@
 								<div id="affiche">
 									<img src="<%= item.image %>" style="max-width:400px; min-width: 400px;"/>
 									<div class="affiche-hide">
-										<p style="margin-top: -10px;"><%- item.titre %></p>
-										<p style="font-size:small!important; margin-top: -16px;"><%- item.desc %></p>
+										<p style="margin-top: 0px; font-size: x-large;"><%- item.titre %></p>
 									</div>
 								</div>
 							</a>

@@ -289,9 +289,9 @@ width: 500px;
     background-color: RGBA(24,32,48,0.7);
     color: white;
     width: 400px;
-    height: 100px;
+    height: 70px;
     padding: 15px;
-    margin-top: -100px;
+    margin-top: -70px;
     text-align: center;
     vertical-align:middle;
     font-size:large;
@@ -346,27 +346,12 @@ width: 500px;
 }
 
 
-.popover{
-    max-width: 350px;
-    max-height: 400px;
-    text-align: center!important;
-    overflow-y: scroll;
-}
 
 p, h1, h2, h3, h4, h5 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 
-.plan-date{
-    text-align: center!important; font-size: 90%; margin-top:0%!important;margin-bottom:0!important;
-  }
-  .plan-desc{
-    text-align: center!important; font-size: 80%;margin-top:0%!important;margin-bottom:0%!important;margin-bottom:0!important;
-  }
-  .plan-title{
-    text-align: center;margin-top:5%;
-  }
 
 
   #content-desktop {display: block;}
