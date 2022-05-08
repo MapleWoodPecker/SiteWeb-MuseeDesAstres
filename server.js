@@ -598,8 +598,7 @@ app.post('/connexion', async function (req,res){
 	await activites.find(ObjectId(id_exp)).forEach(element2 => {
 		result.push(element2);
 	});
-
-	console.log(result);
+	
     res.render('pages/activites/details',{
     	siteTitle : "Details - Musée des Astres",
     	pageTitle : "det",
