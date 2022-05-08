@@ -587,23 +587,38 @@ app.post('/connexion', async function (req,res){
  * Experiences page generator
  */
 
- app.get('/experience/:id',async function (req,res) {
-	var id_exp = req.params.id;
+app.get('/experience/:id', async function (req, res) {
+	var id = req.params.id;
 
-	result = [];
+	const cursor1 = await activites.find({});
+	const cursor2 = await expo.find({});
 
-	await expo.find(ObjectId(id_exp)).forEach(element1 => {
-		result.push(element1);
+	var result;
+
+	await cursor1.forEach(element => {
+		if (element._id.toString() === id) {
+			result = element;
+		}
 	});
-	await activites.find(ObjectId(id_exp)).forEach(element2 => {
-		result.push(element2);
+	await cursor2.forEach(element => {
+		if (element._id.toString() === id) {
+			result = element;
+		}
 	});
-	
-    res.render('pages/activites/details',{
-    	siteTitle : result[0].titre + " - Musée des Astres",
-    	pageTitle : "details",
-		items: result
-	});
+
+	result.image = base64_encode('public\\' + result.image);
+
+	if (result == undefined) {
+		console.log("id inexistant");
+		res.redirect("/");
+		res.end();
+	} else {
+		res.render('pages/activites/details', {
+			siteTitle: "Details - Musée des Astres",
+			pageTitle: "det",
+			item: result
+		});
+	}
 });
 
 /**
