@@ -91,10 +91,10 @@
 		<br>
 		<% for (i=0; i < items.length; i++){ %>
 			
-			<% if (items[i].salle == "A") {%>
+			<% if (items[i].salle == "A" && items[i].date_fin != undefined) {%>
 				
 				<div id="movie-container">
-					<a href="billeterie" style="text-decoration:none"><img src="<%= items[i].image %>" class="movie-image" width="700px"/>
+					<a href="/experience/<%= items[i]._id%>" style="text-decoration:none"><img src="<%= items[i].image %>" class="movie-image" width="700px"/>
 					<p class="movie-title" style="font-size: xxx-large;font-style: italic; "> <%=items[i].titre%></p>
 					<p class="movie-title" style="font-size: larger;"> <%-items[i].desc%></p></a>
 				</div>

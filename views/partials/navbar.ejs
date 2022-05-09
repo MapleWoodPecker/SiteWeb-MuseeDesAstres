@@ -1,4 +1,16 @@
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<style>
+		a, a:hover, a:focus, a:active {
+		text-decoration: none;
+		color: inherit;
+		}
+		.popover{
+			max-width: 400px;
+			max-height: 400px;
+		}
+	</style>
+	
 	<div class="container-fluid">
 	<a class="navbar-brand" href="http://localhost:4000/"><img src="../../images/logo_text.png"  width="250px" alt="Musée des Astres" style="margin-left: 30px!important"/></a>
 	  
@@ -40,13 +52,13 @@
 
 		<ul style="padding-top:10px; ">
 			<li class="nav-item me-auto" style="margin-right: 30px!important;">
-				<a  tabindex="0" role="button" style="color: #182030; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px; overflow: hidden;"
+				<a  tabindex="0" id="content-desktop" role="button" style="color: #182030; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px; overflow: hidden;"
 					class="btn btn-light" data-toggle="popover_cart" title="Shopping Cart" data-bs-trigger="focus">
 					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
 					Panier
 				</a>
 
-				<a href="/checkout"><button style="color: #182030; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px; overflow: hidden;"
+				<a href="/checkout" style="text-decoration: none; color: inherit;"><button id="content-mobile" style=" color: #182030; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px; overflow: hidden;"
 					class="btn btn-light" >
 					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
 					Panier
@@ -68,7 +80,7 @@
 			html: true,
 			sanitize: false,
 			animation:true,
-			content: '<div class="row g-5"> <div class="col-md-5 col-lg-4 order-md-last"> <h4 class="d-flex justify-content-between align-items-center mb-3"> <span class="text-primary">Your cart</span> <span class="badge bg-primary rounded-pill">3</span> </h4> <ul class="list-group mb-3"> <li class="list-group-item d-flex justify-content-between lh-sm"> <div> <h6 class="my-0">Product name</h6> <small class="text-muted">Brief description</small> </div> <span class="text-muted">$12</span> </li> <li class="list-group-item d-flex justify-content-between lh-sm"> <div> <h6 class="my-0">Second product</h6> <small class="text-muted">Brief description</small> </div> <span class="text-muted">$8</span> </li> <li class="list-group-item d-flex justify-content-between lh-sm"> <div> <h6 class="my-0">Third item</h6> <small class="text-muted">Brief description</small> </div> <span class="text-muted">$5</span> </li> <li class="list-group-item d-flex justify-content-between"> <span>Total (USD)</span> <strong>$20</strong> </li> </ul> </div>'
+			content: ` <a href="/checkout"><div class="row g-5"> <div class="col-md-5 col-lg-4 order-md-last"> <h4 class="d-flex justify-content-between align-items-center mb-3"> <span class="text-primary">Your cart</span> <span class="badge bg-primary rounded-pill">3</span> </h4> <ul class="list-group mb-3"> <li class="list-group-item d-flex justify-content-between lh-sm"> <div> <h6 class="my-0">Product name</h6> <small class="text-muted">Brief description</small> </div> <span class="text-muted">$12</span> </li> <li class="list-group-item d-flex justify-content-between lh-sm"> <div> <h6 class="my-0">Second product</h6> <small class="text-muted">Brief description</small> </div> <span class="text-muted">$8</span> </li> <li class="list-group-item d-flex justify-content-between lh-sm"> <div> <h6 class="my-0">Third item</h6> <small class="text-muted">Brief description</small> </div> <span class="text-muted">$5</span> </li> <li class="list-group-item d-flex justify-content-between"> <span>Total (USD)</span> <strong>$20</strong> </li></ul> </div></a> `
 		});
 	});
 
