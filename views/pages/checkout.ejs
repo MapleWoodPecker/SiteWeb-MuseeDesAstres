@@ -20,6 +20,12 @@
         font-size: 3.5rem;
       }
     }
+    .main, .text-primary{
+			color: #182030!important;
+		}
+		.badge, .w-100{
+			background-color: #182030!important;
+		}
   </style>
 
   
@@ -194,7 +200,7 @@
             </div>
           </div>
         </div>
-
+        
         <hr class="my-4">
 
         <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
@@ -203,99 +209,91 @@
   </div>
 </main>
 
-<footer class="my-5 pt-5 text-muted text-center text-small">
-  <p class="mb-1">&copy; 2017–2021 Company Name</p>
-  <ul class="list-inline">
-    <li class="list-inline-item"><a href="#">Privacy</a></li>
-    <li class="list-inline-item"><a href="#">Terms</a></li>
-    <li class="list-inline-item"><a href="#">Support</a></li>
-  </ul>
-</footer>
 </div>
+<br><br>
 
-    <script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
-    
-    
-    <script> 
-      var headers = {"Content-Type": "application/json","Access-Control-Origin": "*", "Expires": ""}
-        var data = [];
-      for (let i = 0; i < sessionStorage.length; i++) {
-          data[i] = sessionStorage.getItem(i);
-      };
-                
-                console.debug(" data : "+ data);
-                console.debug("data Json : " + JSON.stringify((Object.assign({}, data))));
-      
-                fetch("/cart", {
-                  method: "POST",
-                  headers: headers,
-                  body:  JSON.stringify((Object.assign({}, data)))
-                })
+<script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
 
-                .then(response => response.json())
-                .then(data => {
+<script> 
+var headers = {"Content-Type": "application/json","Access-Control-Origin": "*", "Expires": ""}
+  var data = [];
+for (let i = 0; i < sessionStorage.length; i++) {
+    data[i] = sessionStorage.getItem(i);
+};
+          
+          console.debug(" data : "+ data);
+          console.debug("data Json : " + JSON.stringify((Object.assign({}, data))));
 
-                  let racine = document.getElementById('cart');
-                  console.debug(racine);
-                  let nbitems = document.getElementById('nbItems');
+          fetch("/cart", {
+            method: "POST",
+            headers: headers,
+            body:  JSON.stringify((Object.assign({}, data)))
+          })
 
-                  let listItems = document.getElementById('list');
+          .then(response => response.json())
+          .then(data => {
 
-                  nbitems.innerText = data.length;
-                  
-                  let prixTotHT = 0;
-                 
-                  for (const Items of data) {
-                    
-                    prixTotHT= prixTotHT+Items.prix;
+            let racine = document.getElementById('cart');
+            console.debug(racine);
+            let nbitems = document.getElementById('nbItems');
 
-                    let listItem = document.createElement('li');
-                    
-                    listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
+            let listItems = document.getElementById('list');
 
-                    let indiv = document.createElement('div');
+            nbitems.innerText = data.length;
+            
+            let prixTotHT = 0;
+            
+            for (const Items of data) {
+              
+              prixTotHT= prixTotHT+Items.prix;
 
-                    let Titre = document.createElement('h6');
-                    Titre.classList.add('my-0');
-                    Titre.innerText = Items.titre;
+              let listItem = document.createElement('li');
+              
+              listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
 
-                    let Descrip = document.createElement('small');
-                    Descrip.classList.add('text-muted');
-                    Descrip.innerText = Items.desc;
+              let indiv = document.createElement('div');
 
-                    let Prix = document.createElement('span');
-                    Prix.classList.add('text-muted');
-                    Prix.innerText = "$ " +Items.prix;
+              let Titre = document.createElement('h6');
+              Titre.classList.add('my-0');
+              Titre.innerText = Items.titre;
 
-                    indiv.appendChild(Titre);
-                    indiv.appendChild(Descrip);
+              let Descrip = document.createElement('small');
+              Descrip.classList.add('text-muted');
+              Descrip.innerText = Items.desc;
 
-                    listItem.appendChild(indiv);
-                    listItem.appendChild(Prix);
-                    
-                    listItems.appendChild(listItem);
-                  }
-                  let total = document.createElement('li');
-                  total.classList.add('list-group-item', 'd-flex', 'justify-content-between');
+              let Prix = document.createElement('span');
+              Prix.classList.add('text-muted');
+              Prix.innerText = "$ " +Items.prix;
 
-                  let textTotal = document.createElement('span');
-                  textTotal.innerText = "Total (CAD)";
+              indiv.appendChild(Titre);
+              indiv.appendChild(Descrip);
 
-                  let prixTotal = document.createElement('strong');
-                  prixTotal.innerText = "$ "+prixTotHT;
-                  console.debug(prixTotHT);
+              listItem.appendChild(indiv);
+              listItem.appendChild(Prix);
+              
+              listItems.appendChild(listItem);
+            }
+            let total = document.createElement('li');
+            total.classList.add('list-group-item', 'd-flex', 'justify-content-between');
 
-                  total.appendChild(textTotal);
-                  total.appendChild(prixTotal);
+            let textTotal = document.createElement('span');
+            textTotal.innerText = "Total (CAD)";
 
-                  console.debug(total.innerHTML);
-                  listItems.appendChild(total);
+            let prixTotal = document.createElement('strong');
+            prixTotal.innerText = "$ "+prixTotHT;
+            console.debug(prixTotHT);
 
+            total.appendChild(textTotal);
+            total.appendChild(prixTotal);
 
+            console.debug(total.innerHTML);
+            listItems.appendChild(total);
 
 
-                })
-                .catch(console.error);
-      </script>
+
+
+          })
+          .catch(console.error);
+</script>
 
 <%- include ('../partials/footer') %>

@@ -1,13 +1,45 @@
 <%- include ('../../partials/header') %>
 
+
+<br><br><br>
+<br>
+
 <div style="width: 80%; margin-left: auto; margin-right: auto; text-align: center; align-items: center;">
-<h1 class="fw-light"><%= item.titre %></h1>
+    <% var expo = false %>
+    <% if (item.date_fin != undefined) { expo = true} %>
+    <p style="font-size:x-large; font-style: italic;" >
+        <% if (expo) { %>
+            Exposition
+        <% }else{%>
+            Activité
+        <% }; %>
+    </p>
+    <h1 class="fw-light"><%= item.titre %></h1>
+    <br>
+    <img src="<%= item.image%>" style="width:700px">
+    <br>
+    <br>
 
-<img src="<%= item.image%>">
 
-<p class="lead text-muted"><%- item.desc %></p>
 
+    <p class="lead text-muted"><%- item.desc %></p>
+        <%= item.duree %> minutes
     <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
     
+
+    <p class="card-text">
+        <% if (expo) { %>
+            <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
+            <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%> <br>
+            Salle : <%= item.salle%>
+        <% }else{%>
+            <% var months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
+            %>
+            <% var min=item.date_debut.getUTCMinutes() %>
+            <% if (min < 10) {min="0" + min} %>
+            Le <%= item.date_debut.getDate()%>
+            <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%>
+        <% }; %>
+    </p>
 </div>
 <%- include ('../../partials/footer') %>

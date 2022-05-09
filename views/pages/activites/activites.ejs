@@ -49,7 +49,7 @@
               <div class="col" style="margin-bottom:30px">
                 <div class="card shadow-sm">
 
-                  <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">
+                  <a href="/experience/<%= item._id%>"><img class="bd-placeholder-img card-img-top" src="<%= item.image %>"></a>
 
                   <div class="card-body">
                     <h5>
@@ -71,16 +71,6 @@
                   </div>
                 </div>
               </div>
-
-              <script type="text/javascript">
-                document.getElementById("Click_<%= item._id%>").onclick = function () {
-                  if (document.getElementById("details_<%= item._id%>").style.display == "none") {
-                    document.getElementById("details_<%= item._id%>").style.display = "block";
-                  } else {
-                    document.getElementById("details_<%= item._id%>").style.display = "none";
-                  }
-                }
-              </script>
 
               <%}); %>
 
