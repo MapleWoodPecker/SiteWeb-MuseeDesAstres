@@ -47,12 +47,21 @@
 
     <p><%= item.long%></p>
 
-    <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
-    <br>
+    
     <% if (expo) { %>
-        <a href="/expositions" class="btn btn-primary my-2" style="background-color: #182030;">Voir toutes les expositions</a>
+        <p>Cela vous intéresse? Réservez votre billet pour cette exposition, ainsi que plusieurs autres, dès maintenant:</p>
+        <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
+        <br>
+        <p>Cette exposition est une des nombreuses que nous présentons en ce moment.</p>
+        <a href="/expositions" class="btn btn-primary my-2" style="background-color: #182030;">Voir le reste</a>
+
+        
     <% }else{%>
-        <a href="/activites" class="btn btn-primary my-2" style="background-color: #182030;">Voir toutes les activités</a>
+        <p>Réservez votre billet pour cette, ainsi que plusieurs autre</p>
+        <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
+        <br>
+        <p>Cette activités est une des nombreuses que nous avons à présenter.</p>
+        <a href="/activites" class="btn btn-primary my-2" style="background-color: #182030;">Voir le reste</a>
     <% }; %>
     
 

@@ -15,6 +15,9 @@
 		.badge, .w-100{
 			background-color: #182030!important;
 		}
+		.cart-button{
+			color: #182030; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px;
+		}
 	</style>
 
 	<div class="container-fluid">
@@ -58,14 +61,18 @@
 
 		<ul style="padding-top:10px; ">
 			<li class="nav-item me-auto" style="margin-right: 30px!important;">
-				<a  tabindex="0" id="content-desktop" role="button" style="color: #182030; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px; overflow: hidden;"
-					class="btn btn-light" data-toggle="popover_cart" title="Shopping Cart" data-bs-trigger="focus">
+				<a  tabindex="0" id="content-desktop" role="button" data-toggle="popover_cart" data-bs-trigger="focus">
+					<button type="button" class="btn btn-light cart-button position-relative">
 					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
 					Panier
+					<span id="cart-number" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: red!important;">
+					  0
+					</span>
+				  </button>
 				</a>
 
-				<a href="/checkout" style="text-decoration: none; color: inherit;"><button id="content-mobile" style=" color: #182030; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px; overflow: hidden;"
-					class="btn btn-light" >
+				<a href="/checkout" style="text-decoration: none; color: inherit;"><button id="content-mobile"
+					class="btn btn-light cart-button" >
 					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
 					Panier
 				</button>
@@ -78,6 +85,10 @@
 	</div>
   </nav>
 
+  <script>		
+	let num = document.getElementById('cart-number');
+	num.innerText= sessionStorage.length;
+  </script>
   <script>
 
   function getcart (){
