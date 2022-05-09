@@ -607,14 +607,14 @@ app.get('/experience/:id', async function (req, res) {
 	});
 
 	result.image = base64_encode('public\\' + result.image);
-	
+
 	if (result == undefined) {
 		console.log("id inexistant");
 		res.redirect("/");
 		res.end();
 	} else {
 		res.render('pages/activites/details', {
-			siteTitle: item.titre + " - Musée des Astres",
+			siteTitle: result.titre + " - Musée des Astres",
 			pageTitle: "detail",
 			item: result
 		});
