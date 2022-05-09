@@ -48,6 +48,13 @@
 #right { 
     display:none;
 }
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+    }
+
+
 .bd-placeholder-img{
     width: 250px!important;
 }
@@ -185,22 +192,22 @@
 
         switch(salle) {
         case 'A':
-            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "A"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p>                                              <% };};}); %>`;
+            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "A"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <a href="/experience/<%= item._id%>"> <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p></a>                                              <% };};}); %>`;
             break;
         case 'B':
-            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "B"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p>                                              <% };};}); %>`;
+            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "B"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <a href="/experience/<%= item._id%>"> <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p></a>                                              <% };};}); %>`;
             break;
         case 'C':
-            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "C"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p>                                              <% };};}); %>`;
+            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "C"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <a href="/experience/<%= item._id%>"> <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p>  </a>                                            <% };};}); %>`;
             break;
         case 'D':
-            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "D"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p>                                              <% };};}); %>`;
+            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "D"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <a href="/experience/<%= item._id%>"> <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p> </a>                                             <% };};}); %>`;
             break;
         case 'E':
-            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "E"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p>                                              <% };};}); %>`;
+            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "E"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <a href="/experience/<%= item._id%>"> <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p></a>                                              <% };};}); %>`;
             break;
         case 'F':
-            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "F"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p>                                              <% };};}); %>`;
+            content = `                 <% items.forEach(function(item,index){%>                     <% if(item.salle == "F"){ %>                         <% if(item.date_fin != undefined  && item.date_debut <= new Date() && item.date_fin > new Date()){ %>                             <a href="/experience/<%= item._id%>"> <img class="bd-placeholder-img card-img-top" src="<%= item.image %>">                             <h5 class="plan-title">                                 <%= item.titre %>                             </h5>                             <i><p class="plan-date">                             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>                                         Du <%= new Date(item.date_debut).getDate()%> <%= months[new Date(item.date_debut).getUTCMonth()]%> au <%= new Date(item.date_fin).getDate()%> <%= months[new Date(item.date_fin).getUTCMonth()]%> <br>                             </p></i>                             <p class="plan-desc">                                 <%- item.desc %>                             </p></a>                                              <% };};}); %>`;
             break;
         default:;
         }        
@@ -217,35 +224,35 @@
 
     $(document).ready(function(){
     $('[data-toggle="popover_A"]').popover({
-        placement : 'right',
+        placement : 'bottom',
         animation: true,
 		trigger : 'focus',
         html : true,
         content : generatePopoverContent('A')
     });
     $('[data-toggle="popover_B"]').popover({
-        placement : 'right',
+        placement : 'left',
         animation: true,
 		trigger : 'focus',
         html : true,
         content : generatePopoverContent('B')
     });
     $('[data-toggle="popover_C"]').popover({
-        placement : 'right',
+        placement : 'top',
         animation: true,
 		trigger : 'focus',
         html : true,
         content : generatePopoverContent('C')
     });
     $('[data-toggle="popover_D"]').popover({
-        placement : 'right',
+        placement : 'left',
         animation: true,
 		trigger : 'focus',
         html : true,
         content : generatePopoverContent('D')
     });
     $('[data-toggle="popover_E"]').popover({
-        placement : 'right',
+        placement : 'bottom',
         animation: true,
 		trigger : 'focus',
         html : true,
@@ -267,7 +274,7 @@
         content : 'boutique'
     });
     $('[data-toggle="popover_bistro"]').popover({
-        placement : 'right',
+        placement : 'top',
         animation: true,
 		trigger : 'focus',
         html : true,

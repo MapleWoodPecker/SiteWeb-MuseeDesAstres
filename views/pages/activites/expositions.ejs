@@ -69,8 +69,21 @@
               <p class="card-text"><% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
                 <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%> <br>
                 Salle : <%= item.salle%></p>
-              
-              <a href="/experience/<%= item._id%>" class="btn btn-secondary my-2">Détails</a>
+
+                <a type="button" href="/experience/<%= item._id%>" class="btn btn-sm btn-outline-secondary" >Détails</a>
+                
+                <!--div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                      id="Click_<%= item._id%>">Description</button>
+                  </div>
+                  <small class="text-muted">
+                    <%= item.duree %> minutes
+                  </small>
+                </div>
+                <p class="card-text" id="details_<%= item._id%>" style="display: none;">
+                  <%= item.desc %>
+                </p-->
             </div>
           </div>
         </div>
