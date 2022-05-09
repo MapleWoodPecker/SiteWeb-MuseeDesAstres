@@ -30,7 +30,7 @@
   "magasin": true,
   "image": "images/shop/hoodie.png",
   "desc": "Hoodie officiel du Musée des Astres",
-  "tags": "habit;goodie"
+  "tags": "habit"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141d"
@@ -41,7 +41,7 @@
   "magasin": true,
   "image": "images/shop/tshirt.png",
   "desc": "T-Shirt officiel du Musée des Astres",
-  "tags": "habit;goodie"
+  "tags": "habit"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b4141e"
@@ -63,7 +63,7 @@
   "magasin": true,
   "image": "images/shop/ariane.png",
   "desc": "Maquette réaliste de la fusée Ariane 5, 1/32",
-  "tags": "miniature;education"
+  "tags": "miniature"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41420"
@@ -85,7 +85,7 @@
   "magasin": false,
   "image": "images/shop/shuttle.png",
   "desc": "Maquette réaliste de la Navette Spatiale (à monter soi-même) 1/32",
-  "tags": "miniature;education"
+  "tags": "miniature"
 },{
   "_id": {
     "$oid": "623a25e361108c13e7b41422"
@@ -106,7 +106,7 @@
   "quantite": 200,
   "magasin": true,
   "image": "images/shop/mug.png",
-  "desc": "Porte Clé officiel du Musée des Astres",
+  "desc": "Tasse officielle du Musée des Astres",
   "tags": "goodie"
 },{
   "_id": {

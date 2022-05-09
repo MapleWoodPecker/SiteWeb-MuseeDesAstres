@@ -16,22 +16,21 @@
     </p>
     <h1 class="fw-light"><%= item.titre %></h1>
     <br>
-    <img src="<%= item.image%>" style="width:700px">
+    <img class="movie-image" src="<%= item.image%>" style="width:700px">
     <br>
     <br>
 
 
 
     <p class="lead text-muted"><%- item.desc %></p>
-        <%= item.duree %> minutes
-    <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
+        
     
 
     <p class="card-text">
         <% if (expo) { %>
             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
             <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%> <br>
-            Salle : <%= item.salle%>
+            
         <% }else{%>
             <% var months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
             %>
@@ -40,6 +39,23 @@
             Le <%= item.date_debut.getDate()%>
             <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%>
         <% }; %>
+        <br>
+        Salle : <%= item.salle%>
+        <br>
+        <%= item.duree %> minutes
     </p>
+
+    <p><%= item.long%></p>
+
+    <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
+    <br>
+    <% if (expo) { %>
+        <a href="/expositions" class="btn btn-primary my-2" style="background-color: #182030;">Voir toutes les expositions</a>
+    <% }else{%>
+        <a href="/activites" class="btn btn-primary my-2" style="background-color: #182030;">Voir toutes les activités</a>
+    <% }; %>
+    
+
 </div>
+<br><br><br>
 <%- include ('../../partials/footer') %>
