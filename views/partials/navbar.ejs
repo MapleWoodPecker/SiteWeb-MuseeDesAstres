@@ -10,10 +10,10 @@
 			max-height: 400px;
 		}
 	</style>
-	
+
 	<div class="container-fluid">
 	<a class="navbar-brand" href="http://localhost:4000/"><img src="../../images/logo_text.png"  width="250px" alt="Musée des Astres" style="margin-left: 30px!important"/></a>
-	  
+
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -44,7 +44,7 @@
 			<li class="nav-item">
 				<a class="nav-link" href="/billeterie">Billetterie</a>
 			</li>
-	
+
 			<li class="nav-item">
 				<a class="nav-link" href="/boutique">Boutique</a>
 			</li>
@@ -72,16 +72,125 @@
 	</div>
   </nav>
 
+  <script>
+
+  function getcart (){
+	var headers = {"Content-Type": "application/json","Access-Control-Origin": "*", "Expires": ""}
+	var data = [];
+  for (let i = 0; i < sessionStorage.length; i++) {
+	  data[i] = sessionStorage.getItem(i);
+  };
+
+			console.debug(" data : "+ data);
+			console.debug("data Json : " + JSON.stringify((Object.assign({}, data))));
+
+			return fetch("/cart", {
+			  method: "POST",
+			  headers: headers,
+			  body:  JSON.stringify((Object.assign({}, data)))
+			})
+
+			.then(response => response.json())
+			.then(data => {
+			  //create main cart node
+			  let racine = document.createElement('div');
+			  racine.classList.add('col-sm-12', 'order-md-last');
+
+			  //create header cart node
+			  let cartHeader = document.createElement('h4');
+			  cartHeader.classList.add('d-flex', 'justify-content-between', 'align-items-center', 'mb-3');
+
+			  //create header title cart node
+			  let cartTitre = document.createElement('span');
+			  cartTitre.classList.add('text-primary');
+			  cartTitre.innerText= "Votre Panier";
+
+			  //create header items cart node
+			  let nbitems = document.createElement('span');
+			  nbitems.classList.add('badge', 'bg-primary', 'rounded-pill');
+			  nbitems.innerText = data.length;
+
+			  //create list Items cart node
+			  let listItems = document.createElement('ul');
+			  listItems.classList.add('list-group','mb-3');
+
+			  let prixTotHT = 0;
+
+			  for (const Items of data) {
+
+				prixTotHT= prixTotHT+Items.prix;
+
+				let listItem = document.createElement('li');
+
+				listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
+
+				let indiv = document.createElement('div');
+
+				let Titre = document.createElement('h6');
+				Titre.classList.add('my-0');
+				Titre.innerText = Items.titre;
+
+				let Descrip = document.createElement('small');
+				Descrip.classList.add('text-muted');
+				Descrip.innerText = Items.desc;
+
+				let Prix = document.createElement('span');
+				Prix.classList.add('text-muted');
+				Prix.innerText = "$ " +Items.prix;
+
+				indiv.appendChild(Titre);
+				indiv.appendChild(Descrip);
+
+				listItem.appendChild(indiv);
+				listItem.appendChild(Prix);
+
+				listItems.appendChild(listItem);
+			  }
+			  let total = document.createElement('li');
+			  total.classList.add('list-group-item', 'd-flex', 'justify-content-between');
+
+			  let textTotal = document.createElement('span');
+			  textTotal.innerText = "Total (CAD)";
+
+			  let prixTotal = document.createElement('strong');
+			  prixTotal.innerText = "$ "+prixTotHT;
+			  console.debug(prixTotHT);
+
+			  total.appendChild(textTotal);
+			  total.appendChild(prixTotal);
+
+			  listItems.appendChild(total);
+
+			  cartHeader.appendChild(cartTitre);
+			  cartHeader.appendChild(nbitems);
+
+			  racine.appendChild(cartHeader);
+			  racine.appendChild(listItems);
+			  console.debug(racine.outerHTML);
+			  return racine.outerHTML;
+			})
+			.catch(console.error);
+  }
+
+  </script>
 <script>
-    $(document).ready(function () {
+
+
+    $(document).ready(async function () {
+	getcart().then(data => {
+		console.debug('toto');
+		console.debug(data);
+
 		$('[data-toggle="popover_cart"]').popover({
 			placement: 'bottom',
 			trigger: 'focus',
 			html: true,
 			sanitize: false,
 			animation:true,
-			content: ` <a href="/checkout"><div class="row g-5"> <div class="col-md-5 col-lg-4 order-md-last"> <h4 class="d-flex justify-content-between align-items-center mb-3"> <span class="text-primary">Your cart</span> <span class="badge bg-primary rounded-pill">3</span> </h4> <ul class="list-group mb-3"> <li class="list-group-item d-flex justify-content-between lh-sm"> <div> <h6 class="my-0">Product name</h6> <small class="text-muted">Brief description</small> </div> <span class="text-muted">$12</span> </li> <li class="list-group-item d-flex justify-content-between lh-sm"> <div> <h6 class="my-0">Second product</h6> <small class="text-muted">Brief description</small> </div> <span class="text-muted">$8</span> </li> <li class="list-group-item d-flex justify-content-between lh-sm"> <div> <h6 class="my-0">Third item</h6> <small class="text-muted">Brief description</small> </div> <span class="text-muted">$5</span> </li> <li class="list-group-item d-flex justify-content-between"> <span>Total (USD)</span> <strong>$20</strong> </li></ul> </div></a> `
+			content: data
 		});
+
+	});
 	});
 
 

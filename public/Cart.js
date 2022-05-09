@@ -91,8 +91,10 @@ for (let i = 0; i < sessionStorage.length; i++) {
 
             racine.appendChild(cartHeader);
             racine.appendChild(listItems);
-
-            return racine.innerHTML;
+            
+            let all = createElement('div')
+            all.appendChild(racine);
+            return all.innerHTML;
           })
           .catch(console.error);
 }
