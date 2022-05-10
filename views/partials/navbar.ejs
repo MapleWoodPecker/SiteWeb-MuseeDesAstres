@@ -135,7 +135,7 @@
 
 			  for (const Items of data) {
 
-				prixTotHT= prixTotHT+Items.prix;
+				prixTotHT= prixTotHT + (Items.prix * 100)/100;
 
 				let listItem = document.createElement('li');
 
@@ -170,7 +170,7 @@
 			  textTotal.innerText = "Total (CAD)";
 
 			  let prixTotal = document.createElement('strong');
-			  prixTotal.innerText = "$ "+prixTotHT.toFixed(2);
+			  prixTotal.innerText = "$ "+prixTotHT;
 			  console.debug(prixTotHT);
 
 			  total.appendChild(textTotal);
