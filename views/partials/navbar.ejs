@@ -170,7 +170,7 @@
 			  textTotal.innerText = "Total (CAD)";
 
 			  let prixTotal = document.createElement('strong');
-			  prixTotal.innerText = "$ "+prixTotHT;
+			  prixTotal.innerText = "$ "+prixTotHT.toFixed(2);
 			  console.debug(prixTotHT);
 
 			  total.appendChild(textTotal);
