@@ -146,7 +146,7 @@
 			  listItems.classList.add('list-group','mb-3');
 
 			  let prixTotHT = 0;
-
+				let i = 0;
 			  for (const Items of data) {
 
 				prixTotHT= (prixTotHT * 100 + Items.prix * 100)/100;
@@ -154,7 +154,6 @@
 				let listItem = document.createElement('li');
 
 				listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
-
 				let indiv = document.createElement('div');
 
 				let Titre = document.createElement('h6');
@@ -169,13 +168,23 @@
 				Prix.classList.add('text-muted');
 				Prix.innerText = "$ " +Items.prix;
 
+				let Remove = document.createElement('button');
+				Remove.type = 'button';
+				Remove.classList.add('btn-close');
+				Remove.ariaLabel='Close';
+				Remove.setAttribute( "onClick", 'removeItemsCart(i)');
+				//Remove.onclick = 'removeItemsCart(i)';
+
 				indiv.appendChild(Titre);
 				indiv.appendChild(Descrip);
 
 				listItem.appendChild(indiv);
 				listItem.appendChild(Prix);
+				listItem.appendChild(Remove);
+
 
 				listItems.appendChild(listItem);
+				i++;
 			  }
 			  let total = document.createElement('li');
 			  total.classList.add('list-group-item', 'd-flex', 'justify-content-between');
@@ -205,8 +214,6 @@
 
   </script>
 <script>
-
-
     $(document).ready(async function () {
 	getcart().then(data => {
 		console.debug('toto');
@@ -220,9 +227,15 @@
 			animation:true,
 			content: `<a href="/checkout">`+data+`</a>`
 		});
-
 	});
 	});
-
-
+</script>
+<script>
+	function removeItemCart(id){
+		console.debug('remove ' + id)
+		sessionStorage.removeItem(id);
+	}
+	function removeAllCart(){
+		sessionStorage.clear();
+	}
 </script>
