@@ -112,9 +112,6 @@
 	  data[i] = sessionStorage.getItem(i);
   };
 
-			console.debug(" data : "+ data);
-			console.debug("data Json : " + JSON.stringify((Object.assign({}, data))));
-
 			return fetch("/cart", {
 			  method: "POST",
 			  headers: headers,
@@ -172,8 +169,8 @@
 				Remove.type = 'button';
 				Remove.classList.add('btn-close');
 				Remove.ariaLabel='Close';
-				Remove.setAttribute( "onClick", 'removeItemsCart(i)');
-				//Remove.onclick = 'removeItemsCart(i)';
+				Remove.setAttribute( "OnClick", "removeItemCart("+i+")");
+				//Remove.onclick = removeItemCart(i);
 
 				indiv.appendChild(Titre);
 				indiv.appendChild(Descrip);
@@ -194,7 +191,6 @@
 
 			  let prixTotal = document.createElement('b');
 			  prixTotal.innerText = "$ "+prixTotHT;
-			  console.debug(prixTotHT);
 
 			  total.appendChild(textTotal);
 			  total.appendChild(prixTotal);
@@ -206,7 +202,6 @@
 
 			  racine.appendChild(cartHeader);
 			  racine.appendChild(listItems);
-			  console.debug(racine.outerHTML);
 			  return racine.outerHTML;
 			})
 			.catch(console.error);
@@ -216,8 +211,6 @@
 <script>
     $(document).ready(async function () {
 	getcart().then(data => {
-		console.debug('toto');
-		console.debug(data);
 
 		$('[data-toggle="popover_cart"]').popover({
 			placement: 'bottom',
