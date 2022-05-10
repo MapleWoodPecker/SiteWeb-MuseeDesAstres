@@ -135,7 +135,7 @@
 
 			  for (const Items of data) {
 
-				prixTotHT= prixTotHT + (Items.prix * 100)/100;
+				prixTotHT= (prixTotHT * 100 + Items.prix * 100)/100;
 
 				let listItem = document.createElement('li');
 
