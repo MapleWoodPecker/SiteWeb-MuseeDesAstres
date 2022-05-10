@@ -480,15 +480,14 @@ app.post('/cart',async function (req,res) {
 	
 	let json = req.body;
 
-	console.log(json);
 	var result = [];
 	for (let value of Object.values(json)) {
 		//console.log(value);
 		const cursor = await itemsboutique.find({});
 
 		await cursor.forEach(element => {
-			console.log(element["_id"])
-			console.log(element["_id"] == value)
+			// console.log(element["_id"])
+			// console.log(element["_id"] == value)
 
 			if (element["_id"] == value) {
 				result.push(element);
@@ -497,7 +496,7 @@ app.post('/cart',async function (req,res) {
 		});
 	}
 	
-	console.log(result);
+	// console.log(result);
 res.set('Content-Type', 'application/json')
 //res.statusCode(200)	
 res.send (result)
@@ -661,7 +660,8 @@ app.post('/admin',async function (req,res) {
 				salle:req.body.salle,
 				image:req.body.image,
 				particip_max:parseInt(req.body.particip_max),
-				desc:req.body.desc
+				desc:req.body.desc,
+				long:req.body.long
 			}
 		));
 	} else if (req.body.type == "expositions") {
@@ -674,7 +674,8 @@ app.post('/admin',async function (req,res) {
 				salle:req.body.salle,
 				image:req.body.image,
 				particip_max:parseInt(req.body.particip_max),
-				desc:req.body.desc
+				desc:req.body.desc,
+				long:req.body.long
 			}
 		));
 	} else if (req.body.type == "shop") {

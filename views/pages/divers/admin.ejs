@@ -7,32 +7,39 @@
         }
 
         .option {
-            margin-left: 3%;
-            width: 15%;
-            height: 60vh;
+            margin-left: 30px;
+            width: 300px;
+            height: 535px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .post {
-            margin-left: 3%;
+            margin-left: 30px;
             display: none;
-            width: 30%;
-            height: 60vh;
-            padding: 2%;
-            padding-top: 5vh;
+            width: 600px;
+            height: 535px;
+            padding: 30px;
+            overflow-x: hidden;
         }
 
-        input {
+        input, textarea {
             margin-top: 12px;
         }
-
-        .liste {
-            margin-left: 3%;
+        .barre{
             display: none;
-            height: 60vh;
-            padding: 2%;
+            margin-left: 30px;
+            width: 300px;
+            height: 535px;
+            justify-content: center;
+            align-items: center;
+        }
+        .liste {
+            margin-left: 30px;
+            display: none;
+            height: 535px;
+            padding: 30px;
             font-size: larger;
             overflow-x: hidden;
         }
@@ -115,6 +122,7 @@
             <input type="text" class="form-control" placeholder="image" id="act-image">
             <input type="number" class="form-control" placeholder="particip_max" id="act-particip_max">
             <input type="text" class="form-control" placeholder="description" id="act-desc">
+            <textarea name="textarea" class="form-control" placeholder="Description longue" id="act-long"></textarea>
             <input type="button" class="btn btn-secondary my-2 submit" value="Enregistrer" id="act-submit">
         </div>
         <div class="post" id="expo">
@@ -128,6 +136,7 @@
             <input type="text" class="form-control" placeholder="image" id="exp-image">
             <input type="number" class="form-control" placeholder="particip_max" id="exp-particip_max">
             <input type="text" class="form-control" placeholder="description" id="exp-desc">
+            <textarea name="textarea" class="form-control" placeholder="Description longue" id="exp-long"></textarea>
             <input type="button" class="btn btn-secondary my-2 submit" value="Enregistrer" id="exp-submit">
         </div>
         <div class="post" id="shop">
@@ -142,11 +151,15 @@
             <input type="button" class="btn btn-secondary my-2 submit" value="Enregistrer" id="shop-submit">
         </div>
 
+        <div class="barre" id="barre">
+            <input id="searchbar" onkeyup="search_reserv()" type="text"
+            name="search" class="form-control" placeholder="Chercher une réservation">
+        </div>
         <div class="liste" id="reservations">
             <div class="list-group">
                 <%items.forEach(function(item,index){%>
                     <a href="/billet/<%= item._id.toString()%>" target="_blank"
-                        class="list-group-item list-group-item-action">
+                        class="list-group-item list-group-item-action reserv_item">
                         <%= item.prenom%>
                             <%= item.nom%>
                     </a>
@@ -163,6 +176,7 @@
 
             document.getElementById("tables").style.display = "flex";
             document.getElementById("reservations").style.display = "none";
+            document.getElementById("barre").style.display = "none";
         }
 
         document.getElementById("reserv").onclick = function () {
@@ -171,6 +185,7 @@
 
             document.getElementById("tables").style.display = "none";
             document.getElementById("reservations").style.display = "flex";
+            document.getElementById("barre").style.display = "flex";
 
             document.getElementById("expo").style.display = "none";
             document.getElementById("shop").style.display = "none";
@@ -208,6 +223,23 @@
         }
     </script>
 
+    <script>
+        function search_reserv() {
+            let input = document.getElementById('searchbar').value
+            input = input.toLowerCase();
+            let liste = document.getElementsByClassName('reserv_item');
+
+            for (i = 0; i < liste.length; i++) {
+                if (!liste[i].innerHTML.toLowerCase().includes(input)) {
+                    liste[i].style.display = "none";
+                }
+                else {
+                    liste[i].style.display = "block";
+                }
+            }
+        }
+    </script>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -224,6 +256,7 @@
                 image = $("#act-image").val();
                 particip_max = $("#act-particip_max").val();
                 desc = $("#act-desc").val();
+                long = $("#act-long").val();
                 /*
                 * Perform some validation here.
                 */
@@ -260,13 +293,15 @@
                 image = $("#exp-image").val();
                 particip_max = $("#exp-particip_max").val();
                 desc = $("#exp-desc").val();
+                long = $("#exp-long").val();
                 /*
                 * Perform some validation here.
                 */
                 var headers = { "Content-Type": "application/json", "Access-Control-Origin": "*", "Expires": "" }
 
                 var data = {
-                    type: type, titre: titre, date_debut: date_debut, date_fin: date_fin, duree: duree, salle: salle, image: image, particip_max: particip_max, desc: desc
+                    type: type, titre: titre, date_debut: date_debut, date_fin: date_fin, duree: duree, 
+                    salle: salle, image: image, particip_max: particip_max, desc: desc, long: long
                 }
 
                 fetch("/admin", {
