@@ -252,7 +252,7 @@ for (let i = 0; i < sessionStorage.length; i++) {
             
             for (const Items of data) {
               
-              prixTotHT= (prixTotHT * 100 + Items.prix * 100)/100;
+              prixTotHT = prixTotHT + Items.prix * 100;
 
               let listItem = document.createElement('li');
               
@@ -280,6 +280,7 @@ for (let i = 0; i < sessionStorage.length; i++) {
               
               listItems.appendChild(listItem);
             }
+            prixTotHT = prixTotHT/100;
 
             let sousTotal = document.createElement('li');
 			      sousTotal.classList.add('list-group-item', 'd-flex', 'justify-content-between');

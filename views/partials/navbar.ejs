@@ -146,10 +146,11 @@
 			  listItems.classList.add('list-group','mb-3');
 
 			  let prixTotHT = 0;
-				let i = 0;
+			  let i = 0;
+
 			  for (const Items of data) {
 
-				prixTotHT= (prixTotHT * 100 + Items.prix * 100)/100;
+				prixTotHT = prixTotHT + Items.prix * 100;
 
 				let listItem = document.createElement('li');
 
@@ -186,6 +187,9 @@
 				listItems.appendChild(listItem);
 				i++;
 			  }
+
+			  prixTotHT = prixTotHT/100;
+
 			  let total = document.createElement('li');
 			  total.classList.add('list-group-item', 'd-flex', 'justify-content-between');
 
