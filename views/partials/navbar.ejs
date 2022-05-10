@@ -62,19 +62,21 @@
 		<ul style="padding-top:10px; ">
 			<li class="nav-item me-auto" style="margin-right: 30px!important;">
 				<a  tabindex="0" id="content-desktop" role="button" data-toggle="popover_cart" data-bs-trigger="focus">
-					<button type="button" class="btn btn-light cart-button position-relative">
+					<button class="btn btn-light cart-button position-relative">
 					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
 					Panier
 					<span id="cart-number" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: red!important;">
-					  0
+					  ...
 					</span>
 				  </button>
 				</a>
 
-				<a href="/checkout" style="text-decoration: none; color: inherit;"><button id="content-mobile"
-					class="btn btn-light cart-button" >
+				<a href="/checkout" id="content-mobile" style="text-decoration: none; color: inherit;"><button class="btn btn-light cart-button position-relative">
 					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
 					Panier
+					<span id="cart-number" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: red!important;">
+					  ...
+					</span>
 				</button>
 			</a>
 			</a>
@@ -87,7 +89,15 @@
 
   <script>		
 	let num = document.getElementById('cart-number');
-	num.innerText= sessionStorage.length;
+	
+	if (sessionStorage.length > 0){
+		num.style.display = "block";
+		num.innerText = sessionStorage.length;
+	}
+	else{
+		num.style.display = "none";
+	}
+	
   </script>
   <script>
 
