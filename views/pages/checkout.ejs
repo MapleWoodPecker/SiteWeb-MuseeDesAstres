@@ -1,11 +1,5 @@
 <%- include ('../partials/header') %>
 
-<script>
-    var test = sessionStorage.array;
-    var pouet = test[0];
-    console.log(pouet);
-</script>
-
 <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -229,9 +223,6 @@ for (let i = 0; i < sessionStorage.length; i++) {
     data[i] = sessionStorage.getItem(i);
 };
           
-          console.debug(" data : "+ data);
-          console.debug("data Json : " + JSON.stringify((Object.assign({}, data))));
-
           fetch("/cart", {
             method: "POST",
             headers: headers,
@@ -320,11 +311,6 @@ for (let i = 0; i < sessionStorage.length; i++) {
             textTotal.innerText = "Total (CAD)";
 
             let totalnum = (Number(prixTotHT) + Number(prixTPSnum) + Number(prixTVQnum)).toFixed(2);
-            console.debug(prixTotHT);
-            console.debug(prixTPSnum);
-            console.debug(prixTVQnum);
-            console.debug(totalnum);
-
 
             let prixTotal = document.createElement('strong');
             prixTotal.innerText = "$ "+totalnum;
