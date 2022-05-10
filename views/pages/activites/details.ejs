@@ -1,5 +1,9 @@
 <%- include ('../../partials/header') %>
-
+<style>
+    .movie-image:hover{
+        cursor:initial!important;pointer-events: auto;
+    }
+</style>
 
 <br><br><br>
 <br>
@@ -16,7 +20,7 @@
     </p>
     <h1 class="fw-light"><%= item.titre %></h1>
     <br>
-    <img class="movie-image" src="<%= item.image%>" style="width:700px">
+    <img class="movie-image" src="<%= item.image%>" style="width:700px;">
     <br>
     <br>
 
@@ -55,7 +59,7 @@
         <p>Cette exposition est une des nombreuses que nous présentons en ce moment.</p>
         <a href="/expositions" class="btn btn-primary my-2" style="background-color: #182030;">Voir le reste</a>
 
-        
+
     <% }else{%>
         <p>Réservez votre billet pour cette, ainsi que plusieurs autre</p>
         <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
