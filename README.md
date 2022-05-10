@@ -7,4 +7,4 @@ Projet #1 d'applications web transactionnel - Équipe de Sam, Felipe, Quentin, Y
 - Ouvrir le projet dans une console bash
 - Executer la commande "npm i"
 - Lancer le server avec la commande "node server.js"
-- Félicitaions, le site est en ligne !
+- Félicitations, le site est en ligne !
