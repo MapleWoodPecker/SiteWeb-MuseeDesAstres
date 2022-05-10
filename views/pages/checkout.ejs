@@ -228,7 +228,6 @@ for (let i = 0; i < sessionStorage.length; i++) {
           .then(data => {
 
             let racine = document.getElementById('cart');
-            console.debug(racine);
             let nbitems = document.getElementById('nbItems');
 
             let listItems = document.getElementById('list');
@@ -267,23 +266,71 @@ for (let i = 0; i < sessionStorage.length; i++) {
               
               listItems.appendChild(listItem);
             }
+
+            let sousTotal = document.createElement('li');
+			      sousTotal.classList.add('list-group-item', 'd-flex', 'justify-content-between');
+
+			      let textsousTotal = document.createElement('span');
+			      textsousTotal.innerText = "Sous total";
+
+			      let prixsousTotal = document.createElement('strong');
+			      prixsousTotal.innerText = "$ "+Number(prixTotHT).toFixed(2);
+            
+            let TPS = document.createElement('li');
+            TPS.classList.add('list-group-item', 'd-flex', 'justify-content-between');
+
+            let textTPS = document.createElement('span');
+            textTPS.innerText = "TPS";
+
+            let prixTPSnum = Number(prixTotHT * 0.055).toFixed(2);
+
+            let prixTPS = document.createElement('strong');
+            prixTPS.innerText = "$ "+prixTPSnum;
+
+            let TVQ = document.createElement('li');
+            TVQ.classList.add('list-group-item', 'd-flex', 'justify-content-between');
+
+            let textTVQ = document.createElement('span');
+            textTVQ.innerText = "TVQ";
+
+            let prixTVQnum = Number(prixTotHT * 0.09975).toFixed(2);
+
+            let prixTVQ = document.createElement('strong');
+            prixTVQ.innerText = "$ "+ prixTVQnum;
+
             let total = document.createElement('li');
             total.classList.add('list-group-item', 'd-flex', 'justify-content-between');
 
             let textTotal = document.createElement('span');
             textTotal.innerText = "Total (CAD)";
 
-            let prixTotal = document.createElement('strong');
-            prixTotal.innerText = "$ "+prixTotHT;
+            let totalnum = (Number(prixTotHT) + Number(prixTPSnum) + Number(prixTVQnum)).toFixed(2);
             console.debug(prixTotHT);
+            console.debug(prixTPSnum);
+            console.debug(prixTVQnum);
+            console.debug(totalnum);
+
+
+            let prixTotal = document.createElement('strong');
+            prixTotal.innerText = "$ "+totalnum;
+
+            sousTotal.appendChild(textsousTotal);
+            sousTotal.appendChild(prixsousTotal);
+
+            TPS.appendChild(textTPS);
+            TPS.appendChild(prixTPS);
+
+            TVQ.appendChild(textTVQ);
+            TVQ.appendChild(prixTVQ);
+
 
             total.appendChild(textTotal);
             total.appendChild(prixTotal);
 
-            console.debug(total.innerHTML);
+            listItems.appendChild(sousTotal);
+            listItems.appendChild(TPS);
+            listItems.appendChild(TVQ);
             listItems.appendChild(total);
-
-
 
 
           })
