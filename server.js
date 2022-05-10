@@ -3,10 +3,8 @@
 **/
 
 const express = require('express');
-const http = require('http');
 const app = express();
 const bodyParser = require('body-parser');
-const dateFormat = require('dateformat');
 const nodemailer = require('nodemailer');
 const session = require('express-session');
 const MongoClient = require("mongodb").MongoClient;
@@ -290,8 +288,8 @@ app.get('/billeterie',async function (req,res) {
 		siteTitle : "Billeterie - Musée des Astres",
 		pageTitle : "billeterie",
 		items : results,
-		ajrd : dateFormat(new Date(), 'yyyy-mm-dd'),
-		semaine : dateFormat(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), 'yyyy-mm-dd')
+		ajrd : new Date().toISOString().replace(/T.+/, ''),
+		semaine : new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().replace(/T.+/, '')
 	});
 });
 

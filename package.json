@@ -1,41 +1,29 @@
 {
   "name": "projet_initial",
   "version": "1.0.0",
-  "description": "",
+  "description": "Site du Musée des Astres",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "author": "Sam Sebille, Yanni Haddar, Felipe Kowalski, Quentin Gastaldo",
   "license": "ISC",
   "dependencies": {
-    "assert": "^2.0.0",
     "body-parser": "^1.20.0",
     "bootstrap": "^4.6.1",
-    "bootstrap-icons": "^1.8.1",
-    "cookie-parser": "^1.4.6",
-    "cookie-session": "^2.0.0",
-    "dateformat": "^4.6.3",
     "ejs": "^3.0.2",
     "express": "^4.17.3",
     "express-partials": "^0.3.0",
     "express-session": "^1.17.2",
     "find": "^0.3.0",
-    "html-pdf": "^3.0.1",
     "html-pdf-node": "^1.0.7",
     "http": "^0.0.1-security",
     "jquery": "^3.5.1",
-    "mangodb": "^1.0.0",
     "mongodb": "^4.4.1",
-    "mongoose": "^6.2.6",
-    "mysql": "^2.18.1",
-    "node-fetch": "^2.6.7",
     "nodemailer": "^6.7.3",
     "npm-check-updates": "^12.5.10",
-    "puppeteer": "^13.7.0",
-    "qrcode": "^1.5.0",
-    "tether": "^1.4.7"
+    "qrcode": "^1.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
