@@ -239,7 +239,7 @@ for (let i = 0; i < sessionStorage.length; i++) {
             
             for (const Items of data) {
               
-              prixTotHT= prixTotHT+Items.prix;
+              prixTotHT= (prixTotHT * 100 + Items.prix * 100)/100;
 
               let listItem = document.createElement('li');
               
