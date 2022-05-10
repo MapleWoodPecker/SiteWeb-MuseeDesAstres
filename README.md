@@ -4,7 +4,7 @@ Projet #1 d'applications web transactionnel - Équipe de Sam, Felipe, Quentin, Y
 - Avoir le port 27017 ouvert (normalement ouvert par défaut)
 - Installer nodejs et npm (https://nodejs.org/en/download/) (prendre la dernière version LTS)
 - Redémarrer l'ordinateur
-- Ouvrir le projet dans une console bash
+- Ouvrir le projet dans une console shell
 - Executer la commande "npm i"
 - Lancer le server avec la commande "node server.js"
 - Félicitations, le site est en ligne !
