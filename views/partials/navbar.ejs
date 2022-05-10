@@ -21,7 +21,7 @@
 	</style>
 
 	<div class="container-fluid">
-	<a class="navbar-brand" href="http://localhost:4000/"><img src="../../images/logo_text.png"  width="250px" alt="Musée des Astres" style="margin-left: 30px!important"/></a>
+	<a class="navbar-brand" href="http://localhost:4000/"><img src="../../images/logo_text.png"  width="250px" alt="Musée des Astres" style="margin-left: 30px!important; margin-right: 30px;"/></a>
 
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -74,7 +74,7 @@
 				<a href="/checkout" id="content-mobile" style="text-decoration: none; color: inherit;"><button class="btn btn-light cart-button position-relative">
 					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
 					Panier
-					<span id="cart-number" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: red!important;">
+					<span id="cart-number2" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: red!important;">
 					  ...
 					</span>
 				</button>
@@ -89,13 +89,17 @@
 
   <script>		
 	let num = document.getElementById('cart-number');
-	
+	let num2 = document.getElementById('cart-number2');
+
 	if (sessionStorage.length > 0){
 		num.style.display = "block";
+		num2.style.display = "block";
 		num.innerText = sessionStorage.length;
+		num2.innerText = sessionStorage.length;
 	}
 	else{
 		num.style.display = "none";
+		num2.style.display = "none";
 	}
 	
   </script>
