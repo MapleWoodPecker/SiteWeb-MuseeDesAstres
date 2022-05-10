@@ -8,20 +8,12 @@ const app = express();
 const bodyParser = require('body-parser');
 const dateFormat = require('dateformat');
 const nodemailer = require('nodemailer');
-const fetch = require('node-fetch'); //npm install node-fetch@2
 const session = require('express-session');
-const routeur = express.Router();
 const MongoClient = require("mongodb").MongoClient;
-const assert = require("assert");
-const { nextTick } = require('process');
 const ejs = require("ejs");
 const pdf = require("html-pdf-node");
 const qrcode = require('qrcode');
-const { url } = require('inspector');
-const { pbkdf2 } = require('crypto');
 const fs = require('fs');
-
-var ObjectId = require('mongodb').ObjectID;
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -94,24 +86,6 @@ var tarifs;
 
 run().catch(console.dir);
 
-
-/* client.connect((error , db) => {
-	if (error){
-		throw error;
-	}
-	const database = client.db('musee_desastres_db');
-	//Search query for deletion
-	var query = { prenom : "Christophe" };
-	
-	//Accessing the collection
-	database.collection("reservations").deleteMany(query , (err , collection) => {
-		if(err) throw err;
-		console.log(collection.result.n + " Record(s) deleted successfully");
-		console.log(collection);
-		db.close();
-	});
-}); */
-
 /**
 * Global site title and base url
 */
@@ -158,7 +132,7 @@ app.get('/',async function (req,res) {
 
 
 /**
- * Expo
+ * Expositions
 */
 
 app.get('/expositions',async function (req,res) {
@@ -180,7 +154,7 @@ app.get('/expositions',async function (req,res) {
 });
 
 /**
- * Experiences
+ * Activités
 */
 
 app.get('/activites',async function (req,res) {
@@ -195,10 +169,48 @@ app.get('/activites',async function (req,res) {
 
 	res.render('pages/activites/activites',{
 		siteTitle : "Activités - Musée des Astres",
-		pageTitle : "Exp",
+		pageTitle : "Activités",
 		items : result
 	});
 	
+});
+
+/**
+ * Détails des experiences 
+ */
+
+ app.get('/experience/:id', async function (req, res) {
+	var id = req.params.id;
+
+	const cursor1 = await activites.find({});
+	const cursor2 = await expo.find({});
+
+	var result;
+
+	await cursor1.forEach(element => {
+		if (element._id.toString() === id) {
+			result = element;
+		}
+	});
+	await cursor2.forEach(element => {
+		if (element._id.toString() === id) {
+			result = element;
+		}
+	});
+
+	result.image = base64_encode('public\\' + result.image);
+
+	if (result == undefined) {
+		console.log("id inexistant");
+		res.redirect("/");
+		res.end();
+	} else {
+		res.render('pages/activites/details', {
+			siteTitle: result.titre + " - Musée des Astres",
+			pageTitle: "Détails",
+			item: result
+		});
+	}
 });
 
 /**
@@ -217,7 +229,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 
     res.render('pages/activites/rdvetoiles',{
     	siteTitle : "Rendez-vous sous les étoiles - Musée des Astres",
-    	pageTitle : "rdv",
+    	pageTitle : "Rendez-vous sous les étoiles",
     	items : result
     	
 	});
@@ -243,7 +255,7 @@ app.get('/plan',async function (req,res) {
 	
     res.render('pages/informations/plan',{
     	siteTitle : "Plan du Musée - Musée des Astres",
-    	pageTitle : "plan",
+    	pageTitle : "Plan",
     	items : result
 	});
 });
@@ -256,7 +268,7 @@ app.get('/info',async function (req,res) {
 
     res.render('pages/informations/coord',{
     	siteTitle : "Informations - Musée des Astres",
-    	pageTitle : "info"
+    	pageTitle : "Informations"
 	});
 });
 
@@ -283,30 +295,9 @@ app.get('/billeterie',async function (req,res) {
 	});
 });
 
-app.get('/reservation',async function (req,res) {
-
-	var reserv = {nom : req.body.nom, prenom : req.body.prenom , email : req.body.email, adresse : req.body.adresse, telephone : req.body.telephone,datetime : req.body.datetime,rdv_etoile : req.body.rdv_etoile, film : req.body.film, billets_id : req.body.billets_id}
-
-	const cursor = reservations.find(reserv);
-
-	var results = [];
-
-	await cursor.forEach(element => {
-		results.push(element);
-	});
-
-	res.render('pages/reservations/billeterie',{
-		siteTitle : "Billeterie - Musée des Astres",
-		pageTitle : "billeterie",
-		items : results,
-		ajrd : dateFormat(new Date(), 'yyyy-mm-dd'),
-		semaine : dateFormat(new Date(), 'yyyy-mm') + "-" + (new Date().getDate()+7).toString()
-	});
-});
-
 app.post('/billet',async function (req,res) {
 
-	tarif = [];
+	var tarif = [];
 	const cursor = tarifs.find({}).sort({ _id: 1 });
 
 	await cursor.forEach(element => {
@@ -318,88 +309,85 @@ app.post('/billet',async function (req,res) {
 
 	req.body.billets_id.forEach(element => {
 		if (parseInt(element) < 0) {
-			err = "Erreur petit malin";
+			err = "petit malin";
 		} else {
 			billets.push(parseInt(element));
 		}
 	});
 
-	var prix = 0;
-	for (let i = 0; i < billets.length; i++){
-		prix += (tarif[i].prix * 100) * billets[i];
-	}
-	prix = prix/100;
-
-	console.log(prix);
-
-	var billet_temp = {
-		nom:req.body.nom,
-		prenom:req.body.prenom,
-		email:req.body.email,
-		adresse:req.body.adresse,
-		telephone:req.body.telephone,
-		datetime:new Date(req.body.datetime),
-		rdv_etoile:(req.body.rdv == "true"),
-		film:(req.body.film == "true"),
-		prix:prix,
-		billets_id:billets
-	}
-
-	reservations.insertOne(billet_temp);
-
-	console.log(billet_temp.email);
-
-	var transporter = nodemailer.createTransport({
-		service: 'gmail',
-		secure: true,
-		auth: {
-		  user: 'museedesastres@gmail.com',
-		  pass: 'Amal1234'
+	if (err) {
+		console.log(err);
+	} else {
+		var prix = 0;
+		for (let i = 0; i < billets.length; i++) {
+			prix += (tarif[i].prix * 100) * billets[i];
 		}
-	});
+		prix = prix / 100;
 
-	ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs",
-	{ billet : billet_temp, qr : await generateQR(billet_temp._id.toString()), 
-		logo : base64_encode('public\\images\\logo_border.png'), img : base64_encode('public\\images\\sqr_obs.png') },
-	function (err, data) {
-		if (err) {
-			console.log(err);
-	  	} else {
-			  
-			pdf.generatePdf({ content: data }, { }).then(pdfBuffer => {
-				console.log("PDF generated");
-	  
-				var mailOptions = {
-				  from: 'museedesastres@gmail.com',
-				  to: req.body.email,
-				  subject: 'Vos billets DesAstres',
-				  text: "Vos billets DesAstres",
-				  attachments:[{
-					  filename: 'billet.pdf',
-					  content: pdfBuffer,
-					  contentType: 'application/pdf'
-				    }]
-			    };
-		  
-			  	transporter.sendMail(mailOptions, function (err, info) {
-				  	if (err) {
-					  	res.end('error');
-				  	} else {
-					  	console.log('Message sent: ' + info.response);
-					}
-			  	});
-		  	});
-	  	}
-	});
+		console.log(prix);
+
+		var billet_temp = {
+			nom: req.body.nom,
+			prenom: req.body.prenom,
+			email: req.body.email,
+			adresse: req.body.adresse,
+			telephone: req.body.telephone,
+			datetime: new Date(req.body.datetime),
+			rdv_etoile: (req.body.rdv == "true"),
+			film: (req.body.film == "true"),
+			prix: prix,
+			billets_id: billets
+		}
+
+		reservations.insertOne(billet_temp);
+
+		console.log(billet_temp.email);
+
+		var transporter = nodemailer.createTransport({
+			service: 'gmail',
+			secure: true,
+			auth: {
+				user: 'museedesastres@gmail.com',
+				pass: 'Amal1234'
+			}
+		});
+
+		ejs.renderFile(__dirname + "\\views\\pages\\reservations\\email_billet.ejs",
+		{   
+			billet: billet_temp, qr: await generateQR(billet_temp._id.toString()),
+			logo: base64_encode('public\\images\\logo_border.png'), img: base64_encode('public\\images\\sqr_obs.png')
+		}, function (err, data) {
+			if (err) {
+				console.log(err);
+			} else {
+
+				pdf.generatePdf({ content: data }, {}).then(pdfBuffer => {
+					console.log("PDF generated");
+
+					var mailOptions = {
+						from: 'museedesastres@gmail.com',
+						to: req.body.email,
+						subject: 'Vos billets DesAstres',
+						text: "Vos billets DesAstres",
+						attachments: [{
+							filename: 'billet.pdf',
+							content: pdfBuffer,
+							contentType: 'application/pdf'
+						}]
+					};
+
+					transporter.sendMail(mailOptions, function (err, info) {
+						if (err) {
+							res.end('error');
+						} else {
+							console.log('Message sent: ' + info.response);
+						}
+					});
+				});
+			}
+		});
+	}
 });
-
-// function to encode file data to base64 encoded string
-function base64_encode(file) {
-    // read binary data
-    var bitmap = fs.readFileSync(file);
-    // convert binary data to base64 encoded string
-    return "data:image/png;base64," + new Buffer(bitmap).toString('base64');
-}
 
 app.get('/billet',async function (req,res) {
 	res.redirect('/connexion');
@@ -431,8 +419,8 @@ app.get('/billet/:id',async function (req,res) {
 		} else {
 
 			res.render('pages/reservations/email_billet',{
-				siteTitle : "Votre Billet - Musée des Astres",
-				pageTitle : "billet",
+				siteTitle : "Billet "+ id +" - Musée des Astres",
+				pageTitle : "Billet",
 				billet : result,
 				qr : await generateQR(result._id.toString()),
 				logo : base64_encode('public\\images\\logo_border.png'), 
@@ -447,6 +435,15 @@ app.get('/billet/:id',async function (req,res) {
 	
 });
 
+// Fonction pour l'encodage de la data d'un fichier en base64
+function base64_encode(file) {
+    // read binary data
+    var bitmap = fs.readFileSync(file);
+    // convert binary data to base64 encoded string
+    return "data:image/png;base64," + bitmap.toString('base64');
+}
+
+// Fonction de génération d'un QR code en base 64 à partir d'un texte
 const generateQR = async text => {
 	try {
 	  return await qrcode.toDataURL(text);
@@ -471,7 +468,7 @@ app.get('/boutique',async function (req,res) {
 
     res.render('pages/boutique',{
     	siteTitle : "Boutique en ligne - Musée des Astres",
-    	pageTitle : "bout",
+    	pageTitle : "Boutique",
     	items : result
 	});
 });
@@ -497,9 +494,9 @@ app.post('/cart',async function (req,res) {
 	}
 	
 	// console.log(result);
-res.set('Content-Type', 'application/json')
-//res.statusCode(200)	
-res.send (result)
+	res.set('Content-Type', 'application/json')
+	//res.statusCode(200)	
+	res.send (result)
 
 });
 
@@ -507,8 +504,6 @@ res.send (result)
 app.get('/checkout',async function (req,res) {
 
 	var result = [];
-
-
 
 	res.render('pages/checkout',{
 		siteTitle : "Confirmer la commande - Musée des Astres",
@@ -531,7 +526,7 @@ app.get('/connexion',async function (req,res) {
 	} else {
 		res.render('pages/divers/connexion',{
 			siteTitle : "Connexion Admin - MDA",
-			pageTitle : "con",
+			pageTitle : "Connexion Admin",
 			item : true
 		});
 	}
@@ -561,7 +556,7 @@ app.post('/connexion', async function (req,res){
 			} else {
 				res.render('pages/divers/connexion',{
 					siteTitle : "Connexion Admin - MDA",
-					pageTitle : "no",
+					pageTitle : "Connexion Denied",
 					item : false
 				});
 			}			
@@ -570,7 +565,7 @@ app.post('/connexion', async function (req,res){
 		} else {
 			res.render('pages/divers/connexion',{
 				siteTitle : "Connexion Admin - MDA",
-				pageTitle : "no2",
+				pageTitle : "Connexion Denied",
 				item : false
 			});
 		}
@@ -580,44 +575,6 @@ app.post('/connexion', async function (req,res){
 		res.end();
 	}
 
-});
-
-/**
- * Experiences page generator
- */
-
-app.get('/experience/:id', async function (req, res) {
-	var id = req.params.id;
-
-	const cursor1 = await activites.find({});
-	const cursor2 = await expo.find({});
-
-	var result;
-
-	await cursor1.forEach(element => {
-		if (element._id.toString() === id) {
-			result = element;
-		}
-	});
-	await cursor2.forEach(element => {
-		if (element._id.toString() === id) {
-			result = element;
-		}
-	});
-
-	result.image = base64_encode('public\\' + result.image);
-
-	if (result == undefined) {
-		console.log("id inexistant");
-		res.redirect("/");
-		res.end();
-	} else {
-		res.render('pages/activites/details', {
-			siteTitle: result.titre + " - Musée des Astres",
-			pageTitle: "detail",
-			item: result
-		});
-	}
 });
 
 /**
@@ -639,7 +596,7 @@ app.get('/admin',async function (req,res) {
 
 		res.render('pages/divers/admin',{
 			siteTitle : "Accès Admin - MDA",
-			pageTitle : "bout",
+			pageTitle : "Accès Admin",
 			items : result
 		});
 
@@ -704,12 +661,10 @@ app.get('/logout',(req,res) => {
     });
 });
 
-// ajax inter pages?
-
 /**
 * connect to server
 */
 
 const server = app.listen(4000, function(){
-	console.log("serveur fonctionne sur 4000...");
+	console.log("serveur fonctionne sur :4000...");
 });
