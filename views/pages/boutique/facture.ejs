@@ -15,7 +15,7 @@
                                     >
                                         <img
                                             src="<%= logo%>"
-                                            alt="Bootdey.com"
+                                            alt="MuseeDesAstres.com"
                                             style="height: 150px; max-width: 100%; width: 150px;"
                                             height="50"
                                             width="157"
@@ -40,7 +40,7 @@
                     <table width="100%" style="background: #f9f9f9; border-bottom: 1px solid #eee; border-collapse: collapse; color: #999;">
                         <tbody>
                             <tr>
-                                <td width="50%" style="padding: 20px;"><strong style="color: #333; font-size: 24px;">$ TOTAL</strong> total</td>
+                                <td width="50%" style="padding: 20px;"><strong style="color: #333; font-size: 24px;">$ <%= total%></strong> total</td>
                                 <td align="right" width="50%" style="padding: 20px;">Merci d'avoir acheté sur <span class="il">MuseeDesAstres.com</span></td>
                             </tr>
                         </tbody>
@@ -50,7 +50,7 @@
                 <td width="5px" style="padding: 0;"></td>
             </tr>
             <tr>
-                <td width="5px" style="padding: 0;"></td>
+                <td width="5px" style="padding: 0;"> </td>
                 <td style="border: 1px solid #000; border-top: 0; clear: both; display: block; margin: 0 auto; max-width: 600px; padding: 0;">
                     <table cellspacing="0" style="border-collapse: collapse; border-left: 1px solid #000; margin: 0 auto; max-width: 600px;">
                         <tbody>
@@ -73,21 +73,27 @@
                                     </h3>
                                     <table cellspacing="0" style="border-collapse: collapse; margin-bottom: 40px;">
                                         <tbody>
+                                            <% items.forEach(function(item,index) { %>
+                                                <tr>
+                                                    <td style="padding: 5px 0;"><%= item.titre%>          </td>
+                                                    <td align="right" style="padding: 5px 0;">$ <%= item.prix%></td>
+                                                </tr>
+                                            <%});%>
                                             <tr>
-                                                <td style="padding: 5px 0;">Item</td>
-                                                <td align="right" style="padding: 5px 0;">Prix Item</td>
+                                                <td style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;">Total hors taxes</td>
+                                                <td align="right" style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;">$ <%= totalHT%></td>
                                             </tr>
                                             <tr>
                                                 <td style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;"> <i>TPS</i> </td>
-                                                <td align="right" style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;">$TPS</td>
+                                                <td align="right" style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;">$ <%= tps%></td>
                                             </tr>
                                             <tr>
                                                 <td style="border-bottom: 1px solid #000; border-top: 1px solid #000;  padding: 5px 0;"> <i>TVQ</i> </td>
-                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 1px solid #000; padding: 5px 0;">$TVQ</td>
+                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 1px solid #000; padding: 5px 0;">$ <%= tvq%></td>
                                             </tr>
                                             <tr>
                                                 <td style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">Montant total</td>
-                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">$TOTAL</td>
+                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">$  <%= total%></td>
                                             </tr>
                                         </tbody>
                                     </table>
