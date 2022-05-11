@@ -238,7 +238,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 /*
 * Scheduler pour RDV etoiles
 */
-cron.schedule('* * * * *', () => {
+cron.schedule('01 * * * *', () => {
 	rdvScheduler();
 });
 
