@@ -200,41 +200,47 @@
 			  let prixTotal = document.createElement('b');
 			  prixTotal.innerText = "$ "+prixTotHT;
 
+			  let divCartConfirm = document.createElement('div');
+			  divCartConfirm.classList.add('d-flex');
+
 				 let RemoveAll = document.createElement('button');
 				 RemoveAll.type = 'button';
-				 RemoveAll.classList.add('fa', 'fa-trash');
+				 RemoveAll.classList.add('fa', 'fa-trash', 'flex-fill');
 				 RemoveAll.ariaLabel='Close';
-				 RemoveAll.ariaHidden= 'true';
+				 RemoveAll.ariaHidden= 'false';
 				 RemoveAll.setAttribute( "OnClick", "removeAllCart()");
 
-				 /*let trah = document.createElement('span');
-				trah.classList.add('bi','bi-trash');
 
-				RemoveAll.appendChild(trah);*/
 
 				let linkcheckout = document.createElement('a');
 				linkcheckout.href = '/checkout'
 
 				let btnCheckout = document.createElement('button');
-				btnCheckout.classList.add('w-100', 'btn', 'btn-primary', 'btn-lg');
+				btnCheckout.classList.add('w-100', 'btn', 'btn-primary', 'btn-lg', 'flex-fill', 'me-3');
 				btnCheckout.innerText ="Finaliser la commande";
 
 				linkcheckout.appendChild(btnCheckout);
 
 
 				total.appendChild(textTotal);
-			  total.appendChild(prixTotal);
-			  total.appendChild(RemoveAll);
-
+			  	total.appendChild(prixTotal);
 
 				listItems.appendChild(total);
 
 			  cartHeader.appendChild(cartTitre);
 			  cartHeader.appendChild(nbitems);
 
+				divCartConfirm.appendChild(btnCheckout)
+				divCartConfirm.appendChild(RemoveAll);
+
 			  racine.appendChild(cartHeader);
 			  racine.appendChild(listItems);
-			  racine.appendChild(linkcheckout);
+			  racine.appendChild(divCartConfirm);
+
+			  // racine.appendChild(linkcheckout);
+
+
+
 			  return racine.outerHTML;
 			})
 			.catch(console.error);
