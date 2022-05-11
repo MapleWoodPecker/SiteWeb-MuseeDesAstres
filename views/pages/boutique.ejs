@@ -159,19 +159,10 @@
 
 <script>
 function EffacerFiltre(){
-    var element = document.getElementsByTagName('input');
-    for (let i = 0; i < element.length; i++) {
-        console.debug(element[i].type)
-        if(element[i].type === 'checkbox'){
-            //console.debug(element[i].type)
-            console.debug("IN LOOP")
-
-            element[i].checked = false;
-            console.debug(element[i].checked)
-
-        }
-        
-    }
+    document.getElementById("checkvetement").checked = true;
+        document.getElementById("checkmaquette").checked = true;
+        document.getElementById("checksouvenir").checked = true;
+        document.getElementById("checkeducatif").checked = true;
 
     loadDoc();
 }
@@ -266,9 +257,14 @@ function EffacerFiltre(){
         location.reload();
     }
     window.onload = function () {
-        window.scrollTo(0, 0);
+        document.getElementById("checkvetement").checked = true;
+        document.getElementById("checkmaquette").checked = true;
+        document.getElementById("checksouvenir").checked = true;
+        document.getElementById("checkeducatif").checked = true;
+        
         var data = sessionStorage.getItem('added');
         if (data == 'true') {
+            window.scrollTo(0, 0);
             document.getElementById("added").style.display = "block";
             sessionStorage.removeItem('added');
         }
