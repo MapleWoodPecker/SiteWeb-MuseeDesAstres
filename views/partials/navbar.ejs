@@ -154,11 +154,12 @@
 			  nbitems.innerText = data.length;
 
 			  let divUl = document.createElement('div');
-			  divUl.classList.add('is-scrollable', 'overflow-auto');
+			  divUl.classList.add('is-scrollable', 'overflow-auto', 'mb-2');
+			  divUl.style="max-height: 275px;";
 
 			  //create list Items cart node
 			  let listItems = document.createElement('ul');
-			  listItems.classList.add('list-group','mb-3');
+			  listItems.classList.add('list-group');
 
 			  let prixTotHT = 0;
 			  let i = 0;
@@ -176,10 +177,6 @@
 				Titre.classList.add('my-0');
 				Titre.innerText = Items.titre;
 
-				let Descrip = document.createElement('small');
-				Descrip.classList.add('text-muted');
-				Descrip.innerText = Items.desc;
-
 				let Prix = document.createElement('span');
 				Prix.classList.add('text-muted');
 				Prix.innerText = "$ " +Items.prix;
@@ -192,7 +189,6 @@
 				//Remove.onclick = removeItemCart(i);
 
 				indiv.appendChild(Titre);
-				indiv.appendChild(Descrip);
 
 				listItem.appendChild(indiv);
 				listItem.appendChild(Prix);
@@ -227,10 +223,11 @@
 
 
 				let linkcheckout = document.createElement('a');
-				linkcheckout.href = '/checkout'
+				linkcheckout.classList.add( 'me-3');
+				linkcheckout.href = '/checkout';
 
 				let btnCheckout = document.createElement('button');
-				btnCheckout.classList.add('w-100', 'btn', 'btn-primary', 'btn-lg', 'flex-fill', 'me-3');
+				btnCheckout.classList.add('w-100', 'btn', 'btn-primary', 'btn-lg', 'flex-fill');
 				btnCheckout.innerText ="Finaliser la commande";
 
 				linkcheckout.appendChild(btnCheckout);
@@ -244,7 +241,7 @@
 			  cartHeader.appendChild(cartTitre);
 			  cartHeader.appendChild(nbitems);
 
-				divCartConfirm.appendChild(btnCheckout);
+				divCartConfirm.appendChild(linkcheckout);
 				divCartConfirm.appendChild(RemoveAll);
 
 				divUl.appendChild(listItems);
