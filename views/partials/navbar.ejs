@@ -8,6 +8,12 @@
 		.popover{
 			max-width: 400px;
 			max-height: 400px;
+
+		}
+
+		.is-scollable{
+			max-height: 300px;
+			overflow: auto;
 		}
     	.main, .text-primary{
 			color: #182030!important;
@@ -145,6 +151,9 @@
 			  nbitems.classList.add('badge', 'bg-primary', 'rounded-pill');
 			  nbitems.innerText = data.length;
 
+			  let divUl = document.createElement('div');
+			  divUl.classList.add('is-scrollable', 'overflow-auto');
+
 			  //create list Items cart node
 			  let listItems = document.createElement('ul');
 			  listItems.classList.add('list-group','mb-3');
@@ -233,11 +242,13 @@
 			  cartHeader.appendChild(cartTitre);
 			  cartHeader.appendChild(nbitems);
 
-				divCartConfirm.appendChild(btnCheckout)
+				divCartConfirm.appendChild(btnCheckout);
 				divCartConfirm.appendChild(RemoveAll);
 
+				divUl.appendChild(listItems);
+
 			  racine.appendChild(cartHeader);
-			  racine.appendChild(listItems);
+			  racine.appendChild(divUl);
 			  racine.appendChild(divCartConfirm);
 
 			  // racine.appendChild(linkcheckout);
