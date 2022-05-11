@@ -464,7 +464,7 @@ app.get('/boutique',async function (req,res) {
 		result.push(element);
 	});
 
-    res.render('pages/boutique',{
+    res.render('pages/boutique/boutique',{
     	siteTitle : "Boutique en ligne - Musée des Astres",
     	pageTitle : "Boutique",
     	items : result
@@ -503,10 +503,25 @@ app.get('/checkout',async function (req,res) {
 
 	var result = [];
 
-	res.render('pages/checkout',{
+	res.render('pages/boutique/checkout',{
 		siteTitle : "Confirmer la commande - Musée des Astres",
 		pageTitle : "bout",
 		items : result
+	});
+});
+
+app.get('/bill',async function (req,res) {
+
+	var result = [];
+
+	
+
+	res.render('pages/boutique/facture',{
+		siteTitle : "test - Musée des Astres",
+		pageTitle : "bout",
+		items : result,
+		logo : base64_encode('public\\images\\logo_border.png'),
+		date : new Date().toISOString().replace(/T.+/, '')
 	});
 });
 
