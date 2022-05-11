@@ -196,10 +196,24 @@
 			  let prixTotal = document.createElement('b');
 			  prixTotal.innerText = "$ "+prixTotHT;
 
-			  total.appendChild(textTotal);
-			  total.appendChild(prixTotal);
+				 let RemoveAll = document.createElement('button');
+				 RemoveAll.type = 'button';
+				 //RemoveAll.classList.add('btn-trash');
+				 RemoveAll.ariaLabel='Close';
+				 RemoveAll.setAttribute( "OnClick", "removeAllCart()");
 
-			  listItems.appendChild(total);
+				 let trah = document.createElement('span');
+				trah.classList.add('bi','bi-trash');
+
+				RemoveAll.appendChild(trah);
+
+
+				total.appendChild(textTotal);
+			  total.appendChild(prixTotal);
+			  total.appendChild(RemoveAll);
+
+
+				listItems.appendChild(total);
 
 			  cartHeader.appendChild(cartTitre);
 			  cartHeader.appendChild(nbitems);
@@ -252,7 +266,7 @@
 			if (j!=i){
 				localStorage.removeItem((j))
 			}
-			
+
 			console.debug(value);
 			localStorage.setItem(i,value);
 
