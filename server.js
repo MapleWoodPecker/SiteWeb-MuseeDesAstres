@@ -12,6 +12,8 @@ const ejs = require("ejs");
 const pdf = require("html-pdf-node");
 const qrcode = require('qrcode');
 const fs = require('fs');
+var cron = require('node-cron');
+const fetch = require('node-fetch');
 
 /**
 * import all related Javascript and css files to inject in our app
@@ -101,7 +103,6 @@ function compare( a, b ) {
 	}
 	return 0;
 }
-
 /*
 * Accueil
 */
@@ -233,6 +234,31 @@ app.get('/rdv_etoiles',async function (req,res) {
 	});
 	
 });
+
+/*
+* Scheduler for RDV etoiles
+*/
+cron.schedule('* * * * *', () => {
+	/* Running the job every day */
+	console.log("Running weather task");
+	const uri_weather = "http://api.weatherapi.com/v1/forecast.json?key=45cfbd55ef1847f0b2c163229221105&q=Montreal&days=3&aqi=no&alerts=yes";
+	let settings = { method: "Get" };
+
+	fetch(uri_weather, settings)
+		.then(res => res.json())
+		.then((json) => {
+        console.log(json);
+    });
+
+	//${weather.current.temp_c}
+	//${weather.current.feelslike_c}
+	//${weather.forecast.forecastday[1].day.maxtemp_c}
+	//${weather.forecast.forecastday[1].day.mintemp_c}
+	//${weather.forecast.forecastday[2].day.maxtemp_c}
+	//${weather.forecast.forecastday[2].day.mintemp_c}
+});
+
+
 
 /**
  * Plan
