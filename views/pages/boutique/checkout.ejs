@@ -216,6 +216,8 @@
 
           var data = {nom:nom, prenom:prenom, email:email, adresse:adresse, achats:achats}
 
+          localStorage.clear();
+
           fetch("/bill", {
             method: "POST",
             headers: headers,
@@ -229,8 +231,6 @@
           });
 
           alert("Vous avez été débité de "+ totalnum +" $ CA.");
-
-          localStorage.clear();
         
       }
 
