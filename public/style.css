@@ -36,7 +36,7 @@
 .navbar-nav > li > div > a:hover{
     font-size: 100%;
     color: #182030;
-    background-color:#9cabc9;
+    background-color:#889cc3;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
@@ -345,19 +345,32 @@ width: 500px;
     margin-right: auto;
 }
 
-
-
 p, h1, h2, h3, h4, h5 {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+#content-desktop {display: block;}
+#content-mobile {display: none;}
 
-
-
-  #content-desktop {display: block;}
-  #content-mobile {display: none;}
-
-  @media screen and (max-width: 991px) {
+@media screen and (max-width: 991px) {
     #content-desktop {display: none;}
     #content-mobile {display: block;}
-  }
+}
+
+.btn-primary, .btn-primary:focus, .btn-primary::after{
+    background-color: #182030;
+}
+
+.btn-primary:hover{
+    background-color: #090b11;
+}
+
+.btn-primary:focus, .btn-primary:active{
+    box-shadow: 0 0 0 0.3rem rgba(136, 156, 195, 1);
+    outline-color: #334466;
+    border-color: #182030;
+}
+
+.text-muted{
+    line-height: 22px;
+}

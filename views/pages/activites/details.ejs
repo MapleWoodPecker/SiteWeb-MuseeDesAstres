@@ -27,7 +27,7 @@
 
     <p class="lead text-muted" style="font-size:27px;font-style: italic;"><%- item.desc %></p>
     <br>
-    <p style="text-align: left;width: 80%; margin: auto; font-size: x-large; color:darkslategray; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><%= item.long%></p>
+    <p style="text-align: left;width: 80%; margin: auto; font-size: x-large; color:darkslategray; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><%= item.long%></p>
     <br>
     <p class="card-text" style="font-size: large; line-height: 30px;">
         Quand: 
@@ -46,7 +46,7 @@
         <br>
         Où: <i>Salle <%= item.salle%></i>
         <br>
-        Durée approximative: <i><%= item.duree %> minutes</i>
+        Durée: <i><%= item.duree %> minutes</i>
     </p>
 
     <br><br>
@@ -55,7 +55,7 @@
         <a href="/billeterie" class="btn btn-secondary my-2 btn-lg">Réserver en ligne</a>
         <br><br>
         <p style="font-size: x-large!important; font-style: italic; margin-bottom: 0px;">Cette exposition est une des nombreuses que nous présentons en ce moment</p>
-        <a href="/expositions" class="btn btn-primary my-2 btn-lg" style="background-color: #182030;">Voir le reste</a>
+        <a href="/expositions" class="btn btn-primary my-2 btn-lg">Voir le reste</a>
 
 
     <% }else{%>
@@ -63,7 +63,7 @@
         <a href="/billeterie" class="btn btn-secondary my-2 btn-lg">Réserver en ligne</a>
         <br><br>
         <p style="font-size: x-large!important; font-style: italic; margin-bottom: 0px;">Cette activité est une des nombreuses que nous avons à offrir</p>
-        <a href="/activites" class="btn btn-primary my-2 btn-lg" style="background-color: #182030;">Voir le reste</a>
+        <a href="/activites" class="btn btn-primary my-2 btn-lg">Voir le reste</a>
     <% }; %>
     
 

@@ -42,8 +42,8 @@
     margin-left: auto;
     margin-right: auto;
 }
-#left{width: 900px;}
-#right{width: 950px;}
+#left{width: 50%;}
+#right{width: 55%;}
 
 #right { 
     display:none;
@@ -90,8 +90,8 @@
         <p class="lead text-muted">Explorez les expositions et le plan du musée sur notre carte interactive</p>
   
         <div id="toggle">
-            <button type="button" class="btn btn-primary" style="margin: 5px; background-color: #182030;">Étage 1</button>
-            <button type="button" class="btn btn-primary" style="margin: 5px; background-color: #182030;">Étage 2</button>
+            <button type="button" class="btn btn-primary" style="margin: 5px;">Étage 1</button>
+            <button type="button" class="btn btn-primary" style="margin: 5px;">Étage 2</button>
         </div>
         
       </div>
@@ -207,9 +207,9 @@
 
     $('#toggle > button').click(function () {
         var ix = $(this).index();
-
         $('#left').toggle(ix === 0);
         $('#right').toggle(ix === 1);
+        document.getElementById("toggle").scrollIntoView();
     });
 
     $(document).ready(function(){
@@ -261,7 +261,7 @@
         animation: true,
 		trigger : 'focus',
         html : true,
-        content : `<a href="/boutique">   <img class="bd-placeholder-img card-img-top" src="/images/boutique.png">   <h5 class="plan-title">     Boutique du Musée   </h5>   <p class="plan-desc">     Notre boutique du musée vous offre plusieurs souvenirs de votre visite, ainsi que plusieurs objets éducatifs liées aux astres.   </p>   <i><p class="plan-date">     Cliquez pour notre boutique en ligne   </p><i> </a>`
+        content : `<a href="/boutique">   <img class="bd-placeholder-img card-img-top" src="/images/boutique.png">   <h5 class="plan-title">     Boutique du Musée   </h5>   <p class="plan-desc">     Notre boutique du musée vous offre plusieurs souvenirs de votre visite, ainsi que plusieurs objets éducatifs liés aux astres.   </p>   <i><p class="plan-date">     Cliquez pour notre boutique en ligne   </p><i> </a>`
     });
     $('[data-toggle="popover_bistro"]').popover({
         placement : 'top',
