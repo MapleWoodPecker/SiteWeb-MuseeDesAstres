@@ -2,7 +2,7 @@
 <style>
     .containershop {
   display: flex;
-  margin-left: 3%;
+  margin-left: auto;
   margin-right: auto;
   width: fit-content;
 }
@@ -17,13 +17,6 @@
     display: block;
     width: 170px; 
 }
-
-.filtre h5{
-        text-align: center;
-        background-color: lightgray;
-        padding: 10;        
-}
-
 .filtre ul{
     list-style-type: none;
     text-align: left;
@@ -59,6 +52,11 @@
   color: black;
 } 
 
+.filter-option{
+    font-size: large;
+    padding-bottom: 4px;
+}
+
 </style>
 
 
@@ -67,33 +65,43 @@
     Item ajouté au panier.
   </div> 
 
+  <section class="py-1 text-center container" style="margin-bottom: -50px; margin-top: 0;">
+    <div class="row py-lg-5">
+      <div class="col-lg-9 col-md-7 mx-auto">
+        <h1 class="fw-light">Boutique du Musée</h1>
+        <p class="lead text-muted">  Notre boutique vous offre des souvenirs et objets éducatifs liés aux astres</p>        
+      </div>
+    </div>
+    </section>
+  
+
 <div class="containershop" >
-    <div class="px-4 mt-5 nextto filtre">
+    <div class="px-3 mt-5 nextto filtre">
 
         <!--Fitre-->
-        <h5>Filtre</h5>
+        <h2 style="padding-left: 10; padding-bottom: 10; font-weight: bold;">Filtres</h2>
         <form action="/boutique">
 
             <ul>
             
-                <li>
+                <li class="filter-option">
                     <input class="input_" id="checkvetement" type="checkbox"  onclick ="loadDoc()">
-                    <label class="input" for="checkvetement">Vêtement</label>
+                    <label class="input" for="checkvetement">Vêtements</label>
                 </li>
-                <li>
+                <li class="filter-option">
                     <input class="input" id="checkmaquette" type="checkbox" onclick ="loadDoc()">
-                    <label class="input" for="checkmaquette">Maquette</label>
+                    <label class="input" for="checkmaquette">Miniatures</label>
                 </li>
-                <li>
+                <li class="filter-option">
                     <input class="input" id="checksouvenir" type="checkbox" onclick ="loadDoc()">
-                    <label class="input" for="checksouvenir">Souvenir</label>
+                    <label class="input" for="checksouvenir">Souvenirs</label>
                 </li>
-                <li>
+                <li class="filter-option">
                     <input class="input" id="checkeducatif" type="checkbox" onclick ="loadDoc()">
-                    <label class="input" for="checkeducatif">Educatif</label>
+                    <label class="input" for="checkeducatif">Éducatif</label>
                 </li>
                 <li>
-                    <input type="button" value="Effacer Filtre" class="btn btn-primary my-2" style="background-color: #182030;" onclick ="EffacerFiltre ()"></input>
+                    <input type="button" value="Réinitialiser" class="btn btn-primary my-2" style="font-size: large;" onclick ="EffacerFiltre ()"></input>
                 </li>
             </ul> 
         </form>
@@ -108,14 +116,14 @@
                 <div  class="col mb-5 <%= item.tags%> shopElement" >
                     <div class="card h-100">
                         <!-- Product image-->
-                        <img class="card-img-top" src="<%= item.image%>" alt="..." />
+                        <img class="card-img-top" src="<%= item.image%>" alt="..." style="padding:10px;"/>
                         <!-- Product details-->
-                        <div class="card-body p-4">
+                        <div class="card-body p-2">
                             <div class="text-center">
                                 <!-- Product name-->
                                 <h5 class="fw-bolder " style="line-height: 1em;"><%= item.titre%></h5>
                                 <!-- Productdescription-->
-                                    <p><%= item.desc%></p>
+                                    <p style="height: 60px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding-left: 3px!important; padding-right: 3px!important;"><%= item.desc%></p>
                                 <!-- Product price-->
                                 <p>$ <%= item.prix%></p>
                                 
@@ -123,7 +131,7 @@
                         </div>
                         <!-- Product actions-->
                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><button class="btn btn-primary my-2" style="background-color: #182030;" onclick="addToCart('<%= item._id%>')">
+                            <div class="text-center"><button class="btn btn-primary my-2" onclick="addToCart('<%= item._id%>')">
                                 Ajouter au panier 
                             </button>
                             </div>
@@ -140,7 +148,7 @@
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
           <h1 class="fw-light">Aucune donnée trouvée.</h1>
-          <a href="/" class="btn btn-primary my-2" style="background-color: #182030;">Retour à l'accueil</a>
+          <a href="/" class="btn btn-primary my-2">Retour à l'accueil</a>
           </p>
         </div>
       </div>
