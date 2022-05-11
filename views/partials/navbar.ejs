@@ -198,14 +198,15 @@
 
 				 let RemoveAll = document.createElement('button');
 				 RemoveAll.type = 'button';
-				 //RemoveAll.classList.add('btn-trash');
+				 RemoveAll.classList.add('fa', 'fa-trash');
 				 RemoveAll.ariaLabel='Close';
+				 RemoveAll.ariaHidden= 'true';
 				 RemoveAll.setAttribute( "OnClick", "removeAllCart()");
 
-				 let trah = document.createElement('span');
+				 /*let trah = document.createElement('span');
 				trah.classList.add('bi','bi-trash');
 
-				RemoveAll.appendChild(trah);
+				RemoveAll.appendChild(trah);*/
 
 
 				total.appendChild(textTotal);
