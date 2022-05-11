@@ -249,8 +249,13 @@
 
 			console.debug(localStorage);
 			let value = localStorage.getItem(j);
+			if (j!=i){
+				localStorage.removeItem((j))
+			}
+			
 			console.debug(value);
 			localStorage.setItem(i,value);
+
 
 			//localStorage.setItem(i, value);
 		}

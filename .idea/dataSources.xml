@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="test@museedesastres.0xwj2.mongodb.net" uuid="c4da7cff-87bf-40c9-81da-4256704ec1b1">
+      <driver-ref>mongo</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
+      <jdbc-url>mongodb+srv://museedesastres.0xwj2.mongodb.net/test?authSource=admin&amp;replicaSet=atlas-o8vvfg-shard-0&amp;readPreference=primary&amp;ssl=true</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
