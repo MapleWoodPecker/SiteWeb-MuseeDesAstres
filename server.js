@@ -244,11 +244,13 @@ cron.schedule('* * * * *', () => {
 	const uri_weather = "http://api.weatherapi.com/v1/forecast.json?key=45cfbd55ef1847f0b2c163229221105&q=Montreal&days=3&aqi=no&alerts=yes";
 	let settings = { method: "Get" };
 
+	
 	fetch(uri_weather, settings)
 		.then(res => res.json())
 		.then((json) => {
         console.log(json);
     });
+
 
 	//${weather.current.temp_c}
 	//${weather.current.feelslike_c}
