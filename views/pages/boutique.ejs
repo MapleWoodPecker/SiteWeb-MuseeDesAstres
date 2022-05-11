@@ -254,15 +254,15 @@ function EffacerFiltre(){
 
     function addToCart(id){
         localStorage.setItem(localStorage.length, id);
-        //localStorage.setItem('added', true);
+        sessionStorage.setItem('added', true);
         location.reload();
     }
-    /*window.onload = function () {
+    window.onload = function () {
         window.scrollTo(0, 0);
-        var data = localStorage.getItem('added');
+        var data = sessionStorage.getItem('added');
         if (data == 'true') {
             document.getElementById("added").style.display = "block";
-            localStorage.removeItem('added');
+            sessionStorage.removeItem('added');
         }
-    }*/
+    }
 </script>
