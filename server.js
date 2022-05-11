@@ -213,7 +213,7 @@ app.get('/activites',async function (req,res) {
 });
 
 /**
- * Rdv_etoiles
+ * Rendez-vous sous les étoiles
 */
 
 app.get('/rdv_etoiles',async function (req,res) {

@@ -215,7 +215,7 @@
 
 				 let RemoveAll = document.createElement('button');
 				 RemoveAll.type = 'button';
-				 RemoveAll.classList.add('fa', 'fa-trash', 'flex-fill');
+				 RemoveAll.classList.add('fa', 'fa-trash', 'flex-fill', 'btn', 'btn-secondary', 'ms-5', 'me-0');
 				 RemoveAll.ariaLabel='Close';
 				 RemoveAll.ariaHidden= 'false';
 				 RemoveAll.setAttribute( "OnClick", "removeAllCart()");
@@ -227,7 +227,7 @@
 				linkcheckout.href = '/checkout';
 
 				let btnCheckout = document.createElement('button');
-				btnCheckout.classList.add('w-100', 'btn', 'btn-primary', 'btn-lg', 'flex-fill');
+				btnCheckout.classList.add('w-100', 'btn', 'btn-primary', 'flex-fill', 'ms-5');
 				btnCheckout.innerText ="Finaliser la commande";
 
 				linkcheckout.appendChild(btnCheckout);
