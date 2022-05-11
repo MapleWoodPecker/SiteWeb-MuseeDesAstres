@@ -1,7 +1,8 @@
 <%- include ('../../partials/header') %>
 <style>
     .movie-image:hover{
-        cursor:initial!important;pointer-events: auto;
+        cursor:initial!important;
+        pointer-events: auto;
     }
 </style>
 
@@ -11,7 +12,7 @@
 <div style="width: 80%; margin-left: auto; margin-right: auto; text-align: center; align-items: center;">
     <% var expo = false %>
     <% if (item.date_fin != undefined) { expo = true} %>
-    <p style="font-size:x-large; font-style: italic;" >
+    <p style="font-size:xx-large; font-style: italic;" class="text-muted">
         <% if (expo) { %>
             Exposition
         <% }else{%>
@@ -24,16 +25,15 @@
     <br>
     <br>
 
-
-
-    <p class="lead text-muted"><%- item.desc %></p>
-        
-    
-
-    <p class="card-text">
-        <% if (expo) { %>
+    <p class="lead text-muted" style="font-size:27px;font-style: italic;"><%- item.desc %></p>
+    <br>
+    <p style="text-align: left;width: 80%; margin: auto; font-size: x-large; color:darkslategray; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"><%= item.long%></p>
+    <br>
+    <p class="card-text" style="font-size: large; line-height: 30px;">
+        Quand: 
+        <i><% if (expo) { %>
             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
-            <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%> <br>
+            Du <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%>
             
         <% }else{%>
             <% var months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
@@ -42,30 +42,28 @@
             <% if (min < 10) {min="0" + min} %>
             Le <%= item.date_debut.getDate()%>
             <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%>
-        <% }; %>
+        <% }; %></i>
         <br>
-        Salle : <%= item.salle%>
+        Où: <i>Salle <%= item.salle%></i>
         <br>
-        <%= item.duree %> minutes
+        Durée approximative: <i><%= item.duree %> minutes</i>
     </p>
 
-    <p><%= item.long%></p>
-
-    
+    <br><br>
     <% if (expo) { %>
-        <p>Cela vous intéresse? Réservez votre billet pour cette exposition, ainsi que plusieurs autres, dès maintenant:</p>
-        <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
-        <br>
-        <p>Cette exposition est une des nombreuses que nous présentons en ce moment.</p>
-        <a href="/expositions" class="btn btn-primary my-2" style="background-color: #182030;">Voir le reste</a>
+        <p style="font-size: x-large!important; font-style: italic; margin-bottom: 0px;">Réservez votre billet pour cette exposition, ainsi que plusieurs autres, dès maintenant:</p>
+        <a href="/billeterie" class="btn btn-secondary my-2 btn-lg">Réserver en ligne</a>
+        <br><br>
+        <p style="font-size: x-large!important; font-style: italic; margin-bottom: 0px;">Cette exposition est une des nombreuses que nous présentons en ce moment</p>
+        <a href="/expositions" class="btn btn-primary my-2 btn-lg" style="background-color: #182030;">Voir le reste</a>
 
 
     <% }else{%>
-        <p>Réservez votre billet pour cette, ainsi que plusieurs autre</p>
-        <a href="/billeterie" class="btn btn-secondary my-2">Réserver en ligne</a>
-        <br>
-        <p>Cette activités est une des nombreuses que nous avons à présenter.</p>
-        <a href="/activites" class="btn btn-primary my-2" style="background-color: #182030;">Voir le reste</a>
+        <p style="font-size: x-large!important; font-style: italic; margin-bottom: 0px;">Réservez votre billet pour cette activité, ainsi que plusieurs autres, dès maintenant:</p>
+        <a href="/billeterie" class="btn btn-secondary my-2 btn-lg">Réserver en ligne</a>
+        <br><br>
+        <p style="font-size: x-large!important; font-style: italic; margin-bottom: 0px;">Cette activité est une des nombreuses que nous avons à offrir</p>
+        <a href="/activites" class="btn btn-primary my-2 btn-lg" style="background-color: #182030;">Voir le reste</a>
     <% }; %>
     
 
