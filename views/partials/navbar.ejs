@@ -205,14 +205,24 @@
 
 				 let RemoveAll = document.createElement('button');
 				 RemoveAll.type = 'button';
-				 //RemoveAll.classList.add('btn-trash');
+				 RemoveAll.classList.add('fa', 'fa-trash');
 				 RemoveAll.ariaLabel='Close';
+				 RemoveAll.ariaHidden= 'true';
 				 RemoveAll.setAttribute( "OnClick", "removeAllCart()");
 
-				 let trah = document.createElement('span');
+				 /*let trah = document.createElement('span');
 				trah.classList.add('bi','bi-trash');
 
-				RemoveAll.appendChild(trah);
+				RemoveAll.appendChild(trah);*/
+
+				let linkcheckout = document.createElement('a');
+				linkcheckout.href = '/checkout'
+
+				let btnCheckout = document.createElement('button');
+				btnCheckout.classList.add('w-100', 'btn', 'btn-primary', 'btn-lg');
+				btnCheckout.innerText ="Finaliser la commande";
+
+				linkcheckout.appendChild(btnCheckout);
 
 
 				total.appendChild(textTotal);
@@ -227,6 +237,7 @@
 
 			  racine.appendChild(cartHeader);
 			  racine.appendChild(listItems);
+			  racine.appendChild(linkcheckout);
 			  return racine.outerHTML;
 			})
 			.catch(console.error);
@@ -243,7 +254,7 @@
 			html: true,
 			sanitize: false,
 			animation:true,
-			content: `<a href="/checkout">`+data+`</a>`
+			content: data
 		});
 	});
 	});
@@ -253,9 +264,12 @@
 		console.debug('remove ' + id)
 		localStorage.removeItem(id);
 		reformat();
+		location.reload();
 	}
 	function removeAllCart(){
 		localStorage.clear();
+		location.reload();
+
 	}
 
 	function reformat(){
