@@ -6,19 +6,16 @@
   margin-right: auto;
   width: fit-content;
 }
-    .nextto{
-        margin-left: auto;
-        margin-right: auto;
-        display: table-row;
+.nextto{
+    margin-left: auto;
+    margin-right: auto;
+    display: table-row;
 
-    }
+}
 
-    .filtre{
-        display: block;
-        width: 170px;
-        
-
-        
+.filtre{
+    display: block;
+    width: 170px; 
 }
 
 .filtre h5{
@@ -27,24 +24,50 @@
         padding: 10;        
 }
 
-    .filtre ul{
-        list-style-type: none;
-        text-align: left;
-        padding: 0 10 10 10;
+.filtre ul{
+    list-style-type: none;
+    text-align: left;
+    padding: 0 10 10 10;
 }
 
 .filtre ul li a{
     color: black;
-       text-align: left;
+    text-align: left;
 }
+ /* The alert message box */
+ .alert {
+  padding: 20px;
+  background-color: red;
+  color: white;
+  margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+  color: black;
+} 
 
 </style>
 
 
+<div id="added" class="alert" style="display: none!important;">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    Item ajouté au panier.
+  </div> 
+
 <div class="containershop" >
-
-
-   
     <div class="px-4 mt-5 nextto filtre">
 
         <!--Fitre-->
@@ -228,10 +251,18 @@ function EffacerFiltre(){
 
 </script>
 <script>
+
     function addToCart(id){
         sessionStorage.setItem(sessionStorage.length, id);
+        //localStorage.setItem('added', true);
         location.reload();
     }
+    /*window.onload = function () {
+        window.scrollTo(0, 0);
+        var data = localStorage.getItem('added');
+        if (data == 'true') {
+            document.getElementById("added").style.display = "block";
+            localStorage.removeItem('added');
+        }
+    }*/
 </script>
-
-
