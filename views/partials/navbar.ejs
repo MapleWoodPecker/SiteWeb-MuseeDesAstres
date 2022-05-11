@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
 	<style>
 		a, a:hover, a:focus, a:active {
 		text-decoration: none;
@@ -16,22 +16,26 @@
 			overflow: auto;
 		}
     	.main, .text-primary{
-			color: #182030!important;
+			color: #222d44!important;
 		}
 		.badge, .w-100{
-			background-color: #182030!important;
+			background-color: #222d44!important;
 		}
 		.cart-button{
-			color: #182030; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px;
+			color: #222d44; vertical-align:middle; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;      font-size: 120%;      height: 45px; width: 110px;     margin-top: 2px;
 		}
 		.navsoussection{
 			margin-top: 5px;
-			margin-bottom: 5px;
+			margin-bottom: 5px;;
 		}
+		.navbar-toggler {
+			fill: white!important;
+		} 
 	</style>
 
 	<div class="container-fluid">
-	<a class="navbar-brand" href="http://localhost:4000/"><img src="../../images/logo_text.png"  width="250px" alt="Musée des Astres" style="margin-left: 30px!important; margin-right: 30px;"/></a>
+	<a id="content-desktop" class="navbar-brand" href="http://localhost:4000/"><img src="../../images/logo_text.png"  width="250px" alt="Musée des Astres" style="margin-left: 30px!important; margin-right: 30px;"/></a>
+	<a id="content-mobile" class="navbar-brand" href="http://localhost:4000/"><img src="../../images/logo_text.png"  width="200px" alt="Musée des Astres" style="margin-left: 30px!important; margin-right: 30px; margin-top: -10px;"/></a>
 
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
@@ -43,8 +47,8 @@
 				<a class="nav-link" aria-current="page" href="/">Accueil</a>
 			</li>
 
-		  <li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Expériences</a>
+		  <li class="nav-item dropdown" >
+			<a class="nav-link dropdown-toggle"  href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Expériences</a>
 			<div class="dropdown-menu">
 				<a class="dropdown-item navsoussection" href="/expositions">Expositions saisonnières</a>
 				<a class="dropdown-item navsoussection" href="/activites">Activités</a>
@@ -73,34 +77,32 @@
 			<li class="nav-item me-auto" style="margin-right: 30px!important;">
 				<a  tabindex="0" id="content-desktop" role="button" data-toggle="popover_cart" data-bs-trigger="focus">
 					<button class="btn btn-light cart-button position-relative">
-					<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
+					<i class="fa-solid fa-cart-shopping" style="color: #222d44;"></i>
 					Panier
-					<span id="cart-number" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: red!important;">
+					<span id="cart-number" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: green!important;">
 					  ...
 					</span>
 				  </button>
 				</a>
 
-				
 			</a>
 			</li>
 	  </ul>
 	  
-	  <a href="/checkout" id="content-mobile" style="text-decoration: none; color: inherit;">
-		<button class="btn btn-light cart-button position-relative">
-		<i class="fa-solid fa-cart-shopping" style="color: #182030;"></i>
+	  </div>
+	</div>
+	<a href="/checkout" id="content-mobile" style="text-decoration: none; color: inherit; position: absolute; right: 0; top: 0; margin-right: 90px; margin-top: 22px; font-size: small;"><button class="btn btn-light cart-button position-relative"style="height:fit-content;width:fit-content;">
+		<small class="fa-solid fa-cart-shopping" style="color: #222d44;"></small>
 		Panier
-		<span id="cart-number2" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: red!important;">
+		<span id="cart-number2" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="background-color: green!important;">
 		  ...
-		</span>
+			</span>
 		</button>
 	</a>
 
-	  </div>
-	</div>
   </nav>
 
-  <script>		
+  <script>
 	let num = document.getElementById('cart-number');
 	let num2 = document.getElementById('cart-number2');
 
@@ -114,7 +116,7 @@
 		num.style.display = "none";
 		num2.style.display = "none";
 	}
-	
+
   </script>
   <script>
 

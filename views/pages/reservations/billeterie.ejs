@@ -24,7 +24,7 @@
   }
   .bodyBillet{
     margin-left: 5%;
-    color: #182030;
+    color: #222d44;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     display: flex;
   }
@@ -34,7 +34,7 @@
     margin-top: 2%;
     }
   .date{
-    border-color: #182030;
+    border-color: #222d44;
     border-width: 3px;
     font-weight: bold;
     width: 200px;
@@ -43,11 +43,11 @@
     background-color: whitesmoke;
     border-width: 5px;
     border-style: hidden  hidden hidden solid;
-    border-color: #182030;
+    border-color: #222d44;
     font-weight: bold;
   }
   .option{
-    border-color: #182030;
+    border-color: #222d44;
     border-width: 3px;
   }
   .submit{
@@ -99,8 +99,6 @@
 
           var data = {nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id}
 
-          addToCart(data);
-
           fetch("/billet", {
             method: "POST",
             headers: headers,
@@ -114,16 +112,6 @@
           });
 
           alert("Vous avez été débité de 10 000 $ CA.");
-
-          // $.post("/billet", { nom:nom,prenom:prenom,email:email,adresse:adresse,telephone:telephone,datetime:datetime,rdv:rdv,film:film,billets_id:billets_id }, 
-          // function (data) {
-          //   if (data === 'done') {
-          //     window.location.href = "/";
-          //   }
-          //   if (data === 'error') {
-          //     alert('Erreur inconnue');
-          //   } 
-          // });
 
         } else {
           alert('Veuillez selectionner au moins un billet.');
