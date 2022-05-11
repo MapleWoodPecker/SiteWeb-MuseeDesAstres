@@ -375,6 +375,6 @@ p, h1, h2, h3, h4, h5 {
     line-height: 25px;
 }
 
-.form-check-input{
+.form-check-input:checked{
     background-color: #1a2233!important;
 }
