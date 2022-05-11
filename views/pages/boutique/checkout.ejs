@@ -183,7 +183,7 @@
       
       <hr class="my-4">
 
-      <button class="w-100 btn btn-primary btn-lg" type="submit">Confirmer la transaction</button>
+      <button class="w-100 btn btn-primary btn-lg" type="submit" id="submit">Confirmer la transaction</button>
       </form>
     </div>
   </div>
@@ -192,8 +192,55 @@
 </div>
 <br><br>
 
-<script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  
+  $(document).ready(function () {    
+    var nom,prenom,email,adresse;
 
+    $("#submit").click(function () {
+
+      nom = $("#lastName").val();
+      prenom = $("#firstName").val();
+      email = $("#email").val();
+      adresse = $("#adress").val() +  $("#address2").val() +  $("#country").val() + $("#state").val() +  $("#zip").val();
+
+      var achats = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        achats[i] = localStorage.getItem(i);
+      };
+
+      if (email.includes("@") && email.includes(".") && email.length > 5 && nom.length > 0 && prenom.length > 0 && adresse.length > 0 && achats.length > 0) {
+
+          var headers = {"Content-Type": "application/json","Access-Control-Origin": "*", "Expires": ""}
+
+          var data = {nom:nom, prenom:prenom, email:email, adresse:adresse, achats:achats}
+
+          fetch("/bill", {
+            method: "POST",
+            headers: headers,
+            body:  JSON.stringify(data)
+          })
+          .then(function(response){ 
+            return response.json(); 
+          })
+          .then(function(data){ 
+            console.log(data)
+          });
+
+          alert("Vous avez été débité de "+ totalnum +" $ CA.");
+
+          localStorage.clear();
+        
+      }
+
+    });
+    
+  });
+  var total_billet = 0;
+</script>
+
+<script src="https://getbootstrap.com/docs/5.0/examples/checkout/form-validation.js"></script>
 <script>
   function paymentToggle(){
     if($('#credit').is(':checked')) {

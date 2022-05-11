@@ -364,7 +364,7 @@ app.post('/billet',async function (req,res) {
 
 					var mailOptions = {
 						from: 'museedesastres@gmail.com',
-						to: req.body.email,
+						to: billet_temp.email,
 						subject: 'Vos billets DesAstres',
 						text: "Vos billets DesAstres",
 						attachments: [{
@@ -510,11 +510,9 @@ app.get('/checkout',async function (req,res) {
 	});
 });
 
-app.get('/bill',async function (req,res) {
+app.post('/bill',async function (req,res) {
 
 	var result = [];
-
-	
 
 	res.render('pages/boutique/facture',{
 		siteTitle : "test - Musée des Astres",
@@ -523,6 +521,94 @@ app.get('/bill',async function (req,res) {
 		logo : base64_encode('public\\images\\logo_border.png'),
 		date : new Date().toISOString().replace(/T.+/, '')
 	});
+
+	let achats = req.body.achats;
+
+	var items = [];
+	for (let value of Object.values(achats)) {
+		const cursor = await itemsboutique.find({});
+
+		await cursor.forEach(element => {
+
+			if (element["_id"] == value) {
+				items.push(element);
+			}
+			
+		});
+	}
+
+	if (items.length <= 0) {
+		console.log("erreur facture");
+	} else {
+
+		var totalHT = 0;
+
+		items.forEach(item => {
+			totalHT += item.prix * 100;
+		})
+		
+		var tps = totalHT * 0.05 * 100;
+		var tvq = (totalHT * 100) * (0.0975 * 10000);
+	
+		var total = (totalHT * 1000) * (1.14975 * 100000);
+
+		totalHT = totalHT/100;
+		tps = (tps / 10000).toFixed(2);
+		tvq = (tvq / 100000000).toFixed(2);
+		total = (total / 10000000000).toFixed(2);
+
+		var user = {
+			nom: req.body.nom,
+			prenom: req.body.prenom,
+			email: req.body.email,
+			adresse: req.body.adresse
+		}
+
+		console.log(user.email);
+
+		var transporter = nodemailer.createTransport({
+			service: 'gmail',
+			secure: true,
+			auth: {
+				user: 'museedesastres@gmail.com',
+				pass: 'Amal1234'
+			}
+		});
+
+		ejs.renderFile(__dirname + "\\views\\pages\\boutique\\facture.ejs",
+		{   
+			logo: base64_encode('public\\images\\logo_border.png'), totalHT : totalHT, tps : tps, tvq : tvq, total : total, items : items, date : new Date().toISOString().replace(/T.+/, '')
+		}, function (err, data) {
+			if (err) {
+				console.log(err);
+			} else {
+
+				pdf.generatePdf({ content: data }, {}).then(pdfBuffer => {
+					console.log("PDF generated");
+
+					var mailOptions = {
+						from: 'museedesastres@gmail.com',
+						to: user.email,
+						subject: 'Votre facture DesAstres',
+						text: "Merci "+ user.prenom +" "+ user.nom +" pour votre achat au Musée Des Astres !",
+						attachments: [{
+							filename: 'facture.pdf',
+							content: pdfBuffer,
+							contentType: 'application/pdf'
+						}]
+					};
+
+					transporter.sendMail(mailOptions, function (err, info) {
+						if (err) {
+							res.end('error');
+						} else {
+							console.log('Message sent: ' + info.response);
+						}
+					});
+				});
+			}
+		});
+	}
 });
 
 /**
@@ -679,5 +765,5 @@ app.get('/logout',(req,res) => {
 */
 
 const server = app.listen(4000, function(){
-	console.log("serveur fonctionne sur :4000...");
+	console.log("serveur fonctionne sur localhost:4000...");
 });
