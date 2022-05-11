@@ -218,10 +218,11 @@
 <script> 
 var headers = {"Content-Type": "application/json","Access-Control-Origin": "*", "Expires": ""}
   var data = [];
-for (let i = 0; i < sessionStorage.length; i++) {
-    data[i] = sessionStorage.getItem(i);
+for (let i = 0; i < localStorage.length; i++) {
+    data[i] = localStorage.getItem(i);
 };
-          
+};
+
           fetch("/cart", {
             method: "POST",
             headers: headers,

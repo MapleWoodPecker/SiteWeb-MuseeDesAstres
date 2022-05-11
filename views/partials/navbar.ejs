@@ -91,11 +91,11 @@
 	let num = document.getElementById('cart-number');
 	let num2 = document.getElementById('cart-number2');
 
-	if (sessionStorage.length > 0){
+	if (localStorage.length > 0){
 		num.style.display = "block";
 		num2.style.display = "block";
-		num.innerText = sessionStorage.length;
-		num2.innerText = sessionStorage.length;
+		num.innerText = localStorage.length;
+		num2.innerText = localStorage.length;
 	}
 	else{
 		num.style.display = "none";
@@ -108,8 +108,8 @@
   function getcart (){
 	var headers = {"Content-Type": "application/json","Access-Control-Origin": "*", "Expires": ""}
 	var data = [];
-  for (let i = 0; i < sessionStorage.length; i++) {
-	  data[i] = sessionStorage.getItem(i);
+  for (let i = 0; i < localStorage.length; i++) {
+	  data[i] = localStorage.getItem(i);
   };
 
 			return fetch("/cart", {
@@ -230,9 +230,29 @@
 <script>
 	function removeItemCart(id){
 		console.debug('remove ' + id)
-		sessionStorage.removeItem(id);
+		localStorage.removeItem(id);
+		reformat();
 	}
 	function removeAllCart(){
-		sessionStorage.clear();
+		localStorage.clear();
+	}
+
+	function reformat(){
+
+		for (let i = 0; i < localStorage.length; i++) {
+			let j = i;
+			while (localStorage.getItem(j) === null) {
+				console.debug("j : " +j);
+				j++;
+			}
+			console.debug(i + "			" + j);
+
+			console.debug(localStorage);
+			let value = localStorage.getItem(j);
+			console.debug(value);
+			localStorage.setItem(i,value);
+
+			//localStorage.setItem(i, value);
+		}
 	}
 </script>
