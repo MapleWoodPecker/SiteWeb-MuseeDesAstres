@@ -159,10 +159,10 @@
 
 <script>
 function EffacerFiltre(){
-    document.getElementById("checkvetement").checked = true;
-        document.getElementById("checkmaquette").checked = true;
-        document.getElementById("checksouvenir").checked = true;
-        document.getElementById("checkeducatif").checked = true;
+    document.getElementById("checkvetement").checked = false;
+        document.getElementById("checkmaquette").checked = false;
+        document.getElementById("checksouvenir").checked = false;
+        document.getElementById("checkeducatif").checked = false;
 
     loadDoc();
 }
@@ -257,10 +257,10 @@ function EffacerFiltre(){
         location.reload();
     }
     window.onload = function () {
-        document.getElementById("checkvetement").checked = true;
-        document.getElementById("checkmaquette").checked = true;
-        document.getElementById("checksouvenir").checked = true;
-        document.getElementById("checkeducatif").checked = true;
+        document.getElementById("checkvetement").checked = false;
+        document.getElementById("checkmaquette").checked = false;
+        document.getElementById("checksouvenir").checked = false;
+        document.getElementById("checkeducatif").checked = false;
         
         var data = sessionStorage.getItem('added');
         if (data == 'true') {
