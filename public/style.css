@@ -1,6 +1,6 @@
 /*navbar menu*/
 .navbar {
-    background-color: #182030!important;
+    background-color: #1a2233!important;
     /*overflow-x: hidden;
     * does not work: causes dropdown to be hidden
     */
@@ -27,7 +27,7 @@
 /* Dropdown menu*/
 .navbar-nav > li > div > a{
     font-size: 100%;
-    color: #182030;
+    color: #1a2233;
     background-color:white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -35,7 +35,7 @@
 /*Dropdown menu on hover*/
 .navbar-nav > li > div > a:hover{
     font-size: 100%;
-    color: #182030;
+    color: #1a2233;
     background-color:#889cc3;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -155,7 +155,7 @@ footer{
 }
 
 .vertical-line{
-    background-color:#182030;
+    background-color:#1a2233;
     width: 3px;
 }
 
@@ -204,7 +204,7 @@ h5{
 }
 
 .fw-light{
-    color: #182030!important;
+    color: #1a2233!important;
     font-size: 60px;
     font-weight: 600;
 }
@@ -314,7 +314,7 @@ width: 500px;
 
 .movie-title{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    color: #182030;
+    color: #1a2233;
     text-align: center;
     margin-bottom: 0px;
 }
@@ -358,19 +358,23 @@ p, h1, h2, h3, h4, h5 {
 }
 
 .btn-primary, .btn-primary:focus, .btn-primary::after{
-    background-color: #182030;
+    background-color: #1a2233!important;
 }
 
 .btn-primary:hover{
-    background-color: #090b11;
+    background-color: #090b11!important;
 }
 
 .btn-primary:focus, .btn-primary:active{
     box-shadow: 0 0 0 0.3rem rgba(136, 156, 195, 1);
-    outline-color: #334466;
-    border-color: #182030;
+    outline-color: #334466!important;
+    border-color: #1a2233!important;
 }
 
 .text-muted{
-    line-height: 22px;
+    line-height: 25px;
+}
+
+.form-check-input{
+    background-color: #1a2233!important;
 }
