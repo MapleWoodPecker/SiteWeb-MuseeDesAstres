@@ -236,29 +236,61 @@ app.get('/rdv_etoiles',async function (req,res) {
 });
 
 /*
-* Scheduler for RDV etoiles
+* Scheduler pour RDV etoiles
 */
 cron.schedule('* * * * *', () => {
-	/* Running the job every day */
-	console.log("Running weather task");
-	const uri_weather = "http://api.weatherapi.com/v1/forecast.json?key=45cfbd55ef1847f0b2c163229221105&q=Montreal&days=3&aqi=no&alerts=yes";
+	rdvScheduler();
+});
+
+async function rdvScheduler(){
+	/* Éxécuter la tache à chaque heure */
+	console.log("***Éxécution de la tâche RDV étoile (chaque heure)***");
+	const uri_weather = "http://api.weatherapi.com/v1/forecast.json?key=3fcb64167526422099d202413221105&q=Montreal&days=3&aqi=no&alerts=yes";
 	let settings = { method: "Get" };
 
-	
-	fetch(uri_weather, settings)
+	let data = await fetch(uri_weather, settings)
 		.then(res => res.json())
 		.then((json) => {
-        console.log(json);
+        return json;
     });
+	
+	console.log("   Le coucher de soleil dans deux jours est à " + data.forecast.forecastday[2].astro.sunset)
+	var hr = parseInt(data.forecast.forecastday[2].astro.sunset.substr(0, 2));
+	hr = hr+13;
+	//console.log("   La température 1 heure après le coucher de soleil est de " +  data.forecast.forecastday[2].hour[hr].temp_c + "°C")
+	var cloud_perc = data.forecast.forecastday[2].hour[hr].cloud;
+	//console.log("   La couverture nuageuse 1 heure après le coucher de soleil est de " +  cloud_perc + "%")*/
+	
+	if(cloud_perc < 25){
+		console.log("   Couverture nuageuse 1 heure plus tard sous 25%.")
+		const cursor = await rdvetoiles.find();
 
+		var result;
 
-	//${weather.current.temp_c}
-	//${weather.current.feelslike_c}
-	//${weather.forecast.forecastday[1].day.maxtemp_c}
-	//${weather.forecast.forecastday[1].day.mintemp_c}
-	//${weather.forecast.forecastday[2].day.maxtemp_c}
-	//${weather.forecast.forecastday[2].day.mintemp_c}
-});
+		await cursor.forEach(element => {
+			var elementdate = element.datetime.toISOString().split('T')[0]
+			if (elementdate === data.forecast.forecastday[2].date) {
+				result = element;
+			}
+		});
+
+		if(result != undefined){
+			console.log("   Activité pas ajoutée (existe déjà dans BD)")
+		}
+		else{
+			var date_act = new Date(data.forecast.forecastday[2].date)
+			date_act.setHours(hr);
+			var rdv_temp = {
+				datetime:date_act,
+				temp:Math.round(parseInt(data.forecast.forecastday[2].hour[hr].temp_c))
+			}
+			rdvetoiles.insertOne(rdv_temp);
+
+			console.log("   Nouvelle activité ajoutée le " + data.forecast.forecastday[2].date)
+		}
+	}
+	else{console.log("   Couverture nuageuse 1 heure plus tard au dessus de 25%. Activité annulée")}
+}
 
 
 
