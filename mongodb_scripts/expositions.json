@@ -13,7 +13,7 @@
   "salle": "D",
   "image": "images/expos/space_race.png",
   "particip_max": 25,
-  "desc": "La course à l'innovation, l'exploration spatiale entre les États-Unis et l'URSS, et ses enjeux inquiétants",
+  "desc": "La course à l'innovation, l'exploration spatiale entre les États-Unis et l'URSS",
   "long": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 },{
   "_id": {
@@ -30,7 +30,7 @@
   "salle": "F",
   "image": "images/expos/apollo.png",
   "particip_max": 25,
-  "desc": "Le programme Apollo, du désastre du 1er, au succès du 11, et les découvertes de notre astre lunaire",
+  "desc": "Le programme Apollo, du désastre du 1er au succès du dernier",
   "long": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
 },{
   "_id": {

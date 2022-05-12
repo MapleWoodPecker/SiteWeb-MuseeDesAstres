@@ -18,7 +18,7 @@
   "quantite": 300,
   "magasin": true,
   "image": "images/shop/poster.png",
-  "desc": "Poster de toutes les fusées lancées par la NASA, l'ESA et l'URSS",
+  "desc": "Poster des fusées de la NASA, l'ESA et l'URSS",
   "tags": "education"
 },{
   "_id": {
@@ -84,7 +84,7 @@
   "quantite": 160,
   "magasin": false,
   "image": "images/shop/shuttle.png",
-  "desc": "Maquette réaliste de la Navette Spatiale (à monter soi-même) 1/32",
+  "desc": "Maquette réaliste de la Navette Spatiale 1/32",
   "tags": "miniature"
 },{
   "_id": {

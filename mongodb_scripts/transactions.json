@@ -1,0 +1,352 @@
+[{
+  "_id": {
+    "$oid": "627c63a1d4c0a735c785dc33"
+  },
+  "user": {
+    "nom": "Doe",
+    "prenom": "John",
+    "email": "2061694@bdeb.qc.ca",
+    "adresse": "1234 Rue Principale, 12, Canada, Québec, 1234"
+  },
+  "date": {
+    "$date": "2022-05-12T01:32:17.040Z"
+  },
+  "achats": [
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b4141a"
+      },
+      "titre": "Cosmonautes Miniatures",
+      "prix": 18.99,
+      "quantite": 250,
+      "magasin": true,
+      "image": "images/shop/miniatures.png",
+      "desc": "Set de petits cosmonautes en jouet",
+      "tags": "miniature"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b41425"
+      },
+      "titre": "Globe Terrestre",
+      "prix": 49.99,
+      "quantite": 200,
+      "magasin": false,
+      "image": "images/shop/globe.png",
+      "desc": "Globe terrestre avec relief, couleurs et capitales",
+      "tags": "education"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b41421"
+      },
+      "titre": "Maquette Navette Spatiale",
+      "prix": 89.99,
+      "quantite": 160,
+      "magasin": false,
+      "image": "images/shop/shuttle.png",
+      "desc": "Maquette réaliste de la Navette Spatiale 1/32",
+      "tags": "miniature"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b4141d"
+      },
+      "titre": "T-Shrit Des Astres",
+      "prix": 29.99,
+      "quantite": 200,
+      "magasin": true,
+      "image": "images/shop/tshirt.png",
+      "desc": "T-Shirt officiel du Musée des Astres",
+      "tags": "habit"
+    }
+  ],
+  "payement": {
+    "totalHT": 188.96,
+    "tps": 9.45,
+    "tvq": 18.42,
+    "total": 217.26
+  }
+},{
+  "_id": {
+    "$oid": "627c7acecdf9e75197267ba0"
+  },
+  "user": {
+    "nom": "Jack",
+    "prenom": "Jean",
+    "email": "yanhaddar@gmail.com",
+    "adresse": "1234 Rue Direa , Canada, Québec, H1E 5W1"
+  },
+  "date": {
+    "$date": "2022-05-12T03:11:10.424Z"
+  },
+  "achats": [
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b4141a"
+      },
+      "titre": "Cosmonautes Miniatures",
+      "prix": 18.99,
+      "quantite": 250,
+      "magasin": true,
+      "image": "images/shop/miniatures.png",
+      "desc": "Set de petits cosmonautes en jouet",
+      "tags": "miniature"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b41426"
+      },
+      "titre": "Cravate Constellations",
+      "prix": 23.99,
+      "quantite": 150,
+      "magasin": false,
+      "image": "images/shop/const_tie.png",
+      "desc": "Cravate avec motifs des constellations",
+      "tags": "habit"
+    }
+  ],
+  "payement": {
+    "totalHT": 42.98,
+    "tps": 2.15,
+    "tvq": 4.19,
+    "total": 49.42
+  }
+},{
+  "_id": {
+    "$oid": "627c7d92dbb9b0622057fb39"
+  },
+  "user": {
+    "nom": "Gastaldo",
+    "prenom": "Quentin",
+    "email": "2061694@bdeb.qc.ca",
+    "adresse": "1234 , Canada, Québec, &"
+  },
+  "date": {
+    "$date": "2022-05-12T03:22:58.573Z"
+  },
+  "achats": [
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b41425"
+      },
+      "titre": "Globe Terrestre",
+      "prix": 49.99,
+      "quantite": 200,
+      "magasin": false,
+      "image": "images/shop/globe.png",
+      "desc": "Globe terrestre avec relief, couleurs et capitales",
+      "tags": "education"
+    }
+  ],
+  "payement": {
+    "totalHT": 49.99,
+    "tps": 2.5,
+    "tvq": 4.87,
+    "total": 57.48
+  }
+},{
+  "_id": {
+    "$oid": "627c7efc4ac6d182770bad3f"
+  },
+  "user": {
+    "nom": "Haddar",
+    "prenom": "Yanni",
+    "email": "yanhaddar@gmail.com",
+    "adresse": "1234 Rue du Q , Canada, Nouveau-Brunswick, H1E5W1"
+  },
+  "date": {
+    "$date": "2022-05-12T03:29:00.810Z"
+  },
+  "achats": [
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b4141a"
+      },
+      "titre": "Cosmonautes Miniatures",
+      "prix": 18.99,
+      "quantite": 250,
+      "magasin": true,
+      "image": "images/shop/miniatures.png",
+      "desc": "Set de petits cosmonautes en jouet",
+      "tags": "miniature"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b41426"
+      },
+      "titre": "Cravate Constellations",
+      "prix": 23.99,
+      "quantite": 150,
+      "magasin": false,
+      "image": "images/shop/const_tie.png",
+      "desc": "Cravate avec motifs des constellations",
+      "tags": "habit"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b41425"
+      },
+      "titre": "Globe Terrestre",
+      "prix": 49.99,
+      "quantite": 200,
+      "magasin": false,
+      "image": "images/shop/globe.png",
+      "desc": "Globe terrestre avec relief, couleurs et capitales",
+      "tags": "education"
+    }
+  ],
+  "payement": {
+    "totalHT": 92.97,
+    "tps": 4.65,
+    "tvq": 9.06,
+    "total": 106.89
+  }
+},{
+  "_id": {
+    "$oid": "627c7f954ac6d182770bad40"
+  },
+  "user": {
+    "nom": "Ivanov",
+    "prenom": "Ivan",
+    "email": "yanhaddar@gmail.com",
+    "adresse": "1234 , Canada, Nouvelle-Écosse, "
+  },
+  "date": {
+    "$date": "2022-05-12T03:31:33.914Z"
+  },
+  "achats": [
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b4141a"
+      },
+      "titre": "Cosmonautes Miniatures",
+      "prix": 18.99,
+      "quantite": 250,
+      "magasin": true,
+      "image": "images/shop/miniatures.png",
+      "desc": "Set de petits cosmonautes en jouet",
+      "tags": "miniature"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b4141e"
+      },
+      "titre": "Masque Des Astres",
+      "prix": 12.99,
+      "quantite": 300,
+      "magasin": true,
+      "image": "images/shop/mask.png",
+      "desc": "Masque Covid officiel du Musée des Astres",
+      "tags": "goodie"
+    }
+  ],
+  "payement": {
+    "totalHT": 31.98,
+    "tps": 1.6,
+    "tvq": 3.12,
+    "total": 36.77
+  }
+},{
+  "_id": {
+    "$oid": "627c82583933014a6ae72c20"
+  },
+  "user": {
+    "nom": "a",
+    "prenom": "a",
+    "email": "2061694@bdeb.qc.ca",
+    "adresse": "a , Canada, Yukon, a"
+  },
+  "date": {
+    "$date": "2022-05-12T03:43:20.491Z"
+  },
+  "achats": [
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b41425"
+      },
+      "titre": "Globe Terrestre",
+      "prix": 49.99,
+      "quantite": 200,
+      "magasin": false,
+      "image": "images/shop/globe.png",
+      "desc": "Globe terrestre avec relief, couleurs et capitales",
+      "tags": "education"
+    }
+  ],
+  "payement": {
+    "totalHT": 49.99,
+    "tps": 2.5,
+    "tvq": 4.87,
+    "total": 57.48
+  }
+},{
+  "_id": {
+    "$oid": "627cf6802b9356e261e2ea24"
+  },
+  "user": {
+    "nom": "Gomez",
+    "prenom": "Pablo",
+    "email": "yanhaddar@gmail.com",
+    "adresse": "3284 Rue du Rossignol 3, Canada, Québec, H2R8J9"
+  },
+  "date": {
+    "$date": "2022-05-12T11:58:56.031Z"
+  },
+  "achats": [
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b4141a"
+      },
+      "titre": "Cosmonautes Miniatures",
+      "prix": 18.99,
+      "quantite": 250,
+      "magasin": true,
+      "image": "images/shop/miniatures.png",
+      "desc": "Set de petits cosmonautes en jouet",
+      "tags": "miniature"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b4141e"
+      },
+      "titre": "Masque Des Astres",
+      "prix": 12.99,
+      "quantite": 300,
+      "magasin": true,
+      "image": "images/shop/mask.png",
+      "desc": "Masque Covid officiel du Musée des Astres",
+      "tags": "goodie"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b41423"
+      },
+      "titre": "Tasse Des Astres",
+      "prix": 11.99,
+      "quantite": 200,
+      "magasin": true,
+      "image": "images/shop/mug.png",
+      "desc": "Tasse officielle du Musée des Astres",
+      "tags": "goodie"
+    },
+    {
+      "_id": {
+        "$oid": "623a25e361108c13e7b41422"
+      },
+      "titre": "T-Shirt Constellations",
+      "prix": 29.99,
+      "quantite": 200,
+      "magasin": true,
+      "image": "images/shop/const_tshirt.png",
+      "desc": "T-Shirt des constellations les plus populaire",
+      "tags": "habit"
+    }
+  ],
+  "payement": {
+    "totalHT": 73.96,
+    "tps": 3.7,
+    "tvq": 7.21,
+    "total": 85.04
+  }
+}]
