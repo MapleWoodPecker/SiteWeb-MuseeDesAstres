@@ -41,7 +41,7 @@ height="100%" width="100%" >
                     <table width="100%" style="background: #f9f9f9; border-bottom: 1px solid #eee; border-collapse: collapse; color: #999;">
                         <tbody>
                             <tr>
-                                <td width="50%" style="padding: 20px;"><strong style="color: #333; font-size: 24px;">$ <%= total%></strong> total</td>
+                                <td width="50%" style="padding: 20px;"><strong style="color: #333; font-size: 24px;">$ <%= payement.total%></strong> total</td>
                                 <td align="right" width="50%" style="padding: 20px;">Merci d'avoir acheté sur <span class="il">MuseeDesAstres.com</span></td>
                             </tr>
                         </tbody>
@@ -82,19 +82,19 @@ height="100%" width="100%" >
                                             <%});%>
                                             <tr>
                                                 <td style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;">Total hors taxes</td>
-                                                <td align="right" style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;">$ <%= totalHT%></td>
+                                                <td align="right" style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;">$ <%= payement.totalHT%></td>
                                             </tr>
                                             <tr>
                                                 <td style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;"> <i>TPS</i> </td>
-                                                <td align="right" style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;">$ <%= tps%></td>
+                                                <td align="right" style="border-bottom: 1px solid #000; border-top: 1px solid #000; padding: 5px 0;">$ <%= payement.tps%></td>
                                             </tr>
                                             <tr>
                                                 <td style="border-bottom: 1px solid #000; border-top: 1px solid #000;  padding: 5px 0;"> <i>TVQ</i> </td>
-                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 1px solid #000; padding: 5px 0;">$ <%= tvq%></td>
+                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 1px solid #000; padding: 5px 0;">$ <%= payement.tvq%></td>
                                             </tr>
                                             <tr>
                                                 <td style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">Montant total</td>
-                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">$  <%= total%></td>
+                                                <td align="right" style="border-bottom: 2px solid #000; border-top: 2px solid #000; font-weight: bold; padding: 5px 0;">$  <%= payement.total%></td>
                                             </tr>
                                         </tbody>
                                     </table>

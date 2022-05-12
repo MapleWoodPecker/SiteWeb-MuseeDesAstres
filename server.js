@@ -68,6 +68,7 @@ async function run() {
 		expo = database.collection('expositions');
 		con = database.collection('compte_admin');
 		tarifs = database.collection('tarifs');
+		transactions = database.collection('transactions');
 
 		console.log("Connexion réussie :)");
 	} catch {
@@ -83,6 +84,7 @@ var reservations;
 var expo;
 var con;
 var tarifs;
+var transactions;
 
 run().catch(console.dir);
 
@@ -623,12 +625,28 @@ app.post('/bill',async function (req,res) {
 		tvq = (tvq / 100000000).toFixed(2);
 		total = (total / 10000000000).toFixed(2);
 
+		var payement = {
+			totalHT : totalHT,
+			tps : tps,
+			tvq : tvq,
+			total : total
+		}
+
 		var user = {
 			nom: req.body.nom,
 			prenom: req.body.prenom,
 			email: req.body.email,
 			adresse: req.body.adresse
 		}
+
+		var bill_temp = {
+			user : user,
+			date : new Date(),
+			achats : items,
+			payement : payement
+		}
+
+		transactions.insertOne(bill_temp);
 
 		console.log(user.email);
 
@@ -643,7 +661,7 @@ app.post('/bill',async function (req,res) {
 
 		ejs.renderFile(__dirname + "\\views\\pages\\boutique\\facture.ejs",
 		{   
-			logo: base64_encode('public\\images\\logo_border.png'), totalHT : totalHT, tps : tps, tvq : tvq, total : total, items : items, date : new Date().toISOString().replace(/T.+/, '')
+			logo: base64_encode('public\\images\\logo_border.png'), payement : payement, items : items, date : new Date().toISOString().replace(/T.+/, '')
 		}, function (err, data) {
 			if (err) {
 				console.log(err);
