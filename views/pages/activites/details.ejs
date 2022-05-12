@@ -33,14 +33,14 @@
         Quand: 
         <i><% if (expo) { %>
             <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
-            Du <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%>
+            Du <%= item.date_debut.getUTCDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getUTCDate()%> <%= months[item.date_fin.getUTCMonth()]%>
             
         <% }else{%>
             <% var months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];
             %>
             <% var min=item.date_debut.getUTCMinutes() %>
             <% if (min < 10) {min="0" + min} %>
-            Le <%= item.date_debut.getDate()%>
+            Le <%= item.date_debut.getUTCDate()%>
             <%= months[item.date_debut.getUTCMonth()]%> à <%= item.date_debut.getHours()%>h<%= min%>
         <% }; %></i>
         <br>

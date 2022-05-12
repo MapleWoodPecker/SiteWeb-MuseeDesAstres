@@ -67,7 +67,7 @@
             <div class="card-body">
               <h5><%= item.titre %></h5>
               <p class="card-text"><% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
-                <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getDate()%> <%= months[item.date_fin.getUTCMonth()]%> <br>
+                <%= item.date_debut.getUTCDate()%> <%= months[item.date_debut.getUTCMonth()]%> au <%= item.date_fin.getUTCDate()%> <%= months[item.date_fin.getUTCMonth()]%> <br>
                 Salle : <%= item.salle%></p>
 
                 <a type="button" href="/experience/<%= item._id%>" class="btn btn-sm btn-outline-secondary" >Détails</a>
@@ -147,7 +147,7 @@
                 <div class="card-body">
                   <h5><%= item.titre %></h5>
                   <p class="card-text"> <% var months = ["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"]; %>
-                    Commencera le <%= item.date_debut.getDate()%> <%= months[item.date_debut.getUTCMonth()]%> <%= item.date_debut.getFullYear() %> 
+                    Commencera le <%= item.date_debut.getUTCDate()%> <%= months[item.date_debut.getUTCMonth()]%> <%= item.date_debut.getFullYear() %> 
                   </p>                  
                 </div>
               </div>
