@@ -218,6 +218,25 @@ app.get('/activites',async function (req,res) {
  * Rendez-vous sous les étoiles
 */
 
+app.get('/meteo',async function (req,res) {
+
+	const cursor = rdvetoiles.find({}).sort({ date_debut: -1 });
+
+	var result = [];
+
+	await cursor.forEach(element2 => {
+		result.push(element2);
+	});
+
+    res.render('pages/activites/meteo',{
+    	siteTitle : "Meteo - Musée des Astres",
+    	pageTitle : "Meteo",
+    	items : result
+    	
+	});
+	
+});
+
 app.get('/rdv_etoiles',async function (req,res) {
 
 	const cursor = rdvetoiles.find({}).sort({ date_debut: -1 });
@@ -228,7 +247,9 @@ app.get('/rdv_etoiles',async function (req,res) {
 		result.push(element2);
 	});
 
-    res.render('pages/activites/rdvetoiles',{
+	console.log(result)
+
+    res.render('pages/activites/rdv_etoiles',{
     	siteTitle : "Rendez-vous sous les étoiles - Musée des Astres",
     	pageTitle : "Rendez-vous sous les étoiles",
     	items : result
