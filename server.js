@@ -105,6 +105,15 @@ function compare( a, b ) {
 	}
 	return 0;
 }
+function compare_rdv( a, b ) {
+	if ( a.datetime > b.datetime ){
+	  return 1;
+	}
+	if ( a.datetime < b.datetime ){
+	  return -1;
+	}
+	return 0;
+}
 /*
 * Accueil
 */
@@ -246,7 +255,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 	await cursor.forEach(element2 => {
 		result.push(element2);
 	});
-	result.sort(compare);
+	result.sort(compare_rdv);
 
     res.render('pages/activites/rdv_etoiles',{
     	siteTitle : "Rendez-vous sous les étoiles - Musée des Astres",
