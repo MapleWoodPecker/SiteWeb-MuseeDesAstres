@@ -4,15 +4,21 @@
         .main {
             display: flex;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 200px;
+            vertical-align:top!important;
         }
-
         .option {
             margin-left: 30px;
             width: 300px;
             height: 535px;
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content:center;
+            align-items:start;
+            padding-top: 30px!important;
         }
 
         .post {
@@ -40,6 +46,7 @@
             display: none;
             height: 535px;
             padding: 30px;
+            width: fit-content;
             font-size: larger;
             overflow-x: hidden;
         }
@@ -51,17 +58,15 @@
 
         .bouton {
             display: block;
-            width: 250px;
+            width: 250px!important;
             margin-left: auto;
             margin-right: auto;
             font-size: larger;
-            background-color: gray;
         }
 
         .date {
             border-color: #222d44;
             border-width: 3px;
-            font-weight: bold;
             width: 200px;
         }
 
@@ -71,7 +76,6 @@
             margin-right: auto;
             width: 150px;
             font-size: large;
-            font-weight: bold;
         }
 
         .logout {
@@ -86,18 +90,28 @@
             margin-left: auto;
             margin-right: auto;
         }
+        .reserv_item{
+            width: 300px;
+        }
+        body>*{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif!important;
+        }
     </style>
-
+    <br><br>
+<div style="max-width:80%; margin:auto; width: fit-content; text-align: center;">
+    <h1 class="fw-light" style="font-size:xxx-large; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal!important;">Accès Admin<span style="padding-left: 15px; font-size: xx-large;"><i class="fas fa-user-lock" style="transform:translate(0px, -5px);"></span></i></h1>
+  </div>
     <div class="main">
         <div class="option">
             <div class="center">
-                <button class="btn btn-secondary my-2 bouton" id="inser">
+                <button class="btn btn-primary my-2 bouton" id="inser">
                     Insérer dans la table
                 </button>
-                <button class="btn btn-secondary my-2 bouton" id="reserv">
-                    Voir les reservations
+                <button class="btn btn-primary my-2 bouton" id="reserv">
+                    Voir les réservations
                 </button>
-                <a class="logout" href="/logout"><button class="btn btn-secondary my-2 out">Déconnexion</button></a>
+                <br><br>
+                <a class="logout" href="/logout"><button class="btn btn-danger my-2 out bouton">Déconnexion</button></a>
             </div>
         </div>
         <div class="option" id="tables" style="display: none;">
