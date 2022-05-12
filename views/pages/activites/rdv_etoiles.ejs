@@ -17,7 +17,7 @@
     <p class="lead text-muted" style="font-size: xx-large; color:darkslategray!important">Prochaines dates prévues</p>
     <ol class="list-group list-group-flush" style="max-width: 40%;margin-left: auto;margin-right: auto;">
     <% items.forEach(function(item,index){ %>
-        
+        <% if(item.datetime > new Date()){%>
         <li class="list-group-item" style="margin: 5px;">
             <div class="ms-2 me-auto">
             <div style="font-size:x-large; font-weight:600!important;">
@@ -30,7 +30,7 @@
             <i style="font-size: large;">Température minimum: <%= item.temp%>°C</i>
             </div>
         </li>
-        <%}); %>
+        <%}}); %>
     </ol>
 
         <br>
