@@ -1,13 +1,18 @@
 <%- include ('../../partials/header') %>
 
     <style>
+        .main-container{
+            width: fit-content;;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .main {
             display: flex;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            width: fit-content;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 40px;
+            width: 1300px;
+            justify-content:start;
+            align-items:start;
+            margin-top: 50px;
             margin-bottom: 200px;
             vertical-align:top!important;
         }
@@ -16,7 +21,7 @@
             width: 300px;
             height: 535px;
             display: flex;
-            justify-content:center;
+            justify-content:start;
             align-items:start;
             padding-top: 30px!important;
         }
@@ -102,6 +107,7 @@
 <div style="max-width:80%; margin:auto; width: fit-content; text-align: center;">
     <h1 class="fw-light" style="font-size:xxx-large; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: normal!important;">Accès Admin<span style="padding-left: 15px; font-size: xx-large;"><i class="fas fa-user-lock" style="transform:translate(0px, -5px);"></span></i></h1>
   </div>
+  <div class="main-container">
     <div class="main">
         <div class="option">
             <div class="center">
@@ -182,6 +188,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
     <script>
@@ -315,7 +322,7 @@
                 var headers = { "Content-Type": "application/json", "Access-Control-Origin": "*", "Expires": "" }
 
                 var data = {
-                    type: type, titre: titre, date_debut: date_debut, date_fin: date_fin, duree: duree, 
+                    type: type, titre: titre, date_debut: date_debut, date_fin: date_fin, duree: duree,
                     salle: salle, image: image, particip_max: particip_max, desc: desc, long: long
                 }
 
