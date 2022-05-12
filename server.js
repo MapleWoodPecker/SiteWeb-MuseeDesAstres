@@ -621,9 +621,9 @@ app.post('/bill',async function (req,res) {
 		var total = (totalHT * 1000) * (1.14975 * 100000);
 
 		totalHT = totalHT/100;
-		tps = (tps / 10000).toFixed(2);
-		tvq = (tvq / 100000000).toFixed(2);
-		total = (total / 10000000000).toFixed(2);
+		tps = parseFloat((tps / 10000).toFixed(2));
+		tvq = parseFloat((tvq / 100000000).toFixed(2));
+		total = parseFloat((total / 10000000000).toFixed(2));
 
 		var payement = {
 			totalHT : totalHT,
