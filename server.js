@@ -121,7 +121,7 @@ app.get('/',async function (req,res) {
 
 	// recuperer les info des tables expo et activites
 	
-	result = [];
+	var result = [];
 
 	await expo.find().forEach(element1 => {
 		result.push(element1);
@@ -132,10 +132,19 @@ app.get('/',async function (req,res) {
 
 	result.sort(compare);
 
+	var results = [];
+	var now = new Date();
+
+	result.forEach( item => {
+		if (item.date_fin >= now || item.date_debut >= now) {
+			results.push(item);
+		}
+	});
+
 	res.render('pages/index',{
 		siteTitle : siteTitle,
 		pageTitle : "Index",
-		items : result
+		items : results
 	});
 	  
 });
@@ -155,10 +164,19 @@ app.get('/expositions',async function (req,res) {
 		result.push(element2);
 	});
 
+	var results = [];
+	var now = new Date();
+
+	result.forEach( item => {
+		if (item.date_fin >= now) {
+			results.push(item);
+		}
+	});
+
 	res.render('pages/activites/expositions',{
 		siteTitle : "Expositions - Musée des Astres",
 		pageTitle : "Expositions",
-		items : result
+		items : results
 	});
 
 });
@@ -177,10 +195,19 @@ app.get('/activites',async function (req,res) {
 		result.push(element2);
 	});
 
+	var results = [];
+	var now = new Date();
+
+	result.forEach( item => {
+		if (item.date_debut >= now) {
+			results.push(item);
+		}
+	});
+
 	res.render('pages/activites/activites',{
 		siteTitle : "Activités - Musée des Astres",
 		pageTitle : "Activités",
-		items : result
+		items : results
 	});
 	
 });
