@@ -359,6 +359,7 @@ p, h1, h2, h3, h4, h5 {
 
 .btn-primary, .btn-primary:focus, .btn-primary::after{
     background-color: #1a2233!important;
+    
 }
 
 .btn-primary:hover{

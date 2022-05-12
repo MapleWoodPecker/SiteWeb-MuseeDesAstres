@@ -246,8 +246,7 @@ app.get('/rdv_etoiles',async function (req,res) {
 	await cursor.forEach(element2 => {
 		result.push(element2);
 	});
-
-	console.log(result)
+	result.sort(compare);
 
     res.render('pages/activites/rdv_etoiles',{
     	siteTitle : "Rendez-vous sous les étoiles - Musée des Astres",
@@ -273,7 +272,7 @@ async function rdvScheduler(){
 	const uri_weather = "http://api.weatherapi.com/v1/forecast.json?key=3fcb64167526422099d202413221105&q=Montreal&days=3&aqi=no&alerts=yes";
 	let settings = { method: "Get" };
 
-	//Fetch le JSOn
+	//Fetch le JSON
 	let data = await fetch(uri_weather, settings)
 		.then(res => res.json())
 		.then((json) => {
@@ -312,7 +311,7 @@ async function rdvScheduler(){
 			date_act.setHours(hr);
 			var rdv_temp = {
 				datetime:date_act,
-				temp:Math.round(parseInt(data.forecast.forecastday[2].hour[hr].temp_c))
+				temp:Math.round(parseInt(data.forecast.forecastday[2].day.mintemp_c))
 			}
 			rdvetoiles.insertOne(rdv_temp);
 

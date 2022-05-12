@@ -1,26 +1,48 @@
 <%- include ('../../partials/header') %>
 
 <style>
-
 </style>
 
 
-<section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Météo</h1>
-        <p class="lead text-muted">Cette page vous permet de mieux planifier toutes vos sorties nocturnes d'observation des astres, comme par exemple pour notre activité Rendez-Vous sous les Étoiles</p>
-        <h1 class="fw-light" style="font-size: xx-large!important;">RDV sous les Étoiles</h1>
-        <p class="lead text-muted">Dans cette activité spéciale, vous êtes invités à venir observer le ciel étoilé à notre observatoire. Vous allez avoir accès à notre télescope
-        pour avoir une vision incroyable de la Voie Lactée et des planètes visibles, comme Mars, Venus, Jupiter ou Saturne. </p>
-        <div class="reserve">
-            <a href="/rdv_etoiles"> <button class="Bouton_Reserv">RDV sous les Étoiles</button></a>
+        
+<br><br><br><br>
+<div style="max-width:80%; margin-left:auto; margin-right: auto; text-align: center;">
+    <h1 class="fw-light" style="margin-bottom: 25px;">Rendez-Vous sous les étoiles</h1>
+    <p class="lead text-muted" style="font-size: x-large;max-width: 90%!important; margin:auto; line-height: 35px;">Avez-vous toujours rêvé d’observer notre magnifique voie lactée libre de pollution lumineuse? Souhaitez-vous admirer le ciel étoilé dans sa plus grande splendeur? Lorsque possible, nous vous invitons dans notre observatoire, pour vous faire observer les constellations et les astres, de la Lune à Saturne, des nébuleuses aux galaxies. Vous pourrez aussi observer nos nombreuses images capturées, ainsi qu’un petit cours sur l’observation spatiale de la part de nos professionnels.</p>
+    
+    <br><br>
+    <p class="lead text-muted" style="font-size: xx-large; color:darkslategray!important"><i>Comment ca fonctionne?</i></p>
+    <p class="lead text-muted" style="max-width: 70%!important; margin:auto">Lorsqu'une belle journée s'annonce (une couverture nuageuse faible), nous crééons automatiquement une activité, une heure après le coucher du soleil. Vous serez invités à vous habiller correctement selon la température prévue, car l'observatoire n'est pas chauffé.</p>
+    <br><br>
+    <p class="lead text-muted" style="font-size: xx-large; color:darkslategray!important">Prochaines dates prévues</p>
+    <ol class="list-group list-group-flush" style="max-width: 40%;margin-left: auto;margin-right: auto;">
+    <% items.forEach(function(item,index){ %>
+        
+        <li class="list-group-item" style="margin: 5px;">
+            <div class="ms-2 me-auto">
+            <div style="font-size:x-large; font-weight:600!important;">
+                <% var months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];%>
+                <% var min=item.datetime.getUTCMinutes() %>
+                <% if (min < 10) {min="0" + min} %>
+                Le <%= item.datetime.getDate()%>
+                <%= months[item.datetime.getUTCMonth()]%> à <%= item.datetime.getHours()%>h<%= min%>
         </div>
-      </div>
-    </div>
-  </section>
-  <div id="app"></div>
-<script>
+            <i style="font-size: large;">Température minimum: <%= item.temp%>°C</i>
+            </div>
+        </li>
+        <%}); %>
+    </ol>
 
-</script>
+        <br>
+    <img src="/images/rdv/observatoire.jpg" style="margin:10px;width: 700px;">
+    <br><br>
+
+    <p class="lead text-muted" style="font-size: xx-large; color:#1a2233!important"><i>Pour participer à l'activité, réservez votre billet dès maintenant</i></p>
+    <p class="lead text-muted" style="max-width: 90%!important; margin:auto; line-height: 35px;"><i>N'oubliez pas de cocher l'option et de choisir un jour où nous offrons l'activité.<br>Il est aussi possible de payer cash à la billetterie, si des places sont vacantes.</i></p>
+    <a href="/billeterie" class="btn btn-primary my-2 btn-lg">Réserver en ligne</a>
+</div>
+<br>
+
+
+
 <%- include ('../../partials/footer') %>
