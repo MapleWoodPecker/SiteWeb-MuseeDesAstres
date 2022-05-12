@@ -1,5 +1,5 @@
 /**
-* import all modules
+* Importation de tous les modules
 **/
 
 const express = require('express');
@@ -16,7 +16,7 @@ var cron = require('node-cron');
 const fetch = require('node-fetch');
 
 /**
-* import all related Javascript and css files to inject in our app
+* importation et injection de tous les fichiers de script et style
 */
 
 app.use ( session ( { secret : '1111111' ,saveUninitialized : false , resave : false } ) ) ;
@@ -31,7 +31,7 @@ app.use('/js',express.static(__dirname + '/node_modules/bootstrap/js/dist'));
 app.use('/css',express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
 /*
-* parse all form data
+* form body parser
 */
 
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -47,10 +47,10 @@ app.set('view engine','ejs');
  * mongoDB
 **/
 
-// Connection URI
+// URI de connexion
 const uri = "mongodb+srv://admin:Amal1234@museedesastres.0xwj2.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-// Connect
+// connexion
 
 const client = new MongoClient(uri);
 
@@ -59,7 +59,7 @@ async function run() {
 	  	await client.connect();
 	  	const database = client.db('musee_desastres_db');
 
-		// Connection to clusters
+		// connexion aux clusters
 		activites = database.collection("activites");
 		comptes = database.collection("comptes");
 		itemsboutique = database.collection("shop");
@@ -87,7 +87,7 @@ var tarifs;
 run().catch(console.dir);
 
 /**
-* Global site title and base url
+* Titre du site et url global
 */
 
 const siteTitle = "Musée des Astres";
@@ -239,28 +239,33 @@ app.get('/rdv_etoiles',async function (req,res) {
 * Scheduler pour RDV etoiles
 */
 cron.schedule('01 * * * *', () => {
+	/* Éxécuter la tache à chaque heure */
 	rdvScheduler();
 });
 
 async function rdvScheduler(){
-	/* Éxécuter la tache à chaque heure */
+	
 	console.log("***Éxécution de la tâche RDV étoile (chaque heure)***");
+	
 	const uri_weather = "http://api.weatherapi.com/v1/forecast.json?key=3fcb64167526422099d202413221105&q=Montreal&days=3&aqi=no&alerts=yes";
 	let settings = { method: "Get" };
 
+	//Fetch le JSOn
 	let data = await fetch(uri_weather, settings)
 		.then(res => res.json())
 		.then((json) => {
         return json;
     });
 	
+	//Affichage des infos
 	console.log("   Le coucher de soleil dans deux jours est à " + data.forecast.forecastday[2].astro.sunset)
 	var hr = parseInt(data.forecast.forecastday[2].astro.sunset.substr(0, 2));
-	hr = hr+13;
+	hr = hr+13; //calcul de l'heure de coucher de soleil +1 (tjrs arroundi a la baisse)
 	//console.log("   La température 1 heure après le coucher de soleil est de " +  data.forecast.forecastday[2].hour[hr].temp_c + "°C")
-	var cloud_perc = data.forecast.forecastday[2].hour[hr].cloud;
+	var cloud_perc = data.forecast.forecastday[2].hour[hr].cloud; //pourcentage de nuages
 	//console.log("   La couverture nuageuse 1 heure après le coucher de soleil est de " +  cloud_perc + "%")*/
 	
+	//si ciel assez degage
 	if(cloud_perc < 25){
 		console.log("   Couverture nuageuse 1 heure plus tard sous 25%.")
 		const cursor = await rdvetoiles.find();
@@ -274,9 +279,11 @@ async function rdvScheduler(){
 			}
 		});
 
+		//si l'activite existe deja
 		if(result != undefined){
 			console.log("   Activité pas ajoutée (existe déjà dans BD)")
 		}
+		//sinon on l'ajoute
 		else{
 			var date_act = new Date(data.forecast.forecastday[2].date)
 			date_act.setHours(hr);
@@ -289,10 +296,9 @@ async function rdvScheduler(){
 			console.log("   Nouvelle activité ajoutée le " + data.forecast.forecastday[2].date)
 		}
 	}
+	//si pas assez degage, on laisse tomber
 	else{console.log("   Couverture nuageuse 1 heure plus tard au dessus de 25%. Activité annulée")}
 }
-
-
 
 /**
  * Plan

@@ -31,6 +31,12 @@
 		.navbar-toggler {
 			fill: white!important;
 		} 
+		.cart-price{
+			padding-right: 5px;
+		}
+		.btn-x-cart{
+			transform: translate(0px, -5px);
+		}
 	</style>
 
 	<div class="container-fluid">
@@ -173,26 +179,32 @@
 				listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'lh-sm');
 				let indiv = document.createElement('div');
 
+			
 				let Titre = document.createElement('h6');
-				Titre.classList.add('my-0');
+				Titre.classList.add('my-0', 'cart-title');
 				Titre.innerText = Items.titre;
 
-				let Prix = document.createElement('span');
-				Prix.classList.add('text-muted');
-				Prix.innerText = "$ " +Items.prix;
+				let pricespan = document.createElement('span');
 
-				let Remove = document.createElement('button');
-				Remove.type = 'button';
-				Remove.classList.add('btn-close');
-				Remove.ariaLabel='Close';
-				Remove.setAttribute( "OnClick", "removeItemCart("+i+")");
-				//Remove.onclick = removeItemCart(i);
+					let Prix = document.createElement('span');
+					Prix.classList.add('text-muted', 'cart-price');
+					Prix.innerText = "$ " +Items.prix;
+
+					let Remove = document.createElement('button');
+					Remove.type = 'button';
+					Remove.classList.add('btn-close', 'btn-x-cart');
+					Remove.ariaLabel='Close';
+					Remove.setAttribute( "OnClick", "removeItemCart("+i+")");
+					//Remove.onclick = removeItemCart(i);
+
+				pricespan.appendChild(Prix);
+				pricespan.appendChild(Remove);
+
 
 				indiv.appendChild(Titre);
 
 				listItem.appendChild(indiv);
-				listItem.appendChild(Prix);
-				listItem.appendChild(Remove);
+				listItem.appendChild(pricespan);
 
 
 				listItems.appendChild(listItem);
