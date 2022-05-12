@@ -124,7 +124,12 @@
   });
   var total_billet = 0;
 </script>
-
+<br><br>
+<div style="max-width:80%; margin:auto; width: fit-content; text-align: center;">
+  <h1 class="fw-light">Réservation en ligne</h1>
+  <p class="lead text-muted" style="font-size:27px;">Réservez dès maintenant votre visite au Musée Des Astres</p>
+</div>
+<br>
 <div class="bodyBillet">
 <% if (items !=undefined && items.length>0) {%>
   <form style="margin-left: 20px; width: 90%;" class="form">
@@ -205,9 +210,10 @@
     <small id="alerteSubmit" style="color: gray; display: block;">Veuillez choisir au moins un billet</small>
     <hr>
   </form>
-  <img id="content-desktop" style="padding: 5%; width: 1500px; height: fit-content;" src="/images/obs.png" alt="">
+  <img id="content-desktop" style="padding: 2% 5% 5% 5%; height: fit-content; max-width: 40%;" src="/images/obs.png" alt="">
+  
 </div>
-
+<br><br>
 
   <% items.forEach(function(item,index) { %>
   <script>
