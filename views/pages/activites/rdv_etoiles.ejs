@@ -24,10 +24,10 @@
                 <% var months=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"];%>
                 <% var min=item.datetime.getUTCMinutes() %>
                 <% if (min < 10) {min="0" + min} %>
-                Le <%= item.datetime.getDate()%>
+                Le <%= item.datetime.getUTCDate()%>
                 <%= months[item.datetime.getUTCMonth()]%> à <%= item.datetime.getHours()%>h<%= min%>
         </div>
-            <i style="font-size: large;">Température minimum: <%= item.temp%>°C</i>
+            <i style="font-size: large;">Température prévue à <%= item.datetime.getHours()%>h: <%= item.temp%>°C</i>
             </div>
         </li>
         <%}}); %>

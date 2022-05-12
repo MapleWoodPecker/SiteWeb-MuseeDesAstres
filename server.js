@@ -347,7 +347,7 @@ async function rdvScheduler(){
 			date_act.setHours(hr);
 			var rdv_temp = {
 				datetime:date_act,
-				temp:Math.round(parseInt(data.forecast.forecastday[2].day.mintemp_c))
+				temp:Math.round(parseInt(data.forecast.forecastday[2].hour[hr].temp_c))
 			}
 			rdvetoiles.insertOne(rdv_temp);
 
