@@ -264,7 +264,7 @@ app.get('/meteo',async function (req,res) {
 		result.push(element2);
 	});
 
-    res.render('pages/activites/meteo',{
+    res.render('pages/informations/meteo',{
     	siteTitle : "Meteo - Musée des Astres",
     	pageTitle : "Meteo",
     	items : result
