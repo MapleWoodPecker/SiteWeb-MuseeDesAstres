@@ -288,7 +288,8 @@
             nbitems.innerText = data.length;
             
             let prixTotHT = 0;
-            
+            let i = 0;
+
             for (const Items of data) {
               
               prixTotHT = prixTotHT + Items.prix * 100;
@@ -307,17 +308,29 @@
               Descrip.classList.add('text-muted');
               Descrip.innerText = Items.desc;
 
+              let pricespan = document.createElement('span');
+
               let Prix = document.createElement('span');
               Prix.classList.add('text-muted');
               Prix.innerText = "$ " +Items.prix;
 
+              let Remove = document.createElement('button');
+              Remove.type = 'button';
+              Remove.classList.add('btn-close', 'btn-x-cart');
+              Remove.ariaLabel='Close';
+              Remove.setAttribute( "OnClick", "removeItemCart("+i+")");
+
               indiv.appendChild(Titre);
-              indiv.appendChild(Descrip);
+
+              pricespan.appendChild(Prix);
+				      pricespan.appendChild(Remove);
 
               listItem.appendChild(indiv);
-              listItem.appendChild(Prix);
+              listItem.appendChild(pricespan);
               
               listItems.appendChild(listItem);
+
+              i++;
             }
             prixTotHT = prixTotHT/100;
 
