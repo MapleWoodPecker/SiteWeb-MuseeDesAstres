@@ -265,7 +265,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
-            var type, titre, date_debut, date_fin, duree, salle, image, particip_max, desc, prix, quantite, magasin, tags;
+            var type, titre, date_debut, date_fin, duree, salle, image, particip_max, desc, long, prix, quantite, magasin, tags;
 
             // POST activitées
             $("#act-submit").click(function () {
@@ -285,7 +285,7 @@
                 var headers = { "Content-Type": "application/json", "Access-Control-Origin": "*", "Expires": "" }
 
                 var data = {
-                    type: type, titre: titre, date_debut: date_debut, duree: duree, salle: salle, image: image, particip_max: particip_max, desc: desc
+                    type: type, titre: titre, date_debut: date_debut, duree: duree, salle: salle, image: image, particip_max: particip_max, desc: desc, long: long
                 }
 
                 fetch("/admin", {

@@ -235,7 +235,9 @@ app.get('/activites',async function (req,res) {
 		}
 	});
 
-	result.image = base64_encode('public\\' + result.image);
+	if (result.image.substring(0, 4) != "http") {
+		result.image = base64_encode('public\\' + result.image);
+	}
 
 	if (result == undefined) {
 		console.log("id inexistant");
