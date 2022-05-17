@@ -368,7 +368,7 @@ p, h1, h2, h3, h4, h5 {
 
 .btn-primary:focus, .btn-primary:active{
     box-shadow: 0 0 0 0.3rem rgba(136, 156, 195, 1);
-    outline-color: #334466!important;
+    outline-color: #9cabc9!important;
     border-color: #1a2233!important;
 }
 
