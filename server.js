@@ -72,6 +72,7 @@ async function run() {
 
 		console.log("Connexion réussie :)");
 	} catch {
+		console.log("Connexion échouée :(");
 	}
 }
 
